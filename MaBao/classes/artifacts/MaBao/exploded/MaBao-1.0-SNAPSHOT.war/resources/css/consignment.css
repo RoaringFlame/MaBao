@@ -1,0 +1,142 @@
+/*寄售*/
+.consignment{
+	width: 32rem;
+	height: auto;
+	margin: 0 auto
+}
+.title-1{
+	width: 100%;
+	height: 3rem;
+	font-size:1.7rem;
+	text-align: center;
+	margin-top: 2rem;
+}
+.title-2{
+	width: 100%;
+	height: 5rem;
+	font-size: 1.7rem;
+	text-align: center;
+}
+.service{
+	width:100%;
+	height:22rem;
+}
+.service ul{
+	width:80%;
+	height:16rem;
+	margin: 0 auto;
+}
+.service ul li{
+	width: 100%;
+	height: 5rem;
+}
+.index{
+	color: rgb(255,51,153);
+	font-size: 3rem;
+	float: left;
+	line-height:3rem
+}
+.service ul li img{
+	width:3rem;
+	height: 3rem;
+	float: left;
+	margin-left: 1.5rem
+}
+.content{
+	font-size: 1.3rem;
+	height: 4rem;
+	margin-left: 2rem;
+	display: block;
+	margin-left: 9rem;
+	width: 16.6rem
+}
+.blank{
+	width:100%;
+	height:100px;
+}
+.consignment-ok{
+	width: 90%;
+	margin:0 auto;
+	height: 3rem;
+}
+.consignment-ok button{
+	width: 100%;
+	height: 3rem;
+	background-color: rgb(255,51,153);
+	border-radius: 1.2rem;
+	color:#fff;
+	font-size:1.6rem;
+	border:none;
+	}
+.release{
+	text-align: center;
+	width: 100%;
+	height: 4rem;
+}
+.release a{
+	line-height: 4rem;
+	text-decoration: underline !important;
+	color: #000;
+	font-size:1.2rem
+}
+/*寄售成功*/
+.message1{
+	width: 32rem;
+	height: 2rem;
+	margin:0 auto;
+	margin-top: 5rem
+}
+.message1 p{
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.8rem;
+}
+.message2{
+	width: 30rem;
+	height: 5rem;
+	margin:2rem auto;
+}
+.message2 p{
+	text-align: center;
+	font-size: 1.4rem
+}
+.message3{
+	width: 30rem;
+	height: 2rem;
+	margin: 1rem auto;
+}
+.message3 p{
+	text-align: center;
+	font-size: 1.2rem;
+	color:#666666;
+}
+.gosearch{
+	width:30rem;
+	height:4rem;
+	margin: 5rem auto;
+}
+.gosearch input[type="button"]{
+	border-radius: 0.5rem;
+	background-color: rgb(255,51,153);
+	width:30rem;
+	height:4rem;
+	color: #fff;
+	font-size: 1.6rem;
+	font-weight: bold;	
+}
+.share{
+	width:30rem;
+	height:4rem;
+	margin: 2rem auto;
+}
+.share input[type="button"]{
+	border-radius: 0.6rem;
+	background-color: rgb(255,51,153);
+	width:30rem;
+	height:4rem;
+	color: #fff;
+	font-size: 1.6rem;
+	font-weight: bold;	
+	border:none;
+}
+

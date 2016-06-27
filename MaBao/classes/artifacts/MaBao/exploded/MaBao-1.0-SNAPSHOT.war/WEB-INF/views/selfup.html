@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自助发布：转让宝物</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
+    <!-- 禁止将数字变为电话号码 -->
+    <meta name="format-detection" content="telephone=no" />
+    <!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/res.css">
+    <script src="js/jquery-1[1].2.6.js" type="text/javascript"></script>
+     <script src="js/jquery.provincesCity.js" type="text/javascript"></script>
+    <script src="js/provincesdata.js" type="text/javascript"></script>
+</head>
+<body> 
+    <section class="header-top">
+        <div class="fanhui"><a href="consignment.html" ><img src="img/back.png" alt=""></a><a href="consignment.html" class="tiaozhuan">返回</a></div>
+        <div class="shouye"><p>转让宝物</p></div>
+    </section>
+    <section class="container">
+        <div class="main-tit">
+        <p><span>请如实填写您的转让信息</span><a href="" class="need-a">卖家须知</a></p>
+        </div>
+        <section class="baby-sale">
+            <div class="title">宝物标题</div>
+             <ul>
+                <li class="left">
+                <label for="" class="baby">宝物类型：</label>
+                <select name="" id="">
+                <option value="">童车</option>
+                <option value="">宝贝衣物</option>
+                </select>
+                </li>
+                <li class="right">
+                <label for="" class="baby">宝物品牌：</label>
+                <select name="" id="">
+                <option value="">男</option>
+                <option value="">女</option>
+                </select>
+                </li>
+                <li class="left" >
+                <label for="" class="baby">购物时间：</label>
+                <input type="date"/>
+                </li>
+                <li class="right">
+                <label for="" class="baby">新旧程度：</label>
+                <select name="" id="">
+                <option value="">童车</option>
+                <option value="">宝贝衣物</option>
+                </select>
+                </li>
+                <li class="left">
+                <label for="" class="baby">宝物尺码：</label>
+                <select name="" id="">
+                <option value="">童车</option>
+                <option value="">宝贝衣物</option>
+                </select>
+                </li>
+                <li class="right">
+                <label for="" class="baby">适合宝宝：</label>
+                <select name="" id="">
+                <option value="">童车</option>
+                <option value="">宝贝衣物</option>
+                </select>
+                </li>
+                <li class="left radio-choose">
+                <label for="" class="baby">原装包装：</label>
+
+                 <div class="slideThree">  
+                 <input type="checkbox" value="None" id="slideThree" name="check" checked />
+                 <label for="slideThree" class="st"></label>
+                 </div>
+
+                </div>
+                </li>
+                <li class="right radio-choose">
+                <label for="" class="baby">发票小票：</label>
+
+                 <div class="slideThree">  
+                 <input type="checkbox" value="None" id="slideThree1" name="check" checked />
+                 <label for="slideThree1" class="st"></label>
+                 </div>
+
+                </li>
+                <li class="left text">
+                <label for="" class="baby">购买原价：</label>
+                <input type="text">
+                </li>
+                <li class="right text-right">
+                <label for="" class="baby">转让现价：</label>
+                <input type="text">
+                </li>
+             </ul>
+        </section>
+        <section class="wish">
+            <label for="">卖家寄语：<br>宝物详情&nbsp;/<br>使用心得&nbsp;/<br>瑕疵情况等</label>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <div>
+            <input type="file" accept="image/png,image/gif" style="display: none;" id="upimg">
+            <img src="img/1.png" alt="" onclick="javascript:$('#upimg').click()">
+            <img src="img/2.png" alt="">
+            <img src="img/3.png" alt="">
+            </div>          
+        </section>
+        <div class="clear"></div>
+        <section class="quick-sale">
+            <input type="button" value="一键卖出" onclick=window.location.href="publish-success.html">
+        </section>
+    </section>
+    
+</body>
+</html>

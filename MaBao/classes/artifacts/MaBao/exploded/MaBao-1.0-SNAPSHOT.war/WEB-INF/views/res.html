@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
+	<!-- 禁止将数字变为电话号码 -->
+	<meta name="format-detection" content="telephone=no" />
+	<!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="stylesheet" href="css/res.css">
+	<link rel="stylesheet" href="css/public.css">
+</head>
+<body>
+	<section class="header-top">
+    	<div class="fanhui"><a href="login.html" ><img src="img/back.png" alt=""></a><a href="login.html" class="tiaozhuan">返回</a></div>
+    	<div class="shouye"><p>注册</p></div>
+    </section>
+    <section class="container">
+    	<dl>
+    	    <dt>帐&nbsp;户&nbsp;名：</dt>
+    		<dd><input type="text" id="username" class="required" ><strong class="high">*必填</strong></dd>
+    		<dt>密&nbsp;&nbsp;码：</dt>
+    		<dd><input type="password" id="pwd" class="required"></dd>
+    		<dt>确认密码：</dt>
+    		<dd><input type="password" id="repwd" class="required"></dd>
+    		<dt>邮&nbsp;&nbsp;箱：</dt>
+    		<dd><input type="email" id="email" class="required"><strong class="high">*必填</strong></dd>
+    	</dl>
+        <p class="warning" ></p>
+    </section>
+    <div class="input-res">
+    	<input type="button" value="注册" id="up-to-login">
+    </div>
+    <script type="text/javascript" src="js/jquery.1.10.2.js"></script>
+    <script type="text/javascript" src="js/res.js"></script>
+
+</body>
+</html>

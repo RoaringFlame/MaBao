@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - db_mabao@localhost" uuid="22853904-d7a2-4e79-828c-04c780a784c2">
+    <database-info product="MySQL" version="5.6.11" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="db_mabao"/>
+      <table id="2" parent="1" name="address">
+        <comment>地址信息表</comment>
+      </table>
+      <table id="3" parent="1" name="goods">
+        <comment>商品表</comment>
+      </table>
+      <column id="4" parent="2" name="id">
+        <comment>地址编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="5" parent="2" name="userId">
+        <comment>用户编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="6" parent="2" name="recipients">
+        <comment>收件人</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(25)</data-type>
+      </column>
+      <column id="7" parent="2" name="tel">
+        <comment>手机号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(25)</data-type>
+      </column>
+      <column id="8" parent="2" name="location">
+        <comment>地址详情</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="9" parent="2" name="state">
+        <comment>地址状态，是否为默认收货地址，0为否、1为是。</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="10" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="11" parent="3" name="id">
+        <comment>商品编号，自增</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="12" parent="3" name="userId">
+        <comment>商品归属者编号，后台用户编号为0</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="13" parent="3" name="articleNumber">
+        <comment>货号</comment>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="14" parent="3" name="picture">
+        <comment>图片标签</comment>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="15" parent="3" name="title">
+        <comment>标题</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="16" parent="3" name="oldPrice">
+        <comment>原价，用整型存储避免计算出错，存取时记得变位。</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="17" parent="3" name="price">
+        <comment>现价，用法同原价。</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="18" parent="3" name="typeName">
+        <comment>二级类型名称</comment>
+        <data-type>varchar(25)</data-type>
+      </column>
+      <column id="19" parent="3" name="typeId">
+        <comment>一级类型编号</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="20" parent="3" name="brand">
+        <comment>商品品牌</comment>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="21" parent="3" name="upTime">
+        <comment>上架时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="22" parent="3" name="newDegree">
+        <comment>新旧程度，0表示全新，95，80分别表示95成8成新</comment>
+        <data-type>int(2)</data-type>
+      </column>
+      <column id="23" parent="3" name="size">
+        <comment>尺寸</comment>
+        <data-type>varchar(5)</data-type>
+      </column>
+      <column id="24" parent="3" name="pack">
+        <comment>是否有包装，1有0无</comment>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="25" parent="3" name="receipt">
+        <comment>是否有小票，1有0无</comment>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="26" parent="3" name="message">
+        <comment>卖家分享</comment>
+        <data-type>varchar(500)</data-type>
+      </column>
+      <column id="27" parent="3" name="pictureList">
+        <comment>附加图片，list元素用分号隔开存入数据库</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="28" parent="3" name="stockNumber">
+        <comment>库存数量</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="29" parent="3" name="state">
+        <comment>商品状态，1为存在，0为下架或不存在。</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <key id="30" parent="3" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

@@ -1,0 +1,95 @@
+@charset "utf-8";
+body{margin: 0;padding: 0;
+     position: relative;
+     }
+.clear{clear: both;}
+#return{width: 100%;
+      position: fixed;
+      top: 0;
+      padding-top: 0.5rem;
+        height: 5rem;
+        background-color: #333;}
+#return h2{
+           font-weight: normal;
+         text-align: center;
+           color: #fff;
+           font-size: 1.8rem;
+           line-height: 2rem;
+           }
+#return span{font-weight: normal;
+         font-size: 1.6rem;
+           display: inline;
+           color: #eee;
+           line-height: 3rem;}
+#return img{height:3.0rem;
+            width: 3.0rem;
+            float: left;}
+
+.top1 { width: 80%;
+        margin:0 auto;
+        padding: 1rem;
+        }
+.top1 input{
+           width:100%;
+           height:2.5rem;
+           margin:1rem 0  0.3rem 0;
+           font-size: 1.4rem;
+           text-indent: .5rem;
+    }
+.warning{
+  color:red;
+  font-size:1rem;
+  text-indent:0.5rem;
+  height:1.8rem;
+  line-height:1.8rem;
+}
+
+/*//修改密码*/
+.top1 .changepwd{width: 25%;
+                font-size: 1.5rem;
+                text-align: right;
+                float: left;
+                margin:1rem .5rem .5rem 0;}
+.bottom{
+  width: 100%;
+  height: 3rem;
+  margin: 0 auto
+}
+.bottom p{width: 80%;
+          height:3rem;
+          font-size: 1.4rem;
+          color: #fff;
+          background-color: #0099ff;
+          margin: 2rem auto;
+          text-align: center;
+          line-height: 3rem;
+          cursor:pointer;
+          /*border-radius: .4rem;*/
+
+          }
+.fastlogin{
+  width: 80%;
+  height: 3rem;
+  margin: 0 auto;
+  font-size: 1.3rem
+}
+.fastlogin .q-login{
+  float: left;
+  margin: 1rem;
+}
+.fastlogin .forgetpsd{
+  float: right;
+  margin: 1rem;
+}
+.freeres{
+  width: 7rem;
+  height:2.5rem;
+  border: 1px solid #0099ff;
+  border-radius: 2px;
+  margin: 3rem auto;
+  color: #0099ff;
+  line-height: 2.5rem;
+  text-align: center;
+  font-size: 1.3rem;
+  cursor:pointer;
+}
