@@ -5,6 +5,7 @@ import com.mabao.repository.service.GoodsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,18 +16,19 @@ import java.net.URLDecoder;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Goods")
+@RequestMapping("/goods")
 public class GoodsController {
     @Autowired
     GoodsRepository goodsRepository;
+
 
     @RequestMapping(value = "/findByTime",method=RequestMethod.GET,
             produces = "application/json;charset=UTF-8")
     public List<Goods> getGoodsListByTime(
             @RequestParam(value="page", defaultValue="0") int page,
             @RequestParam(value="size", defaultValue="4") int size) {
-        return goodsRepository.findByTime(new PageRequest(page,size,
-                new Sort(Sort.Direction.DESC,"upTime"))).getContent();
+        return /*goodsRepository.findByTime(new PageRequest(page,size,
+                new Sort(Sort.Direction.DESC,"upTime"))).getContent()*/null;
     }
 
     @RequestMapping(value = "/findLikeTitle",method=RequestMethod.GET,

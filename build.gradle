@@ -6,7 +6,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'war'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 1.7
 
 dependencies {
     compile "org.springframework:spring-webmvc:$springVersion"
@@ -45,7 +45,7 @@ repositories {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.13'
+    gradleVersion = '2.5'
 }
 
 war {
