@@ -1,23 +1,21 @@
 @charset "utf-8";
 
 /*注册*/
-.container{width:32rem;margin:0 auto;height:28rem;}
-.container dl {width:32rem;margin:1rem auto ;}
+.container{max-width:32rem;margin:0 auto;height:28rem;padding: 0 .1rem;}
+.container dl {width:28rem;margin:1rem auto ;}
 .container dl dt{text-align:right;width:7rem;float:left;height:4.5rem;line-height:4.5rem;margin-right:0.5rem;font-size:1.3rem;}
-.container dl dd{width:24rem;float:left;height:4.5rem;line-height:4.5rem;font-size:1.3rem;}
+.container dl dd{width:20rem;float:left;height:4.5rem;line-height:4.5rem;font-size:1.3rem;}
 .container dl dd input{width:20rem;height:2.6rem;line-height:2.6rem;text-indent:1rem;}
 .input-res{width:70%;margin:0 auto;}
 .input-res input{width:100%;height:3rem;line-height:3rem;color:#fff;text-align: center;background:#0099FF;font-size:1.3rem;}
 /*.clear{height:3rem;}*/
-.warning{clear:both;color:red;font-size:1.2rem;text-align: center;line-height:2.2rem;height:2.2rem;}
 .button{border:0;}
-.high{color:red;font-size:1.2rem;margin-left:0.5rem;overflow:hidden;width:3.2rem;height:2.2rem;line-height:2.2rem;}
 
 /*转让宝物*/
 .main-tit p{height:3rem;line-height:3rem;margin-top:1rem;}
 .main-tit p span{width:18rem;padding:0 1rem;float:left;color:#FF3399;font-size:1.25rem;}
 .main-tit p a{width:8rem;margin:0 1.5rem;float:right;border-radius:0.5rem;height:3rem;display:block;color:#fff;line-height:3rem;text-align:center;font-size:1.3rem;background:#999999;}
-.baby-sale{width:100%;height:22rem;border-top:0.1rem solid #787878;margin-top:1.2rem;}
+.baby-sale{width:100%;height:22rem;border-top:0.1rem solid #787878;margin-top:1.2rem;position: relative;}
 .title{font-size:1.3rem;height:3.2rem;line-height:3.2rem;padding:0 1rem;border-bottom:0.1rem solid #BEBEBE;}
 .baby-sale ul li{height:4rem;line-height:4rem;}
 .baby-sale ul li .baby{font-size:1.25rem;width:6.7rem;padding:0 0.3rem;float:left;}
@@ -28,10 +26,13 @@
 .baby-sale ul .text input{width:6.8rem;height:2.6rem;}
 .baby-sale ul .text-right input{width:6.8rem;height:2.6rem;}
 
-.left{width:16rem;float:left;}
+.left{width:15rem;float:left; }
 .right{width:15rem;float:right;}
+/*按钮*/
+.switch1{position: absolute;left: 6.3rem;bottom:3.6rem;}
+.switch2{position: absolute;right: .2rem;bottom:3.6rem;}
 
-.radio-choose input{float:left;width:1rem;height:2.2rem;line-height:2.2rem;margin:0.9rem 0;}
+
 .wish label{width:7rem;float:left;font-size:1.25rem;padding-left:0.3rem;}
 .wish textarea{width:23.3rem;float:left;resize:none;height:10rem}
 .wish div{height:8rem;}
@@ -137,8 +138,8 @@
 .person-msg label{width:7rem;padding:0 0.5rem 0 1rem;float:left;height:2.4rem;line-height:2.4rem;margin-top:1rem;font-size:1.3rem;}
 .person-msg input{height:2.4rem;line-height:2.4rem;margin-top:1rem;width:22rem;float:left;font-size:1.3rem;text-indent:1rem;display: block;}
 .reset{width:80%;margin:0 auto;margin-top:3rem !important;height:3rem !important;}
-.reset input{float: left;width: 40%;margin:5%; height:3.5rem;line-height:3.5rem;color:#fff;font-size:1.3rem;text-align: center;background:#E70C2D;border-radius:0.6rem;}
-.reset .right1{background: #999;}
+.reset input{width:100%;height:3.5rem;line-height:3.5rem;color:#fff;font-size:1.3rem;text-align: center;background:#E70C2D;border-radius:0.6rem;}
+
 
 /*修改个人信息*/
 .person-msg select{width:22.2rem;height:2.4rem;line-height:2.4rem;font-size:1.3rem;margin-top:1rem;}

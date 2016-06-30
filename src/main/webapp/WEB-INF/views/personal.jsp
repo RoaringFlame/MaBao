@@ -59,7 +59,7 @@
     <div class="bottom"><p onclick=window.location.href="http://localhost:8080/mb/LoginOutServlet">注销</p></div>
 	<section class="clear"></section>
 	<div class="menu">
-            <a class="active"  href="index.jsp">
+            <a class="active"  href="index_liu.jsp">
                 <i class="icon-menu icon-menu1"><img src="img/footer-1.png" alt=""></i>
             </a>
             <a>

@@ -21,7 +21,7 @@
 </head>
 <body>
 	<section class="header-top">
-    	<div class="fanhui"><a href="index.jsp" ><img src="/img/back.png" alt=""></a><a href="index.jsp" class="tiaozhuan">返回</a></div>
+    	<div class="fanhui"><a href="index_liu.jsp" ><img src="/img/back.png" alt=""></a><a href="index_liu.jsp" class="tiaozhuan">返回</a></div>
     	<div class="shouye"><p>宝物详情</p></div>
     </section>
 

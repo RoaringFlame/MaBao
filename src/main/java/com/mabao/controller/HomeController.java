@@ -43,6 +43,8 @@ public class HomeController {
       List<Selector> goodsTypeList=this.goodsTypeService.getAllGoodsTypeForSelector();
       map.put("goodsTypeSelector",goodsTypeList);
       //轮播图片列表
+      List<Goods> circleList=this.goodsService.getGoodsListByCircle();
+      map.put("circleList",circleList);
       //新品商品列表
       List<Goods> newGoods=this.goodsService.getNewGoods(page,pageSize);
       map.put("newGoods",newGoods);

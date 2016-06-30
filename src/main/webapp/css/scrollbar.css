@@ -31,7 +31,7 @@
 #pullUp .pullUpIcon{
 	display:block; float:left;
 	width:3rem; height:3rem;
-	margin: 0.5rem;
+	margin:0.5rem;
 	background:url(pull-icon@2x.png) 0 0 no-repeat;
 	-webkit-background-size:3rem 6rem; background-size:3rem 6rem;
 	-webkit-transition-property:-webkit-transform;
@@ -94,7 +94,7 @@
 	position:absolute;
 	z-index:100;
 
-	 //The following is probably what you want to customize
+	 The following is probably what you want to customize 
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	-o-box-sizing:border-box;
