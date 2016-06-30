@@ -98,13 +98,13 @@
 
                     <p>请填写以下信息</p>
                     <ul>
-                        <li><label for="">宝宝姓名：</label><label for=""><input type="text" id="username"></label></li>
-                        <li><label for="">宝宝生日：</label><label for=""><input type="date"></label></li>
-                        <li><label for="">宝宝性别：</label><label for=""><select name="" id="sex">
+                        <li><label>宝宝姓名：</label><label><input type="text" id="username"></label></li>
+                        <li><label>宝宝生日：</label><label><input type="date"></label></li>
+                        <li><label>宝宝性别：</label><label><select name="" id="sex">
                             <option value="">男</option>
                             <option value="">女</option>
                         </select></label></li>
-                        <li><label for="">宝宝爱好：</label><label for=""><input type="text"></label></li>
+                        <li><label>宝宝爱好：</label><label><input type="text"></label></li>
                     </ul>
                     <div class="like-up">
                         <input type="button" style="border:none" value="提交" id="like-up">
@@ -166,7 +166,6 @@
                 if(currentPage==totalPage){
                     $("#btnLoadMore").hide();
                 }
-
                 var items=data.items;
                 for(var i=0;i<items.length;i++){
                     var item=items[i];
