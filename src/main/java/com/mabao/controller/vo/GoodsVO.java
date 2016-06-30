@@ -1,0 +1,36 @@
+package com.mabao.controller.vo;
+
+/**
+ * 商品部分信息VO
+ * Created by makaiqin 2016/6/30.
+ */
+public class GoodsVO {
+    private String picture;//宝物图片
+    private int price;//宝物价格
+    private String newDegree;//宝物新旧程度
+    private String brand;//宝物品牌
+    public String getPicture() {
+        return picture;
+    }
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+    public int getPrice() {
+        return price;
+    }
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    public String getNewDegree() {
+        return newDegree;
+    }
+    public void setNewDegree(String newDegree) {
+        this.newDegree = newDegree;
+    }
+    public String getBrand() {
+        return brand;
+    }
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+}

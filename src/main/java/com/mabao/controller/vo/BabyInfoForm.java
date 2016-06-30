@@ -1,4 +1,4 @@
-package com.mabao.pojo.vo;
+package com.mabao.controller.vo;
 
 import java.util.Date;
 

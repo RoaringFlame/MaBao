@@ -1,7 +1,7 @@
 package com.mabao.service;
 
 import com.mabao.pojo.Goods;
-import com.mabao.pojo.vo.BabyInfoForm;
+import com.mabao.controller.vo.BabyInfoForm;
 ;
 import java.util.List;
 

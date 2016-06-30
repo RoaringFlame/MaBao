@@ -1,7 +1,7 @@
 package com.mabao.service.impl;
 
 import com.mabao.pojo.Goods;
-import com.mabao.pojo.vo.BabyInfoForm;
+import com.mabao.controller.vo.BabyInfoForm;
 import com.mabao.repository.service.GoodsRepository;
 import com.mabao.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
