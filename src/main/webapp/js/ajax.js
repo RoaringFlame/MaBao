@@ -4,16 +4,16 @@ $(function(){
 });
    	var imgs =[
 	    { "id":"1",
-	     "src":"/resources/img/img-01.png"
+	     "src":"img/img-01.png"
 	    },
 	    { "id":"2",
-	     "src":"/resources/img/detail.jpg"
+	     "src":"img/detail.jpg"
 	    },
 	    { "id":"3",
-	      "src":"/resources/img/img-01.png"
+	      "src":"img/img-01.png"
 	    },
 	    { "id":"4",
-	   "src":"/resources/img/detail.jpg"
+	   "src":"img/detail.jpg"
 	    },
 		];
 	//首页轮播图的动态获取

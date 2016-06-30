@@ -49,7 +49,15 @@ public class HomeController {
       model.addAllAttributes(map);
     return "index";
   }
-
+    @RequestMapping(value ="/goodsDetail",method = GET)
+    public String goodsDetail(int id,Model model){
+        Map<String,Object> map=new HashMap<String, Object>();
+        //商品列表
+        Goods goods=this.goodsService.getGoodsListById(id);
+        map.put("goods",goods);
+        model.addAllAttributes(map);
+        return "detail";
+    }
   /*@RequestMapping(value="/findById/{id}", method= RequestMethod.GET)
   public String getGoodsDetail(
           @PathVariable("id") long id,

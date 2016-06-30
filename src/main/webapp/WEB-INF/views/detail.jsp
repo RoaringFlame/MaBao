@@ -14,20 +14,20 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<script type="text/javascript" src="/resources/js/jquery-1.8.3.min.js"></script>
-	<link rel="stylesheet" href="/resources/css/public.css">
-	<link rel="stylesheet" href="/resources/css/buy.css">
+	<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+	<link rel="stylesheet" href="/css/public.css">
+	<link rel="stylesheet" href="/css/buy.css">
 		
 </head>
 <body>
 	<section class="header-top">
-    	<div class="fanhui"><a href="index.jsp" ><img src="/resources/img/back.png" alt=""></a><a href="index.jsp" class="tiaozhuan">返回</a></div>
+    	<div class="fanhui"><a href="index.jsp" ><img src="/img/back.png" alt=""></a><a href="index.jsp" class="tiaozhuan">返回</a></div>
     	<div class="shouye"><p>宝物详情</p></div>
     </section>
 
 	<div class="baobei-img" id="baby-img">
 		<figure>
-			<img src="/resources/upload/<c:out value="${goods.picture}" />" alt="">
+			<img src="/upload/<c:out value="${goods.picture}" />" alt="">
 			<figcaption>
 				<p></p>
 				<p><span></span><span><i>原价：</i>
@@ -46,7 +46,7 @@
 			包装&nbsp;：</div><div><c:out value="${goods.pack?'有':'无'}" /></div><div>
 			小票&nbsp;：</div><div><c:out value="${goods.receipt?'有':'无'}"/></div></div>
 		<div class="baobei-intro-p p-5"><div>卖家分享&nbsp;:</div><div><c:out value="${goods.message}" /></div></div>
-	    <div class="baobei-intro-p p-6"><div>宝物图片&nbsp;:</div><div><img src="/resources/upload/detail.png" alt=""></div></div>
+	    <div class="baobei-intro-p p-6"><div>宝物图片&nbsp;:</div><div><img src="/upload/detail.png" alt=""></div></div>
 	</div>
 	
 	<section class="operate">
