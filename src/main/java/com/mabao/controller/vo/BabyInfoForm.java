@@ -3,13 +3,14 @@ package com.mabao.controller.vo;
 import java.util.Date;
 
 /**
- * Created by lies on 2016/6/29.
+ * 宝宝信息VO
+ * Created by makaiqin on 2016/6/30.
  */
 public class BabyInfoForm {
-    private String sex;
-    private Date babybirth;
-    private  String name ;
-    private  String hobby;
+    private String sex;//宝宝性别
+    private Date babyBirth;//宝宝生日
+    private String name;//宝宝姓名
+    private String hobby;//宝宝爱好
 
     public String getSex() {
         return sex;
@@ -19,12 +20,12 @@ public class BabyInfoForm {
         this.sex = sex;
     }
 
-    public Date getBabybirth() {
-        return babybirth;
+    public Date getBabyBirth() {
+        return babyBirth;
     }
 
-    public void setBabybirth(Date babybirth) {
-        this.babybirth = babybirth;
+    public void setBabyBirth(Date babyBirth) {
+        this.babyBirth = babyBirth;
     }
 
     public String getName() {
@@ -43,3 +44,5 @@ public class BabyInfoForm {
         this.hobby = hobby;
     }
 }
+
+

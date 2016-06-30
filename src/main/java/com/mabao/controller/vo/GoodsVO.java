@@ -8,7 +8,7 @@ public class GoodsVO {
     private int id;//商品id
     private String title;//商品标题
     private String picture;//宝物图片
-    private int price;//宝物价格
+    private double price;//宝物价格
     private String newDegree;//宝物新旧程度
     private String brand;//宝物品牌
 
@@ -30,7 +30,7 @@ public class GoodsVO {
     public void setPicture(String picture) {
         this.picture = picture;
     }
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
     public void setPrice(int price) {
