@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绑定手机</title>
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
+	<!-- 禁止将数字变为电话号码 -->
+	<meta name="format-detection" content="telephone=no" />
+	<!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="stylesheet" href="css/public.css">
+	<link rel="stylesheet" href="css/message.css">
+</head>
+<body>
+    <section class="header-top">
+    	<div class="fanhui"><a href="personal.html" ><img src="img/back.png" alt=""></a><a href="personal.html" class="tiaozhuan">返回</a></div>
+    	<div class="shouye"><p>绑定手机</p></div>
+    </section>
+  	<div class="top">
+  	<form action="">
+  	<!-- 绑定手机号成功后跳转到个人中心页面 -->
+    <input type="phone" placeholder="输入完整手机号" id="dianhua"> <input type="submit" value="发送验证" class="button" />
+    <input type="text" placeholder="验证码">
+    <p class="warning"> </p>
+    </div>
+
+    <div class="bottom"><input type="submit" value="提交" class="submit" /></div>
+    </form>
+     <script type="text/javascript" src="js/jquery.1.10.2.js"></script>
+     <script type="text/javascript">
+       $("#dianhua").focus(function(){
+        $(".warning").text("");
+          }).blur(function(){
+         	var dianhua = $("#dianhua").val();
+         	if(dianhua.length == 0){
+         		$(".warning").text("请输入手机号");
+         	}
+         	if(dianhua.length != 11){
+         		$(".warning").text("请输入有效手机号");
+         	}
+         	var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/; 
+            if(!myreg.test(dianhua)) 
+           { 
+               $(".warning").text("请输入有效手机号");
+            }
+         })     
+                  
+         
+    </script>
+</body>
+</html>

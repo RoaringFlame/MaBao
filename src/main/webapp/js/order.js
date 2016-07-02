@@ -46,19 +46,18 @@ function init(){
     var sum =0;
    for(var i=0;i<data.length;i++)
         {
-	   		var price= new Number((data[i].price));
-            sum = sum + price;
-         }  
-   $(".bottom p").find("b").text(sum+10); 
+           var price = new Number(data[i].price)
+            sum = sum + price
+         }     
 		 $(data).each(function(index,good){
 		 	$("#main").append($("<div></div>").addClass("top")
     	         .append($('<img src="" alt="" />').attr("src",good.brand))
     	         .append($("<div></div>").addClass("b")
     	         .append($("<p></p>").text(good.goodsName)).append($("<p></p>").text(good.goodsSize))
-    	         .append($("<div></div>").addClass("a").append($("<p></p>").text("￥"+good.price)).append($("<p></p>").text(good.status)))
+    	         .append($("<div></div>").addClass("a").append($("<p></p>").text(good.price)).append($("<p></p>").text(good.status)))
     	         )
     	         .click(function(){
-               window.location.href = "detail.jsp?id="+good.goodsId;//encodeURI(encodeURI(good.orderid))
+               window.location.href = "detail.jsp?orderId="+encodeURI(encodeURI(good.orderid));
                })
            )
           })

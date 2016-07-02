@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改宝宝信息</title>
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
+	<!-- 禁止将数字变为电话号码 -->
+	<meta name="format-detection" content="telephone=no" />
+	<!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="stylesheet" href="css/public.css">
+	<link rel="stylesheet" href="css/res.css">
+</head>
+<body>
+	<section class="header-top">
+    	<div class="fanhui"><a href="permsg.html" ><img src="img/back.png" alt=""></a><a href="permsg.html" class="tiaozhuan">返回</a></div>
+    	<div class="shouye"><p>编辑宝宝信息</p></div>
+    </section>
+    <section class="person">
+    <form method="" action=""  class="person-msg">
+    <ul>
+    <li><label for="babydata">宝宝生日：</label>
+        <input name="babydata" type="date" value="babydata"></li>
+    <li><label for="babyname">宝宝姓名：</label>
+        <input name="babname" type="text" value="babyname"></li>
+    <li>
+    <label for="sex0">宝宝性别：</label>
+    <select name="sex0" id="sex0">
+    	<option value="男">男</option>
+    	<option value="女">女</option>
+    </select>
+    </li>
+    </ul>
+	    <section class="reset">
+	        <input type="submit" value="确认修改">
+	        <input class="right1" type="reset" value="删除信息">
+	    </section>
+
+    </form>
+    </section>
+
+
+</body>
+</html>

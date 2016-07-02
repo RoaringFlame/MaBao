@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>宝物详情</title>
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
+	<!-- 禁止将数字变为电话号码 -->
+	<meta name="format-detection" content="telephone=no" />
+	<!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<link rel="stylesheet" href="css/public.css">
+	<link rel="stylesheet" href="css/buy.css">	
+</head>
+<body>
+	<section class="header-top">
+    	<div class="fanhui"><a href="index.html" ><img src="img/back.png" alt=""></a><a href="index.html" class="tiaozhuan">返回</a></div>
+    	<div class="shouye"><p>宝物详情</p></div>
+    </section>
+
+	<div class="baobei-img" id="baby-img">
+		<figure>
+			<img src="" alt="">
+			<figcaption>
+				<p></p>
+				<p><span></span><span><i>原价：</i><i></i></span> </p>
+			</figcaption>
+		</figure>
+	</div>
+	<div class="baobei-intro" id="baby-intro">
+		<div class="baobei-intro-p p-1"><div>宝物类型&nbsp;:</div><div></div></div>
+		<div class="baobei-intro-p p-2"><div>宝物品牌&nbsp;:</div><div></div></div>
+		<div class="baobei-intro-p p-3"><div>购买日期&nbsp;:</div><div></div><div>新旧程度&nbsp;:</div><div>xxxx</div></div>
+		<div class="baobei-intro-p p-4"><div> 宝物尺码&nbsp;:</div><div></div><div>包装&nbsp;：</div><div>有</div><div>小票&nbsp;：</div><div>无</div></div>
+		<div class="baobei-intro-p p-5"><div>卖家分享&nbsp;:</div><div></div>
+	    </div>
+	    <div class="baobei-intro-p p-6">
+	    <div>宝物图片&nbsp;:</div>
+	    <div>
+		<img src="" alt="">
+	    </div>
+	</div>
+	
+	<section class="operate">
+     <div>
+     	<input type="button" name="button" class="button-left" value="加入购物车" onclick=location.href="shopping.html">
+	    <input type="button" name="button" class="button-right" value="立即购买" onclick=location.href="pay.html">
+     </div>
+		<input type="button" name="button" class="button" value="我要转让" onclick=location.href="consignment.html">
+	</section>
+	<script type="text/javascript">
+		 $(function () {
+		 	var goodID=switchNum(window.location.search);
+		 	function switchNum(str){
+			 	return parseInt(str.replace(/[^0-9]/ig, "")); 				
+		 	}
+		 	console.log(goodID);
+		 	// $.post("请求页面",{id:goodID},function(data,status){return data;});
+		 });
+	</script>
+	<script type="text/javascript" src="js/detail.js"></script>
+</body>
+</html>

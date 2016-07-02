@@ -1,10 +1,86 @@
 "use strict";
 $(function(){ 
-   
+    var ids = new Array();
     init();
+    setTimeout(function(){
+    var checkBoxs = $(".main-item").find("input");
+    var adds = $(".add");
+    var reduces = $(".reduce");
     
+       var nums=new Array(); 
+       $(checkBoxs).each(function(index,obj) {       
+         $(this).change(function(){ 
+          if($(this).is(':checked')||$.inArray(index,nums)<0){
+          nums.push(index);
+          }else{
+          nums.splice($.inArray(index,nums),1);
+          }  
+           var i=$(this);
+           setTotal(nums); 
+          });                    
+      });
+
+     //增加按钮
+       console.log(checkBoxs);
+     $(adds).each(function(index,obj){
+       $(this).on("click",function(){
+       var num = parseInt($(".sum").eq(index).text());
+         num++;
+         $(".sum").eq(index).text(num); 
+        setTotal(nums);
+      });
+       
+    });
+   //减少按钮
+     $(reduces).each(function(index,obj){
+         $(this).click(function(){
+          var num = parseInt($(".sum").eq(index).text());
+         if(num<=1){
+          $(".good-reduce-warning").text("不能再减少了！")
+         }else{
+           num--;
+           $(".sum").eq(index).text(num);
+        }
+         setTotal(nums);
+      })
+
+    })
+    console.log(ids);
+      var a = new Array();
+      var b = new Array();
+     $(".up-to-pay").find("li:last").click(function(){
+        $(checkBoxs).each(function(index,obj){       
+          if($(this).is(':checked')){
+              a.push(ids[index]);
+              b.push($(".sum").eq(index).text());
+          }
+        })
+        if(a.length>0)
+        {
+           var objJson = [];
+           for(var i=0;i<a.length;i++){ 
+           objJson.push(jQuery.parseJSON('{"id":' + a[i] + ',"num":' + b[i] + '}'));
+            }
+           var json = (JSON.stringify(objJson));
+           window.location.href = 'http://localhost:8080/mb/OrderServlet?method=toPay&aa='+json;
+        }
+        else{
+         $(".pay-warning").text("您还没有选择任何商品！")
+        }
+       
     
-    
+     });
+
+     function setTotal(nums){ 
+       var s=0; 
+       $(nums).each(function(index,obj){
+         s+=parseInt($(".sum").eq(obj).text())*parseFloat($(".mark b").eq(obj).text()); 
+       }); 
+       $(".up-to-pay").find("li:first").find('b').text(s);
+
+   } 
+    },50);
+
   
 
      // 页面的跳转
@@ -13,7 +89,8 @@ $(function(){
    
     function init(){
     	
-    	$.post("http://localhost:8080/mb/ShoppingServlet?method=findShopGoods",{},function(data){
+    	$.post("http://localhost:8080/mb/ShoppingServlet?method=findShopGoods",{username:username},function(data){
+        
        $(data).each(function(index,good){
     	   ids.push(good.goodsId);
                $("#main").append($("<section></section>").addClass("main-item")
@@ -25,95 +102,8 @@ $(function(){
                           .append($("<div></div>").addClass("add").append($('<img src="" alt="" />').attr("src","img/shopping-1.png")))
 
                       ))
-                        .append($("<div></div>").addClass("hr"))
-                      $(".main-item").find(".select").nextUntil(".add-reduce")
-                      .click(function(){
-                    	  window.location.href="detail.jsp?id="+good.goodsId;
-                      })
-                    
+                      .append($("<div></div>").addClass("hr"))
        		});
-       
-       var checkBoxs = $(".main-item").find("input");
-       var adds = $(".add");
-       var reduces = $(".reduce");
-       
-          var nums=new Array(); 
-          $(checkBoxs).each(function(index,obj) {       
-            $(this).change(function(){            
-             if($(this).is(':checked')||$.inArray(index,nums)<0){
-            	 $(".pay-warning").text("");
-             nums.push(index);
-             }else{
-             nums.splice($.inArray(index,nums),1);
-             }  
-             	
-              var i=$(this);
-              setTotal(nums); 
-             });                    
-         });
-
-        //增加按钮
-          console.log(checkBoxs);
-        $(adds).each(function(index,obj){
-          $(this).on("click",function(){
-        	  $(".good-reduce-warning").text("");
-          var num = parseInt($(".sum").eq(index).text());
-            num++;
-            $(".sum").eq(index).text(num); 
-           setTotal(nums);
-         });
-          
-       });
-      //减少按钮
-        $(reduces).each(function(index,obj){
-            $(this).click(function(){
-             var num = parseInt($(".sum").eq(index).text());
-            if(num<=1){
-             $(".good-reduce-warning").text("不能再减少了！")
-            }else{
-              num--;
-              $(".sum").eq(index).text(num);
-           }
-            setTotal(nums);
-         })
-
-       })
-       console.log(ids);
-         var a = new Array();
-         var b = new Array();
-        $(".up-to-pay").find("li:last").click(function(){
-           $(checkBoxs).each(function(index,obj){       
-             if($(this).is(':checked')){
-                 a.push(ids[index]);
-                 b.push($(".sum").eq(index).text());
-                
-             }
-           })
-           if(a.length>0)
-           {
-              var objJson = [];
-              for(var i=0;i<a.length;i++){ 
-              objJson.push(jQuery.parseJSON('{"id":' + a[i] + ',"num":' + b[i] + '}'));
-               }
-              var json = (JSON.stringify(objJson));
-              window.location.href = 'http://localhost:8080/mb/OrderServlet?method=toPay&aa='+json;
-              
-           }
-           else{
-            $(".pay-warning").text("您还没有选择任何商品！")
-           }
-          
-       
-        });
-
-        function setTotal(nums){ 
-          var s=0; 
-          $(nums).each(function(index,obj){
-            s+=parseInt($(".sum").eq(obj).text())*parseFloat($(".mark b").eq(obj).text()); 
-          }); 
-          $(".up-to-pay").find("li:first").find('b').text(s);
-
-      } 
        console.log(2);
     	},'json')
     }

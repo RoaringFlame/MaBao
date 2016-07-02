@@ -1,8 +1,12 @@
 package com.mabao.service;
 
+import com.mabao.controller.vo.GoodsVO;
+import com.mabao.controller.vo.PageVO;
 import com.mabao.pojo.Goods;
+import org.springframework.data.domain.Page;
 ;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -30,10 +34,6 @@ public interface GoodsService {
     */
     public List<Goods> getGoodsListByTypeName(String  typeName,int page, int size);
     /*
-   *查询猜你喜欢内容
-    */
-    public List<Goods> getGoodsListByTable(BabyInfoForm form,int page,int size);
-    /*
    *查询商品详细信息
     */
     public Goods getGoodsListById(int id);
@@ -42,4 +42,7 @@ public interface GoodsService {
      */
     public List<Goods> getGoodsListByCircle();
 
+    PageVO<GoodsVO> getPageVO(int page, int size);
+
+    List<Goods> getGoodsListByTable(Map<String, String> babyInfoMap, int page, int size);
 }

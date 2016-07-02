@@ -37,7 +37,7 @@ body{margin: 0;padding: 0;}
            font-size: 1.4rem;
            text-indent: .5rem;
 }
-.top button{ font-size: 1.4rem;
+.top .button{ font-size: 1.4rem;
              color: #fff;
              background-color:#0099ff;
              width: 23%;

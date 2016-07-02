@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>短信验证</title>
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
+	<!-- 禁止将数字变为电话号码 -->
+	<meta name="format-detection" content="telephone=no" />
+	<!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="stylesheet" href="css/message.css">
+	<link rel="stylesheet" href="css/public.css">
+</head>
+<body>
+	<section class="header-top">
+    	<div class="fanhui"><a href="personal.html" ><img src="img/back.png" alt=""></a><a href="personal.html" class="tiaozhuan">返回</a></div>
+    	<div class="shouye"><p>短信验证</p></div>
+    </section>
+    <div class="top"><p>当前绑定手机号为159****3504</p>
+    <form action="">
+    <!-- 显示当前绑定手机号信息，成功后跳转到修改密码页面 -->
+    <input type="phone" id="dianhua"placeholder="输入完整手机号"><input type="submit" value="发送验证" class="button" />
+    <input type="text" id="id-code" placeholder="验证码">
+    <p class="warning"></p>
+    </div>
+
+    <div class="bottom"><input type="submit" value="提交" class="submit" /></div>
+    </form>
+    <script type="text/javascript" src="js/jquery.1.10.2.js"></script>
+     <script type="text/javascript">
+       $("#dianhua").focus(function(){
+        $(".warning").text("");
+          }).blur(function(){
+         	var dianhua = $("#dianhua").val();
+         	if(dianhua.length == 0){
+         		$(".warning").text("请输入手机号");
+         	}
+         	if(dianhua.length != 11){
+         		$(".warning").text("请输入有效手机号");
+         	}
+         	var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/; 
+            if(!myreg.test(dianhua)) 
+           { 
+               $(".warning").text("请输入有效手机号");
+            }
+         })     
+                  
+         
+    </script>
+</body>
+</html>
