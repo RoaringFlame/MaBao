@@ -1,5 +1,3 @@
-
-
 "use strict";
 // 更新数据的方法
 $(function(){
@@ -11,23 +9,23 @@ $(function(){
      var classifyText;
     var imgs =[
     { "id":"1",
-      "src":"img/img-01.png"
+      "src":"../img/img-01.png"
     },
     { "id":"2",
-      "src":"img/detail.jpg"
+      "src":"../img/detail.jpg"
     },
     { "id":"3",
-      "src":"img/img-01.png"
+      "src":"../img/img-01.png"
     },
     { "id":"4",
-      "src":"img/detail.jpg"
+      "src":"../img/detail.jpg"
     },
     ];
    
     var newgoods =[
           {  
               "id":"1",
-              "src":"img/main-new1.png",
+              "src":"../img/main-new1.png",
               "price":"￥30.00",
               "type":"全新",
               "name":"H&M  CARDIGN"
@@ -35,21 +33,21 @@ $(function(){
           },
           {
              "id":"2",
-              "src":"img/main-new1.png",
+              "src":"../img/main-new1.png",
               "price":"￥30.00",
               "type":"全新",
               "name":"H&M  CARDIGN"
           },
            {
              "id":"3",
-              "src":"img/main-new1.png",
+              "src":"../img/main-new1.png",
               "price":"￥30.00",
               "type":"全新",
               "name":"H&M  CARDIGN"
           },
           {
              "id":"4",
-              "src":"img/main-new1.png",
+              "src":"../img/main-new1.png",
               "price":"￥30.00",
               "type":"全新",
               "name":"H&M  CARDIGN"
@@ -59,37 +57,37 @@ $(function(){
     var likegoods = [
           {
              "id":"1",
-              "src":"img/main-new2.png",
+              "src":"../img/main-new2.png",
               "price":"￥33.00",
               "type":"九成新",
               "name":"H&M"
           },
           {
              "id":"2",
-              "src":"img/main-new2.png",
+              "src":"../img/main-new2.png",
               "price":"￥33.00",
               "type":"九成新",
               "name":"H&M"
           },
            {
              "id":"3",
-              "src":"img/main-new2.png",
+              "src":"../img/main-new2.png",
               "price":"￥33.00",
               "type":"九成新",
               "name":"H&M"
           },
           {
              "id":"4",
-              "src":"img/main-new2.png",
+              "src":"../img/main-new2.png",
               "price":"￥33.00",
               "type":"九成新",
               "name":"H&M"
           }];
          //回到顶部按钮
          $("#back-top").click(function(){ 
-          $("#scroller").css("top","0");
+          $("#scroller").css("top","-4rem");}
         
-       });
+       );
          //首页轮播图的动态获取
           $(imgs).each(function(index,good){
              $("#imgs").append($('<li></li>').append($('<img src="" alt="" />').attr("src",good.src))
@@ -144,7 +142,8 @@ $(function(){
           $("#title").find("li:first").click(function(){
             $(".main-cons:first").css("display","block");
             $(".main-cons:last").css("display","none");
-            $(this).addClass("active").siblings().removeClass("active");
+            $(this).addClass("focus").siblings().removeClass("focus");
+            $(this).addClass("acta").siblings().removeClass("acta");
             $("#main-cons").find("figure").remove();
                 init(); 
                 myScroll.refresh();
@@ -152,7 +151,8 @@ $(function(){
           })
 
           $("#title").find("li:last").click(function(){
-          $(this).addClass("active").siblings().removeClass("active");
+          $(this).addClass("focus").siblings().removeClass("focus");
+          $(this).addClass("acta").siblings().removeClass("acta");
             $('.main-cons:last').css("display","block");
             $(".main-cons:first").css("display","none");
                myScroll.refresh();
@@ -161,7 +161,7 @@ $(function(){
          // 回到顶部按钮
   
          $("#back-top").click(function(){ //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
-          $("#scroller").css("top","0");
+          $("#scroller").css("top","-4rem");
          var wrapper = $("#wrapper");
          wrapper.scrollTop(0);
 
@@ -297,4 +297,5 @@ $(function(){
 document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 
 document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 100); }, false);
+
 

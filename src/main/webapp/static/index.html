@@ -10,110 +10,97 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<!--     <link rel="stylesheet" href="css/scrollbar.css"> -->
-
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/public.css">
-	<link rel="stylesheet" href="css/index.css">
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/scrollbar.css">
+	<link rel="stylesheet" href="../css/index.css">
+	<link rel="stylesheet" href="../css/public.css">
 	<style type="text/css">
-        .carousel-inner>.item>img{margin: 0 auto;max-width :32rem;height:11rem;}
-        
+        .carousel-inner>.item>img{margin: 0 auto;max-width :32rem;height:11rem;} 
 	</style>
 </head>
   <body>
     <section class="header-top" id="header-top">
 
-	    <div class="fanhui"><a onclick=window.location.href="login.html"><img src="img/back.png" alt=""></a><a onclick=window.location.href="login.html" class="tiaozhuan" id="sy">返回</a></div>
+	    <div class="fanhui"><a href="../login.html" ><img src="../img/back.png" alt=""></a><a href="javascript:;" class="tiaozhuan" id="sy">返回</a></div>
 	    <div class="shouye" ><p>首页</p></div>
 
     </section>
     <!-- 顶部搜索框 -->
-    <div  id="header" >
-		<div class="home" >
-		  	<div class="slidebar" id="slidebar" onclick="_block()">
-		  		<img src="img/menu.png" alt="">
-		  	</div>
-		  	<div class="search">
-		  	<i id="search" class="search-button"></i>
-		  	<input type="text" name="search"  style="border:none;" id="input">
-		  	</div>	
+  
+<div id="wrapper">
+   <div id="scroller">
+   
+	<div id="header" class="home">
+	  	<div class="slidebar" id="slidebar">
+	  		<img src="../img/menu.png" alt="">
+	  	</div>
+	  	<div class="search">
+	  	<i id="search" class="search-button"></i>
+	  	<input type="text" name="search"  style="border:none;" id="input">
+	  	</div>	
+	</div>
+    <!-- 隐藏分类 -->
+	<section class="classify" id="classify">
+		<ul>
+			<li><a href="javascript:;">婴儿车</a></li>
+			<li><a href="javascript:;">安全座椅</a></li>
+			<li><a href="javascript:;">玩具</a></li>
+			<li><a href="javascript:;">家具家电</a></li>
+			<li><a href="javascript:;">服饰鞋帽</a></li>+
+			<li><a href="javascript:;">图片绘本</a></li>
+			<li><a href="javascript:;">其它产品</a></li>
+		</ul>
+	</section>
+      
+	   <div id="myCarousel" class="carousel slide" >
+	   <!-- 轮播（Carousel）指标 -->
+	   <ol class="carousel-indicators">
+	      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	      <li data-target="#myCarousel" data-slide-to="1"></li>
+	      <li data-target="#myCarousel" data-slide-to="2"></li>
+	   </ol>   
+	   <!-- 轮播（Carousel）项目 -->
+	   <div class="carousel-inner">
+	      <div class="item active">
+	         <img src="../img/img-01.png" alt="First slide">
+	      </div>
+	      <div class="item">
+	         <img src="../img/img-01.png" alt="Second slide">
+	      </div>
+	      <div class="item">
+	         <img src="../img/img-01.png" alt="Third slide">
+	      </div>
+	   </div>
+	   <!-- 轮播（Carousel）导航 -->
+	   <a class="carousel-control left" href="#myCarousel" 
+	      data-slide="prev">&lsaquo;</a>
+	   <a class="carousel-control right" href="#myCarousel" 
+	      data-slide="next">&rsaquo;</a>
+	   </div> 
+
+
+
+
+	<div class="title" id="title">
+   	<ul>
+   		<li class="focus">新品</li>
+   		
+   		<!-- 防止a标签的跳转 -->
+   		<li>猜你喜欢</li>
+   	</ul>
+   	</div>
+	<div class="main" id="main">
+	   	<section class="main-cons"  style="display:block">
+
+	   	 <div id="main-cons"></div>
+
+		<div id="pullUp">
+			<span class="pullUpIcon"></span><span class="pullUpLabel">加载更多</span>
 		</div>
-		    <!-- 隐藏分类 -->
-			<section class="classify" id="classify" >
-				<ul>
-		        <li><a window.location.href="index_list.html">婴儿车</a></li>
-		        <li><a href="index_list.html">安全座椅</a></li>
-		        <li><a href="javascript:;">玩具</a></li>
-		        <li><a href="javascript:;">家具家电</a></li>
-		        <li><a href="javascript:;">服饰鞋帽</a></li>
-		        <li><a href="javascript:;">图片绘本</a></li>
-		        <li><a href="javascript:;">其它产品</a></li>
-				</ul>
-			</section>
-	      
-   <div id="myCarousel" class="carousel slide" >
-   <!-- 轮播（Carousel）指标 -->
-   <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-   </ol>   
-   <!-- 轮播（Carousel）项目 -->
-   <div class="carousel-inner">
-      <div class="item active">
-         <img src="img/img-01.png" alt="First slide">
-      </div>
-      <div class="item">
-         <img src="img/img-01.png" alt="Second slide">
-      </div>
-      <div class="item">
-         <img src="img/img-01.png" alt="Third slide">
-      </div>
-   </div>
-   <!-- 轮播（Carousel）导航 -->
-   <a class="carousel-control left" href="#myCarousel" 
-      data-slide="prev">&lsaquo;</a>
-   <a class="carousel-control right" href="#myCarousel" 
-      data-slide="next">&rsaquo;</a>
-   </div> 
-
-
-		<div class="title" id="title">
-	   	<ul>
-	   		<li  class="focus" onclick="_block1()">新品</li>
-	   		<!-- 防止a标签的跳转 -->
-	   		<li  class="li.2"onclick="_block2()">猜你喜欢</li>
-	   	</ul>
-   	    </div>
-   	</div> 
-
-	<div class="main" id="main" action="" method="">
-	    <!-- 新品 -->
-	   	<section class="main-cons" id="showNewGoods" style="display:block">
-            <div style="display:none">
-                <figure id="figNewGoods" onclick=window.location.href="#">
-				    <img src="img/main-new1.png" alt="">
-					<figcaption>
-						<p><span>￥30.00</span><span>九成新</span></p>
-						<p>H&M&nbsp;CARDIGN</p>
-						<p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>
-					</figcaption>
-                </figure>
-            </div>
-	            <section id="newGoods" class="main-cons">
-
-		        </section>
-
-        <section id="btnLoadMore" class="main-cons" style="display:block">
-            <div id="main-cons"></div>
-            <div id="pullUp">
-                <span class="pullUpIcon"></span><span id="loadMore" class="pullUpLabel">加载更多</span>
-            </div>
-        </section>		 
-		</section>
-		<!-- 猜你喜欢 -->
-		<section class="main-cons" id="youLike" style="display:none">
-			<div class="youlike" >
+	   </section>
+		
+		<section class="main-cons" style="display:none">
+			<div class="youlike">
 			    <p>系统正在为您查询您感兴趣的宝物......</p>
 				<p>请填写以下信息</p>
 				<ul>
@@ -130,67 +117,46 @@
                 </div>
 		    </div>
 		</section>	
-
    </div>
 
-
+ </div>
+ </div>
     <div class="back-top" id="back-top">
-    	<p><a href="#main">回到顶部</a></p>
+    	<p>回到顶部</p>
     </div>
 
 	<div class="menu" id="footer">
             <a   href="index.html">
-                <i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
+                <i class="icon-menu icon-menu1"><img src="../img/footer-c1.png" alt=""></i>
             </a>
             <a>
-                <i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
+                <i class="icon-menu icon-menu2"><img src="../img/footer-2.png" alt=""></i>
             </a>
             <a  href="consignment.html">
-                <i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
+                <i class="icon-menu icon-menu3"><img src="../img/footer-3.png" alt=""></i>
             </a>
             <a  href="javascript:;" id="shopping">
-                <i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
+                <i class="icon-menu icon-menu4"><img src="../img/footer-4.png" alt=""></i>
             </a>
             <a  href="personal.html">
-                <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
+                <i class="icon-menu icon-menu5"><img src="../img/footer-5.png" alt=""></i>
             </a>
     </div>
-     
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/_index.js"></script>
-    
+   
+	<script type="text/javascript" src="../js/jquery.1.10.2.js"></script>
+	<script type="text/javascript" src="../js/dataBind.js"></script>
+	<script type="text/javascript" src="../js/hhSwipe.js"></script>
+	<script type="text/javascript" src="../js/iscroll.js"></script>
+	<script type="text/javascript" src="../js/analyPara.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script>
 
+     $('.carousel').carousel({
+    interval: 2500
+     })
 
-
-<!-- // (function($){
-// 	$(function(){
-// 		var $nav=$('#title')
-// 		   $current_item=$nav.find('.focus'),
-// 		   $lava=$('<li class="lava"/>');
-// 	});
-// })(jQuery);
-
-// $lava.css({
-// 	background:'#ccc'
-// }).appendTo($nav.find('ul')); -->
-<!-- $("").css("display","none").siblings().css("display",'none'); -->
-<script >
-
-$(document).ready(function(){
-  $(".focus").click(function(){
-  $('li.focus').siblings().css('color', '#fff;');
-  });
-});
-
-$(document).ready(function(){
-  $(".li2").click(function(){
-  $('li.li2').siblings().css('color', '#fff;');
-  });
-});
-
-
-
-</script>
+   
+	</script>
 </body>
 </html>

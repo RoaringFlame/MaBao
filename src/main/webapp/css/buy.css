@@ -115,9 +115,9 @@ input{border-bottom:0.1rem solid #DCDCDC !important;}
 #test{margin: 0;padding: 0;height: 0;}
 #test select{
 	position: relative;
-	top: -3.8rem;
+	top: -3.5rem;
 	left:6.5rem;
-	height: 3.4rem;
+	height: 3rem;
 	width:7.5rem;
   margin-right: 1rem;
 }
