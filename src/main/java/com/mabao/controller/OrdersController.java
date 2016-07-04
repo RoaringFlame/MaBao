@@ -1,0 +1,34 @@
+package com.mabao.controller;
+
+import com.mabao.pojo.Address;
+import com.mabao.pojo.Goods;
+import com.mabao.service.OrdersService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
+/**
+ * Created by xiaokaineng on 2016/6/30.
+ */
+@Controller
+@RequestMapping("/orders")
+public class OrdersController {
+    private OrdersService ordersService;
+    @RequestMapping(value = "/orderConfirm",method = GET)
+    public String getOrderConfirmService(int userId,int[] ids,Model model){
+        Map<String,Object> map=new HashMap<>();
+        Address address=this.ordersService.getDefaultAddress(userId);
+        map.put("address",address);
+        List<Goods> selecetedGoods=this.ordersService.getSelectedGoods(ids);
+        map.put("selectedGoods",selecetedGoods);
+        model.addAllAttributes(map);
+        return "pay";
+    }
+
+}

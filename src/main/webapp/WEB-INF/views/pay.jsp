@@ -1,10 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="java.util.*" %>
-<%@ page import="service.GoodsService" %>
-<%@ page import="pojo.Goods" %>
-<%@ page import="pojo.Address" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,49 +16,44 @@
 	<link rel="stylesheet" href="css/public.css">
 </head>
 <body>
-<%
-	String id=request.getParameter("id");
-	GoodsService gs=new GoodsService();
-	Goods goods=gs.findById(Integer.parseInt(id));
- %>
  	<section class="header-top">
-    	<div class="fanhui"><a href="javascript:;" onclick="location.href='javascript:history.go(-1);'"><img src="img/back.png" alt=""></a><a href="javascript:;" onclick="location.href='javascript:history.go(-1);'" class="tiaozhuan">返回</a></div>
+		<!--商品详情页面的url传递-->
+    	<div class="fanhui"><a onclick=window.location.href="/goodsDetail?id=${goods.id}" >
+			<img src="img/back.png" alt=""></a><a onclick=window.location.href="/goodsDetail?id=${goods.id}" class="tiaozhuan">返回</a></div>
     	<div class="shouye"><p>确认订单</p></div>
     </section>
-	<div class="header home" onclick=window.location.href="http://localhost:8080/mb/AddressServlet?method=findAddress">
+	<div class="header home" onclick=window.location.href="address.html">
 		<div class="ui-left"><img src="img/pay-1.png" alt=""></div>
-		<c:forEach var="addr" items="${LoginAddr}" begin="0" end="0">
 		<div class="mes-right">
 			<div class="mes-right-top">
 				<dl>
-					<dd>收件人:${LoginAddr.get(0).getRecipients()}</dd>
-					<dt>电话:${LoginAddr.get(0).getTel()}</dt>
+					<dd>张淑敏</dd>
+					<dt>电话:15994203504</dt>
 				</dl>
 			</div>
 			<div class="mes-right-bottom">
-				<p>收件地址:${LoginAddr.get(0).getAddress()} </p>
-				<p></p>
+				<p>广东省&nbsp;&nbsp;深圳&nbsp;&nbsp;宝安区</p>
+				<p>桃源居商务大厦B座</p>
 			</div>
 		</div>
-		</c:forEach>
 		<div class="jump-arrow"></div>
 	</div>
 	<div class="pay-for-baobei">
 		<div class="baobei">
-			<img src="<%=goods.getBrand() %>" alt="">
+			<img src="img/main-new1.png" alt="">
 		</div>
 		<div class="intro">
-			<p><%=goods.getGoodsBrand() %>&nbsp;&nbsp;CARDIGAN</p>
-			<p>尺寸&nbsp;:&nbsp;<%=goods.getGoodsSize() %></p>
+			<p>H&M&nbsp;&nbsp;CARDIGAN</p>
+			<p>尺寸&nbsp;:&nbsp;S</p>
 		</div>
 		<div class="price">
-			<p>￥<%=goods.getPrice() %></p>
+			<p>￥35.5</p>
 		</div>
 	</div>
 	<div class="lists">
 		<ul>
-			<li>共计1件商品&nbsp;小计：<b>￥<%=goods.getPrice() %></b></li>
-			<li><span>快递费</span> <span><b>￥10</b></span></li>
+			<li>共计1件商品&nbsp;小计：<b>￥35.5</b></li>
+			<li><span>快递费</span> <span><b>￥20</b></span></li>
 		</ul>
 	</div>
 	<div class="notes">
@@ -76,8 +65,8 @@
 	<div class="clear"></div>
 	<div class="up-to-pay">
 		<ul>
-			<li>总计&nbsp;:&nbsp;<b>￥<%=goods.getPrice()+10 %></b></li>
-			<li onclick=window.location.href="http://localhost:8080/mb/OrderServlet?method=saveToOrderSingle&id="+<%=id%>>付款</li>
+			<li>总计&nbsp;:&nbsp;<b>￥55.5</b></li>
+			<li onclick=window.location.href="">付款</li>
 		</ul>
 	</div>
 </body>

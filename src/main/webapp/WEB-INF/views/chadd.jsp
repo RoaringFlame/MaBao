@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="UTF-8">
 	<title>编辑收货地址</title>
 	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
 	<!-- 禁止将数字变为电话号码 -->
@@ -13,62 +10,82 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<link rel="stylesheet" href="css/buy.css">
-	<link rel="stylesheet" href="css/public.css">
-  
-  <script src="js/jquery-1[1].2.6.js" type="text/javascript"></script>
-  <script src="js/jquery.provincesCity.js" type="text/javascript"></script>
-  <script src="js/provincesdata.js" type="text/javascript"></script>
-  <script>
-	//调用插件
-	$(function(){
-		$("#test").ProvinceCity();
-	});	
-  </script>
+	<link rel="stylesheet" href="../../css/buy.css">
+	<link rel="stylesheet" href="../../css/public.css">
+    <link href="../../css/bootstrap-switch.css" rel="stylesheet">
+<!--     <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/jquery.1.10.2.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap-switch.js"></script>
+    <script src="../../js/jquery.provincesCity.js" type="text/javascript"></script>
+    <script src="../../js/provincesdata.js" type="text/javascript"></script>
 </head>
 <body>
-<%
-	String id=request.getParameter("id");
-	AddressService gs=new AddressService();
-	Address address=gs.findById(Integer.parseInt(id));
- %>
  	<section class="header-top">
-    	<div class="fanhui"><a href="address.jsp" ><img src="img/back.png" alt=""></a><a href="address.jsp" class="tiaozhuan">返回</a></div>
+    	<div class="fanhui">
+	    	<a onclick=window.location.href="../../user/allAddress"><img src="../../img/back.png" alt=""></a>
+	    	<a onclick=window.location.href="../../user/allAddress" class="tiaozhuan">返回</a>
+	    </div>
     	<div class="shouye"><p>编辑收货地址</p></div>
     </section>
-	<form class="mesgbox" method="post" action="http://localhost:8080/mb/AddressServlet" >
-	<input type="text" class="write" placeholder=<%=address.getRecipients()%> name="recipients" >
-	<input type="phone" class="write" placeholder=<%=address.getTel()%> name="tel">
-	<input type="text" class="write" placeholder="所在地" >
-	<%--下面两行隐藏的是传给后台的该地址对应的id和调用后台对应的方法 --%>
-	<input name="id" type="hidden" value=<%=address.getAddressId()%>>
-	<input name="method" type="hidden" value="updateAddr">
+
+    <form method="post" name="addressForm">
+	<section method="post" action="save.php" class="mesgbox">
+	<input name="addressee" type="text" class="write" placeholder="收件人：${address.recipients}">
+	<input name="tel" type="phone" class="write" placeholder="手机号：${address.tel}">
+	<input name="location" type="text" class="write" placeholder="所在地:">
     <div id="test"></div>
-	<input type="text" class="write" placeholder=<%=address.getAddress() %> name="detail">
+	<input name="ditail-add" type="text" class="write" placeholder="详细地址:${address.location}">
 	<div class="default">
 		<p>默认地址</p> 
+		   <div class="switch0">
+	          <input style="border: none;" name="switch0" class="form-control" type="checkbox" checked>
+	       </div>
 		<span>注：每次下单时会使用该地址</span>
-		<div class="clear"></div>
-	     <div class="slideThree">  
-	     <input type="checkbox" value="None" id="slideThree2" name="check" checked />
-	     <label for="slideThree2" class="st1"></label>
-	     </div>
+    </div>
 	</div> 
-	
+	</section>
 	<div class="clear"></div>
-		<div class="foot-input2">
-		<input type="button" value="删除该地址" id="del" name="del"/>
-	</div>
-	<div class="foot-input">
-		<input type="submit" value="保存并使用" />
-	</div>
+		<section class="foot-input2">
+		  <input  type="button" value="删除该地址" onclick="deleteAddressForm()">
+	    </section>
+	    <section class="foot-input">
+		  <input type="button" value="保存并使用" onclick="saveAddressForm()">
+	    </section>
 	</form>
-	 <script type="text/javascript">
-       $("#del").click(function(){
-         window.location.href="http://localhost:8080/mb/AddressServlet?method=deleteAddr&id="+<%=address.getAddressId()%>;
-         })
 
+	<!--为按钮添加事件:删除地址方法deleteAddressForm()-->
+	<script type="text/javascript">
+	function deleteAddressForm(){
+	    document.addressForm.action = "/user/removeAddressSubmit";
+	    document.addressForm.submit();
+	}
+	<!--为按钮添加事件:新增地址方法saveAddressForm()-->
+	function saveAddressForm(){
+		document.addressForm.action = "/user/updateAddressSubmit";
+		document.addressForm.submit();
+	}
+	</script>
+
+	<script>
+	//调用地址插件
+	$(function(){
+		$("#test").ProvinceCity();
+	});
     </script>
-    
+
+	<script>
+	$('.toggle').click(function(e){
+    e.preventDefault(); // The flicker is a codepen thing
+    $(this).toggleClass('toggle-on');
+    });
+    </script>
+
+    <script>
+    $(function(argument) {
+    $('[type="checkbox"]').bootstrapSwitch();
+    })
+    </script>
 </body>
 </html>
