@@ -31,11 +31,10 @@ public class UsersController {
     public String addAddressRedirect(){
         return "newAddress";
     }
-
     @RequestMapping(value ="/addAddressSubmit",method = GET)
-    public String addAddressSubmit(int userId,Model model){
+    public String addAddressSubmit(Address address,Model model){
         Map<String,Object> map=new HashMap<>();
-        List<Address> addressList=this.usersService.addAddress(userId);
+        List<Address> addressList=this.usersService.addAddress(address);
         map.put("addressList",addressList);
         model.addAllAttributes(map);
         return "address";
@@ -55,10 +54,10 @@ public class UsersController {
         model.addAllAttributes(map);
         return "address";
     }
-    @RequestMapping(value = "/removeAddressSubmit",method = GET)
+    @RequestMapping(value = "/deleteAddressSubmit",method = GET)
     public String removeAddressSubmit(int addressId,Model model){
         Map<String,Object> map=new HashMap<>();
-        List<Address> addressList=this.usersService.removeAddress(addressId);
+        List<Address> addressList=this.usersService.deleteAddress(addressId);
         map.put("addressList",addressList);
         model.addAllAttributes(map);
         return "address";

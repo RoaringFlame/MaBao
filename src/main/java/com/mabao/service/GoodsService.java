@@ -43,6 +43,31 @@ public interface GoodsService {
     public List<Goods> getGoodsListByCircle();
 
     PageVO<GoodsVO> getPageVO(int page, int size);
+    /**
+     * 查询猜你喜欢
+     * @param babyInfoMap
+     * @param page
+     * @param size
+     * @return
+     */
+    public List<Goods> getGoodsListByTable(Map babyInfoMap, int page, int size);
+    /**
+     * 商品加入购物车
+     * @param id
+     * @return
+     */
+    public List<Goods> addshoppingCarGoods(int id);
+    /**
+     * 购物车商品列表
+     * @param ids
+     * @return
+     */
+    public List<Goods> getSelectedGoods(int[] ids);
+    /**
+     * 删除购物车中商品
+     * @param id
+     * @return
+     */
+    public List<Goods> deleteShoppingCarGoods(int id);
 
-    List<Goods> getGoodsListByTable(Map<String, String> babyInfoMap, int page, int size);
 }

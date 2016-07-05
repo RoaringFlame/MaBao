@@ -14,12 +14,19 @@ import java.util.Map;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
- * Created by xiaokaineng on 2016/6/30.
+ * Created by maxu on 2016/6/30.
  */
 @Controller
 @RequestMapping("/orders")
 public class OrdersController {
     private OrdersService ordersService;
+    /**
+     * 购物车页面提交后跳转订单确认页面
+     * @param userId
+     * @param ids
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/orderConfirm",method = GET)
     public String getOrderConfirmService(int userId,int[] ids,Model model){
         Map<String,Object> map=new HashMap<>();

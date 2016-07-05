@@ -15,10 +15,10 @@ public interface UsersService {
     public List<Address> getAllAddress(int userId);
     /**
      * 新增收货地址
-     * @param userId
+     * @param address
      * @return
      */
-    public List<Address> addAddress(int userId);
+    public List<Address> addAddress(Address address);
     /**
      * 显示选中收货地址
      * @param addressId
@@ -36,5 +36,5 @@ public interface UsersService {
      * @param addressId
      * @return
      */
-    public List<Address> removeAddress(int addressId);
+    public List<Address> deleteAddress(int addressId);
 }
