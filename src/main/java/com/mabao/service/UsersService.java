@@ -36,5 +36,5 @@ public interface UsersService {
      * @param addressId
      * @return
      */
-    public List<Address> removeAddress(int addressId);
+    public List<Address> deleteAddress(int addressId);
 }
