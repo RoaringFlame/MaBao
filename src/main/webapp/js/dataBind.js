@@ -88,14 +88,6 @@ $(function(){
           $("#scroller").css("top","-4rem");}
         
        );
-         //首页轮播图的动态获取
-          $(imgs).each(function(index,good){
-             $("#imgs").append($('<li></li>').append($('<img src="" alt="" />').attr("src",good.src))
-               .click(function(){
-                          window.location.href="detail.html?id="+good.id; })
-                          )
-                        
-           });
        
        // 分类的显示和隐藏
         $("#slidebar").click(function(){
@@ -110,7 +102,6 @@ $(function(){
            myScroll.refresh();
           });
 
-      
 
           //猜你喜欢表单提交
           $("#like-up").click(function(){
