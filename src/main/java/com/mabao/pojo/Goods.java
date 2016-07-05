@@ -6,11 +6,31 @@ import com.mabao.util.CustomDateSerializer;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
+@Table(name = "t_goods")
 public class Goods {
-    private Long id;
+    private Long id;                                //商品编号，自增
+    private Integer userId;                         //商品归属者编号，后台用户编号为0
+    private String articleNumber;                   //货号
+    private String picture;                         //图片标签
+    private String title;                           //标题
+    private int oldPrice;                           //原价，用整型存储避免计算出错，存取时记得变位。
+    private int price;                              //现价，用法同原价。
+    private String typeName;                        //二级类型名称
+    private Integer typeId;                         //一级类型编号
+    private String brand;                           //商品品牌
+    private Date upTime;                            //上架时间
+    private Integer newDegree;                      //新旧程度，0表示全新，95，80分别表示95成8成新
+    private String size;                            //尺寸
+    private Boolean pack;                           //是否有包装，1有0无
+    private Boolean receipt;                        //是否有小票，1有0无
+    private String message;                         //卖家分享
+    private String pictureList;                     //附加图片，list元素用分号隔开存入数据库
+    private Integer stockNumber;                    //库存数量
+    private Boolean state;                          //商品状态，1为存在，0为下架或不存在。
 
     @Id
     @javax.persistence.Column(name = "id")
@@ -22,10 +42,8 @@ public class Goods {
         this.id = id;
     }
 
-    private int userId;
-
     @Basic
-    @javax.persistence.Column(name = "userId")
+    @javax.persistence.Column(name = "user_id")
     public int getUserId() {
         return userId;
     }
@@ -34,10 +52,8 @@ public class Goods {
         this.userId = userId;
     }
 
-    private String articleNumber;
-
     @Basic
-    @javax.persistence.Column(name = "articleNumber")
+    @javax.persistence.Column(name = "article_number")
     public String getArticleNumber() {
         return articleNumber;
     }
@@ -45,8 +61,6 @@ public class Goods {
     public void setArticleNumber(String articleNumber) {
         this.articleNumber = articleNumber;
     }
-
-    private String picture;
 
     @Basic
     @javax.persistence.Column(name = "picture")
@@ -58,8 +72,6 @@ public class Goods {
         this.picture = picture;
     }
 
-    private String title;
-
     @Basic
     @javax.persistence.Column(name = "title")
     public String getTitle() {
@@ -70,10 +82,8 @@ public class Goods {
         this.title = title;
     }
 
-    private int oldPrice;
-
     @Basic
-    @javax.persistence.Column(name = "oldPrice")
+    @javax.persistence.Column(name = "old_price")
     public int getOldPrice() {
         return oldPrice;
     }
@@ -81,8 +91,6 @@ public class Goods {
     public void setOldPrice(int oldPrice) {
         this.oldPrice = oldPrice;
     }
-
-    private int price;
 
     @Basic
     @javax.persistence.Column(name = "price")
@@ -94,10 +102,8 @@ public class Goods {
         this.price = price;
     }
 
-    private String typeName;
-
     @Basic
-    @javax.persistence.Column(name = "typeName")
+    @javax.persistence.Column(name = "type_name")
     public String getTypeName() {
         return typeName;
     }
@@ -106,10 +112,8 @@ public class Goods {
         this.typeName = typeName;
     }
 
-    private Integer typeId;
-
     @Basic
-    @javax.persistence.Column(name = "typeId")
+    @javax.persistence.Column(name = "type_id")
     public Integer getTypeId() {
         return typeId;
     }
@@ -117,8 +121,6 @@ public class Goods {
     public void setTypeId(Integer typeId) {
         this.typeId = typeId;
     }
-
-    private String brand;
 
     @Basic
     @javax.persistence.Column(name = "brand")
@@ -130,10 +132,8 @@ public class Goods {
         this.brand = brand;
     }
 
-    private Date upTime;
-
     @Basic
-    @javax.persistence.Column(name = "upTime")
+    @javax.persistence.Column(name = "up_time")
     @JsonSerialize(using = CustomDateSerializer.class)
     public Date getUpTime() {
         return upTime;
@@ -143,10 +143,8 @@ public class Goods {
         this.upTime = upTime;
     }
 
-    private Integer newDegree;
-
     @Basic
-    @javax.persistence.Column(name = "newDegree")
+    @javax.persistence.Column(name = "new_degree")
     public Integer getNewDegree() {
         return newDegree;
     }
@@ -154,8 +152,6 @@ public class Goods {
     public void setNewDegree(Integer newDegree) {
         this.newDegree = newDegree;
     }
-
-    private String size;
 
     @Basic
     @javax.persistence.Column(name = "size")
@@ -167,8 +163,6 @@ public class Goods {
         this.size = size;
     }
 
-    private Boolean pack;
-
     @Basic
     @javax.persistence.Column(name = "pack")
     public Boolean getPack() {
@@ -178,8 +172,6 @@ public class Goods {
     public void setPack(Boolean pack) {
         this.pack = pack;
     }
-
-    private Boolean receipt;
 
     @Basic
     @javax.persistence.Column(name = "receipt")
@@ -191,8 +183,6 @@ public class Goods {
         this.receipt = receipt;
     }
 
-    private String message;
-
     @Basic
     @javax.persistence.Column(name = "message")
     public String getMessage() {
@@ -203,10 +193,9 @@ public class Goods {
         this.message = message;
     }
 
-    private String pictureList;
 
     @Basic
-    @javax.persistence.Column(name = "pictureList")
+    @javax.persistence.Column(name = "picture_list")
     public String getPictureList() {
         return pictureList;
     }
@@ -215,10 +204,9 @@ public class Goods {
         this.pictureList = pictureList;
     }
 
-    private Integer stockNumber;
 
     @Basic
-    @javax.persistence.Column(name = "stockNumber")
+    @javax.persistence.Column(name = "stock_number")
     public Integer getStockNumber() {
         return stockNumber;
     }
@@ -227,7 +215,6 @@ public class Goods {
         this.stockNumber = stockNumber;
     }
 
-    private Boolean state;
 
     @Basic
     @javax.persistence.Column(name = "state")

@@ -1,18 +1,16 @@
 package com.mabao.pojo;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "t_address")
 public class Address {
-    private int id;
-    private int userId;
-    private String recipients;
-    private String tel;
-    private String location;
-    private boolean state;
+    private Integer id;                             //地址编号
+    private Integer userId;                         //用户编号
+    private String recipients;                      //收件人
+    private String tel;                             //手机号
+    private String location;                        //地址详情
+    private boolean state;                          //地址状态，是否为默认收货地址，0为否、1为是。
 
     @Id
     @Column(name = "id")
@@ -25,7 +23,7 @@ public class Address {
     }
 
     @Basic
-    @Column(name = "userId")
+    @Column(name = "user_id")
     public int getUserId() {
         return userId;
     }
