@@ -2,6 +2,7 @@ package com.mabao.controller;
 
 import com.mabao.pojo.Goods;
 import com.mabao.service.GoodsService;
+import com.mabao.service.ShoppingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,37 +19,35 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  * @author jackie
  */
 @Controller
-@RequestMapping("/shoppingCar")
+@RequestMapping("/cart")
 public class CartController {
     @Autowired
-    private GoodsService goodsService;
+    private ShoppingService shoppingService;
 
     /**
-     * 添加商品
-     * @param id            商品ID
-     * @param model
+     * 购物车添加商品
+     * @param userId        用户ID
+     * @param goodsId       商品ID
+     * @param model         商品list
      * @return              购物车页
      */
-    @RequestMapping(value = "/goodsAdd",method = GET)
-    public String shoppingCarGoodsAdd(int id,Model model){
-        Map<String,Object> map=new HashMap<>();
-        List<Goods> goodsList=this.goodsService.addshoppingCarGoods(id);
-        return "shoppingCar";
+    @RequestMapping(value = "/cartAddGoods",method = GET)
+    public String shoppingCarGoodsAdd(int userId, int goodsId,Model model){
+        List<Goods> goodsList=this.shoppingService.addCartGoods(userId,goodsId);
+        model.addAttribute("cartGoodsList",goodsList);
+        return "shopping";
     }
     /**
-     * 购物车展示页面
+     * 购物车商品查询
      * @param userId            用户ID
-     * @param model
+     * @param model             商品list
      * @return                  购物车页
      */
-    @RequestMapping(value = "/shoppingCar", method = GET)
-    public String getShoppingCar(Integer userId, Model model) {
-        Map<String, Object> map = new HashMap<>();
-        //购物车商品列表
-       /* List<Goods> selectedGoodsList = this.goodsService.getSelectedGoods(userId);
-        map.put("selectedGoodsList", selectedGoodsList);*/
-        model.addAllAttributes(map);
-        return "shoppingCar";
+    @RequestMapping(value = "/shoppingCart", method = GET)
+    public String getShoppingCart(Integer userId, Model model) {
+        List<Goods> goodsList = this.shoppingService.findShoppingCartGoods(userId);
+        model.addAttribute("myShoppingCart",goodsList);
+        return "shopping";
     }
 }
 

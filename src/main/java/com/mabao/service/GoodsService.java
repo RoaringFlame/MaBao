@@ -1,12 +1,11 @@
 package com.mabao.service;
 
 import com.mabao.controller.vo.GoodsVO;
+import com.mabao.enums.Gender;
 import com.mabao.util.PageVO;
 import com.mabao.pojo.Goods;
 ;
 import java.util.List;
-import java.util.Map;
-
 
 /**
  * Created by liuming on 2016/6/28.
@@ -15,59 +14,43 @@ import java.util.Map;
 public interface GoodsService {
     /**
      * 新品
-     * @param page
-     * @param pageSize
-     * @return
      */
-    public List<Goods> getNewGoods(int page, int pageSize);
-    /*
-    *初始化页面和查询新品
-     */
-    public List<Goods> getGoodsListByTime(int page, int size);
-    /*
-   *查询搜索栏内容
-    */
-    public List<Goods> getGoodsListLikeTitle(String  title, int page, int size);
-    /*
-   *查询列表选择类型
-    */
-    public List<Goods> getGoodsListByTypeName(String  typeName,int page, int size);
-    /*
-   *查询商品详细信息
-    */
-    public Goods getGoodsListById(int id);
-    /*
-    *轮播图片列表
-     */
-    public List<Goods> getGoodsListByCircle();
+    List<Goods> getNewGoods(int page, int pageSize);
 
-    PageVO<GoodsVO> getPageVO(int page, int size);
     /**
-     * 查询猜你喜欢
-     * @param babyInfoMap
-     * @param page
-     * @param size
-     * @return
-     */
-    public List<Goods> getGoodsListByTable(Map babyInfoMap, int page, int size);
-    /**
-     * 商品加入购物车
-     * @param id
-     * @return
-     */
-    public List<Goods> addshoppingCarGoods(int id);
-    /**
-     * 购物车商品列表
-     * @param ids
-     * @return
-     */
-    public List<Goods> getSelectedGoods(int[] ids);
-    /**
-     * 删除购物车中商品
-     * @param id
-     * @return
-     */
-    public List<Goods> deleteShoppingCarGoods(int id);
+    * 首页商品模糊搜索
+    */
+    List<Goods> goodsSearch(String title, int page, int size);
 
+    /**
+    * 商品类型查询
+    */
+    List<Goods> getGoodsListByTypeName(String typeName, int page, int size);
+    /**
+    * 查询商品详细信息
+    */
+    Goods getGoodsById(int id);
+    /**
+     * 轮播图片列表
+     */
+    List<Goods> getGoodsPictureCircle();
+
+    /**
+     * （首页猜你喜欢）
+     * @param babyName          宝宝姓名
+     * @param babyBirthday      宝宝生日
+     * @param gender            宝宝性别
+     * @param hobby             爱好
+     * @param page              页码
+     * @param pageSize          一页大小
+     * @return                  商品集合，分页
+     */
+    PageVO<GoodsVO> goodsListGuess(String babyName, String babyBirthday, Gender gender, String hobby, int page, int pageSize);
+
+    /**
+     * 保存商品
+     * @param newGoods        商品对象，需包含用户ID
+     * @return                保存的商品对象
+     */
     Goods saveOne(Goods newGoods);
 }

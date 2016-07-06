@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * 寄售模块
@@ -26,14 +27,15 @@ public class SellController {
     /**
      * 自助发布宝物
      * 添加商品
-     * @param newGoods          商品属性，需包含用户ID
-     * @param model
+     * @param newGoods          商品对象，需包含用户ID
+     * @param model             success or false
      * @return                  寄售成功页
      */
-    @RequestMapping(value = "/release",method = GET)
+    @RequestMapping(value = "/release",method = POST)
     public String shoppingCarGoodsAdd(Goods newGoods,Model model){
-        //添加商品
-        Goods result =  this.goodsService.saveOne(newGoods);
+//      Goods result =  this.goodsService.saveOne(newGoods);
+        String  result = this.goodsService.saveOne(newGoods) != null ? "success" : "false";
+        model.addAttribute("result",result);
         return "consignment-success";
     }
 

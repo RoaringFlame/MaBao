@@ -14,10 +14,6 @@ import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-/**
- * 订单模块
- * Created by maxu on 2016/6/30.
- */
 @Controller
 @RequestMapping("/orders")
 public class OrdersController {

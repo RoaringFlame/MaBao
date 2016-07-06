@@ -1,162 +1,81 @@
 package com.mabao.service.impl;
 
 import com.mabao.controller.vo.GoodsVO;
+import com.mabao.enums.Gender;
 import com.mabao.util.PageVO;
 import com.mabao.pojo.Goods;
 import com.mabao.repository.GoodsRepository;
 import com.mabao.service.GoodsService;
-import com.mabao.util.Goods2GoodVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by liuming on 2016/6/28.
- * 商品业务接口
- */
 @Service
 public class GoodsServiceImpl implements GoodsService {
 
 
     @Autowired
     private GoodsRepository goodsRepository;
-/*
-    *//**
-     * 新品
-     *
-     * @param page
-     * @param pageSize
-     * @return
-     *//*
+
+    /**
+     * 新品（初始化）
+     */
+    @Override
     public List<Goods> getNewGoods(int page, int pageSize) {
-        return goodsRepository.findByState(true, new PageRequest(page, pageSize,
-                new Sort(Sort.Direction.DESC, "upTime"))).getContent();
+        return null;
     }
 
+    /**
+     * 首页商品模糊搜索
+     */
     @Override
-    public List<Goods> getGoodsListByTime(int page, int size) {
-        return goodsRepository.findByState(true, new PageRequest(page, size,
-                new Sort(Sort.Direction.DESC, "upTime"))).getContent();
+    public List<Goods> goodsSearch(String title, int page, int size) {
+        return null;
     }
-
-    @Override
-    public List<Goods> getGoodsListLikeTitle(String title, int page, int size) {
-        return goodsRepository.findLikeTitle(title, new PageRequest(page, size,
-                new Sort(Sort.Direction.DESC, "upTime"))).getContent();
-    }
-
+    /**
+     * 商品类型查询
+     */
     @Override
     public List<Goods> getGoodsListByTypeName(String typeName, int page, int size) {
-        return goodsRepository.findByTypeName(typeName, new PageRequest(page, size,
-                new Sort(Sort.Direction.DESC, "upTime"))).getContent();
-    }
-
-    @Override
-    public Goods getGoodsListById(int id) {
-        return goodsRepository.findOne((long) id);
-    }
-
-    @Override
-    public List<Goods> getGoodsListByCircle() {
-        List<Goods> list = new ArrayList<>();
-        list.add(goodsRepository.findOne((long) 30));
-        list.add(goodsRepository.findOne((long) 31));
-        list.add(goodsRepository.findOne((long) 32));
-        list.add(goodsRepository.findOne((long) 33));
-        return list;
-    }
-
-    @Override
-
-    *//**
-     * 查询商品列表
-     * @return
-     *//*
-
-    public PageVO<GoodsVO> getPageVO(int page, int pageSize) {
-        PageVO<GoodsVO> pageVO = new PageVO<>();
-        Goods2GoodVO g2g = new Goods2GoodVO();
-        Page<Goods> pageList = goodsRepository.findByState(true, new PageRequest(page, pageSize, new Sort(Sort.Direction.DESC, "upTime")));
-        List<Goods> list = pageList.getContent();
-        pageVO.setPageSize(pageList.getNumberOfElements());
-        pageVO.setTotalCount(pageList.getTotalElements());
-        pageVO.setCurrentPage(pageList.getNumber());
-        List<GoodsVO> list1 = new ArrayList<>();
-        for (Goods g : list) {
-            list1.add(g2g.goodsToGoodsVO(g));
-        }
-        pageVO.setItems(list1);
-        return pageVO;
-    }
-
-    *//**
-     * 查询猜你喜欢
-     *
-     * @param babyInfoMap
-     * @param page
-     * @param size
-     * @return
-     *//*
-    @Override
-    public List<Goods> getGoodsListByTable(Map babyInfoMap, int page, int size) {
         return null;
     }
-
-    *//**
-     * 查询猜你喜欢
-     *
-     * @param babyInfoMap
-     * @param page
-     * @param size
-     * @return
-     *//*
-  *//*  public List<Goods> getGoodsListByTable(Map babyInfoMap, int page, int size) {
-        return null;
-    }*//*
-
-    *//**
-     * 商品加入购物车
-     *
-     * @param id
-     * @return
-     *//*
+    /**
+     * 查询商品详细信息
+     */
     @Override
-    public List<Goods> addshoppingCarGoods(int id) {
+    public Goods getGoodsById(int id) {
         return null;
     }
-
-    *//**
-     * 购物车商品列表
-     *
-     * @param ids
-     * @return
-     *//*
+    /**
+     * 轮播图片列表
+     */
     @Override
-    public List<Goods> getSelectedGoods(int[] ids) {
+    public List<Goods> getGoodsPictureCircle() {
         return null;
     }
-
-    *//**
-     * 删除购物车中商品
-     *
-     * @param id
-     * @return
-     *//*
+    /**
+     * （首页猜你喜欢）
+     * @param babyName          宝宝姓名
+     * @param babyBirthday      宝宝生日
+     * @param gender            宝宝性别
+     * @param hobby             爱好
+     * @param page              页码
+     * @param pageSize          一页大小
+     * @return                  商品集合，分页
+     */
     @Override
-    public List<Goods> deleteShoppingCarGoods(int id) {
+    public PageVO<GoodsVO> goodsListGuess(String babyName, String babyBirthday, Gender gender, String hobby, int page, int pageSize) {
         return null;
-    }*/
-
-    /*@Override
-    public List<Goods> getGoodsListByTable(Map<String, String> babyInfoMap, int page, int size) {
-        String babyHobby = babyInfoMap.get("babyHobby");
-        System.out.println("--------babyHobby："+babyHobby);
-        return this.getGoodsListLikeTitle(babyHobby, page, size);
-    }*/
+    }
+    /**
+     * 保存商品
+     * @param newGoods        商品对象，需包含用户ID
+     * @return                保存的商品对象
+     */
+    @Override
+    public Goods saveOne(Goods newGoods) {
+        return null;
+    }
 }

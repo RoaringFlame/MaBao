@@ -23,13 +23,11 @@ import java.util.List;
 @Service
 public class GoodsTypeServiceImpl implements GoodsTypeService {
 
-
     @Autowired
     private GoodsRepository goodsRepository;
 
     /**
      * 查询下拉框所用的商品类型列表
-     *
      * @return Selector集合
      */
     public List<Selector> getAllGoodsTypeForSelector() {

@@ -21,4 +21,23 @@ public class ShoppingServiceImpl implements ShoppingService {
     public List<Goods> deleteShoppingCartGoods(Integer userId, String ids){
         return null;
     }
+    /**
+     * 购物车添加商品
+     * @param userId        用户ID
+     * @param goodsId       商品ID
+     * @return              商品list
+     */
+    @Override
+    public List<Goods> addCartGoods(int userId, int goodsId) {
+        return null;
+    }
+    /**
+     * 用户购物车中商品列表
+     * @param userId            用户ID
+     * @return                  商品list
+     */
+    @Override
+    public List<Goods> findShoppingCartGoods(Integer userId) {
+        return null;
+    }
 }
