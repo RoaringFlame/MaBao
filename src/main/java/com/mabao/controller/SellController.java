@@ -1,11 +1,17 @@
 package com.mabao.controller;
 
+import com.mabao.enums.Gender;
+import com.mabao.pojo.Address;
 import com.mabao.pojo.Goods;
+import com.mabao.service.AddressService;
 import com.mabao.service.GoodsService;
+import com.mabao.service.GoodsTypeService;
+import com.mabao.util.Selector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +29,28 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class SellController {
     @Autowired
     private GoodsService goodsService;
+    @Autowired
+    private AddressService addressService;
+    @Autowired
+    private GoodsTypeService goodsTypeService;
+
+    /**
+     * 自助发布宝物页下拉菜单
+     * @param model             map
+     * @return                  自助发布宝物页
+     */
+    @RequestMapping(value = "/releaseSelector",method = GET)
+    public String releaseGoodsSelector(Model model){
+        Map<String,Object> map = new HashMap<>();
+        //商品类型
+        List<Selector> goodsTypeList = this.goodsTypeService.getAllGoodsTypeForSelector();
+        map.put("goodsType",goodsTypeList);
+        //适合宝宝
+        List<Selector> gender = Gender.toList();
+        map.put("gender",gender);
+        model.addAllAttributes(map);
+        return "selfup";
+    }
 
     /**
      * 自助发布宝物
@@ -32,12 +60,29 @@ public class SellController {
      * @return                  寄售成功页
      */
     @RequestMapping(value = "/release",method = POST)
-    public String shoppingCarGoodsAdd(Goods newGoods,Model model){
-//      Goods result =  this.goodsService.saveOne(newGoods);
-        String  result = this.goodsService.saveOne(newGoods) != null ? "success" : "false";
-        model.addAttribute("result",result);
-        return "consignment-success";
+    public String releaseGoods(Goods newGoods,Model model){
+/*      Goods result =  this.goodsService.saveOne(newGoods);
+        String result = this.goodsService.saveOne(newGoods) != null ? "success" : "failure";
+        model.addAttribute("result",result);*/
+        if (this.goodsService.saveOne(newGoods) != null){
+            return "publish_success";
+        }else {
+            return "publish_failure";
+        }
     }
+
+    /**
+     * 寄售
+     * (添加售货地址)
+     * @param address               地址对象，需包含用户ID
+     * @return                      添加结果页面
+     */
+    @RequestMapping(value = "/receiptPlaceAdd",method = POST)
+    public String addReceiptPlace(@RequestParam Address address){
+        Address adr = this.addressService.addReceiptPlace(address);
+        return adr != null ? "consignment_success" : "consignment_failure";
+    }
+
 
 }
 

@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_type")
-public class Type {
+public class GoodsType {
     private Integer id;                              //一级分类Id
     private String typeName;                         //一级分类名称
     private String typeList;                         //二级分类列表
