@@ -3,6 +3,7 @@ package com.mabao.service;
 import com.mabao.controller.vo.GoodsVO;
 import com.mabao.controller.vo.PageVO;
 import com.mabao.pojo.Goods;
+import com.mabao.util.Selector;
 import org.springframework.data.domain.Page;
 ;
 import java.util.List;
@@ -28,11 +29,11 @@ public interface GoodsService {
     /*
    *查询搜索栏内容
     */
-    public List<Goods> getGoodsListLikeTitle(String  title, int page, int size);
+    public List<Goods> getGoodsListLikeTitle(String title, int page, int size);
     /*
    *查询列表选择类型
     */
-    public List<Goods> getGoodsListByTypeName(String  typeName,int page, int size);
+    public List<Goods> getGoodsListByTypeName(String typeName, int page, int size);
     /*
    *查询商品详细信息
     */
@@ -50,6 +51,7 @@ public interface GoodsService {
      * @param size
      * @return
      */
+<<<<<<< Updated upstream
     public List<Goods> getGoodsListByTable(Map babyInfoMap, int page, int size);
     /**
      * 商品加入购物车
@@ -57,12 +59,26 @@ public interface GoodsService {
      * @return
      */
     public List<Goods> addshoppingCarGoods(int id);
+=======
+    List<Goods> getGoodsListByTable(Map<String, String> babyInfoMap, int page, int size);
+    /**
+     * 商品列表
+     * @param keyText
+     * @param map
+     * @param searchTypeId
+     * @param page
+     * @param size
+     * @return
+     */
+    public List<Goods> getGoodsList(String keyText, Map map, int searchTypeId, int page, int size);
+>>>>>>> Stashed changes
     /**
      * 购物车商品列表
      * @param ids
      * @return
      */
     public List<Goods> getSelectedGoods(int[] ids);
+<<<<<<< Updated upstream
     /**
      * 删除购物车中商品
      * @param id
@@ -70,4 +86,6 @@ public interface GoodsService {
      */
     public List<Goods> deleteShoppingCarGoods(int id);
 
+=======
+>>>>>>> Stashed changes
 }

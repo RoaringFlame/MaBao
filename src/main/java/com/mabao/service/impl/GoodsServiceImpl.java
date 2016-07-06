@@ -101,4 +101,14 @@ public class GoodsServiceImpl implements GoodsService {
         System.out.println("--------babyHobby："+babyHobby);
         return this.getGoodsListLikeTitle(babyHobby, page, size);
     }
+
+    @Override
+    public List<Goods> getGoodsList(String keyText, Map map, int searchTypeId, int page, int size) {
+        return null;
+    }
+
+    @Override
+    public List<Goods> getSelectedGoods(int[] ids) {
+        return null;
+    }
 }

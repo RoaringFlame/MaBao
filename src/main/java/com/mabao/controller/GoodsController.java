@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 
 @Controller
@@ -25,15 +24,25 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
+<<<<<<< Updated upstream
     @RequestMapping(value = "/goodsDetail", method = GET)
     public String goodsDetail(int id, Model model) {
         Map<String, Object> map = new HashMap<String, Object>();
         //商品详情
+=======
+
+
+    @RequestMapping(value = "/goodsDetail", method = GET)
+    public String goodsDetail(int id, Model model) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        //商品列表
+>>>>>>> Stashed changes
         Goods goods = this.goodsService.getGoodsListById(id);
         map.put("goods", goods);
         model.addAllAttributes(map);
         return "detail";
     }
+<<<<<<< Updated upstream
     @RequestMapping(value = "shoppingCarGoodsAdd",method = GET)
     public String shoppingCarGoodsAdd(int id,Model model){
         Map<String,Object> map=new HashMap<>();
@@ -52,9 +61,20 @@ public class GoodsController {
         //购物车商品列表
         List<Goods> selectedGoodsList = this.goodsService.getSelectedGoods(ids);
         map.put("selectedGoodsList", selectedGoodsList);
+=======
+    @RequestMapping(value = "/goodsList",method = GET)
+    public String goodsList(HttpServletRequest request, int searchTypeId, int page, int size, Model model){
+        String keyText=request.getParameter("search");
+        Map typeMap = request.getParameterMap();
+        Map<String,Object> map=new HashMap<>();
+        //商品列表
+        List<Goods> goodsList=this.goodsService.getGoodsList(keyText,typeMap,searchTypeId,page,size);
+        map.put("goodsList",goodsList);
+>>>>>>> Stashed changes
         model.addAllAttributes(map);
         return "shopping";
     }
+<<<<<<< Updated upstream
     /**
      * 删除购物车商品
      * @param id
@@ -67,8 +87,18 @@ public class GoodsController {
         //删除是商品后购物车列表
         List<Goods> goodsList =this.goodsService.deleteShoppingCarGoods(id);
         map.put("goodsList",goodsList);
+=======
+    @RequestMapping(value = "/shoppingCar",method = GET)
+    public String getShoppingCar(int[] ids, Model model) {
+        Map<String, Object> map = new HashMap<>();
+        //购物车商品列表
+        List<Goods> selectedGoodsList = this.goodsService.getSelectedGoods(ids);
+        map.put("selectedGoodsList", selectedGoodsList);
+>>>>>>> Stashed changes
         model.addAllAttributes(map);
         return "shopping";
     }
+}
+
 }
 

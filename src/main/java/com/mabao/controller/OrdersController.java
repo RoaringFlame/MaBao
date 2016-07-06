@@ -14,7 +14,12 @@ import java.util.Map;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
+<<<<<<< Updated upstream
  * Created by maxu on 2016/6/30.
+=======
+ * Created by xiaokaineng on 2016/6/30.
+ * 订单确认页面
+>>>>>>> Stashed changes
  */
 @Controller
 @RequestMapping("/orders")

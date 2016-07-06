@@ -29,6 +29,10 @@ public class HomeController {
     public HomeController() {
     }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     @RequestMapping(method = GET)
     public String home(@RequestParam(value = "page", defaultValue = "0") int page,
                        @RequestParam(value = "size", defaultValue = "4") int pageSize,
@@ -81,9 +85,14 @@ public class HomeController {
     @RequestMapping(value = "/goodsTable",method = POST)
     public String goodsTable(HttpServletRequest request, Model model){
         Map<String,Object> map= new HashMap<>();
+<<<<<<< Updated upstream
         //获取表单的内容
         Map babyInfoMap=request.getParameterMap();
         //跟根据表单查询商品列表
+=======
+        Map babyInfoMap=request.getParameterMap();
+        //商品列表
+>>>>>>> Stashed changes
         List<Goods> goodsList=this.goodsService.getGoodsListByTable(babyInfoMap,0,4);
         map.put("goodsList",goodsList);
         model.addAllAttributes(map);
@@ -91,4 +100,23 @@ public class HomeController {
     }
 
 
+    @RequestMapping(value ="/goodsType",method = GET)
+    public String goodsType(String typeName,int page, int size,Model model){
+        Map<String,Object> map=new HashMap<String, Object>();
+        //商品列表
+        List<Goods> goodsList=this.goodsService.getGoodsListByTypeName(typeName,page,size);
+        map.put("goodsList",goodsList);
+        model.addAllAttributes(map);
+        return "index_list";
+    }
+
+    @RequestMapping(value = "/goodsTime",method = GET)
+    public String goodsTime(int page, int size,Model model) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        //商品列表
+        List<Goods> goodsList = this.goodsService.getGoodsListByTime(page, size);
+        map.put("goodsList", goodsList);
+        model.addAllAttributes(map);
+        return "index_list";
+    }
 }
