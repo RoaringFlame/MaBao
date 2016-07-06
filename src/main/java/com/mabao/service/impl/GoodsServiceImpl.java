@@ -64,7 +64,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public List<Goods> getGoodsListByCircle() {
-        List<Goods> list = new ArrayList();
+        List<Goods> list = new ArrayList<>();
         list.add(goodsRepository.findOne((long) 30));
         list.add(goodsRepository.findOne((long) 31));
         list.add(goodsRepository.findOne((long) 32));
@@ -95,10 +95,67 @@ public class GoodsServiceImpl implements GoodsService {
         return pageVO;
     }
 
+    /**
+     * 查询猜你喜欢
+     *
+     * @param babyInfoMap
+     * @param page
+     * @param size
+     * @return
+     */
     @Override
-    public List<Goods> getGoodsListByTable(Map<String, String> babyInfoMap, int page, int size) {
+    public List<Goods> getGoodsListByTable(Map babyInfoMap, int page, int size) {
+        return null;
+    }
+
+    /**
+     * 查询猜你喜欢
+     *
+     * @param babyInfoMap
+     * @param page
+     * @param size
+     * @return
+     */
+  /*  public List<Goods> getGoodsListByTable(Map babyInfoMap, int page, int size) {
+        return null;
+    }*/
+
+    /**
+     * 商品加入购物车
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Goods> addshoppingCarGoods(int id) {
+        return null;
+    }
+
+    /**
+     * 购物车商品列表
+     *
+     * @param ids
+     * @return
+     */
+    @Override
+    public List<Goods> getSelectedGoods(int[] ids) {
+        return null;
+    }
+
+    /**
+     * 删除购物车中商品
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Goods> deleteShoppingCarGoods(int id) {
+        return null;
+    }
+
+   /* public List<Goods> getGoodsListByTable(Map<String, String> babyInfoMap, int page, int size) {
         String babyHobby = babyInfoMap.get("babyHobby");
         System.out.println("--------babyHobby："+babyHobby);
         return this.getGoodsListLikeTitle(babyHobby, page, size);
-    }
+    }*/
 }
