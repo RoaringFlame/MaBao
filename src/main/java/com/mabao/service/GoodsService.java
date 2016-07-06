@@ -53,4 +53,11 @@ public interface GoodsService {
      * @return                保存的商品对象
      */
     Goods saveOne(Goods newGoods);
+
+    /**
+     * 根据商品ID查商品list
+     * @param goodsIdList           商品ID集合
+     * @return                      商品list
+     */
+    List<Goods> findGoodsByIdIn(List<Integer> goodsIdList);
 }

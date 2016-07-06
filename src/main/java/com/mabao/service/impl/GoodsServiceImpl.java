@@ -78,4 +78,13 @@ public class GoodsServiceImpl implements GoodsService {
     public Goods saveOne(Goods newGoods) {
         return null;
     }
+    /**
+     * 根据商品ID查商品list
+     * @param goodsIdList           商品ID集合
+     * @return                      商品list
+     */
+    @Override
+    public List<Goods> findGoodsByIdIn(List<Integer> goodsIdList) {
+        return null;
+    }
 }
