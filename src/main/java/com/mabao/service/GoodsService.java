@@ -69,4 +69,5 @@ public interface GoodsService {
      */
     public List<Goods> deleteShoppingCarGoods(int id);
 
+    Goods saveOne(Goods newGoods);
 }

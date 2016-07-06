@@ -30,6 +30,8 @@
     </style>
 </head>
 <body>
+主页存在问题，待修复
+<%--
 <section class="header-top" id="header-top">
 
     <div class="fanhui"><a href="../login.html" ><img src="../../img/back.png" alt=""></a>
@@ -119,7 +121,7 @@
                                     <span><c:out value="${goods.newDegree>0?goods.newDegree+'成新':'全新'}" /></span></p>
                                 <!--商品品牌信息-->
                                 <p><c:out value="${goods.brand}"/></p>
-                                <%--<p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>--%>
+                                &lt;%&ndash;<p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>&ndash;%&gt;
                             </figcaption>
                         </figure>
                     </div>
@@ -154,7 +156,7 @@
                 </div>
             </section>
         </div>
-        <%--为按钮添加事件--%>
+        &lt;%&ndash;为按钮添加事件&ndash;%&gt;
         <script type="text/javascript">
             function formSubmit() {
                 document.babyForm.action = "/goodsTable";
@@ -202,6 +204,6 @@
     $('.carousel').carousel({
         interval: 2500
     })
-</script>
+</script>--%>
 </body>
 </html>

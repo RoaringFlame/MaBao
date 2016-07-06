@@ -24,31 +24,18 @@ public class SellController {
     private GoodsService goodsService;
 
     /**
+     * 自助发布宝物
      * 添加商品
-     * @param id            商品ID
+     * @param newGoods          商品属性，需包含用户ID
      * @param model
-     * @return              购物车页
+     * @return                  寄售成功页
      */
-    @RequestMapping(value = "/goodsAdd",method = GET)
-    public String shoppingCarGoodsAdd(int id,Model model){
-        Map<String,Object> map=new HashMap<>();
-        List<Goods> goodsList=this.goodsService.addshoppingCarGoods(id);
-        return "shoppingCar";
+    @RequestMapping(value = "/release",method = GET)
+    public String shoppingCarGoodsAdd(Goods newGoods,Model model){
+        //添加商品
+        Goods result =  this.goodsService.saveOne(newGoods);
+        return "consignment-success";
     }
-    /**
-     * 购物车展示页面
-     * @param userId            用户ID
-     * @param model
-     * @return                  购物车页
-     */
-    @RequestMapping(value = "/shoppingCar", method = GET)
-    public String getShoppingCar(Integer userId, Model model) {
-        Map<String, Object> map = new HashMap<>();
-        //购物车商品列表
-       /* List<Goods> selectedGoodsList = this.goodsService.getSelectedGoods(userId);
-        map.put("selectedGoodsList", selectedGoodsList);*/
-        model.addAllAttributes(map);
-        return "shoppingCar";
-    }
+
 }
 

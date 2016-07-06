@@ -26,14 +26,14 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
     private GoodsRepository goodsRepository;
-
-    /**
+/*
+    *//**
      * 新品
      *
      * @param page
      * @param pageSize
      * @return
-     */
+     *//*
     public List<Goods> getNewGoods(int page, int pageSize) {
         return goodsRepository.findByState(true, new PageRequest(page, pageSize,
                 new Sort(Sort.Direction.DESC, "upTime"))).getContent();
@@ -74,10 +74,10 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
 
-    /**
+    *//**
      * 查询商品列表
      * @return
-     */
+     *//*
 
     public PageVO<GoodsVO> getPageVO(int page, int pageSize) {
         PageVO<GoodsVO> pageVO = new PageVO<>();
@@ -95,63 +95,63 @@ public class GoodsServiceImpl implements GoodsService {
         return pageVO;
     }
 
-    /**
+    *//**
      * 查询猜你喜欢
      *
      * @param babyInfoMap
      * @param page
      * @param size
      * @return
-     */
+     *//*
     @Override
     public List<Goods> getGoodsListByTable(Map babyInfoMap, int page, int size) {
         return null;
     }
 
-    /**
+    *//**
      * 查询猜你喜欢
      *
      * @param babyInfoMap
      * @param page
      * @param size
      * @return
-     */
-  /*  public List<Goods> getGoodsListByTable(Map babyInfoMap, int page, int size) {
+     *//*
+  *//*  public List<Goods> getGoodsListByTable(Map babyInfoMap, int page, int size) {
         return null;
-    }*/
+    }*//*
 
-    /**
+    *//**
      * 商品加入购物车
      *
      * @param id
      * @return
-     */
+     *//*
     @Override
     public List<Goods> addshoppingCarGoods(int id) {
         return null;
     }
 
-    /**
+    *//**
      * 购物车商品列表
      *
      * @param ids
      * @return
-     */
+     *//*
     @Override
     public List<Goods> getSelectedGoods(int[] ids) {
         return null;
     }
 
-    /**
+    *//**
      * 删除购物车中商品
      *
      * @param id
      * @return
-     */
+     *//*
     @Override
     public List<Goods> deleteShoppingCarGoods(int id) {
         return null;
-    }
+    }*/
 
     /*@Override
     public List<Goods> getGoodsListByTable(Map<String, String> babyInfoMap, int page, int size) {
