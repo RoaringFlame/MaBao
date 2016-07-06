@@ -16,7 +16,8 @@
 .main-tit p span{width:18rem;padding:0 1rem;float:left;color:#FF3399;font-size:1.25rem;}
 .main-tit p a{width:8rem;margin:0 1.5rem;float:right;border-radius:0.5rem;height:3rem;display:block;color:#fff;line-height:3rem;text-align:center;font-size:1.3rem;background:#999999;}
 .baby-sale{width:100%;height:22rem;border-top:0.1rem solid #787878;margin-top:1.2rem;position: relative;}
-.title{font-size:1.3rem;height:3.2rem;line-height:3.2rem;padding:0 1rem;border-bottom:0.1rem solid #BEBEBE;}
+.title{height:3.2rem;line-height:3.2rem;padding:0 1rem;border-bottom:0.1rem solid #BEBEBE;}
+.title>input{font-size:1.3rem;height:3.2rem;width:100%;line-height:3.2rem;border:none;}
 .baby-sale ul li{height:4rem;line-height:4rem;}
 .baby-sale ul li .baby{font-size:1.25rem;width:6.7rem;padding:0 0.3rem;float:left;}
 .baby-sale ul .left select{width:7rem;height:2.6rem;font-size:1.25rem;}
@@ -138,7 +139,7 @@
 .person-msg label{width:7rem;padding:0 0.5rem 0 1rem;float:left;height:2.4rem;line-height:2.4rem;margin-top:1rem;font-size:1.3rem;}
 .person-msg input{height:2.4rem;line-height:2.4rem;margin-top:1rem;width:22rem;float:left;font-size:1.3rem;text-indent:1rem;display: block;}
 .reset{width:80%;margin:0 auto;margin-top:3rem !important;height:3rem !important;}
-.reset input{width:100%;height:3.5rem;line-height:3.5rem;color:#fff;font-size:1.3rem;text-align: center;background:#E70C2D;border-radius:0.6rem;}
+.reset input{border:none;width:100%;height:3.5rem;line-height:3.5rem;color:#fff;font-size:1.3rem;text-align: center;background:#E70C2D;border-radius:0.6rem;}
 
 
 /*修改个人信息*/

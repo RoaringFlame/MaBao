@@ -33,7 +33,7 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
      * @return Selector集合
      */
     public List<Selector> getAllGoodsTypeForSelector() {
-        List<Selector> list = new ArrayList<>();
+        List<Selector> list = new ArrayList<Selector>();
         list.add(new Selector("1", "婴儿车"));
         list.add(new Selector("2", "玩具"));
         list.add(new Selector("3", "服饰鞋帽"));
@@ -63,8 +63,4 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
         }
         return pageVO;
     }
-
-
-
-
 }

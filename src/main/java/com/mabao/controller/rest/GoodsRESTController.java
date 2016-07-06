@@ -28,5 +28,4 @@ public class GoodsRESTController {
     public PageVO<GoodsVO> goodsList(int page,int pageSize) {
         return this.goodsService.getPageVO(page, pageSize);
     }
-
 }

@@ -21,7 +21,8 @@
 </head>
 <body>
 	<section class="header-top">
-    	<div class="fanhui"><a href="index_liu.jsp" ><img src="/img/back.png" alt=""></a><a href="index_liu.jsp" class="tiaozhuan">返回</a></div>
+    	<div class="fanhui"><a href="index_liu.jsp" ><img src="/img/back.png" alt=""></a>
+			<a href="index_liu.jsp" class="tiaozhuan">返回</a></div>
     	<div class="shouye"><p>宝物详情</p></div>
     </section>
 
@@ -41,12 +42,12 @@
 		<div class="baobei-intro-p p-2"><div>宝物品牌&nbsp;:</div><div><c:out value="${goods.brand}" /></div></div>
 		<div class="baobei-intro-p p-3"><div>购买日期&nbsp;:</div><div>
 			<fmt:formatDate value="${goods.upTime}" type="date" pattern="yyyy/MM/dd" /></div><div>
-			新旧程度&nbsp;:</div><div><c:out value="${goods.newDegree>0?goods.newDegree+'成':'全新'}" /></div></div>
+			新旧程度&nbsp;:</div><div><c:out value="${goods.newDegree>0?goods.newDegree+'成新':'全新'}" /></div></div>
 		<div class="baobei-intro-p p-4"><div> 宝物尺码&nbsp;:</div><div><c:out value="${goods.size}" /><div></div>
 			包装&nbsp;：</div><div><c:out value="${goods.pack?'有':'无'}" /></div><div>
 			小票&nbsp;：</div><div><c:out value="${goods.receipt?'有':'无'}"/></div></div>
 		<div class="baobei-intro-p p-5"><div>卖家分享&nbsp;:</div><div><c:out value="${goods.message}" /></div></div>
-	    <div class="baobei-intro-p p-6"><div>宝物图片&nbsp;:</div><div><img src="/upload/detail.png" alt=""></div></div>
+	    <div class="baobei-intro-p p-6"><div>宝物图片&nbsp;:</div><div><img src="../../upload/detail.png" alt=""></div></div>
 	</div>
 	
 	<section class="operate">
@@ -56,17 +57,7 @@
     	</div>
 		<input type="button" name="button" class="button" value="我要转让" onclick=location.href="consignment.html">
 	</section>
-	<!--  <script type="text/javascript">
-		 $(function () {
-		 	var goodID=switchNum(window.location.search);
-		 	function switchNum(str){
-			 	return parseInt(str.replace(/[^0-9]/ig, "")); 				
-		 	}
-		 	console.log(goodID);
-		 	// $.post("请求页面",{id:goodID},function(data,status){return data;});
-		 });
-	</script>
-	<script type="text/javascript" src="js/detail.js"></script>-->
+
 	<script type="text/javascript">
        $("#toShop").click(function(){
          window.location.href="http://localhost:8080/mb/ShoppingServlet?method=saveToShop&id="+<c:out value="${goods.id}" />;
