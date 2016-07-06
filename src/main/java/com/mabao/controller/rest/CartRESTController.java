@@ -15,7 +15,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @RequestMapping(value = "/goods")
-public class ShoppingCartRESTController {
+public class CartRESTController {
     @Autowired
     private ShoppingService shoppingService;
 

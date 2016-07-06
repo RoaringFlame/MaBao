@@ -19,7 +19,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  */
 @Controller
 @RequestMapping("/shoppingCar")
-public class ShoppingCarController {
+public class CartController {
     @Autowired
     private GoodsService goodsService;
 
