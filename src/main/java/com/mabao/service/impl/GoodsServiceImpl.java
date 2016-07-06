@@ -1,9 +1,9 @@
 package com.mabao.service.impl;
 
 import com.mabao.controller.vo.GoodsVO;
-import com.mabao.controller.vo.PageVO;
+import com.mabao.util.PageVO;
 import com.mabao.pojo.Goods;
-import com.mabao.repository.service.GoodsRepository;
+import com.mabao.repository.GoodsRepository;
 import com.mabao.service.GoodsService;
 import com.mabao.util.Goods2GoodVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,9 +96,30 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public List<Goods> getGoodsListByTable(Map babyInfoMap, int page, int size) {
+        return null;
+    }
+
+
+    @Override
+    public List<Goods> addshoppingCarGoods(int id) {
+        return null;
+    }
+
+    @Override
+    public List<Goods> getSelectedGoods(int[] ids) {
+        return null;
+    }
+
+    @Override
+    public List<Goods> deleteShoppingCarGoods(int id) {
+        return null;
+    }
+
+    /*@Override
     public List<Goods> getGoodsListByTable(Map<String, String> babyInfoMap, int page, int size) {
         String babyHobby = babyInfoMap.get("babyHobby");
         System.out.println("--------babyHobby："+babyHobby);
         return this.getGoodsListLikeTitle(babyHobby, page, size);
-    }
+    }*/
 }

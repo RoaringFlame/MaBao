@@ -34,41 +34,6 @@ public class GoodsController {
         model.addAllAttributes(map);
         return "detail";
     }
-    @RequestMapping(value = "shoppingCarGoodsAdd",method = GET)
-    public String shoppingCarGoodsAdd(int id,Model model){
-        Map<String,Object> map=new HashMap<>();
-        List<Goods> goodsList=this.goodsService.addshoppingCarGoods(id);
-        return "shopping";
-    }
-    /**
-     * 购物车页面
-     * @param ids
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/shoppingCar", method = GET)
-    public String getShoppingCar(int[] ids, Model model) {
-        Map<String, Object> map = new HashMap<>();
-        //购物车商品列表
-        List<Goods> selectedGoodsList = this.goodsService.getSelectedGoods(ids);
-        map.put("selectedGoodsList", selectedGoodsList);
-        model.addAllAttributes(map);
-        return "shopping";
-    }
-    /**
-     * 删除购物车商品
-     * @param id
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/deleteShoppingCarGoods", method = GET)
-    public String deleteShoppingCarGoods(int id,Model model) {
-        Map<String, Object> map = new HashMap<>();
-        //删除是商品后购物车列表
-        List<Goods> goodsList =this.goodsService.deleteShoppingCarGoods(id);
-        map.put("goodsList",goodsList);
-        model.addAllAttributes(map);
-        return "shopping";
-    }
+
 }
 

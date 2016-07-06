@@ -1,20 +1,16 @@
 package com.mabao.pojo;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.mabao.util.CustomDateSerializer;
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Entity
 @Table(name = "t_type")
 public class Type {
-    private Integer id;                              //商品编号，自增
-    private String typeName;                         //商品归属者编号，后台用户编号为0
-    private String typeList;                         //货号
+    private Integer id;                              //一级分类Id
+    private String typeName;                         //一级分类名称
+    private String typeList;                         //二级分类列表
 
     @Id
     @javax.persistence.Column(name = "id")

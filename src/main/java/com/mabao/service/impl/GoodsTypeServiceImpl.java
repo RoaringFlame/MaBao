@@ -1,9 +1,9 @@
 package com.mabao.service.impl;
 
 import com.mabao.controller.vo.GoodsVO;
-import com.mabao.controller.vo.PageVO;
+import com.mabao.util.PageVO;
 import com.mabao.pojo.Goods;
-import com.mabao.repository.service.GoodsRepository;
+import com.mabao.repository.GoodsRepository;
 import com.mabao.service.GoodsTypeService;
 import com.mabao.util.Selector;
 import com.mabao.util.Goods2GoodVO;

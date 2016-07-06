@@ -1,15 +1,15 @@
-package com.mabao.controller.vo;
+package com.mabao.util;
 
 import java.util.List;
 
 /**
  * Created by lies on 2016/6/30.
  */
-public class PageVO<GoodsVO> {
+public class PageVO<T> {
     private Integer currentPage;//当前页面
     private Integer pageSize;//页面总数
     private Long totalCount;//总条数
-    private List<GoodsVO> items;
+    private List<T> items;
 
     public Integer getCurrentPage() {
         return currentPage;
@@ -38,10 +38,10 @@ public class PageVO<GoodsVO> {
     public void setTotalCount(Long totalCount) {
         this.totalCount = totalCount;
     }
-    public List<GoodsVO> getItems() {
+    public List<T> getItems() {
         return items;
     }
-    public void setItems(List<GoodsVO> items) {
+    public void setItems(List<T> items) {
         this.items = items;
     }
 }

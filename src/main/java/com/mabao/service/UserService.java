@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by maxu on 2016/7/1.
  */
-public interface UsersService {
+public interface UserService {
     /**
      * 显示当前用户的所有收货地址
      * @return

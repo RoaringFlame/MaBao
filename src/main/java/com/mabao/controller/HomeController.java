@@ -29,6 +29,14 @@ public class HomeController {
     public HomeController() {
     }
 
+    /**
+     * 首页
+     * （查询商品类别，轮播图片，新品列表）
+     * @param page          页码
+     * @param pageSize      页面大小
+     * @param model         map集合
+     * @return              index首页
+     */
     @RequestMapping(method = GET)
     public String home(@RequestParam(value = "page", defaultValue = "0") int page,
                        @RequestParam(value = "size", defaultValue = "4") int pageSize,
@@ -47,19 +55,45 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping(value = "/goodsTitle", method = POST)
-    public String goodsTitle(HttpServletRequest request, Model model) {
+    /**
+     * 首页商品模糊搜索
+     * @param searchKey         关键字
+     * @param model             商品列表map
+     * @return                  商品列表页面
+     */
+    @RequestMapping(value = "/goods/search", method = GET)
+    public String goodsTitle(@RequestParam(value = "searchKey") String searchKey,
+                             @RequestParam(value = "page", defaultValue = "0") int page,
+                             @RequestParam(value = "size", defaultValue = "4") int pageSize,
+                             Model model) {
         Map<String, Object> map = new HashMap<>();
-        //获取搜索框的内容
-        String title = request.getParameter("search");
-        //根据搜索框查询商品列表
-        List<Goods> goodsList = this.goodsService.getGoodsListLikeTitle(title,0,4);
+        List<Goods> goodsList = this.goodsService.getGoodsListLikeTitle(searchKey,page,pageSize);
         map.put("goodsList", goodsList);
         model.addAllAttributes(map);
         return "index_list";
     }
 
-    @RequestMapping(value = "/goodsTime", method = GET)
+    /**
+     * 商品类型查询商品
+     * @param typeName          商品类型名
+     * @param page              页码
+     * @param pageSize          一页数量
+     * @param model             商品list
+     * @return                  index_list页
+     */
+    @RequestMapping(value = "/goods/goodsType", method = GET)
+    public String goodsType(@RequestParam(value = "typeName") String typeName,
+                            @RequestParam(value = "page", defaultValue = "0") int page,
+                            @RequestParam(value = "size", defaultValue = "4") int pageSize,
+                            Model model) {
+        Map<String, Object> map = new HashMap<>();
+        List<Goods> goodsList = this.goodsService.getGoodsListByTypeName(typeName, page, pageSize);
+        map.put("goodsList", goodsList);
+        model.addAllAttributes(map);
+        return "index_list";
+    }
+
+    /*@RequestMapping(value = "/goodsTime", method = GET)
     public String goodsTime(int page, int size, Model model) {
         Map<String, Object> map = new HashMap<String, Object>();
         //新品商品列表
@@ -67,18 +101,10 @@ public class HomeController {
         map.put("goodsList", goodsList);
         model.addAllAttributes(map);
         return "index_list";
-    }
+    }*/
 
-    @RequestMapping(value = "/goodsType", method = GET)
-    public String goodsType(String typeName, int page, int size, Model model) {
-        Map<String, Object> map = new HashMap<String, Object>();
-        //商品列表
-        List<Goods> goodsList = this.goodsService.getGoodsListByTypeName(typeName, page, size);
-        map.put("goodsList", goodsList);
-        model.addAllAttributes(map);
-        return "index_list";
-    }
-    @RequestMapping(value = "/goodsTable",method = POST)
+
+    /*@RequestMapping(value = "/goodsTable",method = POST)
     public String goodsTable(HttpServletRequest request, Model model){
         Map<String,Object> map= new HashMap<>();
         //获取表单的内容
@@ -88,7 +114,8 @@ public class HomeController {
         map.put("goodsList",goodsList);
         model.addAllAttributes(map);
         return "index_list";
-    }
+    }*/
+
 
 
 }

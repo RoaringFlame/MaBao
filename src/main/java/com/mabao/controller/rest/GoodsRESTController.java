@@ -1,7 +1,7 @@
 package com.mabao.controller.rest;
 
 import com.mabao.controller.vo.GoodsVO;
-import com.mabao.controller.vo.PageVO;
+import com.mabao.util.PageVO;
 import com.mabao.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -18,10 +18,15 @@ public class GoodsRESTController {
     @Autowired
     private GoodsService goodsService;
 
-    @RequestMapping(value = "/goodsList",method = RequestMethod.GET,produces = "application/json;charset:UTF-8")
-    public PageVO<GoodsVO> goodsList(int page,int size,Model model) {
-        PageVO<GoodsVO> pageVO=this.goodsService.getPageVO(page, size);
-        return pageVO;
+    /**
+     * （首页猜你喜欢）
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping(value = "/goodsLike",method = RequestMethod.POST,produces = "application/json;charset:UTF-8")
+    public PageVO<GoodsVO> goodsList(int page,int pageSize) {
+        return this.goodsService.getPageVO(page, pageSize);
     }
 
 }

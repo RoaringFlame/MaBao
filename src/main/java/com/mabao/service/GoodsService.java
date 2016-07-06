@@ -1,9 +1,8 @@
 package com.mabao.service;
 
 import com.mabao.controller.vo.GoodsVO;
-import com.mabao.controller.vo.PageVO;
+import com.mabao.util.PageVO;
 import com.mabao.pojo.Goods;
-import org.springframework.data.domain.Page;
 ;
 import java.util.List;
 import java.util.Map;
