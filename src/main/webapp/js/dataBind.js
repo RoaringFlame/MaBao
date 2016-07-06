@@ -206,7 +206,6 @@ $(function(){
                           window.location.href="detail.html?id="+good.id; })
                           )
               })
-           
          }
 
 //按照分类搜索商品初始化

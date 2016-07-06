@@ -161,7 +161,8 @@
     <section id="btnLoadMore" class="main-cons" style="display:block">
         <div id="main-cons"></div>
         <div id="pullUp">
-            <span class="pullUpIcon"></span><span id="loadMore" class="pullUpLabel">加载更多</span>
+            <span class="pullUpIcon"></span>
+            <span id="loadMore" class="pullUpLabel">加载更多</span>
         </div>
     </section>
 

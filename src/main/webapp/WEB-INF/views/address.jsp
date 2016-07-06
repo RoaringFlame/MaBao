@@ -37,6 +37,7 @@
 			</div>
 			<div class="mes-right-bottom">
 				<p>${allAddress.location}</p>
+				<!--详细地址信息-->
 				<p>${allAddress.detailLocation}</p>
 			</div>
 		</div>

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +16,10 @@
 	<link rel="stylesheet" href="css/public.css">
 </head>
 <body>
+	<!--跳转到-->
  	<section class="header-top">
-    	<div class="fanhui"><a href="address.html" ><img src="img/back.png" alt=""></a><a href="address.html" class="tiaozhuan">返回</a></div>
+    	<div class="fanhui"><a onclick=window.location.href="/user/allAddress" ><img src="img/back.png" alt=""></a>
+			<a href="/user/allAddress" class="tiaozhuan">返回</a></div>
     	<div class="shouye"><p>新增地址</p></div>
     </section>
 	<div class="mesgbox1">
@@ -26,7 +29,7 @@
 	<textarea name="" id="" placeholder="详细地址"></textarea>
 	</div>
 	<div class="foot-input1">
-		<input type="button" value="提交" onclick=window.location.href="address.html">
+		<input type="button" value="提交" onclick=window.location.href="/user/allAddress">
 	</div>
 	
 </body>

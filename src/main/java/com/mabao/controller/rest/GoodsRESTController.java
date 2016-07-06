@@ -23,5 +23,4 @@ public class GoodsRESTController {
         PageVO<GoodsVO> pageVO=this.goodsService.getPageVO(page, size);
         return pageVO;
     }
-
 }
