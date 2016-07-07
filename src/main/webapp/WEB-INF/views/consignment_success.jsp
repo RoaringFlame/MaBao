@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +10,14 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<link rel="stylesheet" type="text/css" href="../css/public.css">
-	<link rel="stylesheet" type="text/css" href="../css/index.css">
-	<link rel="stylesheet" type="text/css" href="../css/consignment.css">
+	<link rel="stylesheet" type="text/css" href="../../css/public.css">
+	<link rel="stylesheet" type="text/css" href="../../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../../css/consignment.css">
 	<title>寄售成功</title>
 </head>
 <body>
 	 <section class="header-top">
-    	<div class="fanhui"><a href="../selfup.html" ><img src="../img/back.png" alt=""></a><a href="selfup.html" class="tiaozhuan">返回</a></div>
+    	<div class="fanhui"><a onclick="window.location.href='/sell/releaseSelector'" ><img src="../../img/back.png" alt=""></a><a href="selfup.html" class="tiaozhuan">返回</a></div>
     	<div class="shouye"><p>转让宝物</p></div>
     </section>
     <section class="message1">
@@ -28,6 +29,7 @@
     	<p>请保持电话畅通哦～</p>
     </section>
     <section class="gosearch">
-    	<input type="button" name="go" id="go" value="去逛逛" onclick=window.location.href="index.html">
+    	<input type="button" name="go" id="go" value="去逛逛" onclick=window.location.href="/">
     </section>
+</body>
 </html>
