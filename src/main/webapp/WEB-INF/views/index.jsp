@@ -1,13 +1,3 @@
-
-<%--
-  Created by IntelliJ IDEA.
-  User: Emma-pc
-  Date: 2016/7/5
-  Time: 9:27
-  To change this template use File | Settings | File Templates.
---%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +21,6 @@
 </head>
 <body>
 主页存在问题，待修复
-<%--
 <section class="header-top" id="header-top">
 
     <div class="fanhui"><a href="../login.html" ><img src="../../img/back.png" alt=""></a>
@@ -121,7 +110,7 @@
                                     <span><c:out value="${goods.newDegree>0?goods.newDegree+'成新':'全新'}" /></span></p>
                                 <!--商品品牌信息-->
                                 <p><c:out value="${goods.brand}"/></p>
-                                &lt;%&ndash;<p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>&ndash;%&gt;
+                                <%--<p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>--%>
                             </figcaption>
                         </figure>
                     </div>
@@ -156,7 +145,7 @@
                 </div>
             </section>
         </div>
-        &lt;%&ndash;为按钮添加事件&ndash;%&gt;
+        <%--为按钮添加事件--%>
         <script type="text/javascript">
             function formSubmit() {
                 document.babyForm.action = "/goodsTable";
@@ -193,17 +182,16 @@
 </div>
 
 
-<script type="text/javascript" src="../js/jquery.1.10.2.js"></script>
-<script type="text/javascript" src="../js/dataBind.js"></script>
-<script type="text/javascript" src="../js/hhSwipe.js"></script>
-<script type="text/javascript" src="../js/iscroll.js"></script>
-<script type="text/javascript" src="../js/analyPara.js"></script>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.1.10.2.js"></script>
+<script type="text/javascript" src="../../js/dataBind.js"></script>
+<script type="text/javascript" src="../../js/hhSwipe.js"></script>
+<script type="text/javascript" src="../../js/iscroll.js"></script>
+<script type="text/javascript" src="../../js/analyPara.js"></script>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
 <script>
     $('.carousel').carousel({
         interval: 2500
     })
-</script>--%>
-</body>
+</script>
 </html>
