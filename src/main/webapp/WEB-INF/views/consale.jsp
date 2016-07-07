@@ -29,7 +29,7 @@
     		<input type="text" placeholder="收件人" name="recipients">
     		<input type="text" maxlength="11" placeholder="手机号" name="tel">
     		<input type="text" placeholder="所在地" name="location">
-    		<input type="text" placeholder="详细地址" name="state">
+    		<input type="text" placeholder="详细地址" name="address">
 			</form>
     	</section>
     	<section class="server">

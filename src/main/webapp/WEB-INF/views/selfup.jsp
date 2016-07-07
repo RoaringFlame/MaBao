@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,20 +11,20 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="../css/public.css">
-    <link rel="stylesheet" href="../css/res.css">
-    <link href="../css/bootstrap-switch.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/public.css">
+    <link rel="stylesheet" href="../../css/res.css">
+    <link href="../../css/bootstrap-switch.css" rel="stylesheet">
 </head>
 <body> 
     <section class="header-top">
-        <div class="fanhui"><a href="consignment.html" ><img src="../img/back.png" alt=""></a><a href="consignment.html" class="tiaozhuan">返回</a></div>
+        <div class="fanhui"><a onclick="window.location.href='consignment.jsp'" ><img src="../../img/back.png" alt=""></a><a onclick="window.location.href='consignment.jsp'" class="tiaozhuan">返回</a></div>
         <div class="shouye"><p>转让宝物</p></div>
     </section>
     <section class="container">
         <div class="main-tit">
         <p><span>请如实填写您的转让信息</span><a href="" class="need-a">卖家须知</a></p>
         </div>
-        <form method="" action="">
+        <form method="post">
         <section class="baby-sale">
             <div class="title">
             	<input type="text" name="title" value="宝物标题">
@@ -112,24 +113,24 @@
             <textarea name="" id="" cols="30" rows="10"></textarea>
             <div>
             <input type="file" accept="image/png,image/gif" style="display: none;" id="upimg">
-            <img src="../img/1.png" alt="" onclick="javascript:$('#upimg').click()">
-            <img src="../img/2.png" alt="">
-            <img src="../img/3.png" alt="">
+            <img src="../../img/1.png" alt="" onclick="javascript:$('#upimg').click()">
+            <img src="../../img/2.png" alt="">
+            <img src="../../img/3.png" alt="">
             </div>          
         </section>
         <div class="clear"></div>
         <section class="quick-sale">
-            <input type="submit" value="一键卖出" onclick=window.location.href="publish-success.html">
+            <input type="submit" value="一键卖出" onclick="window.location.href='/sell/release'">
         </section>
+        </form>
     </section>
-    </form>
 </body>
 </html>
 
 <!-- //按钮 -->
-<script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/bootstrap-switch.js"></script>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap-switch.js"></script>
 <script>
 $(function(argument) {
   $('[type="checkbox"]').bootstrapSwitch();
