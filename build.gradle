@@ -26,6 +26,9 @@ dependencies {
     compile "org.apache.commons:commons-lang3:$commonsLangVersion"
     compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
 
+    compile "org.springframework.security:spring-security-config:$springSecurityVersion"
+    compile "org.springframework.security:spring-security-web:$springSecurityVersion"
+
     compile "javax.servlet:jstl:$jstlVersion"
     providedCompile "javax.servlet:javax.servlet-api:$servletApiVersion"
     providedCompile "javax.servlet.jsp:jsp-api:$jspApiVersion"
