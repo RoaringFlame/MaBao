@@ -1,16 +1,16 @@
 package com.mabao.controller;
 
 import com.mabao.pojo.Address;
+import com.mabao.pojo.Baby;
 import com.mabao.service.AddressService;
-import com.mabao.service.UserService;
+import com.mabao.service.BabyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -24,6 +24,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class UserCenterController {
     @Autowired
     private AddressService addressService;
+    @Autowired
+    private BabyService babyService;
 
     /**
      * 该用户所有收货地址
@@ -71,7 +73,7 @@ public class UserCenterController {
      * @param addressId         地址ID
      * @return                  地址页
      */
-    @RequestMapping(value = "/address/deleteAddressSubmit",method = GET)
+    @RequestMapping(value = "/address/deleteAddress",method = GET)
     public String removeAddress(int addressId){
         Address Address=this.addressService.deleteAddress(addressId);
         if (Address != null){
@@ -82,4 +84,70 @@ public class UserCenterController {
     }
 
 
+
+
+    /**
+     * 查询某宝宝信息
+     * @param babyId                宝宝ID
+     * @param model                 宝宝对象
+     * @return                      编辑宝宝信息页
+     */
+    @RequestMapping(value = "baby/showBabyInfo",method = GET)
+    public String showBabyInfo(@RequestParam Long babyId,Model model){
+        Baby baby =  this.babyService.getOne(babyId);
+        if (baby != null){
+            model.addAttribute("baby",baby);
+            return "redirect:baby/changemsg";
+        }else {
+            return "baby_show_failure";
+        }
+    }
+
+
+    /**
+     * 查看某用户宝宝信息
+     * @param userId                    用户ID
+     * @param model                     宝宝LIST
+     * @return                          宝宝信息页
+     */
+    @RequestMapping(value = "baby/allBabyInfo",method = GET)
+    public String findAllBabyInfo(@RequestParam Integer userId,Model model){
+        List<Baby> babyList =  this.babyService.findBabyByUserId(userId);
+        model.addAttribute("babyList",babyList);
+        return "redirect:baby/permsg";
+
+    }
+
+    /**
+     * 新增宝宝信息
+     * @param babyInfo          宝宝对象
+     * @param model             用户ID
+     * @return                  宝宝列表接口
+     */
+    @RequestMapping(value = "baby/addBaby",method = POST)
+    public String addBabyInfo(@RequestParam Baby babyInfo,Model model){
+        Baby baby =  this.babyService.addBaby(babyInfo);
+        if (baby != null){
+            model.addAttribute("userId",baby.getUserId());
+            return "redirect:baby/allBabyInfo";//转向查询所有宝宝接口(带用户ID)
+        }else {
+            return "baby_add_failure";
+        }
+    }
+
+    /**
+     * 编辑宝宝信息
+     * @param babyInfo              宝宝对象
+     * @return                      宝宝列表接口
+     */
+    @RequestMapping(value = "baby/updateBabyInfo",method = POST)
+    public String updateBabyInfo(@RequestParam Baby babyInfo){
+        Baby baby =  this.babyService.updateBabyInfo(babyInfo);
+        if (baby != null){
+            Integer userId = baby.getUserId();
+            return "redirect:baby/allBabyInfo";//转向查询所有宝宝接口(带用户ID)
+        }else {
+            return "baby_update_failure";
+        }
+    }
 }

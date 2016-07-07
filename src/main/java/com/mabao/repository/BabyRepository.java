@@ -1,9 +1,8 @@
 package com.mabao.repository;
 
-import com.mabao.pojo.Order;
+import com.mabao.pojo.Baby;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OrderRepository extends BaseRepository<Order> {
-
+public interface BabyRepository extends BaseRepository<Baby> {
 }
