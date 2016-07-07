@@ -1,7 +1,9 @@
 package com.mabao.service.impl;
 
+import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.Goods;
 import com.mabao.service.ShoppingService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,15 +15,6 @@ import java.util.List;
 @Service
 public class ShoppingServiceImpl implements ShoppingService {
     /**
-     * 移除购物车内商品，查询该用户购物车剩余商品
-     * @param userId            用户id
-     * @param ids               商品ids
-     * @return                  商品集合
-     */
-    public List<Goods> deleteShoppingCartGoods(Integer userId, String ids){
-        return null;
-    }
-    /**
      * 购物车添加商品
      * @param userId        用户ID
      * @param goodsId       商品ID
@@ -32,12 +25,20 @@ public class ShoppingServiceImpl implements ShoppingService {
         return null;
     }
     /**
+     * 删除购物车内商品
+     * @param goodsId           商品ID
+     * @return                  结果VO
+     */
+    @Override
+    public JsonResultVO deleteCartGoods(Integer goodsId) {
+        return null;
+    }
+    /**
      * 用户购物车中商品列表
-     * @param userId            用户ID
      * @return                  商品list
      */
     @Override
-    public List<Goods> findShoppingCartGoods(Integer userId) {
+    public Page<Goods> findAllGoodsByUser() {
         return null;
     }
 }

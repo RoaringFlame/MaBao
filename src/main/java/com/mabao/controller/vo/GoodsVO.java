@@ -1,5 +1,9 @@
 package com.mabao.controller.vo;
 
+import com.mabao.pojo.Goods;
+import com.mabao.util.VoUtil;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +18,17 @@ public class GoodsVO {
     private String newDegree;//宝物新旧程度
     private String brand;//宝物品牌
 
+    public static GoodsVO generateBy(Goods goods){
+        return VoUtil.copyBasic(GoodsVO.class, goods);
+    }
+    public static List<GoodsVO> generateBy(List<Goods> goodsList){
+        List<GoodsVO> list=new ArrayList<>();
+        for (Goods g : goodsList){
+            list.add(generateBy(g));
+        }
+        return list;
+    }
+    
     public int getId() {
         return id;
     }
