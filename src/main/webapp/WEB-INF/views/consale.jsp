@@ -24,11 +24,13 @@
     <section class="container">
     	<p class="p-tit">请填写您的地址及电话，我们会安排上门收货</p>
     	<section class="msg-sale">
-    		<input type="text" placeholder="收件人">
-    		<input type="phone" placeholder="手机号">
-    		<input type="text" placeholder="所在地">
-    		<input type="text" placeholder="详细地址">
-
+			<!--通过form表单将前台数据传到后台-->
+			<form method="post">
+    		<input type="text" placeholder="收件人" name="recipients">
+    		<input type="text" maxlength="11" placeholder="手机号" name="tel">
+    		<input type="text" placeholder="所在地" name="location">
+    		<input type="text" placeholder="详细地址" name="state">
+			</form>
     	</section>
     	<section class="server">
     		<div class="server-c">
