@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +12,13 @@
 	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-	<link rel="stylesheet" href="../css/public.css">
-	<link rel="stylesheet" href="../css/buy.css">
+	<link rel="stylesheet" href="../../css/public.css">
+	<link rel="stylesheet" href="../../css/buy.css">
 </head>
 <body>
 	<section class="header-top">
-    	<div class="fanhui"><a href="pay.html" ><img src="../img/back.png" alt=""></a><a href="pay.html" class="tiaozhuan">返回</a></div>
+    	<div class="fanhui"><a href="pay.jsp" ><img src="../../img/back.png" alt=""></a>
+			<a href="pay.jsp" class="tiaozhuan">返回</a></div>
     	<div class="shouye"><p>增加售货地址</p></div>
     </section>
     <section class="container">
@@ -31,13 +33,14 @@
     	<section class="server">
     		<div class="server-c">
                 <p style="text-align: center;">寄售服务条款</p>
-                <p style="text-indent:1.5rem;">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+                <p style="text-indent:1.5rem;">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+					哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
             </div>
     		<p style="text-align: center;"><input type="checkbox" checked="true"><span class="agree">我同意寄售服务条款</span></p>
     	</section>
         <div class="clear"></div>
     	<section class="up">
-    		<input type="button" value="提交" onclick=window.location.href="consignment-success.html">
+    		<input type="button" value="提交" onclick="window.location.href='/sell/receiptPlaceAdd'">
     	</section>
     </section>
 </body>

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +10,16 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<link rel="stylesheet" type="text/css" href="../css/public.css">
-	<link rel="stylesheet" type="text/css" href="../css/index.css">
-	<link rel="stylesheet" type="text/css" href="../css/consignment.css">
+	<link rel="stylesheet" type="text/css" href="../../css/public.css">
+	<link rel="stylesheet" type="text/css" href="../../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../../css/consignment.css">
 	<title>寄售成功</title>
 </head>
 <body>
 	 <section class="header-top">
-    	<div class="fanhui"><a href="../selfup.html" ><img src="../img/back.png" alt=""></a><a href="../selfup.html" class="tiaozhuan">返回</a></div>
+    	<div class="fanhui"><a onclick="window.location.href='/sell/releaseSelector'" >
+			<img src="../../img/back.png" alt=""></a>
+			<a onclick="window.location.href='/sell/releaseSelector'">返回</a></div>
     	<div class="shouye"><p>发布成功</p></div>
     </section>
     <section class="message1">
@@ -30,6 +33,8 @@
     	<p>您可以在个人账户中查询详情及交易进度</p>
     </section>
     <section class="share">
-    	<input type="button" name="goshare" id="goshare" value="分享到朋友圈" onclick=window.location.href="index.html">
+		<!--点击分享到朋友圈跳转到首页，逻辑有问题-->
+    	<input type="button" name="goshare" id="goshare" value="分享到朋友圈" onclick=window.location.href="/">
     </section>
+</body>
 </html>
