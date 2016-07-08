@@ -109,3 +109,14 @@
 <!-- 显示删除选项 -->
 </body>
 </html>
+<script type="text/javascript" src="../js/jquery.1.10.2.js"></script>
+<script type="text/javascript" src="../js/jquery.1.10.2.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#edit").click(function(){
+            if($(this).text()=="编辑"){
+                $(".del").show();
+                $(this).html("完成");}
+        });
+    });
+</script>
