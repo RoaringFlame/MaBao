@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "t_type")
+@Table(name = "t_goods_type")
 public class GoodsType {
     private Integer id;                              //一级分类Id
     private String typeName;                         //一级分类名称

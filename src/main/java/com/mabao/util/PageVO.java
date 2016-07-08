@@ -1,47 +1,71 @@
 package com.mabao.util;
 
+import org.springframework.data.domain.Page;
+
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by lies on 2016/6/30.
- */
 public class PageVO<T> {
-    private Integer currentPage;//当前页面
-    private Integer pageSize;//页面总数
-    private Long totalCount;//总条数
-    private List<T> items;
+    private final static int DEFAULT_CURRENT_PAGE=1;
+    private final static int DEFAULT_PAGE_SIZE=4;
 
-    public Integer getCurrentPage() {
+    private Integer currentPage;            //当前页面
+    private Integer pageSize;               //页面总数
+    private Long totalRow;                  //总条数
+    private List<T> items;
+    public PageVO(){
+        this.currentPage=DEFAULT_CURRENT_PAGE;
+        this.pageSize=DEFAULT_PAGE_SIZE;
+        this.items=new ArrayList<>();
+    }
+
+    public PageVO<T> toPage(Page page){
+        this.setCurrentPage(page.getNumber());
+        this.setPageSize(page.getSize());
+        this.setTotalRow(page.getTotalElements());
+        return this;
+    }
+
+    public int getCurrentPage() {
         return currentPage;
     }
-    public void setCurrentPage(Integer currentPage) {
+
+    public void setCurrentPage(int currentPage) {
         this.currentPage = currentPage;
     }
-    public Integer getPageSize() {
+
+    public int getPageSize() {
         return pageSize;
     }
-    public void setPageSize(Integer pageSize) {
+
+    public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
     }
+
+    public Long getTotalRow() {
+        return totalRow;
+    }
+
+    public void setTotalRow(Long totalRow) {
+        this.totalRow = totalRow;
+    }
+    //计算总页数
     public Integer getTotalPage() {
-        //得到总页数
-        if(this.totalCount%this.pageSize==0){
-            return Long.valueOf(this.totalCount / this.pageSize).intValue();
+        if(this.totalRow%this.pageSize==0){
+            return Long.valueOf(totalRow/pageSize).intValue();
         }
         else{
-            return Long.valueOf(this.totalCount/this.pageSize).intValue()+1;
+            return Long.valueOf(totalRow/pageSize).intValue()+1;
         }
     }
-    public Long getTotalCount() {
-        return totalCount;
-    }
-    public void setTotalCount(Long totalCount) {
-        this.totalCount = totalCount;
-    }
+
     public List<T> getItems() {
         return items;
     }
+
     public void setItems(List<T> items) {
-        this.items = items;
+        if(items!=null) {
+            this.items = items;
+        }
     }
 }

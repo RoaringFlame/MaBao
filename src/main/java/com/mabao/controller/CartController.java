@@ -37,17 +37,5 @@ public class CartController {
         model.addAttribute("cartGoodsList",goodsList);
         return "shopping";
     }
-    /**
-     * 购物车商品查询
-     * @param userId            用户ID
-     * @param model             商品list
-     * @return                  购物车页
-     */
-    @RequestMapping(value = "/shoppingCart", method = GET)
-    public String getShoppingCart(Integer userId, Model model) {
-        List<Goods> goodsList = this.shoppingService.findShoppingCartGoods(userId);
-        model.addAttribute("myShoppingCart",goodsList);
-        return "shopping";
-    }
 }
 

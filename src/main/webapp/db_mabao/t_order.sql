@@ -8,7 +8,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for t_order
 -- ----------------------------
--- DROP TABLE IF EXISTS t_order;
+DROP TABLE IF EXISTS t_order;
 CREATE TABLE t_order (
   id int(11) NOT NULL COMMENT '编号',
   buyer_id int(11) NOT NULL COMMENT '买家编号',

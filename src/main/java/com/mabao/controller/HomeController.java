@@ -1,16 +1,17 @@
 package com.mabao.controller;
 
+import com.mabao.controller.vo.GoodsVO;
 import com.mabao.enums.Gender;
 import com.mabao.pojo.Goods;
 import com.mabao.service.GoodsService;
 import com.mabao.service.GoodsTypeService;
+import com.mabao.util.PageVO;
 import com.mabao.util.Selector;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +21,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 @RequestMapping("/")
+@SessionAttributes("userId")
 public class HomeController {
     @Autowired
     private GoodsTypeService goodsTypeService;
@@ -48,8 +50,9 @@ public class HomeController {
      * @return              index首页
      */
     @RequestMapping(method = GET)
-    public String home(@RequestParam(value = "page", defaultValue = "0") int page,
-                       @RequestParam(value = "size", defaultValue = "4") int pageSize,
+    public String home(@ModelAttribute(value = "userId") Long userId,
+                       @RequestParam(value = "page", defaultValue = "0") int page,
+                       @RequestParam(value = "pageSize", defaultValue = "4") int pageSize,
                        Model model) {
         Map<String, Object> map = new HashMap<>();
         //商品类别
@@ -59,7 +62,7 @@ public class HomeController {
         List<Goods> circleList = this.goodsService.getGoodsPictureCircle();
         map.put("circleList", circleList);
         //新品商品列表
-        List<Goods> newGoods = this.goodsService.getNewGoods(page, pageSize);
+        PageVO<GoodsVO> newGoods = this.goodsService.getNewGoods(page, pageSize);
         map.put("newGoods", newGoods);
         //猜你喜欢，宝宝性别
         List<Selector> gender = Gender.toList();
@@ -68,38 +71,42 @@ public class HomeController {
         return "index";
     }
 
-    /**
+/**
      * 首页商品模糊搜索
      * @param searchKey         关键字
      * @param model             商品list
      * @return                  商品列表页面
-     */
+     *//*
+
     @RequestMapping(value = "/goods/search", method = GET)
     public String goodsSearch(@RequestParam(value = "searchKey") String searchKey,
-                             @RequestParam(value = "page", defaultValue = "0") int page,
-                             @RequestParam(value = "size", defaultValue = "4") int pageSize,
-                             Model model) {
+                              @RequestParam(value = "page", defaultValue = "0") int page,
+                              @RequestParam(value = "pageSize", defaultValue = "4") int pageSize,
+                              Model model) {
         List<Goods> goodsList = this.goodsService.goodsSearch(searchKey,page,pageSize);
         model.addAttribute("goodsList", goodsList);
         return "index_list";
     }
 
-    /**
+    */
+/**
      * 商品类型查询商品
-     * @param typeName          商品类型名
+     * @param goodsTypeId          商品类型ID
      * @param page              页码
      * @param pageSize          一页数量
      * @param model             商品list
-     * @return                  index_list页
-     */
+     * @return                  index页
+     *//*
+
     @RequestMapping(value = "/goods/goodsType", method = GET)
-    public String goodsType(@RequestParam(value = "typeName") String typeName,
+    public String goodsType(@RequestParam(value = "goodsTypeId") Long goodsTypeId,
                             @RequestParam(value = "page", defaultValue = "0") int page,
-                            @RequestParam(value = "size", defaultValue = "4") int pageSize,
+                            @RequestParam(value = "pageSize", defaultValue = "4") int pageSize,
                             Model model) {
-        List<Goods> goodsList = this.goodsService.getGoodsListByTypeName(typeName, page, pageSize);
+        Page<Goods> goodsList = this.goodsService.getGoodsListByTypeName(goodsTypeId, page, pageSize);
         model.addAttribute("goodsList", goodsList);
-        return "index_list";
+        return "index";
     }
+*/
 
 }

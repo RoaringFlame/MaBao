@@ -8,7 +8,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for t_address
 -- ----------------------------
--- DROP TABLE IF EXISTS t_address;
+DROP TABLE IF EXISTS t_address;
 CREATE TABLE t_address (
   id int(11) NOT NULL COMMENT '地址编号',
   user_id int(11) NOT NULL COMMENT '用户编号',

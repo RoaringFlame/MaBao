@@ -7,7 +7,8 @@ import java.util.Date;
 @Table(name = "t_shopping")
 public class Shopping {
     private Integer id;                         //编号
-    private String goodsAndNumList;             //商品和数量列表，以goodsId,num;形式存储
+    private Integer userId;                     //用户ID
+    private String goodsList;                   //商品列表，以goodsId,goodsId;形式存储
     private Integer totalNumber;                //商品总数量
     private Integer totalPay;                   //购物车商品总价
 
@@ -21,14 +22,23 @@ public class Shopping {
     public void setId(Integer id) {
         this.id = id;
     }
-    @Column(name = "goods_and_num_list")
-    public String getGoodsAndNumList() {
-        return goodsAndNumList;
+    @Column(name = "user_id")
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setGoodsAndNumList(String goodsAndNumList) {
-        this.goodsAndNumList = goodsAndNumList;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
+    @Column(name = "goods_and_num_list")
+    public String getGoodsList() {
+        return goodsList;
+    }
+
+    public void setGoodsList(String goodsList) {
+        this.goodsList = goodsList;
+    }
+
     @Column(name = "total_number")
     public Integer getTotalNumber() {
         return totalNumber;

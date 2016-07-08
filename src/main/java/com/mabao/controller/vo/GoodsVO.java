@@ -1,5 +1,9 @@
 package com.mabao.controller.vo;
 
+import com.mabao.pojo.Goods;
+import com.mabao.util.VoUtil;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +18,21 @@ public class GoodsVO {
     private String newDegree;//宝物新旧程度
     private String brand;//宝物品牌
 
+    public static GoodsVO generateBy(Goods goods){
+        GoodsVO vo = VoUtil.copyBasic(GoodsVO.class, goods);
+        //将数据库里用数据存储的新旧状态转换为对应string的描述语言
+        assert vo != null;
+        vo.setNewDegree(goods.getNewDegree()>0?goods.getNewDegree()+"成":"全新");
+        return vo;
+    }
+    public static List<GoodsVO> generateBy(List<Goods> goodsList){
+        List<GoodsVO> list=new ArrayList<>();
+        for (Goods g : goodsList){
+            list.add(generateBy(g));
+        }
+        return list;
+    }
+    
     public int getId() {
         return id;
     }
