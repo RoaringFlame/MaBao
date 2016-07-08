@@ -1,16 +1,7 @@
 /*
-Navicat MySQL Data Transfer
 
-Source Server         : localhost5.6
-Source Server Version : 50617
-Source Host           : localhost:3306
 Source Database       : mabao
-
-Target Server Type    : MYSQL
-Target Server Version : 50617
-File Encoding         : 65001
-
-Date: 2016-07-08 16:27:13
+Date: 2016-07-08 21:03:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -80,16 +71,16 @@ CREATE TABLE t_goods (
 -- ----------------------------
 -- Records of t_goods
 -- ----------------------------
-INSERT INTO t_goods VALUES ('1', '0', 'AX9008', '12.jpg', '适合两岁宝宝的婴儿车', '8000', '6630', '婴儿车', null, 'H&M', '2016-06-02 11:31:31', '0', 'L', '1', '1', '这是一款带有未来设计感的婴儿车', null, '100', '1');
-INSERT INTO t_goods VALUES ('2', '0', null, '1.jpg', '适合三岁宝宝的玩具', '11000', '12485', '玩具', null, 'LV', '2016-06-04 00:00:00', '0', 'XL', '1', '1', '结实，耐折腾', null, '150', '1');
-INSERT INTO t_goods VALUES ('3', '0', null, '2.jpg', '遥控车', '20000', '30000', '玩具', null, 'T&R', '2016-06-03 00:00:00', '0', 'L', '1', '1', '玩具遥控车', null, '20', '1');
-INSERT INTO t_goods VALUES ('4', '0', null, 'main-new1.png', 'H&M', '6690', '10000', '服饰鞋帽', null, 'M&D', '2016-06-05 00:00:00', '0', 'S', '1', '1', '简约，奢华', null, '10', '1');
-INSERT INTO t_goods VALUES ('5', '0', null, 'main-new2.png', 'CARDING', '28000', '35000', '服饰鞋帽', null, 'T&R', '2016-06-06 23:08:18', '0', 'L', '1', '1', '结实，耐折腾', null, '200', '1');
-INSERT INTO t_goods VALUES ('6', '0', null, '13.jpg', '板凳', '27000', '28000', '安全座椅', null, 'T&R', '2016-06-20 23:08:21', '0', 'L', '1', '1', '结实，耐折腾', null, '25', '1');
-INSERT INTO t_goods VALUES ('7', '0', null, '13.jpg', '沙发', '13000', '15000', '安全座椅', null, 'T&R', '2016-06-21 23:08:23', '0', 'S', '1', '1', '结实，耐折腾', null, '30', '0');
-INSERT INTO t_goods VALUES ('8', '0', null, '13.jpg', '轮椅', '20000', '24000', '安全座椅', null, 'T&R', '2016-06-20 23:08:26', '0', 'L', '1', '1', '结实，耐折腾', null, '35', '1');
-INSERT INTO t_goods VALUES ('9', '0', null, '14.jpg', '笔记本', '42000', '46000', '图片绘本', null, 'T&R', '2016-06-14 23:08:29', '0', 'L', '1', '1', '结实，耐折腾', null, '50', '1');
-INSERT INTO t_goods VALUES ('10', '0', null, '14.jpg', '画板', '25000', '28000', '图片绘本', null, 'T&R', '2016-06-06 23:08:33', '0', 'S', '1', '1', '结实，耐折腾', null, '80', '1');
+INSERT INTO t_goods VALUES ('1', '0', 'AX9008', '12.jpg', '适合两岁宝宝的婴儿车', '8000', '6630', '婴儿车', '1', 'H&M', '2016-06-02 11:31:31', '0', 'L', '1', '1', '这是一款带有未来设计感的婴儿车', null, '100', '1');
+INSERT INTO t_goods VALUES ('2', '0', 'AX9008', '1.jpg', '适合三岁宝宝的玩具', '11000', '12485', '玩具', '2', 'LV', '2016-06-04 00:00:00', '0', 'XL', '1', '1', '结实，耐折腾', null, '150', '1');
+INSERT INTO t_goods VALUES ('3', '0', 'AX9008', '2.jpg', '遥控车', '20000', '30000', '玩具', '2', 'T&R', '2016-06-03 00:00:00', '0', 'L', '1', '1', '玩具遥控车', null, '20', '1');
+INSERT INTO t_goods VALUES ('4', '0', null, 'main-new1.png', 'H&M', '6690', '10000', '服饰鞋帽', '3', 'M&D', '2016-06-05 00:00:00', '0', 'S', '1', '1', '简约，奢华', null, '10', '1');
+INSERT INTO t_goods VALUES ('5', '0', null, 'main-new2.png', 'CARDING', '28000', '35000', '服饰鞋帽', '3', 'T&R', '2016-06-06 23:08:18', '0', 'L', '1', '1', '结实，耐折腾', null, '200', '1');
+INSERT INTO t_goods VALUES ('6', '0', null, '13.jpg', '板凳', '27000', '28000', '安全座椅', '4', 'T&R', '2016-06-20 23:08:21', '0', 'L', '1', '1', '结实，耐折腾', null, '25', '1');
+INSERT INTO t_goods VALUES ('7', '0', null, '13.jpg', '沙发', '13000', '15000', '安全座椅', '4', 'T&R', '2016-06-21 23:08:23', '0', 'S', '1', '1', '结实，耐折腾', null, '30', '0');
+INSERT INTO t_goods VALUES ('8', '0', null, '13.jpg', '轮椅', '20000', '24000', '安全座椅', '4', 'T&R', '2016-06-20 23:08:26', '0', 'L', '1', '1', '结实，耐折腾', null, '35', '1');
+INSERT INTO t_goods VALUES ('9', '0', null, '14.jpg', '笔记本', '42000', '46000', '图片绘本', '5', 'T&R', '2016-06-14 23:08:29', '0', 'L', '1', '1', '结实，耐折腾', null, '50', '1');
+INSERT INTO t_goods VALUES ('10', '0', null, '14.jpg', '画板', '25000', '28000', '图片绘本', '5', 'T&R', '2016-06-06 23:08:33', '0', 'S', '1', '1', '结实，耐折腾', null, '80', '1');
 
 -- ----------------------------
 -- Table structure for t_goods_type
@@ -140,20 +131,37 @@ CREATE TABLE t_order (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for t_shopping
+-- Table structure for t_order_details
 -- ----------------------------
-DROP TABLE IF EXISTS t_shopping;
-CREATE TABLE t_shopping (
+DROP TABLE IF EXISTS t_order_details;
+CREATE TABLE t_order_details (
+  id int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  order_id int(11) NOT NULL COMMENT '订单ID',
+  goods_id int(11) NOT NULL COMMENT '商品ID',
+  quantity int(11) NOT NULL COMMENT '商品数量',
+  unit_cost double DEFAULT NULL COMMENT '单价',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单详情';
+
+-- ----------------------------
+-- Records of t_order_details
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for t_shopping_cart
+-- ----------------------------
+DROP TABLE IF EXISTS t_shopping_cart;
+CREATE TABLE t_shopping_cart (
   id int(11) NOT NULL COMMENT '编号',
-  user_id int(11) NOT NULL,
-  goods_list varchar(100) DEFAULT NULL COMMENT '商品列表，以goodsId,num;形式存储',
-  total_number int(11) DEFAULT NULL COMMENT '商品总数量',
-  total_pay int(11) DEFAULT NULL COMMENT '购物车商品总价',
+  user_id int(11) NOT NULL COMMENT '用户ID',
+  goods_id int(11) NOT NULL COMMENT '商品ID',
+  quantity int(11) NOT NULL COMMENT '商品数量',
+  create_time int(11) DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='购物车';
 
 -- ----------------------------
--- Records of t_shopping
+-- Records of t_shopping_cart
 -- ----------------------------
 
 -- ----------------------------
@@ -166,11 +174,12 @@ CREATE TABLE t_user (
   password varchar(255) NOT NULL COMMENT '密码',
   phone varchar(255) DEFAULT NULL COMMENT '手机',
   email varchar(255) NOT NULL COMMENT '邮箱',
-  create_time datetime DEFAULT NULL COMMENT '创建时间',
+  create_time datetime NOT NULL COMMENT '创建时间',
   picture varchar(255) DEFAULT NULL COMMENT '头像',
   PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
+INSERT INTO t_user VALUES ('1', 'test', 'test', '12347654', 'qq@qq.com', '2016-07-08 18:03:22', 'test');

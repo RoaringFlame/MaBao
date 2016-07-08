@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +28,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  */
 @Controller
 @RequestMapping("/sell")
+@SessionAttributes("userId")
 public class SellController {
     @Autowired
     private GoodsService goodsService;
@@ -33,6 +36,30 @@ public class SellController {
     private AddressService addressService;
     @Autowired
     private GoodsTypeService goodsTypeService;
+
+    /**
+     * 我要寄售
+     * (判断是否登录)
+     * @return                      添加结果页面
+     */
+    @RequestMapping(method = GET)
+    public String isLogin(HttpSession session){
+        return session.getAttribute("userId")  != null ?  "consale" : "login";
+    }
+
+    /**
+     * 寄售
+     * (添加售货地址)
+     * @param address               地址对象，需包含用户ID
+     * @return                      添加结果页面
+     */
+    @RequestMapping(value = "/receiptPlaceAdd",method = POST)
+    public String addReceiptPlace(@RequestParam Address address){
+        address.setState(true);//设为默认地址
+        Address adr = this.addressService.addAddress(address);
+        return adr != null ? "consignment_success" : "consignment_failure";
+    }
+
 
     /**
      * 自助发布宝物页下拉菜单
@@ -71,17 +98,6 @@ public class SellController {
         }
     }
 
-    /**
-     * 寄售
-     * (添加售货地址)
-     * @param address               地址对象，需包含用户ID
-     * @return                      添加结果页面
-     */
-    @RequestMapping(value = "/receiptPlaceAdd",method = POST)
-    public String addReceiptPlace(@RequestParam Address address){
-        Address adr = this.addressService.addReceiptPlace(address);
-        return adr != null ? "consignment_success" : "consignment_failure";
-    }
 
 
 }

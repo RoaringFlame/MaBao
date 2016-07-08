@@ -1,24 +1,22 @@
 package com.mabao.pojo;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "t_goods_type")
 public class GoodsType {
-    private Integer id;                              //一级分类Id
+    private Long id;                              //一级分类Id
     private String typeName;                         //一级分类名称
     private String typeList;                         //二级分类列表
 
+
     @Id
-    @javax.persistence.Column(name = "id")
-    public Integer getId() {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

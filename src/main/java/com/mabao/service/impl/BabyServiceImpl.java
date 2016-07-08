@@ -46,7 +46,7 @@ public class BabyServiceImpl implements BabyService {
      * @return                          宝宝list
      */
     @Override
-    public List<Baby> findBabyByUserId(Integer userId) {
+    public List<Baby> findBabyByUserId(Long userId) {
         return null;
     }
 }

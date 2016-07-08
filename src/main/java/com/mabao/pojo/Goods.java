@@ -3,24 +3,21 @@ package com.mabao.pojo;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.mabao.util.CustomDateSerializer;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "t_goods")
 public class Goods {
     private Long id;                                //商品编号，自增
-    private Integer userId;                         //商品归属者编号，后台用户编号为0
+    private User user;                              //商品归属者编号，后台用户编号为0
     private String articleNumber;                   //货号
     private String picture;                         //图片标签
     private String title;                           //标题
     private int oldPrice;                           //原价，用整型存储避免计算出错，存取时记得变位。
     private int price;                              //现价，用法同原价。
     private String typeName;                        //二级类型名称
-    private Integer typeId;                         //一级类型编号
+    private GoodsType type;                         //一级类型编号
     private String brand;                           //商品品牌
     private Date upTime;                            //上架时间
     private Integer newDegree;                      //新旧程度，0表示全新，95，80分别表示95成8成新
@@ -33,7 +30,7 @@ public class Goods {
     private Boolean state;                          //商品状态，1为存在，0为下架或不存在。
 
     @Id
-    @javax.persistence.Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -42,14 +39,14 @@ public class Goods {
         this.id = id;
     }
 
-    @Basic
-    @javax.persistence.Column(name = "user_id")
-    public int getUserId() {
-        return userId;
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Basic
@@ -84,22 +81,22 @@ public class Goods {
 
     @Basic
     @javax.persistence.Column(name = "old_price")
-    public int getOldPrice() {
-        return oldPrice;
+    public Double getOldPrice() {
+        return oldPrice*1.00/100;
     }
 
-    public void setOldPrice(int oldPrice) {
-        this.oldPrice = oldPrice;
+    public void setOldPrice(Double oldPrice) {
+        this.oldPrice = (int)(oldPrice*100.00);
     }
 
     @Basic
     @javax.persistence.Column(name = "price")
-    public int getPrice() {
-        return price;
+    public Double getPrice() {
+        return price*1.00/100;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setPrice(Double price) {
+        this.price = (int)(price*100.00);
     }
 
     @Basic
@@ -111,15 +108,14 @@ public class Goods {
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
-
-    @Basic
-    @javax.persistence.Column(name = "type_id")
-    public Integer getTypeId() {
-        return typeId;
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "type_id")
+    public GoodsType getType() {
+        return type;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setType(GoodsType type) {
+        this.type = type;
     }
 
     @Basic
@@ -226,58 +222,4 @@ public class Goods {
         this.state = state;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Goods goods = (Goods) o;
-
-        if (id != goods.id) return false;
-        if (userId != goods.userId) return false;
-        if (oldPrice != goods.oldPrice) return false;
-        if (price != goods.price) return false;
-        if (state != goods.state) return false;
-        if (articleNumber != null ? !articleNumber.equals(goods.articleNumber) : goods.articleNumber != null)
-            return false;
-        if (picture != null ? !picture.equals(goods.picture) : goods.picture != null) return false;
-        if (title != null ? !title.equals(goods.title) : goods.title != null) return false;
-        if (typeName != null ? !typeName.equals(goods.typeName) : goods.typeName != null) return false;
-        if (typeId != null ? !typeId.equals(goods.typeId) : goods.typeId != null) return false;
-        if (brand != null ? !brand.equals(goods.brand) : goods.brand != null) return false;
-        if (upTime != null ? !upTime.equals(goods.upTime) : goods.upTime != null) return false;
-        if (newDegree != null ? !newDegree.equals(goods.newDegree) : goods.newDegree != null) return false;
-        if (size != null ? !size.equals(goods.size) : goods.size != null) return false;
-        if (pack != null ? !pack.equals(goods.pack) : goods.pack != null) return false;
-        if (receipt != null ? !receipt.equals(goods.receipt) : goods.receipt != null) return false;
-        if (message != null ? !message.equals(goods.message) : goods.message != null) return false;
-        if (pictureList != null ? !pictureList.equals(goods.pictureList) : goods.pictureList != null) return false;
-        if (stockNumber != null ? !stockNumber.equals(goods.stockNumber) : goods.stockNumber != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id.intValue();
-        result = 31 * result + userId;
-        result = 31 * result + (articleNumber != null ? articleNumber.hashCode() : 0);
-        result = 31 * result + (picture != null ? picture.hashCode() : 0);
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + oldPrice;
-        result = 31 * result + price;
-        result = 31 * result + (typeName != null ? typeName.hashCode() : 0);
-        result = 31 * result + (typeId != null ? typeId.hashCode() : 0);
-        result = 31 * result + (brand != null ? brand.hashCode() : 0);
-        result = 31 * result + (upTime != null ? upTime.hashCode() : 0);
-        result = 31 * result + (newDegree != null ? newDegree.hashCode() : 0);
-        result = 31 * result + (size != null ? size.hashCode() : 0);
-        result = 31 * result + (pack != null ? pack.hashCode() : 0);
-        result = 31 * result + (receipt != null ? receipt.hashCode() : 0);
-        result = 31 * result + (message != null ? message.hashCode() : 0);
-        result = 31 * result + (pictureList != null ? pictureList.hashCode() : 0);
-        result = 31 * result + (stockNumber != null ? stockNumber.hashCode() : 0);
-        result = 31 * result + (state ? 1 : 0 );
-        return result;
-    }
 }

@@ -31,5 +31,5 @@ public interface BabyService {
      * @param userId                    用户ID
      * @return                          宝宝list
      */
-    List<Baby> findBabyByUserId(Integer userId);
+    List<Baby> findBabyByUserId(Long userId);
 }

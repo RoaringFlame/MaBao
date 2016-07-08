@@ -1,10 +1,11 @@
-package com.mabao.service;
-
+package com.mabao.repository;
 
 import com.mabao.pojo.User;
 import com.sun.org.apache.xpath.internal.operations.String;
+import org.springframework.stereotype.Repository;
 
-public interface UserService {
+@Repository
+public interface UserRepository extends BaseRepository<User> {
     /**
      * 用户名密码获取用户信息
      * @param name              用户名
@@ -12,11 +13,4 @@ public interface UserService {
      * @return                  用户对象
      */
     User findByNameAndPassword(String name, String password);
-
-    /**
-     * 根据ID获取用户对象
-     * @param userId            用户ID
-     * @return                  用户对象
-     */
-    User get(Long userId);
 }

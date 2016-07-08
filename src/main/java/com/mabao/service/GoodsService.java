@@ -61,6 +61,6 @@ public interface GoodsService {
      * @param goodsIdList           商品ID集合
      * @return                      商品list
      */
-    List<Goods> findGoodsByIdIn(List<Integer> goodsIdList);
+    List<Goods> findGoodsByIdIn(List<Long> goodsIdList);
 
 }

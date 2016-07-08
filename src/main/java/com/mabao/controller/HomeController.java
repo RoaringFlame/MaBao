@@ -21,7 +21,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 @RequestMapping("/")
-@SessionAttributes("userId")
 public class HomeController {
     @Autowired
     private GoodsTypeService goodsTypeService;
@@ -50,7 +49,7 @@ public class HomeController {
      * @return              index首页
      */
     @RequestMapping(method = GET)
-    public String home(@ModelAttribute(value = "userId") Long userId,
+    public String home(@RequestParam(required = false) Long userId,
                        @RequestParam(value = "page", defaultValue = "0") int page,
                        @RequestParam(value = "pageSize", defaultValue = "4") int pageSize,
                        Model model) {

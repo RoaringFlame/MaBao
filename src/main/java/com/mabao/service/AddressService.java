@@ -10,24 +10,17 @@ import java.util.List;
  */
 public interface AddressService {
     /**
-     * 寄售
-     * (添加售货地址)
-     * @param address               地址对象，需包含用户ID
-     * @return                      收货地址
-     */
-    Address addReceiptPlace(Address address);
-    /**
      * 查默认收货地址
      * @param userId          用户ID
      * @return                地址对象
      */
-    Address getDefaultAddress(int userId);
+    Address getDefaultAddress(Long userId);
 
     /**
      * 显示当前用户的所有收货地址
      * @return
      */
-    List<Address> findAllAddress(int userId);
+    List<Address> findAllAddress(Long userId);
     /**
      * 新增收货地址
      * @param address       地址对象
@@ -36,14 +29,21 @@ public interface AddressService {
     Address addAddress(Address address);
     /**
      * 更改选中收货地址
-     * @param address
+     * @param address       地址对象
      * @return
      */
     Address updateAddress(Address address);
     /**
      * 删除收货地址
-     * @param addressId
-     * @return
+     * @param addressId         地址id
+     * @return                  地址对象
      */
-    Address deleteAddress(int addressId);
+    void deleteAddress(Long addressId);
+
+    /**
+     * 依据ID获取地址
+     * @param addressId         地址id
+     * @return                  地址对象
+     */
+    Address get(Long addressId);
 }

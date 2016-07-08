@@ -2,13 +2,16 @@ package com.mabao.controller;
 
 import com.mabao.pojo.Address;
 import com.mabao.pojo.Baby;
+import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.BabyService;
+import com.mabao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.List;
 
@@ -21,11 +24,32 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  */
 @Controller
 @RequestMapping("/user")
+@SessionAttributes("userId")
 public class UserCenterController {
     @Autowired
     private AddressService addressService;
     @Autowired
     private BabyService babyService;
+    @Autowired
+    private UserService userService;
+
+    /**
+     * 用户登录
+     * @param user              用户对象
+     * @param model             用户ID
+     * @return                  首页
+     */
+    @RequestMapping(value ="/login",method = POST)
+    public String userLogin(@RequestParam User user, Model model){
+        User result = this.userService.findByNameAndPassword(user.getName(),user.getPassword());
+        if (result != null){
+            model.addAttribute("userId",result.getId());
+            return "index";
+        }else {
+            return "login_failure";
+        }
+    }
+
 
     /**
      * 该用户所有收货地址
@@ -34,7 +58,7 @@ public class UserCenterController {
      * @return                      收货地址页
      */
     @RequestMapping(value ="/address/allAddress",method = GET)
-    public String allAddress(int userId,Model model){
+    public String allAddress(Long userId,Model model){
         List<Address> addressList=this.addressService.findAllAddress(userId);
         model.addAttribute("addressList",addressList);
         return "address";
@@ -74,17 +98,11 @@ public class UserCenterController {
      * @return                  地址页
      */
     @RequestMapping(value = "/address/deleteAddress",method = GET)
-    public String removeAddress(int addressId){
-        Address Address=this.addressService.deleteAddress(addressId);
-        if (Address != null){
-            return "redirect:address/allAddress";
-        }else {
-            return "address-failure";
-        }
+    public String removeAddress(Long addressId){
+        this.addressService.deleteAddress(addressId);
+        return "redirect:address/allAddress";
+
     }
-
-
-
 
     /**
      * 查询某宝宝信息
@@ -111,7 +129,7 @@ public class UserCenterController {
      * @return                          宝宝信息页
      */
     @RequestMapping(value = "baby/allBabyInfo",method = GET)
-    public String findAllBabyInfo(@RequestParam Integer userId,Model model){
+    public String findAllBabyInfo(@RequestParam Long userId,Model model){
         List<Baby> babyList =  this.babyService.findBabyByUserId(userId);
         model.addAttribute("babyList",babyList);
         return "redirect:baby/permsg";
@@ -128,7 +146,7 @@ public class UserCenterController {
     public String addBabyInfo(@RequestParam Baby babyInfo,Model model){
         Baby baby =  this.babyService.addBaby(babyInfo);
         if (baby != null){
-            model.addAttribute("userId",baby.getUserId());
+            model.addAttribute("userId",baby.getUser().getId());
             return "redirect:baby/allBabyInfo";//转向查询所有宝宝接口(带用户ID)
         }else {
             return "baby_add_failure";
@@ -144,7 +162,7 @@ public class UserCenterController {
     public String updateBabyInfo(@RequestParam Baby babyInfo){
         Baby baby =  this.babyService.updateBabyInfo(babyInfo);
         if (baby != null){
-            Integer userId = baby.getUserId();
+            Long userId = baby.getUser().getId();
             return "redirect:baby/allBabyInfo";//转向查询所有宝宝接口(带用户ID)
         }else {
             return "baby_update_failure";

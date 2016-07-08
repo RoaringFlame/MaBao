@@ -8,31 +8,31 @@ import java.sql.Date;
 @Entity
 @Table(name = "t_baby")
 public class Baby {
-    private Integer id;                         //编号
-    @Column(name = "user_id")
-    private Integer userId;                     //用户ID
+    private Long id;                         //编号
+    private User user;                     //用户ID
     private String name;                        //宝宝名字
     private Date birthday;                      //宝宝出生日期
     private Gender gender;                      //宝宝性别
 
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getName() {

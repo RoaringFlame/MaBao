@@ -3,15 +3,11 @@ package com.mabao.controller.rest;
 import com.mabao.controller.vo.GoodsVO;
 import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.Goods;
-import com.mabao.service.ShoppingService;
+import com.mabao.service.CartService;
 import com.mabao.util.PageVO;
-import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -21,7 +17,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @SessionAttributes(value = "userId")
 public class CartRESTController {
     @Autowired
-    private ShoppingService shoppingService;
+    private CartService cartService;
 
     /**
      * 用户购物车中商品列表
@@ -30,7 +26,7 @@ public class CartRESTController {
     @RequestMapping( method = GET)
     public PageVO<GoodsVO> findUserCartGoods(@ModelAttribute("userId") Long userId) {
         //查询该用户购物车剩余商品
-        Page<Goods> goodsPage = this.shoppingService.findAllGoodsByUser(userId);
+        Page<Goods> goodsPage = this.cartService.findAllGoodsByUser(userId);
         PageVO<GoodsVO> pageVO = new PageVO<>();
         pageVO.setItems(GoodsVO.generateBy(goodsPage.getContent()));
         pageVO.setCurrentPage(goodsPage.getNumber()+1);
@@ -47,6 +43,6 @@ public class CartRESTController {
     @RequestMapping(value = "/goods/{goodsId}", method = RequestMethod.DELETE)
     public JsonResultVO deleteShoppingCartGoods(@ModelAttribute("userId") Long userId,@PathVariable Integer goodsId) {
         //移除购物车内商品，查询该用户购物车剩余商品
-        return this.shoppingService.deleteCartGoods(userId,goodsId);
+        return this.cartService.deleteCartGoods(userId,goodsId);
     }
 }

@@ -1,35 +1,45 @@
-package com.mabao.service;
+package com.mabao.service.impl;
 
 import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.Goods;
+import com.mabao.service.CartService;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * 购物车业务接口
+ * 购物车业务
  * Created by jackie on 2016/07/06.
  */
-public interface ShoppingService {
-
+@Service
+public class CartServiceImpl implements CartService {
     /**
      * 购物车添加商品
      * @param userId        用户ID
      * @param goodsId       商品ID
      * @return              商品list
      */
-    List<Goods> addCartGoods(int userId, int goodsId);
-
+    @Override
+    public List<Goods> addCartGoods(int userId, int goodsId) {
+        return null;
+    }
     /**
      * 删除购物车内商品
      * @param userId            用户ID
      * @param goodsId           商品ID
      * @return                  结果VO
      */
-    JsonResultVO deleteCartGoods(Long userId,Integer goodsId);
+    @Override
+    public JsonResultVO deleteCartGoods(Long userId,Integer goodsId) {
+        return null;
+    }
     /**
      * 用户购物车中商品列表
      * @return                  商品list
      */
-    Page<Goods> findAllGoodsByUser(Long userId);
+    @Override
+    public Page<Goods> findAllGoodsByUser(Long userId) {
+        return null;
+    }
 }

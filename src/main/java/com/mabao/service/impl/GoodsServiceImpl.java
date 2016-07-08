@@ -43,7 +43,7 @@ public class GoodsServiceImpl implements GoodsService {
      */
     @Override
     public Page<Goods> findGoodsByGoodsType(Long goodsTypeId, int page, int pageSize) {
-        return this.goodsRepository.findByGoodsTypeId(goodsTypeId,new PageRequest(page, pageSize));
+        return this.goodsRepository.findByTypeId(goodsTypeId,new PageRequest(page, pageSize));
     }
     /**
      * 查询商品信息
@@ -88,7 +88,7 @@ public class GoodsServiceImpl implements GoodsService {
      * @return                      商品list
      */
     @Override
-    public List<Goods> findGoodsByIdIn(List<Integer> goodsIdList) {
+    public List<Goods> findGoodsByIdIn(List<Long> goodsIdList) {
         return this.goodsRepository.findByIdIn(goodsIdList);
     }
 }

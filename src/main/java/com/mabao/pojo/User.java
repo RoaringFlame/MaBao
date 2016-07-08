@@ -8,26 +8,21 @@ import java.util.Date;
 @Entity
 @Table(name = "t_user")
 public class User {
-    private Integer id;                             //用户编号
+    private Long id;                             //用户编号
     private String name;                            //呢称
     private String password;                        //密码
     private String phone;                           //手机号
     private String email;                           //邮箱
-    @Column(name = "create_time")
     private Date createTime;                        //创建时间
     private String picture;                         //头像
 
     @Id
-    @Column(name = "id")
-    public int getId() {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

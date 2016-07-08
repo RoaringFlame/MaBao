@@ -18,31 +18,21 @@ public class AddressServiceImpl implements AddressService {
     private AddressRepository addressRepository;
 
     /**
-     * 寄售
-     * (添加售货地址)
-     * @param address               地址对象，需包含用户ID
-     * @return                      收货地址
-     */
-    public Address addReceiptPlace(Address address){
-        address.setState(false);
-        return this.addressRepository.save(address);
-    }
-    /**
      * 查默认收货地址
      * @param userId          用户ID
      * @return                地址对象
      */
     @Override
-    public Address getDefaultAddress(int userId) {
-        return null;
+    public Address getDefaultAddress(Long userId) {
+        return this.addressRepository.findByUserIdAndState(userId,true);
     }
 
     /**
      * 显示当前用户的所有收货地址
      * @return                  地址list
      */
-    public List<Address> findAllAddress(int userId){
-        return null;
+    public List<Address> findAllAddress(Long userId){
+        return this.addressRepository.findAll();
     }
     /**
      * 新增收货地址
@@ -50,31 +40,32 @@ public class AddressServiceImpl implements AddressService {
      * @return                  新增地址对象
      */
     public Address addAddress(Address address){
-        return null;
+        return this.addressRepository.save(address);
     }
-    /**
-     * 显示选中收货地址
-     * @param addressId         地址ID
-     * @return                  地址对象
-     */
-    public Address getOne(int addressId){
-        return null;
-    }
+
     /**
      * 更改选中收货地址
      * @param address           地址对象
      * @return                  修改的地址对象
      */
     public Address updateAddress(Address address){
-        return null;
+        return this.addressRepository.saveAndFlush(address);
     }
 
     /**
      * 删除收货地址
      * @param addressId         地址ID
+     */
+    public void deleteAddress(Long addressId){
+        this.addressRepository.delete(addressId);
+    }
+    /**
+     * 依据ID获取地址
+     * @param addressId         地址id
      * @return                  地址对象
      */
-    public Address deleteAddress(int addressId){
-        return null;
+    @Override
+    public Address get(Long addressId) {
+        return this.addressRepository.findOne(addressId);
     }
 }
