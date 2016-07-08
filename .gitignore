@@ -5,3 +5,4 @@ out/
 *.iml
 /.gradle/
 /.vscode/
+/src/main/resources/c3p0.properties

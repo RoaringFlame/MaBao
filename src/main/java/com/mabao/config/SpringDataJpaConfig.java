@@ -25,26 +25,11 @@ import java.beans.PropertyVetoException;
 
   @Bean
   public DataSource dataSource() {
-
-
       /**
-       * 连接池的初始化
+       * 连接池的初始化，自动读取/resources/c3p0.properties文件
        */
-    try   {
       ComboPooledDataSource dataSource = new ComboPooledDataSource();
-      dataSource.setDriverClass( "com.mysql.jdbc.Driver");
-      dataSource.setJdbcUrl( "jdbc:mysql://127.0.0.1:3306/mabao?useUnicode=true&characterEncoding=UTF-8");
-      dataSource.setUser( "root");
-      dataSource.setPassword( "root");
-      dataSource.setInitialPoolSize(2);
-      dataSource.setMinPoolSize(1);
-      dataSource.setMaxPoolSize(10);
-      dataSource.setMaxStatements(50);
-      dataSource.setMaxIdleTime(60);
       return dataSource;
-    }   catch   (PropertyVetoException e)   {
-      throw   new   RuntimeException(e);
-    }
   }
 
   @Bean
