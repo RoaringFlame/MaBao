@@ -6,7 +6,7 @@ $(function(){
  
         
 })
-     var classifyText;
+    var classifyText;
     var imgs =[
     { "id":"1",
       "src":"../img/img-01.png"
@@ -90,7 +90,7 @@ $(function(){
        );
        
        // 分类的显示和隐藏
-        $("#slidebar").click(function(){
+        $("#sidebar").click(function(){
           $("#classify").toggle();
         })
       // search框点击事件
@@ -206,6 +206,7 @@ $(function(){
                           window.location.href="detail.html?id="+good.id; })
                           )
               })
+           
          }
 
 //按照分类搜索商品初始化
@@ -284,6 +285,12 @@ $(function(){
   setTimeout(function () { document.getElementById('wrapper').style.left = '0'; }, 800);
 }
 
+//轮播切换时间
+  $(function(){
+       $('.carousel').carousel({
+         interval: 2500
+     })
+  });
 document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 
 document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 100); }, false);

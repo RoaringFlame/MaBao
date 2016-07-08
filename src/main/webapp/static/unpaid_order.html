@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>我是买家</title>
-	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
-	<!-- 禁止将数字变为电话号码 -->
-	<meta name="format-detection" content="telephone=no" />
-	<!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<link rel="stylesheet" href="../css/order.css">
-	<link rel="stylesheet" href="../css/public.css">
+    <meta charset="UTF-8">
+    <title>我是买家</title>
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
+    <!-- 禁止将数字变为电话号码 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/order.css">
+    <link rel="stylesheet" href="../css/public.css">
 </head>
 <body>
-	<section class="header-top">
-    	<div class="fanhui"><a href="personal.html" ><img src="../img/back.png" alt=""></a><a href="personal.html" class="tiaozhuan">返回</a></div>
-    	<div class="shouye"><p>待付款</p></div>
-    </section>
-	<div class="main" id="main">
+<section class="header-top">
+    <div class="back"><a href="personal.html"><img src="../img/back.png" alt=""></a>
+        <a href="personal.html" class="jump-to">返回</a></div>
+    <div class="title-bar"><p>待付款</p></div>
+</section>
+<div class="main" id="main">
 
-	<div class="top" onclick=window.location.href="detail.html">
-	    <p class="unpaidtxt">等待买家付款</p>
+    <div class="top" onclick=window.location.href="detail.html">
+        <p class="unpaid-txt">等待买家付款</p>
         <div class="b">
             <img src="../img/u8.jpg" alt="宝物">
-	        <p >H&M CARDIGAN</p>
-	    	<p>尺寸：S</p>
-	    	<div class="a">
-	    		<p>￥35.5</p>
-	    	</div>
+            <p>H&M CARDIGAN</p>
+            <p>尺寸：S</p>
+            <div class="a">
+                <p>￥35.5</p>
+            </div>
 
         </div>
     </div>
 
     <div class="top" onclick=window.location.href="detail.html">
-        <p class="unpaidtxt">等待买家付款</p>
+        <p class="unpaid-txt">等待买家付款</p>
         <div class="b">
             <img src="../img/u20.jpg" alt="宝物">
-	        <p>H&M CARDIGAN</p>
-	    	<p>尺寸：S</p>
-	    	<div class="a">
-	    		<p>￥35.5</p>
-	    	</div>
-
+            <p>H&M CARDIGAN</p>
+            <p>尺寸：S</p>
+            <div class="a">
+                <p>￥35.5</p>
+            </div>
         </div>
     </div>
-
-	</div>
-    <section class="clear"></section>
+    <div class="clear"></div>
     <div class="bottom"><p>共计2件商品 小计：<span>￥101</span> (含运费￥10)</p></div>
+    <input type="submit"value="付款">
+</div>
+
 </body>
 </html>

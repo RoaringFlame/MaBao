@@ -28,18 +28,22 @@ public class HomeController {
     @Autowired
     private GoodsService goodsService;
 
+    public HomeController() {
+    }
+
     /**
-     * 静态跳转
-     * @param pageName      页面名称
+     * jsp页面跳转控制器
+     * @param jspPage  页面名
+     * @return jspPage.jsp  页面名对应的jsp页面
      */
-    @RequestMapping(value = "/{pageName}",method = GET)
-    public String defaultPage(@PathVariable("pageName") String pageName) {
-        return pageName;
+    @RequestMapping(value = "/jsp/{jspPage}", method = GET)
+    public String defaultPage(@PathVariable("jspPage") String jspPage){
+        return jspPage;
     }
 
     /**
      * 首页
-     * （查询商品类别，轮播图片，新品列表）
+     *（查询商品类别，轮播图片，新品列表）
      * @param page          页码
      * @param pageSize      页面大小
      * @param model         map集合

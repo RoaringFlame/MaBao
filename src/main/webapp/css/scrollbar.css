@@ -4,8 +4,11 @@
  * Horizontal Scrollbar
  */
 #wrapper {
-	position:absolute; z-index:1;
-	top:4rem; bottom:4rem; left:0;
+	position:absolute;
+	 z-index:1;
+	top:4rem;
+	bottom:4rem;
+	left:0;
 	width:100%;
 	overflow:auto;
 }
@@ -33,7 +36,8 @@
 	width:3rem; height:3rem;
 	margin:0.5rem;
 	background:url(pull-icon@2x.png) 0 0 no-repeat;
-	-webkit-background-size:3rem 6rem; background-size:3rem 6rem;
+	-webkit-background-size:3rem 6rem;
+	background-size:3rem 6rem;
 	-webkit-transition-property:-webkit-transform;
 	-webkit-transition-duration:250ms;	
 }

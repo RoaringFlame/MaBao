@@ -67,21 +67,14 @@ body{margin: 0;padding: 0;
           /*border-radius: .4rem;*/
 
           }
-.fastlogin{
-  width: 80%;
+.forget-psd{
   height: 3rem;
-  margin: 0 auto;
+  float: right;
+  margin: 1rem 2rem;
   font-size: 1.3rem
 }
-.fastlogin .q-login{
-  float: left;
-  margin: 1rem;
-}
-.fastlogin .forgetpsd{
-  float: right;
-  margin: 1rem;
-}
-.freeres{
+
+.free-res{
   width: 7rem;
   height:2.5rem;
   border: 1px solid #0099ff;

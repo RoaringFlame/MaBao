@@ -1,52 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>找回密码</title>
-	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
-	<!-- 禁止将数字变为电话号码 -->
-	<meta name="format-detection" content="telephone=no" />
-	<!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta charset="UTF-8">
+    <title>找回密码</title>
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
+    <!-- 禁止将数字变为电话号码 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-	<link rel="stylesheet" href="../css/message.css">
-	<link rel="stylesheet" href="../css/public.css">
+    <link rel="stylesheet" href="../css/message.css">
+    <link rel="stylesheet" href="../css/public.css">
 </head>
 <body>
-	<section class="header-top">
-    	<div class="fanhui"><a href="../personal.html" ><img src="../img/back.png" alt=""></a><a href="personal.html" class="tiaozhuan">返回</a></div>
-    	<div class="shouye"><p>找回密码</p></div>
-    </section>
-    <div class="top"><!-- <p>当前绑定手机号为159****3504</p> -->
-    <form method="" action="">
-    <!-- 找回密码跳转到登陆页面 -->
-    <input type="email" id="email" placeholder="请输入注册邮箱">
-    <input type="submit" class="button" value="发送邮件">
-    <input type="text" placeholder="验证码">
-    <p class="warning"></p>
+<section class="header-top">
+    <div class="back">
+        <a href="personal.html"><img src="../img/back.png" alt=""></a>
+        <a href="personal.html"  class="jump-to">返回</a>
     </div>
-    <div class="bottom">
+    <div class="title-bar"><p>找回密码</p></div>
+</section>
+<div class="top"><!-- <p>当前绑定手机号为159****3504</p> -->
+    <form method="" action="">
+        <!-- 找回密码跳转到登陆页面 -->
+        <input type="email" id="email" placeholder="请输入注册邮箱">
+        <input type="submit" class="button" value="发送邮件">
+        <input type="text" placeholder="验证码">
+        <p class="warning"></p>
+</div>
+<div class="bottom">
     <input type="submit" class="submit" value="提交"></div>
-    </form>
-     <script type="text/javascript" src="../js/jquery.1.10.2.js"></script>
-     <script type="text/javascript">
-      $('#email').focus(function(){
-                     
-                }).blur(function(){
-                    if($(this).val!= "" && $(this).val().search(/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/)==0){
-                        $(".warning").text('');
-                        ok4=true;
-                    }else{                  
-                        $(".warning").text('请输入正确的EMAIL格式');
-                        
-                    }
-                     
-                });
+</form>
+<script type="text/javascript" src="../js/jquery.1.10.2.js"></script>
+<script type="text/javascript">
+    $('#email').focus(function () {
 
-                  
-         
-    </script>
+    }).blur(function () {
+        if ($(this).val != "" && $(this).val().search(/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/) == 0) {
+            $(".warning").text('');
+            ok4 = true;
+        } else {
+            $(".warning").text('请输入正确的EMAIL格式');
+
+        }
+
+    });
+
+
+</script>
 </body>
 </html>
