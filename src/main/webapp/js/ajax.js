@@ -33,16 +33,6 @@ $(imgs).each(function(index,good){
 	var searchpage=1;
 	var likepage=1;
 	var classifyText;
-	
-	//动态获取加载首页轮播的图片
-//    $.get("/api/MbShopGoods",{size:4},function(data){
-//      $(data).each(function(index,good){
-//      $("#imgs").append($('<li></li>').append($('<img src="" alt="" />').attr("src",good.src))
-//        .click(function(){
-//                     window.location.href="detail.html?id="+good.id; })
-//                     )
-//    });
-//   },'json')
 
   //回到顶部按钮
    $("#back-top").click(function(){ //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部

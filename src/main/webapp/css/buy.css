@@ -477,8 +477,10 @@ section .user-img{
 	width:7rem;
 	float:left;
 	height:3rem;
-	margin:7rem 0 0;
+	margin:3rem 0 0;
 	border:0.1rem solid #ccc;}
+.main-item .del{
+    margin: 1rem 0 0 4rem;}
 .reduce{
 	width:1.9rem;
 	height:3rem;
