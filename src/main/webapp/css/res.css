@@ -1,46 +1,170 @@
 @charset "utf-8";
 
 /*注册*/
-.container{max-width:32rem;margin:0 auto;height:28rem;padding: 0 .1rem;}
-.container dl {width:28rem;margin:1rem auto ;}
-.container dl dt{text-align:right;width:7rem;float:left;height:4.5rem;line-height:4.5rem;margin-right:0.5rem;font-size:1.3rem;}
-.container dl dd{width:20rem;float:left;height:4.5rem;line-height:4.5rem;font-size:1.3rem;}
-.container dl dd input{width:20rem;height:2.6rem;line-height:2.6rem;text-indent:1rem;}
-.input-res{width:70%;margin:0 auto;}
-.input-res input{width:100%;height:3rem;line-height:3rem;color:#fff;text-align: center;background:#0099FF;font-size:1.3rem;}
+.container{
+  max-width:32rem;
+  margin:0 auto;
+  height:28rem;
+  padding: 0 .1rem;}
+.container dl {
+  width:28rem;
+  margin:1rem auto ;}
+.container dl dt{
+  text-align:right;
+  width:7rem;
+  float:left;
+  height:4.5rem;
+  line-height:4.5rem;
+  margin-right:0.5rem;
+  font-size:1.3rem;}
+.container dl dd{
+  width:20rem;
+  float:left;
+  height:4.5rem;
+  line-height:4.5rem;
+  font-size:1.3rem;}
+.container dl dd input{
+  width:20rem;
+  height:2.6rem;
+  line-height:2.6rem;
+  text-indent:1rem;}
+.input-res{
+  width:70%;
+  margin:0 auto;}
+.input-res input{
+  width:100%;
+  height:3rem;
+  line-height:3rem;
+  color:#fff;
+  text-align: center;
+  background:#0099FF;
+  font-size:1.3rem;}
 /*.clear{height:3rem;}*/
 .button{border:0;}
 
 /*转让宝物*/
-.main-tit p{height:3rem;line-height:3rem;margin-top:1rem;}
-.main-tit p span{width:18rem;padding:0 1rem;float:left;color:#FF3399;font-size:1.25rem;}
-.main-tit p a{width:8rem;margin:0 1.5rem;float:right;border-radius:0.5rem;height:3rem;display:block;color:#fff;line-height:3rem;text-align:center;font-size:1.3rem;background:#999999;}
-.baby-sale{width:100%;height:22rem;border-top:0.1rem solid #787878;margin-top:1.2rem;position: relative;}
-.title{height:3.2rem;line-height:3.2rem;padding:0 1rem;border-bottom:0.1rem solid #BEBEBE;}
-.title>input{font-size:1.3rem;height:3.2rem;width:100%;line-height:3.2rem;border:none;}
-.baby-sale ul li{height:4rem;line-height:4rem;}
-.baby-sale ul li .baby{font-size:1.25rem;width:6.7rem;padding:0 0.3rem;float:left;}
-.baby-sale ul .left select{width:7rem;height:2.6rem;font-size:1.25rem;}
-.baby-sale ul .left input{width:6.8rem;height:2.4rem;font-size:1rem;}
-.baby-sale ul .right select{width:7rem;height:2.6rem;font-size:1.25rem;}
+.main-tit p{
+  height:3rem;
+  line-height:3rem;
+  margin-top:1rem;}
+.main-tit p span{
+  width:18rem;
+  padding:0 1rem;
+  float:left;
+  color:#FF3399;
+  font-size:1.25rem;}
+.main-tit p a{
+  width:8rem;
+  margin:0 1.5rem;
+  float:right;
+  border-radius:0.5rem;
+  height:3rem;
+  display:block;
+  color:#fff;
+  line-height:3rem;
+  text-align:center;
+  font-size:1.3rem;
+  background:#999999;}
+.baby-sale{
+  width:100%;
+  height:22rem;
+  border-top:0.1rem solid #787878;
+  margin-top:1.2rem;
+  position: relative;}
+.title{
+  height:3.2rem;
+  line-height:3.2rem;
+  padding:0 1rem;
+  border-bottom:0.1rem solid #BEBEBE;}
+.title>input{
+  font-size:1.3rem;
+  height:3.2rem;
+  width:100%;
+  line-height:3.2rem;
+  border:none;}
+.baby-sale ul li{
+  height:4rem;
+  line-height:4rem;}
+.baby-sale ul li .baby{
+  font-size:1.25rem;
+  width:6.7rem;
+  padding:0 0.3rem;
+  float:left;}
+.baby-sale ul .left select{
+  width:7rem;
+  height:2.6rem;
+  font-size:1.25rem;}
+.baby-sale ul .left input{
+  width:6.8rem;
+  height:2.4rem;
+  font-size:1rem;}
+.baby-sale ul .right select{
+  width:7rem;
+  height:2.6rem;
+  font-size:1.25rem;}
 
-.baby-sale ul .text input{width:6.8rem;height:2.6rem;}
-.baby-sale ul .text-right input{width:6.8rem;height:2.6rem;}
+.baby-sale ul .text input{
+  width:6.8rem;
+  height:2.6rem;}
+.baby-sale ul .text-right input{
+  width:6.8rem;
+  height:2.6rem;}
 
-.left{width:15rem;float:left; }
-.right{width:15rem;float:right;}
+.left{
+  width:15rem;
+  float:left; }
+.right{
+  width:15rem;
+  float:right;}
 /*按钮*/
-.switch1{position: absolute;left: 6.3rem;bottom:3.6rem;}
-.switch2{position: absolute;right: .2rem;bottom:3.6rem;}
+.switch1{
+  position: absolute;
+  left: 6.3rem;
+  bottom:3.6rem;}
+.switch2{
+  position: absolute;
+  right: .2rem;
+  bottom:3.6rem;}
 
 
-.wish label{width:7rem;float:left;font-size:1.25rem;padding-left:0.3rem;}
-.wish textarea{width:23.3rem;float:left;resize:none;height:10rem}
-.wish div{height:8rem;}
-.wish div img{width:6rem;height:6rem;display:block;float:left;margin-top:1rem;margin-right:1rem;}
+.wish label{
+  width:7rem;
+  float:left;
+  font-size:1.25rem;
+  padding-left:0.3rem;}
+.wish textarea{
+  width:23.3rem;
+  float:left;
+  resize:none;
+  height:10rem}
+.wish div{height:18rem;}
+.wish div img{
+  width:6rem;
+  height:6rem;
+  display:block;
+  float:left;
+  margin-top:1rem;
+  margin-right:1rem;}
 
-.quick-sale{width:95%;margin:0 auto;}
-.quick-sale input{margin-top: 1.5rem;margin-bottom:1rem;background:#FF3399;width:100%;height:3rem;line-height:3rem;text-align: center;font-size:1.3rem;color:#fff;border-radius:0.8rem;}
+.quick-sale{
+  width:95%;
+  margin:0 auto;}
+.quick-sale a{
+  width:100%;
+  height:6rem;
+  display: block;
+}
+.quick-sale input{
+  margin-top: 1.5rem;
+  margin-bottom:1rem;
+  background:#FF3399;
+  width:100%;
+  height:3rem;
+  line-height:3rem;
+  text-align: center;
+  font-size:1.3rem;
+  color:#fff;
+  border-radius:0.8rem;}
 
 
 
@@ -114,17 +238,71 @@
 
 
 /*编辑收货地址*/
-.mesgbox{max-width:32rem;margin:0 auto;}
-.mesgbox textarea{border:0;width:100%;color:#B5B5B5;min-height:4rem;line-height:3rem;resize:none;font-size:1.4rem;}
-.mesgbox .write{text-indent: 1rem;border-bottom:0.1rem solid #DCDCDC;height:4rem;width:100%;line-height:4rem;color:#767676;font-size:1.4rem;}
-.foot-input{width:90%;margin:0 auto;position: fixed;bottom:1rem;left:5%;}
-.foot-input input{width:100%;border-radius:0.8rem;height:3rem;line-height:3rem;background:#0099FF;color:#fff;font-size:1.3rem;border:0.1rem solid #797979;}
-.foot-input2{width:90%;margin:0 auto;position: fixed;bottom:5rem;left:5%;}
-.foot-input2 input{width:100%;border-radius:0.8rem;height:3rem;line-height:3rem;background:#FF9933;color:#fff;font-size:1.3rem;border:0.1rem solid #797979;}
-.default {padding:1rem;border-bottom:0.1rem solid #DCDCDC;height:4rem;width:100%;line-height:2rem;color:#767676;font-size:1.4rem;}
-.default span{font-size: 1rem;color:#767676;}
+.mesgbox{
+  max-width:32rem;
+  margin:0 auto;}
+.mesgbox textarea{
+  border:0;
+  width:100%;
+  color:#B5B5B5;
+  min-height:4rem;
+  line-height:3rem;
+  resize:none;
+  font-size:1.4rem;}
+.mesgbox .write{
+  text-indent: 1rem;
+  border-bottom:0.1rem solid #DCDCDC;
+  height:4rem;
+  width:100%;
+  line-height:4rem;
+  color:#767676;
+  font-size:1.4rem;}
+.foot-input{
+  width:90%;
+  margin:0 auto;
+  position: fixed;
+  bottom:1rem;
+  left:5%;}
+.foot-input input{
+  width:100%;
+  border-radius:0.8rem;
+  height:3rem;
+  line-height:3rem;
+  background:#0099FF;
+  color:#fff;
+  font-size:1.3rem;
+  border:0.1rem solid #797979;}
+.foot-input2{
+  width:90%;
+  margin:0 auto;
+  position: fixed;
+  bottom:5rem;
+  left:5%;}
+.foot-input2 input{
+  width:100%;
+  border-radius:0.8rem;
+  height:3rem;
+  line-height:3rem;
+  background:#FF9933;
+  color:#fff;
+  font-size:1.3rem;
+  border:0.1rem solid #797979;}
+.default {
+  padding:1rem;
+  border-bottom:0.1rem solid #DCDCDC;
+  height:4rem;
+  width:100%;
+  line-height:2rem;
+  color:#767676;
+  font-size:1.4rem;}
+.default span{
+  font-size: 1rem;
+  color:#767676;}
 
-#test{margin: 0;padding: 0;height: 0;}
+#test{
+  margin: 0;
+  padding: 0;
+  height: 0;}
 #test select{
 	position: relative;
 	top: -3rem;
@@ -134,16 +312,55 @@
 	margin-left:1rem;
 }
 /*宝宝信息*/
-.person{width:32rem;margin:0 auto;height:20rem;}
-.person-msg li{height:3.6rem;line-height:3.6rem;margin-top:1rem;}
-.person-msg label{width:7rem;padding:0 0.5rem 0 1rem;float:left;height:2.4rem;line-height:2.4rem;margin-top:1rem;font-size:1.3rem;}
-.person-msg input{height:2.4rem;line-height:2.4rem;margin-top:1rem;width:22rem;float:left;font-size:1.3rem;text-indent:1rem;display: block;}
-.reset{width:80%;margin:0 auto;margin-top:3rem !important;height:3rem !important;}
-.reset input{border:none;width:100%;height:3.5rem;line-height:3.5rem;color:#fff;font-size:1.3rem;text-align: center;background:#E70C2D;border-radius:0.6rem;}
+.person{
+  width:32rem;
+  margin:0 auto;
+  height:20rem;}
+.person-msg li{
+  height:3.6rem;
+  line-height:3.6rem;
+  margin-top:1rem;}
+.person-msg label{
+  width:7rem;
+  padding:0 0.5rem 0 1rem;
+  float:left;
+  height:2.4rem;
+  line-height:2.4rem;
+  margin-top:1rem;
+  font-size:1.3rem;}
+.person-msg input{
+  height:2.4rem;
+  line-height:2.4rem;
+  margin-top:1rem;
+  width:22rem;
+  float:left;
+  font-size:1.3rem;
+  text-indent:1rem;
+  display: block;}
+.reset{
+  width:80%;
+  margin:0 auto;
+  margin-top:3rem !important;
+  height:3rem !important;}
+.reset input{
+  border:none;
+  width:100%;
+  height:3.5rem;
+  line-height:3.5rem;
+  color:#fff;
+  font-size:1.3rem;
+  text-align: center;
+  background:#E70C2D;
+  border-radius:0.6rem;}
 
 
 /*修改个人信息*/
-.person-msg select{width:22.2rem;height:2.4rem;line-height:2.4rem;font-size:1.3rem;margin-top:1rem;}
+.person-msg select{
+  width:22.2rem;
+  height:2.4rem;
+  line-height:2.4rem;
+  font-size:1.3rem;
+  margin-top:1rem;}
 
 
 

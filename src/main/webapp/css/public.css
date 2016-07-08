@@ -1,15 +1,5 @@
 ﻿@charset "utf-8";
 /*页面初始化*/
-/*@media screen and (min-width: 360px) {
- html{
-  font-size: 12px;
-}
-}
-@media screen and (min-width: 480px) {
- html{
-  font-size: 14px;
-}
-}*/
 @media only screen and (max-width: 320px){html{font-size: 9px;} }
 @media only screen and (min-width: 320px) and (max-width: 352px){html{font-size: 10px;} }
 @media only screen and (min-width: 352px) and (max-width: 384px){html{font-size: 11px;} }
@@ -69,9 +59,7 @@ input[type="text"],input[type="phone"],input[type="password"],input[type="email"
 	border-radius:0px;
 	border:1px solid #ccc ;
 }
-/*select{
-	-webkit-appearance:none;
-}*/
+
 figure{margin:0;}
 textarea {
    -webkit-appearance:none; 
@@ -80,10 +68,43 @@ textarea {
    font-size: 1.3rem;
  }
 
-input[type=button], input[type=submit], input[type=file], button { cursor: pointer; -webkit-appearance: none;border:none;margin:0;padding: 0} 
-.header-top{height:4rem;background:#4C5359;width:100%;position: relative;}
-.fanhui{float:left;width:20%;z-index: 2;position: absolute;}
-.fanhui img{width:2.5rem;height:2.5rem;float:left;display:block;margin:0.75rem 0;}
-.fanhui .tiaozhuan{display:block;width:3rem;float:left;height:2.5rem;padding:0.75rem 0;line-height:2.5rem;color:#fff;font-size:1.3rem;}
-.shouye{width:100%;padding:0.75rem 0;position: absolute;}
-.shouye p{color:#fff;font-size:1.4rem;line-height:2.5rem;height:2.5rem;text-align: center}
+input[type=button], input[type=submit], input[type=file], button { 
+	cursor: pointer;
+	 -webkit-appearance: none;
+	 border:none;margin:0;
+	 padding: 0} 
+.header-top{
+	height:4rem;
+	background:#4C5359;
+	width:100%;
+	position: relative;}
+.back{
+	float:left;
+	width:20%;
+	z-index: 2;
+	position: absolute;}
+.back img{
+	width:2.5rem;
+	height:2.5rem;
+	float:left;
+	display:block;
+	margin:0.75rem 0;}
+.back .jump-to{
+	display:block;
+	width:3rem;
+	float:left;
+	height:2.5rem;
+	padding:0.75rem 0;
+	line-height:2.5rem;
+	color:#fff;
+	font-size:1.3rem;}
+.title-bar{
+	width:100%;
+	padding:0.75rem 0;
+	position: absolute;}
+.title-bar p{
+	color:#fff;
+	font-size:1.4rem;
+	line-height:2.5rem;
+	height:2.5rem;
+	text-align: center}

@@ -30,6 +30,7 @@
 	width: 100%;
 	height: 5rem;
 }
+.service ul li:last-child{margin-top:1.8rem;}
 .index{
 	color: rgb(255,51,153);
 	font-size: 3rem;
@@ -110,12 +111,12 @@
 	font-size: 1.2rem;
 	color:#666666;
 }
-.gosearch{
+.go-search{
 	width:30rem;
 	height:4rem;
 	margin: 5rem auto;
 }
-.gosearch input[type="button"]{
+.go-search input[type="button"]{
 	border-radius: 0.5rem;
 	background-color: rgb(255,51,153);
 	width:30rem;
