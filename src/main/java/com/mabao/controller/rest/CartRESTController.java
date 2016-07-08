@@ -18,7 +18,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @RequestMapping(value = "/cart")
-@SessionAttributes(value = "userId")
+//@SessionAttributes(value = "userId")
 public class CartRESTController {
     @Autowired
     private ShoppingService shoppingService;
@@ -28,7 +28,8 @@ public class CartRESTController {
      * @return                  商品list
      */
     @RequestMapping( method = GET)
-    public PageVO<GoodsVO> findUserCartGoods(@ModelAttribute("userId") Long userId) {
+    public PageVO<GoodsVO> findUserCartGoods(@RequestParam(value = "userId", defaultValue = "1")
+                                                 Long userId) {
         //查询该用户购物车剩余商品
         Page<Goods> goodsPage = this.shoppingService.findAllGoodsByUser(userId);
         PageVO<GoodsVO> pageVO = new PageVO<>();
@@ -45,7 +46,8 @@ public class CartRESTController {
      * @return                  结果VO
      */
     @RequestMapping(value = "/goods/{goodsId}", method = RequestMethod.DELETE)
-    public JsonResultVO deleteShoppingCartGoods(@ModelAttribute("userId") Long userId,@PathVariable Integer goodsId) {
+    public JsonResultVO deleteShoppingCartGoods(@RequestParam(value = "userId", defaultValue = "1") Long userId,
+                                                @PathVariable Integer goodsId) {
         //移除购物车内商品，查询该用户购物车剩余商品
         return this.shoppingService.deleteCartGoods(userId,goodsId);
     }

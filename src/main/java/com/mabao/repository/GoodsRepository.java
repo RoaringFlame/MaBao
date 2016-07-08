@@ -21,14 +21,14 @@ public interface GoodsRepository extends BaseRepository<Goods> {
     /**
      * 依据标题模糊查询
      * @param title             标题key
-     * @param pageRequest       分页参数
+     * @param pageable       分页参数
      * @return                  分页goods
      */
-    Page<Goods> findByTitleLike(String title, PageRequest pageRequest);
+    Page<Goods> findByTitleLike(String title, Pageable pageable);
     /**
      * 商品类型查询
      */
-    Page<Goods> findByGoodsTypeId(Long goodsTypeId, PageRequest pageRequest);
+    Page<Goods> findByTypeId(Long typeId, Pageable pageable);
 
     /**
      * 商品ID集合查找商品集合

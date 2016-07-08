@@ -42,8 +42,8 @@ public class GoodsServiceImpl implements GoodsService {
      * 商品类型查询
      */
     @Override
-    public Page<Goods> findGoodsByGoodsType(Long goodsTypeId, int page, int pageSize) {
-        return this.goodsRepository.findByGoodsTypeId(goodsTypeId,new PageRequest(page, pageSize));
+    public Page<Goods> findGoodsByGoodsType(Long typeId, int page, int pageSize) {
+        return this.goodsRepository.findByTypeId(typeId,new PageRequest(page, pageSize));
     }
     /**
      * 查询商品信息
