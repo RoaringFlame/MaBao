@@ -7,14 +7,14 @@ import com.mabao.pojo.Goods;
 import com.mabao.repository.GoodsRepository;
 import com.mabao.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class GoodsServiceImpl implements GoodsService {
-
 
     @Autowired
     private GoodsRepository goodsRepository;
@@ -23,30 +23,34 @@ public class GoodsServiceImpl implements GoodsService {
      * 新品（初始化）
      */
     @Override
-    public List<Goods> getNewGoods(int page, int pageSize) {
-        return null;
+    public PageVO<GoodsVO> getNewGoods(int page, int pageSize) {
+        Page<Goods> goodsPage = this.goodsRepository.findAll(new PageRequest(page, pageSize));
+        PageVO<GoodsVO> voPage = new PageVO<>();
+        voPage.toPage(goodsPage);
+        voPage.setItems(GoodsVO.generateBy(goodsPage.getContent()));
+        return voPage;
     }
 
     /**
      * 首页商品模糊搜索
      */
     @Override
-    public List<Goods> goodsSearch(String title, int page, int size) {
-        return null;
+    public Page<Goods> goodsSearch(String title, int page, int pageSize) {
+        return this.goodsRepository.findByTitleLike(title,new PageRequest(page, pageSize));
     }
     /**
      * 商品类型查询
      */
     @Override
-    public List<Goods> getGoodsListByTypeName(String typeName, int page, int size) {
-        return null;
+    public Page<Goods> findGoodsByGoodsType(Long goodsTypeId, int page, int pageSize) {
+        return this.goodsRepository.findByGoodsTypeId(goodsTypeId,new PageRequest(page, pageSize));
     }
     /**
-     * 查询商品详细信息
+     * 查询商品信息
      */
     @Override
-    public Goods getGoodsById(int id) {
-        return null;
+    public Goods get(Long goodsId) {
+        return this.goodsRepository.findOne(goodsId);
     }
     /**
      * 轮播图片列表
@@ -66,7 +70,7 @@ public class GoodsServiceImpl implements GoodsService {
      * @return                  商品集合，分页
      */
     @Override
-    public PageVO<GoodsVO> goodsListGuess(String babyName, String babyBirthday, Gender gender, String hobby, int page, int pageSize) {
+    public Page<Goods> goodsListGuess(String babyName, String babyBirthday, Gender gender, String hobby, int page, int pageSize) {
         return null;
     }
     /**
@@ -76,7 +80,7 @@ public class GoodsServiceImpl implements GoodsService {
      */
     @Override
     public Goods saveOne(Goods newGoods) {
-        return null;
+        return this.goodsRepository.save(newGoods);
     }
     /**
      * 根据商品ID查商品list
@@ -85,6 +89,6 @@ public class GoodsServiceImpl implements GoodsService {
      */
     @Override
     public List<Goods> findGoodsByIdIn(List<Integer> goodsIdList) {
-        return null;
+        return this.goodsRepository.findByIdIn(goodsIdList);
     }
 }

@@ -1,11 +1,13 @@
 package com.mabao.util;
 
+import org.springframework.data.domain.Page;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PageVO<T> {
     private final static int DEFAULT_CURRENT_PAGE=1;
-    private final static int DEFAULT_PAGE_SIZE=5;
+    private final static int DEFAULT_PAGE_SIZE=4;
 
     private Integer currentPage;            //当前页面
     private Integer pageSize;               //页面总数
@@ -16,6 +18,14 @@ public class PageVO<T> {
         this.pageSize=DEFAULT_PAGE_SIZE;
         this.items=new ArrayList<>();
     }
+
+    public PageVO<T> toPage(Page page){
+        this.setCurrentPage(page.getNumber());
+        this.setPageSize(page.getSize());
+        this.setTotalRow(page.getTotalElements());
+        return this;
+    }
+
     public int getCurrentPage() {
         return currentPage;
     }

@@ -26,11 +26,12 @@ public class ShoppingServiceImpl implements ShoppingService {
     }
     /**
      * 删除购物车内商品
+     * @param userId            用户ID
      * @param goodsId           商品ID
      * @return                  结果VO
      */
     @Override
-    public JsonResultVO deleteCartGoods(Integer goodsId) {
+    public JsonResultVO deleteCartGoods(Long userId,Integer goodsId) {
         return null;
     }
     /**
@@ -38,7 +39,7 @@ public class ShoppingServiceImpl implements ShoppingService {
      * @return                  商品list
      */
     @Override
-    public Page<Goods> findAllGoodsByUser() {
+    public Page<Goods> findAllGoodsByUser(Long userId) {
         return null;
     }
 }

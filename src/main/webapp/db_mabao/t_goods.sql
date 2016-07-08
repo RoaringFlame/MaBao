@@ -7,7 +7,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for t_goods
 -- ----------------------------
--- DROP TABLE IF EXISTS t_goods;
+DROP TABLE IF EXISTS t_goods;
 CREATE TABLE t_goods (
   id int(11) NOT NULL COMMENT '商品编号，自增',
   user_id int(11) NOT NULL DEFAULT '0' COMMENT '商品归属者编号，后台用户编号为0',

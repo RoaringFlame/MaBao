@@ -4,6 +4,7 @@ import com.mabao.controller.vo.GoodsVO;
 import com.mabao.enums.Gender;
 import com.mabao.util.PageVO;
 import com.mabao.pojo.Goods;
+import org.springframework.data.domain.Page;
 ;
 import java.util.List;
 
@@ -15,23 +16,24 @@ public interface GoodsService {
     /**
      * 新品
      */
-    List<Goods> getNewGoods(int page, int pageSize);
+    PageVO<GoodsVO> getNewGoods(int page, int pageSize);
 
     /**
     * 首页商品模糊搜索
     */
-    List<Goods> goodsSearch(String title, int page, int size);
+    Page<Goods> goodsSearch(String title, int page, int pageSize);
 
     /**
     * 商品类型查询
     */
-    List<Goods> getGoodsListByTypeName(String typeName, int page, int size);
+    Page<Goods> findGoodsByGoodsType(Long goodsTypeId, int page, int pageSize);
     /**
-    * 查询商品详细信息
+     * 查询商品详细信息
+     * @param goodsId           商品ID
     */
-    Goods getGoodsById(int id);
+    Goods get(Long goodsId);
     /**
-     * 轮播图片列表
+      * 轮播图片列表
      */
     List<Goods> getGoodsPictureCircle();
 
@@ -45,7 +47,7 @@ public interface GoodsService {
      * @param pageSize          一页大小
      * @return                  商品集合，分页
      */
-    PageVO<GoodsVO> goodsListGuess(String babyName, String babyBirthday, Gender gender, String hobby, int page, int pageSize);
+    Page<Goods> goodsListGuess(String babyName, String babyBirthday, Gender gender, String hobby, int page, int pageSize);
 
     /**
      * 保存商品
@@ -60,4 +62,5 @@ public interface GoodsService {
      * @return                      商品list
      */
     List<Goods> findGoodsByIdIn(List<Integer> goodsIdList);
+
 }

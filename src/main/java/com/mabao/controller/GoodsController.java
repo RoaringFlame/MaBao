@@ -23,8 +23,8 @@ public class GoodsController {
      * @return                  商品详情页
      */
     @RequestMapping(value = "/goodsDetail", method = GET)
-    public String goodsTime(int goodsId, Model model) {
-        Goods goods = this.goodsService.getGoodsById(goodsId);
+    public String goodsDetail(Long goodsId, Model model) {
+        Goods goods = this.goodsService.get(goodsId);
         model.addAttribute("goodsDetail", goods);
         return "goods_detail";
     }

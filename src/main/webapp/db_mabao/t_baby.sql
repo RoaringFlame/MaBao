@@ -8,7 +8,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for t_baby
 -- ----------------------------
--- DROP TABLE IF EXISTS t_baby;
+DROP TABLE IF EXISTS t_baby;
 CREATE TABLE t_baby (
   id int(11) NOT NULL AUTO_INCREMENT,
   user_id int(11) NOT NULL COMMENT '用户ID',

@@ -22,13 +22,14 @@ public interface ShoppingService {
 
     /**
      * 删除购物车内商品
+     * @param userId            用户ID
      * @param goodsId           商品ID
      * @return                  结果VO
      */
-    JsonResultVO deleteCartGoods(Integer goodsId);
+    JsonResultVO deleteCartGoods(Long userId,Integer goodsId);
     /**
      * 用户购物车中商品列表
      * @return                  商品list
      */
-    Page<Goods> findAllGoodsByUser();
+    Page<Goods> findAllGoodsByUser(Long userId);
 }
