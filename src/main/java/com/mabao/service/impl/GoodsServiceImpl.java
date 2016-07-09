@@ -37,7 +37,7 @@ public class GoodsServiceImpl implements GoodsService {
         }else if (goodsTypeId == null){
             return this.goodsRepository.findByStateAndTitleLike(Boolean.TRUE,title,new PageRequest(page, pageSize));
         }else {
-            return null;
+            return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
         }
 
     }
