@@ -1,7 +1,6 @@
 package com.mabao.repository;
 
 import com.mabao.pojo.User;
-import com.sun.org.apache.xpath.internal.operations.String;
 import org.springframework.stereotype.Repository;
 
 @Repository
