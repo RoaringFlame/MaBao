@@ -19,7 +19,10 @@ public class BannerVO {
     private Integer sort;                    //排序
 
     public static BannerVO generateBy(Banner banner){
-        return VoUtil.copyBasic(BannerVO.class, banner);
+        BannerVO bannerVO = VoUtil.copyBasic(BannerVO.class, banner);
+        assert bannerVO != null;
+        bannerVO.setGoodsId(banner.getGoods().getId());
+        return bannerVO;
     }
     public static List<BannerVO> generateBy(List<Banner> bannerList){
         List<BannerVO> list=new ArrayList<>();

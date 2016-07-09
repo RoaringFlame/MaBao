@@ -1,11 +1,11 @@
 package com.mabao.repository;
 
-import com.mabao.pojo.Brand;
+import com.mabao.pojo.GoodsSize;
 import org.springframework.stereotype.Repository;
 
 /**
- * 品牌
+ * 尺码表
  */
 @Repository
-public interface GoodsSizeRepository extends BaseRepository<Brand> {
+public interface GoodsSizeRepository extends BaseRepository<GoodsSize> {
 }

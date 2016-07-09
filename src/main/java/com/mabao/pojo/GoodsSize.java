@@ -3,18 +3,15 @@ package com.mabao.pojo;
 import javax.persistence.*;
 
 /**
- * 首页广告
+ * 商品尺码表
  * Created by jackie on 2016/07/09.
  */
 @Entity
-@Table(name = "t_brand")
+@Table(name = "t_goods_size_table")
 public class GoodsSize {
     private Long id;                         //编号
-    private Goods brandName;                 //商品ID
-    private String picture;                  //图片
-    private Integer sort;                    //排序
-    private String remark;                   //备注
-    private Boolean status;                  //禁用or启用
+    private GoodsType goodsType;             //商品类别
+    private String name;                     //名称
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,43 +23,21 @@ public class GoodsSize {
         this.id = id;
     }
 
-    public Integer getSort() {
-        return sort;
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "goods_type_id")
+    public GoodsType getGoodsType() {
+        return goodsType;
     }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
+    public void setGoodsType(GoodsType goodsType) {
+        this.goodsType = goodsType;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getName() {
+        return name;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public Goods getBrandName() {
-        return brandName;
-    }
-
-    public void setBrandName(Goods brandName) {
-        this.brandName = brandName;
+    public void setName(String name) {
+        this.name = name;
     }
 }

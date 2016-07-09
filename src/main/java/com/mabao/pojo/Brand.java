@@ -3,15 +3,14 @@ package com.mabao.pojo;
 import javax.persistence.*;
 
 /**
- * 首页广告
+ * 商品品牌
  * Created by jackie on 2016/07/09.
  */
 @Entity
-@Table(name = "t_banner")
+@Table(name = "t_brand")
 public class Brand {
     private Long id;                         //编号
-    private Goods goods;                     //商品ID
-    private String alt;                      //提示
+    private String brandName;                 //品牌名称
     private String picture;                  //图片
     private Integer sort;                    //排序
     private String remark;                   //备注
@@ -25,24 +24,6 @@ public class Brand {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "goods_id")
-    public Goods getGoods() {
-        return goods;
-    }
-
-    public void setGoods(Goods goods) {
-        this.goods = goods;
-    }
-
-    public String getAlt() {
-        return alt;
-    }
-
-    public void setAlt(String alt) {
-        this.alt = alt;
     }
 
     public Integer getSort() {
@@ -75,5 +56,13 @@ public class Brand {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
     }
 }

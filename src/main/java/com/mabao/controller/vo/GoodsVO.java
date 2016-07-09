@@ -23,6 +23,7 @@ public class GoodsVO {
         GoodsVO vo = VoUtil.copyBasic(GoodsVO.class, goods);
         //将数据库里用数据存储的新旧状态转换为对应string的描述语言
         assert vo != null;
+        vo.setPrice(goods.getPrice().toString());
         vo.setNewDegree(goods.getNewDegree()>0?goods.getNewDegree()+"成":"全新");
         return vo;
     }

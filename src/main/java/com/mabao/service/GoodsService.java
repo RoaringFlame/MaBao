@@ -21,21 +21,13 @@ public interface GoodsService {
     /**
     * 首页商品模糊搜索
     */
-    Page<Goods> goodsSearch(String title, int page, int pageSize);
+    Page<Goods> goodsSearch(Long goodsTypeId,String title, int page, int pageSize);
 
-    /**
-    * 商品类型查询
-    */
-    Page<Goods> findGoodsByGoodsType(Long goodsTypeId, int page, int pageSize);
     /**
      * 查询商品详细信息
      * @param goodsId           商品ID
     */
     Goods get(Long goodsId);
-    /**
-      * 轮播图片列表
-     */
-    List<Goods> getGoodsPictureCircle();
 
     /**
      * （首页猜你喜欢）

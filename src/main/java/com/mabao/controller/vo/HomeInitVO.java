@@ -11,7 +11,6 @@ import java.util.List;
  */
 public class HomeInitVO {
     private List<Selector> goodsTypeList;               //商品类别
-    private PageVO<GoodsVO> newGoodsPage;               //新品商品列表
     private List<Selector> gender;                      //猜你喜欢，宝宝性别
     private List<BannerVO> smallBanner;                  //轮播图片列表3张
 
@@ -21,14 +20,6 @@ public class HomeInitVO {
 
     public void setGoodsTypeList(List<Selector> goodsTypeList) {
         this.goodsTypeList = goodsTypeList;
-    }
-
-    public PageVO<GoodsVO> getNewGoodsPage() {
-        return newGoodsPage;
-    }
-
-    public void setNewGoodsPage(PageVO<GoodsVO> newGoodsPage) {
-        this.newGoodsPage = newGoodsPage;
     }
 
     public List<Selector> getGender() {

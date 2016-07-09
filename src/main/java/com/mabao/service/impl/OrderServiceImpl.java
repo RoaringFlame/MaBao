@@ -17,8 +17,6 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private GoodsService goodsService;
     @Autowired
-    private UserService userService;
-    @Autowired
     private AddressService addressService;
     @Autowired
     private OrderDetailRepository orderDetailRepository;
@@ -53,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
             od.setGoods(this.goodsService.get(goodsId));
             od.setQuantity(num);
             od.setOrder(order);
-            od.setUnitCost(this.goodsService.get(goodsId).getPrice());
+            od.setUnitCost((double)(this.goodsService.get(goodsId).getPrice()/100));
             this.orderDetailRepository.save(od);
         }
 

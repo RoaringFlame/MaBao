@@ -22,23 +22,24 @@ public class GoodsServiceImpl implements GoodsService {
      */
     @Override
     public Page<Goods> getNewGoods(int page, int pageSize) {
-        Page<Goods> goodsPage = this.goodsRepository.findAll(new PageRequest(page, pageSize));
-        return goodsPage;
+        return this.goodsRepository.findAll(new PageRequest(page, pageSize));
     }
 
     /**
      * 首页商品模糊搜索
      */
     @Override
-    public Page<Goods> goodsSearch(String title, int page, int pageSize) {
-        return this.goodsRepository.findByTitleLike(title,new PageRequest(page, pageSize));
-    }
-    /**
-     * 商品类型查询
-     */
-    @Override
-    public Page<Goods> findGoodsByGoodsType(Long goodsTypeId, int page, int pageSize) {
-        return this.goodsRepository.findByTypeId(goodsTypeId,new PageRequest(page, pageSize));
+    public Page<Goods> goodsSearch(Long goodsTypeId,String title, int page, int pageSize) {
+        if (goodsTypeId != null && title != null && !"".equals(title)){
+            return this.goodsRepository.findByTypeIdAndStateAndTitleLike(goodsTypeId,Boolean.TRUE,title,new PageRequest(page, pageSize));
+        }else if (title == null || "".equals(title)){
+            return this.goodsRepository.findByTypeIdAndState(goodsTypeId,Boolean.TRUE,new PageRequest(page, pageSize));
+        }else if (goodsTypeId == null){
+            return this.goodsRepository.findByStateAndTitleLike(Boolean.TRUE,title,new PageRequest(page, pageSize));
+        }else {
+            return null;
+        }
+
     }
     /**
      * 查询商品信息
@@ -47,13 +48,7 @@ public class GoodsServiceImpl implements GoodsService {
     public Goods get(Long goodsId) {
         return this.goodsRepository.findOne(goodsId);
     }
-    /**
-     * 轮播图片列表
-     */
-    @Override
-    public List<Goods> getGoodsPictureCircle() {
-        return null;
-    }
+
     /**
      * （首页猜你喜欢）
      * @param babyName          宝宝姓名

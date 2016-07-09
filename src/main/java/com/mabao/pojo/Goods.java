@@ -14,8 +14,8 @@ public class Goods {
     private String articleNumber;                   //货号
     private String picture;                         //图片标签
     private String title;                           //标题
-    private int oldPrice;                           //原价，用整型存储避免计算出错，存取时记得变位。
-    private int price;                              //现价，用法同原价。
+    private Double oldPrice;                        //原价，用整型存储避免计算出错，存取时记得变位。
+    private Double price;                           //现价，用法同原价。
     private String typeName;                        //二级类型名称
     private GoodsType type;                         //一级类型编号
     private String brand;                           //商品品牌
@@ -79,24 +79,21 @@ public class Goods {
         this.title = title;
     }
 
-    @Basic
-    @javax.persistence.Column(name = "old_price")
+    @Column(name = "old_price")
     public Double getOldPrice() {
-        return oldPrice*1.00/100;
+        return oldPrice;
     }
 
     public void setOldPrice(Double oldPrice) {
-        this.oldPrice = (int)(oldPrice*100.00);
+        this.oldPrice = oldPrice;
     }
-
-    @Basic
-    @javax.persistence.Column(name = "price")
+    @Column(name = "price")
     public Double getPrice() {
-        return price*1.00/100;
+        return price;
     }
 
     public void setPrice(Double price) {
-        this.price = (int)(price*100.00);
+        this.price = price;
     }
 
     @Basic
