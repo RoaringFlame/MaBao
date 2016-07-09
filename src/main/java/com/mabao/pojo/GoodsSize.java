@@ -33,6 +33,7 @@ public class GoodsSize {
         this.goodsType = goodsType;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }

@@ -30,14 +30,16 @@ public class GoodsServiceImpl implements GoodsService {
      */
     @Override
     public Page<Goods> goodsSearch(Long goodsTypeId,String title, int page, int pageSize) {
-        if (goodsTypeId != null && title != null && !"".equals(title)){
+        if (goodsTypeId == null && (title == null || "".equals(title))){
+            return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
+        }if (goodsTypeId != null && title != null && !"".equals(title)){
             return this.goodsRepository.findByTypeIdAndStateAndTitleLike(goodsTypeId,Boolean.TRUE,title,new PageRequest(page, pageSize));
         }else if (title == null || "".equals(title)){
             return this.goodsRepository.findByTypeIdAndState(goodsTypeId,Boolean.TRUE,new PageRequest(page, pageSize));
         }else if (goodsTypeId == null){
             return this.goodsRepository.findByStateAndTitleLike(Boolean.TRUE,title,new PageRequest(page, pageSize));
         }else {
-            return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
+            return null;
         }
 
     }
@@ -80,5 +82,19 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public List<Goods> findGoodsByIdIn(List<Long> goodsIdList) {
         return this.goodsRepository.findByIdIn(goodsIdList);
+    }
+
+    /**
+     * 依据宝宝ID匹配商品
+     * （首页猜你喜欢）
+     * @param babyId                宝宝ID
+     * @param hobby                 爱好
+     * @param page                  页码
+     * @param pageSize              一页大小
+     * @return                      商品集合，分页
+     */
+    @Override
+    public Page<Goods> goodsPageByBabyId(Long babyId, String hobby, int page, int pageSize) {
+        return null;
     }
 }

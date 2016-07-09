@@ -5,7 +5,7 @@ import java.util.Date;
 @Entity
 @Table(name = "t_user")
 public class User {
-    private Long id;                             //用户编号
+    private Long id;                                //用户编号
     private String name;                            //呢称
     private String password;                        //密码
     private String phone;                           //手机号

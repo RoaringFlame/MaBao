@@ -17,14 +17,16 @@ public class GoodsVO {
     private String picture;                 //宝物图片
     private String price;                   //宝物价格
     private String newDegree;               //宝物新旧程度
-    private String brand;                   //宝物品牌
+    private String brandName;               //宝物品牌
+    private String size;                    //宝物尺寸
 
     public static GoodsVO generateBy(Goods goods){
         GoodsVO vo = VoUtil.copyBasic(GoodsVO.class, goods);
         //将数据库里用数据存储的新旧状态转换为对应string的描述语言
         assert vo != null;
         vo.setPrice(goods.getPrice().toString());
-        vo.setNewDegree(goods.getNewDegree()>0?goods.getNewDegree()+"成":"全新");
+        vo.setNewDegree(goods.getNewDegree().getText());
+        vo.setSize(goods.getSize().getName());
         return vo;
     }
     public static List<GoodsVO> generateBy(List<Goods> goodsList){
@@ -75,11 +77,19 @@ public class GoodsVO {
         this.newDegree = newDegree;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getBrandName() {
+        return brandName;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 }

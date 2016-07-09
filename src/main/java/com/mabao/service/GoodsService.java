@@ -55,4 +55,14 @@ public interface GoodsService {
      */
     List<Goods> findGoodsByIdIn(List<Long> goodsIdList);
 
+    /**
+     * 依据宝宝ID匹配商品
+     * （首页猜你喜欢）
+     * @param babyId                宝宝ID
+     * @param hobby                 爱好
+     * @param page                  页码
+     * @param pageSize              一页大小
+     * @return                      商品集合，分页
+     */
+    Page<Goods> goodsPageByBabyId(Long babyId, String hobby, int page, int pageSize);
 }

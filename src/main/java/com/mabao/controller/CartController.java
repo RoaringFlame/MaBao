@@ -65,6 +65,7 @@ public class CartController {
         List<GoodsVO> goodsList = GoodsVO.generateBy(this.goodsService.findGoodsByIdIn(goodsIdList));
         map.put("checkedGoods",goodsList);
         map.put("cartAndNum",cartAndNum);
+        map.put("freight",10);              //运费
         model.addAllAttributes(map);
         return "pay";
     }

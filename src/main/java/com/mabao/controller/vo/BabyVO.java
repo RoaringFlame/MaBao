@@ -1,22 +1,39 @@
-package com.mabao.pojo;
+package com.mabao.controller.vo;
 
 import com.mabao.enums.Gender;
+import com.mabao.pojo.Baby;
+import com.mabao.pojo.User;
+import com.mabao.util.VoUtil;
 
-import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-@Table(name = "t_baby")
-public class Baby {
+/**
+ * 宝宝信息
+ * Created by jackie on 2016/07/09.
+ */
+public class BabyVO {
     private Long id;                            //编号
-    private User user;                          //用户ID
+    private Long userId;                        //用户ID
     private String name;                        //宝宝名字
     private Date birthday;                      //宝宝出生日期
     private Gender gender;                      //宝宝性别
 
+    public static BabyVO generateBy(Baby baby){
+        BabyVO vo = VoUtil.copyBasic(BabyVO.class, baby);
+        assert vo != null;
+        vo.setUserId(baby.getUser().getId());
+        return vo;
+    }
+    public static List<BabyVO> generateBy(List<Baby> babyList){
+        List<BabyVO> list=new ArrayList<>();
+        for (Baby g : babyList){
+            list.add(generateBy(g));
+        }
+        return list;
+    }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -25,14 +42,12 @@ public class Baby {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getName() {

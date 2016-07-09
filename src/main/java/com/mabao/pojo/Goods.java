@@ -1,6 +1,7 @@
 package com.mabao.pojo;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.mabao.enums.Quality;
 import com.mabao.util.CustomDateSerializer;
 
 import javax.persistence.*;
@@ -14,14 +15,15 @@ public class Goods {
     private String articleNumber;                   //货号
     private String picture;                         //图片标签
     private String title;                           //标题
-    private Double oldPrice;                        //原价，用整型存储避免计算出错，存取时记得变位。
-    private Double price;                           //现价，用法同原价。
+    private Double oldPrice;                        //原价
+    private Double price;                           //现价
     private String typeName;                        //二级类型名称
     private GoodsType type;                         //一级类型编号
-    private String brand;                           //商品品牌
+    private String brandName;                       //商品品牌名称
+    private GoodsBrand brand;                       //商品品牌ID
     private Date upTime;                            //上架时间
-    private Integer newDegree;                      //新旧程度，0表示全新，95，80分别表示95成8成新
-    private String size;                            //尺寸
+    private Quality newDegree;                      //新旧程度，0表示全新，95，80分别表示95成8成新
+    private GoodsSize size;                         //尺寸
     private Boolean pack;                           //是否有包装，1有0无
     private Boolean receipt;                        //是否有小票，1有0无
     private String message;                         //卖家分享
@@ -115,14 +117,14 @@ public class Goods {
         this.type = type;
     }
 
-    @Basic
-    @javax.persistence.Column(name = "brand")
-    public String getBrand() {
-        return brand;
+
+    @Column(name = "brand_name")
+    public String getBrandName() {
+        return brandName;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
     }
 
     @Basic
@@ -136,25 +138,25 @@ public class Goods {
         this.upTime = upTime;
     }
 
-    @Basic
-    @javax.persistence.Column(name = "new_degree")
-    public Integer getNewDegree() {
+    @Column(name = "new_degree")
+    public Quality getNewDegree() {
         return newDegree;
     }
 
-    public void setNewDegree(Integer newDegree) {
+    public void setNewDegree(Quality newDegree) {
         this.newDegree = newDegree;
     }
 
-    @Basic
-    @javax.persistence.Column(name = "size")
-    public String getSize() {
+    @ManyToOne
+    @JoinColumn(name = "size")
+    public GoodsSize getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(GoodsSize size) {
         this.size = size;
     }
+
 
     @Basic
     @javax.persistence.Column(name = "pack")
@@ -219,4 +221,13 @@ public class Goods {
         this.state = state;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "brand_id")
+    public GoodsBrand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(GoodsBrand brand) {
+        this.brand = brand;
+    }
 }

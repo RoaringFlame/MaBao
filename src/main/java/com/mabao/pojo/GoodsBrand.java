@@ -7,10 +7,10 @@ import javax.persistence.*;
  * Created by jackie on 2016/07/09.
  */
 @Entity
-@Table(name = "t_brand")
-public class Brand {
+@Table(name = "t_goods_brand")
+public class GoodsBrand {
     private Long id;                         //编号
-    private String brandName;                //品牌名称
+    private String brandName;                 //品牌名称
     private String picture;                  //图片
     private Integer sort;                    //排序
     private String remark;                   //备注
