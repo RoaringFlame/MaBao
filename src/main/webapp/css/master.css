@@ -152,3 +152,7 @@ header{
     float: left;
     width: 20%;
     height: 4rem;
+}
+.hide{
+    display:none;
+}

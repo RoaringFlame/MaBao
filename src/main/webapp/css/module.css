@@ -54,7 +54,6 @@
 /*侧导航栏*/
 .sidebar{
 	position:absolute;
-	display:none;
 	padding:0 1rem;
 	background:#333;
 	z-index:1;
@@ -1226,8 +1225,8 @@ section .user-img{
           margin-bottom: 5.0rem;
           text-align: center;
           line-height: 3rem;*/
-        /*  border-radius:0.6rem;*/
-          }
+        /*  border-radius:0.6rem;
+          }*/
 #footer{ width: 100%;
 	     background-color: #E1E4E6;
 	     position: fixed;
