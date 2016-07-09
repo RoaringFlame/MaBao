@@ -1,8 +1,6 @@
 package com.mabao.service.impl;
 
-import com.mabao.controller.vo.GoodsVO;
 import com.mabao.enums.Gender;
-import com.mabao.util.PageVO;
 import com.mabao.pojo.Goods;
 import com.mabao.repository.GoodsRepository;
 import com.mabao.service.GoodsService;
@@ -20,15 +18,12 @@ public class GoodsServiceImpl implements GoodsService {
     private GoodsRepository goodsRepository;
 
     /**
-     * 新品（初始化）
+     * 新品
      */
     @Override
-    public PageVO<GoodsVO> getNewGoods(int page, int pageSize) {
+    public Page<Goods> getNewGoods(int page, int pageSize) {
         Page<Goods> goodsPage = this.goodsRepository.findAll(new PageRequest(page, pageSize));
-        PageVO<GoodsVO> voPage = new PageVO<>();
-        voPage.toPage(goodsPage);
-        voPage.setItems(GoodsVO.generateBy(goodsPage.getContent()));
-        return voPage;
+        return goodsPage;
     }
 
     /**

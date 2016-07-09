@@ -1,0 +1,49 @@
+package com.mabao.controller.vo;
+
+import com.mabao.util.PageVO;
+import com.mabao.util.Selector;
+
+import java.util.List;
+
+/**
+ * 首页初始化VO
+ * Created by jackie on 2016/07/09.
+ */
+public class HomeInitVO {
+    private List<Selector> goodsTypeList;               //商品类别
+    private PageVO<GoodsVO> newGoodsPage;               //新品商品列表
+    private List<Selector> gender;                      //猜你喜欢，宝宝性别
+    private List<BannerVO> smallBanner;                  //轮播图片列表3张
+
+    public List<Selector> getGoodsTypeList() {
+        return goodsTypeList;
+    }
+
+    public void setGoodsTypeList(List<Selector> goodsTypeList) {
+        this.goodsTypeList = goodsTypeList;
+    }
+
+    public PageVO<GoodsVO> getNewGoodsPage() {
+        return newGoodsPage;
+    }
+
+    public void setNewGoodsPage(PageVO<GoodsVO> newGoodsPage) {
+        this.newGoodsPage = newGoodsPage;
+    }
+
+    public List<Selector> getGender() {
+        return gender;
+    }
+
+    public void setGender(List<Selector> gender) {
+        this.gender = gender;
+    }
+
+    public List<BannerVO> getSmallBanner() {
+        return smallBanner;
+    }
+
+    public void setSmallBanner(List<BannerVO> smallBanner) {
+        this.smallBanner = smallBanner;
+    }
+}

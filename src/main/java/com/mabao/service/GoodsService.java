@@ -16,7 +16,7 @@ public interface GoodsService {
     /**
      * 新品
      */
-    PageVO<GoodsVO> getNewGoods(int page, int pageSize);
+    Page<Goods> getNewGoods(int page, int pageSize);
 
     /**
     * 首页商品模糊搜索

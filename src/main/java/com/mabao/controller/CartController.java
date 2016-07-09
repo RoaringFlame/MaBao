@@ -1,6 +1,6 @@
 package com.mabao.controller;
 
-import com.mabao.pojo.Address;
+import com.mabao.controller.vo.GoodsVO;
 import com.mabao.pojo.Goods;
 import com.mabao.service.AddressService;
 import com.mabao.service.CartService;
@@ -29,8 +29,6 @@ public class CartController {
     private CartService cartService;
     @Autowired
     private GoodsService goodsService;
-    @Autowired
-    private AddressService addressService;
 
     /**
      * 购物车添加商品
@@ -48,36 +46,25 @@ public class CartController {
 
     /**
      * 购物车页面提交后跳转订单确认页面
-     * @param userId            用户ID
-     * @param goodsAndNum       map<商品ID,数量>
-     * @param totalSum          总价格
+     * @param cartAndNum        <购物车ID-数量,购物车ID-数量...>格式 String
      * @param model             map(默认地址，选中支付的商品list)
      * @return                  支付页
      */
     @RequestMapping(value = "/orderConfirm",method = GET)
-    public String orderConfirm(@RequestParam Long userId,
-                               @RequestParam HashMap<Long,Integer> goodsAndNum,
-                               @RequestParam(required = false) Long addressId,
-                               @RequestParam Double totalSum,
+    public String orderConfirm(@RequestParam String cartAndNum,
                                Model model){
-        Map<String,Object> map=new HashMap<>();
-        //根据ID查商品列表
-        List<Long> goodsIdList = new ArrayList<>(goodsAndNum.keySet());
-        List<Goods> goodsList = this.goodsService.findGoodsByIdIn(goodsIdList);
-        map.put("checkedGoods",goodsList);
-        //查地址
-        if (addressId == null) {
-            Address address = this.addressService.getDefaultAddress(userId);//查默认地址
-            map.put("address",address);
-        }else {
-            Address address = this.addressService.get(addressId);
-            map.put("address",address);
+        Map<String,Object> map = new HashMap<>();
+        String[] cartAndNumArray = cartAndNum.trim().split(",");
+        List<Long> goodsIdList = new ArrayList<>();
+        for (String one : cartAndNumArray){
+            Long cartId =Long.valueOf(one.trim().split("-")[0]);
+            Long goodsId = this.cartService.get(cartId).getGoods().getId();
+            goodsIdList.add(goodsId);
         }
-        //总价格
-        map.put("totalSum",totalSum);
-
-        //查运费
-
+        //根据ID查商品列表
+        List<GoodsVO> goodsList = GoodsVO.generateBy(this.goodsService.findGoodsByIdIn(goodsIdList));
+        map.put("checkedGoods",goodsList);
+        map.put("cartAndNum",cartAndNum);
         model.addAllAttributes(map);
         return "pay";
     }

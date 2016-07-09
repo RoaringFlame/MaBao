@@ -1,21 +1,11 @@
 package com.mabao.controller;
 
-import com.mabao.controller.vo.GoodsVO;
-import com.mabao.enums.Gender;
-import com.mabao.pojo.Goods;
 import com.mabao.service.GoodsService;
 import com.mabao.service.GoodsTypeService;
-import com.mabao.util.PageVO;
-import com.mabao.util.Selector;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -48,7 +38,7 @@ public class HomeController {
      * @param model         map集合
      * @return              index首页
      */
-    @RequestMapping(method = GET)
+    /*@RequestMapping(method = GET)
     public String home(@RequestParam(required = false) Long userId,
                        @RequestParam(value = "page", defaultValue = "0") int page,
                        @RequestParam(value = "pageSize", defaultValue = "4") int pageSize,
@@ -68,7 +58,7 @@ public class HomeController {
         map.put("babyGender", gender);
         model.addAllAttributes(map);
         return "index";
-    }
+    }*/
 
 /**
      * 首页商品模糊搜索

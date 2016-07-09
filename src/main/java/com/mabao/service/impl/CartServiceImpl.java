@@ -1,8 +1,11 @@
 package com.mabao.service.impl;
 
 import com.mabao.controller.vo.JsonResultVO;
+import com.mabao.pojo.Cart;
 import com.mabao.pojo.Goods;
+import com.mabao.repository.CartRepository;
 import com.mabao.service.CartService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,9 @@ import java.util.List;
  */
 @Service
 public class CartServiceImpl implements CartService {
+    @Autowired
+    private CartRepository cartRepository;
+
     /**
      * 购物车添加商品
      * @param userId        用户ID
@@ -41,5 +47,15 @@ public class CartServiceImpl implements CartService {
     @Override
     public Page<Goods> findAllGoodsByUser(Long userId) {
         return null;
+    }
+
+    /**
+     * get一条购物车信息
+     * @param cartId            购物车ID
+     * @return                  购物车对象
+     */
+    @Override
+    public Cart get(Long cartId) {
+        return this.cartRepository.findOne(cartId);
     }
 }

@@ -43,7 +43,7 @@ public class UserCenterController {
     public String userLogin(@RequestParam User user, Model model){
         User result = this.userService.findByNameAndPassword(user.getName(),user.getPassword());
         if (result != null){
-            model.addAttribute("userId",result.getId());
+            model.addAttribute("userId",result);
             return "index";
         }else {
             return "login_failure";

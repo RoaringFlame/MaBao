@@ -7,16 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 商品简要信息VO
  * Created by lies on 2016/6/30.
  */
 public class GoodsVO {
 
-    private int id; //宝物的id
-    private String title;//宝物的描述
-    private String picture;//宝物图片
-    private String price;//宝物价格
-    private String newDegree;//宝物新旧程度
-    private String brand;//宝物品牌
+    private Long id;                         //宝物的id
+    private String title;                   //宝物的描述
+    private String picture;                 //宝物图片
+    private String price;                   //宝物价格
+    private String newDegree;               //宝物新旧程度
+    private String brand;                   //宝物品牌
 
     public static GoodsVO generateBy(Goods goods){
         GoodsVO vo = VoUtil.copyBasic(GoodsVO.class, goods);
@@ -32,12 +33,12 @@ public class GoodsVO {
         }
         return list;
     }
-    
-    public int getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

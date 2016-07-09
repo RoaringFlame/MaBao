@@ -2,7 +2,6 @@ package com.mabao.service;
 
 
 import com.mabao.pojo.User;
-import com.sun.org.apache.xpath.internal.operations.String;
 
 public interface UserService {
     /**

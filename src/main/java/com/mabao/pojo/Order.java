@@ -7,9 +7,8 @@ import java.util.Date;
 @Entity
 @Table(name = "t_order")
 public class Order {
-    private Long id;                 //id
-    private User buyerId;               //买家编号
-    private User sellerId;              //卖家编号
+    private Long id;                    //id
+    private User buyer;                 //买家编号
     private Date createTime;            //订单创建时间
     private Date portTime;              //订单发货时间
     private Date payTime;               //订单支付时间
@@ -99,22 +98,12 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "buyer_id")
-    public User getBuyerId() {
-        return buyerId;
+    public User getBuyer() {
+        return buyer;
     }
 
-    public void setBuyerId(User buyerId) {
-        this.buyerId = buyerId;
-    }
-
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "seller_id")
-    public User getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(User sellerId) {
-        this.sellerId = sellerId;
+    public void setBuyer(User buyer) {
+        this.buyer = buyer;
     }
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)

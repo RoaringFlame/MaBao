@@ -1,7 +1,4 @@
 package com.mabao.pojo;
-
-import com.sun.org.apache.xpath.internal.operations.String;
-
 import javax.persistence.*;
 import java.util.Date;
 

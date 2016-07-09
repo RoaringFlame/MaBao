@@ -1,6 +1,7 @@
 package com.mabao.service;
 
 import com.mabao.controller.vo.JsonResultVO;
+import com.mabao.pojo.Cart;
 import com.mabao.pojo.Goods;
 import org.springframework.data.domain.Page;
 
@@ -32,4 +33,11 @@ public interface CartService {
      * @return                  商品list
      */
     Page<Goods> findAllGoodsByUser(Long userId);
+
+    /**
+     * get一条购物车信息
+     * @param cartId            购物车ID
+     * @return                  购物车对象
+     */
+    Cart get(Long cartId);
 }
