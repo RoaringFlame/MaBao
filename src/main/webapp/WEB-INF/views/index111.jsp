@@ -2,22 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>首页</title>
-    <meta name="viewport"
-          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
-    <!-- 禁止将数字变为电话号码 -->
-    <meta name="format-detection" content="telephone=no"/>
-    <!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
 
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/master.css">
     <link rel="stylesheet" href="../../css/module.css">
-    <script src="../../script/lib/jquery.1.10.2.js"></script>
-    <script src="../../script/index.js"></script>
 </head>
 
 <body>
@@ -27,7 +16,7 @@
         首页
         <!--操作按钮-->
         <div class="header-box">
-            <a href="login.html">
+            <a href="#">
                 <button class="header-left">
                     <i class="icon icon-return"></i>
                     登陆
@@ -216,26 +205,13 @@
         </form>
         <!-- 猜你喜欢END -->
 
-        <!--底部导航-->
-        <div class="menu" id="menu">
-            <a href="#">
-                <i class="icon-menu icon-menu1"><img src="../../img/footer-c1.png" alt=""></i>
-            </a>
-            <a href="#">
-                <i class="icon-menu icon-menu2"><img src="../../img/footer-2.png" alt=""></i>
-            </a>
-            <a href="#">
-                <i class="icon-menu icon-menu3"><img src="../../img/footer-3.png" alt=""></i>
-            </a>
-            <a href="#">
-                <i class="icon-menu icon-menu4"><img src="../../img/footer-4.png" alt=""></i>
-            </a>
-            <a href="#">
-                <i class="icon-menu icon-menu5"><img src="../../img/footer-5.png" alt=""></i>
-            </a>
-        </div>
-        <!--底部导航 END-->
+        <jsp:include page="../../page/footer.html"/>
     </div>
 </div>
 </body>
+<script>
+    $(function(){
+        alert(1);
+    });
+</script>
 </html>

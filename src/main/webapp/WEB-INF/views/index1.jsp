@@ -182,13 +182,13 @@
 </div>
 
 
-<script type="text/javascript" src="../../js/jquery.1.10.2.js"></script>
+<script type="text/javascript" src="../../script/lib/jquery.1.10.2.js"></script>
 <script type="text/javascript" src="../../js/dataBind.js"></script>
 <script type="text/javascript" src="../../js/hhSwipe.js"></script>
 <script type="text/javascript" src="../../js/iscroll.js"></script>
 <script type="text/javascript" src="../../js/analyPara.js"></script>
 <script type="text/javascript" src="../../js/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../script/lib/bootstrap.min.js"></script>
 <script>
     $('.carousel').carousel({
         interval: 2500

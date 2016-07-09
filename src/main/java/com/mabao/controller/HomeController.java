@@ -33,32 +33,12 @@ public class HomeController {
     /**
      * 首页
      *（查询商品类别，轮播图片，新品列表）
-     * @param page          页码
-     * @param pageSize      页面大小
-     * @param model         map集合
      * @return              index首页
      */
-    /*@RequestMapping(method = GET)
-    public String home(@RequestParam(required = false) Long userId,
-                       @RequestParam(value = "page", defaultValue = "0") int page,
-                       @RequestParam(value = "pageSize", defaultValue = "4") int pageSize,
-                       Model model) {
-        Map<String, Object> map = new HashMap<>();
-        //商品类别
-        List<Selector> goodsTypeList = this.goodsTypeService.getAllGoodsTypeForSelector();
-        map.put("goodsTypeSelector", goodsTypeList);
-        //轮播图片列表
-        List<Goods> circleList = this.goodsService.getGoodsPictureCircle();
-        map.put("circleList", circleList);
-        //新品商品列表
-        PageVO<GoodsVO> newGoods = this.goodsService.getNewGoods(page, pageSize);
-        map.put("newGoods", newGoods);
-        //猜你喜欢，宝宝性别
-        List<Selector> gender = Gender.toList();
-        map.put("babyGender", gender);
-        model.addAllAttributes(map);
+    @RequestMapping(method = GET)
+    public String home() {
         return "index";
-    }*/
+    }
 
 /**
      * 首页商品模糊搜索
