@@ -84,14 +84,17 @@ button {
 	height: 4rem;}
 
 .content-index{
+	padding-top:4rem; 
 	max-width: 32rem;
 	margin: 0 auto;
 }
 /* CSS 标题栏*/
 header{
-	position: relative;
+	position: fixed;
+	top:0;
+	z-index: 9999;
 	background:#4C5359;
-	width:100%;
+	width:32rem;
 	height:4rem;
 	font-size: 1.4rem;
 	text-align: center;

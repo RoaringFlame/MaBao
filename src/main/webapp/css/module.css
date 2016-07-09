@@ -3,10 +3,13 @@
 /*首页*/
 /*搜索框*/
 .search{
-	position: relative;
+	position: fixed;
+	top:4rem;
+	z-index: 9998;
 	background: #fff;
 	padding: .5rem;
 	height: 4rem;
+	width: 32rem;
 }
 
 /*侧边导航*/
@@ -67,6 +70,11 @@
 	font-size: 1.2rem;
 	color:#fff;
 	display:block;}
+/*轮播图*/
+.carousel {margin-top:4rem; }
+.carousel-inner .item img{
+	width: 32rem;
+    height: 12rem;}
 /*商品*/
 .goods{
 	background: #fff;
@@ -947,7 +955,7 @@ section .user-img{
 }
 
 /*注册*/
-.container{
+/*.container{
   max-width:32rem;
   margin:0 auto;
   height:28rem;
@@ -974,18 +982,7 @@ section .user-img{
   height:2.6rem;
   line-height:2.6rem;
   text-indent:1rem;}
-.input-res{
-  width:70%;
-  margin:0 auto;}
-.input-res input{
-  width:100%;
-  height:3rem;
-  line-height:3rem;
-  color:#fff;
-  text-align: center;
-  background:#0099FF;
-  font-size:1.3rem;}
-/*.clear{height:3rem;}*/
+*/
 .button{border:0;}
 /*//修改密码*/
 .login-box {text-align: center;}
@@ -997,6 +994,7 @@ section .user-img{
 	text-indent: .5rem;
 }
 .submit-button{
+	      display: block;
 	      width: 80%;
           height:3rem;
           font-size: 1.4rem;
