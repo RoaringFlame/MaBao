@@ -112,7 +112,13 @@ $(function(){
                 }
             },
             onScrollEnd: function () {
-                console.log(upOrDown);
+                if(upOrDown=="up"){
+                    loadNewGoods();
+                }
+                else if(upOrDown=="down"){
+                    currentPage++;
+                    loadNewGoods();
+                }
             }
         });
     }
