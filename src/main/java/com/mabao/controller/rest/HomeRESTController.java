@@ -52,11 +52,11 @@ public class HomeRESTController {
         //轮播图片列表
         List<BannerVO> smallBanner =BannerVO.generateBy(this.bannerService.findByStatusOrderBySortDesc(true));
         homeInitVO.setSmallBanner(smallBanner);
-        /*//猜你喜欢，宝宝信息
+        //猜你喜欢，宝宝信息
         Baby baby = this.babyService.findBabyByUserId(UserManager.getUser().getId()).get(0);
         if (baby != null) {
            homeInitVO.setBaby(BabyVO.generateBy(baby));
-        }*/
+        }
         //猜你喜欢，宝宝性别
         List<Selector> gender = Gender.toList();
         homeInitVO.setGender(gender);
@@ -108,10 +108,9 @@ public class HomeRESTController {
 
     @RequestMapping(value = "/goodsGuess/baby/{babyId}",method = RequestMethod.GET)
     public PageVO<GoodsVO> goodsListGuessByBaby(@PathVariable Long babyId,
-                                          @RequestParam String hobby,
                                           @RequestParam(value = "page", defaultValue = "0")int page,
                                           @RequestParam(value = "pageSize", defaultValue = "4") int pageSize) {
-        Page<Goods> goodsPage = this.goodsService.goodsPageByBabyId(babyId,hobby,page,pageSize);
+        Page<Goods> goodsPage = this.goodsService.goodsPageByBabyId(babyId,page,pageSize);
         PageVO<GoodsVO> voPage = new PageVO<>();
         voPage.toPage(goodsPage);
         voPage.setItems(GoodsVO.generateBy(goodsPage.getContent()));

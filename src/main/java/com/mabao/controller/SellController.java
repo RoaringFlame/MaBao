@@ -3,10 +3,9 @@ package com.mabao.controller;
 import com.mabao.enums.Gender;
 import com.mabao.pojo.Address;
 import com.mabao.pojo.Goods;
-import com.mabao.service.AddressService;
-import com.mabao.service.GoodsService;
-import com.mabao.service.GoodsTypeService;
+import com.mabao.service.*;
 import com.mabao.util.Selector;
+import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +27,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  */
 @Controller
 @RequestMapping("/sell")
-@SessionAttributes("userId")
 public class SellController {
     @Autowired
     private GoodsService goodsService;
@@ -36,16 +34,10 @@ public class SellController {
     private AddressService addressService;
     @Autowired
     private GoodsTypeService goodsTypeService;
-
-    /**
-     * 我要寄售
-     * (判断是否登录)
-     * @return                      添加结果页面
-     */
-    @RequestMapping(method = GET)
-    public String isLogin(HttpSession session){
-        return session.getAttribute("userId")  != null ?  "consale" : "login";
-    }
+    @Autowired
+    private BrandService brandService;
+    @Autowired
+    private GoodsSizeService goodsSizeService;
 
     /**
      * 寄售
@@ -56,6 +48,7 @@ public class SellController {
     @RequestMapping(value = "/receiptPlaceAdd",method = POST)
     public String addReceiptPlace(@RequestParam Address address){
         address.setState(true);//设为默认地址
+        address.setUser(UserManager.getUser());
         Address adr = this.addressService.addAddress(address);
         return adr != null ? "consignment_success" : "consignment_failure";
     }
@@ -72,9 +65,15 @@ public class SellController {
         //商品类型
         List<Selector> goodsTypeList = this.goodsTypeService.getAllGoodsTypeForSelector();
         map.put("goodsType",goodsTypeList);
-        //适合宝宝
+        //品牌
+        List<Selector> brand = this.brandService.findBrandForSelector();
+        map.put("brand",brand);
+        //宝宝性别
         List<Selector> gender = Gender.toList();
         map.put("gender",gender);
+        //尺码
+        List<Selector> goodsSize = this.goodsSizeService.findGoodsSizeForSelector();
+        map.put("goodsSize",goodsSize);
         model.addAllAttributes(map);
         return "selfup";
     }

@@ -47,6 +47,6 @@ public class BabyServiceImpl implements BabyService {
      */
     @Override
     public List<Baby> findBabyByUserId(Long userId) {
-        return null;
+        return this.babyRepository.findByUserId(userId);
     }
 }

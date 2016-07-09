@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-07-09 18:58:42
+Date: 2016-07-09 19:39:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,12 +43,14 @@ CREATE TABLE `t_baby` (
   `name` varchar(255) DEFAULT NULL COMMENT '宝宝姓名',
   `birthday` date NOT NULL COMMENT '出生日期',
   `gender` int(11) NOT NULL COMMENT '宝宝性别',
+  `hobby` varchar(255) DEFAULT NULL COMMENT '爱好',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='宝宝信息';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='宝宝信息';
 
 -- ----------------------------
 -- Records of t_baby
 -- ----------------------------
+INSERT INTO `t_baby` VALUES ('1', '1', 'baby', '2016-07-09', '1', null);
 
 -- ----------------------------
 -- Table structure for t_banner

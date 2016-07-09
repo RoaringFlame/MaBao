@@ -24,6 +24,7 @@ public class BabyVO {
         BabyVO vo = VoUtil.copyBasic(BabyVO.class, baby);
         assert vo != null;
         vo.setUserId(baby.getUser().getId());
+        vo.setGender(baby.getGender());
         return vo;
     }
     public static List<BabyVO> generateBy(List<Baby> babyList){

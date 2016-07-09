@@ -63,7 +63,7 @@ public class GoodsServiceImpl implements GoodsService {
      */
     @Override
     public Page<Goods> goodsListGuess(String babyName, String babyBirthday, Gender gender, String hobby, int page, int pageSize) {
-        return null;
+        return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
     }
     /**
      * 保存商品
@@ -88,13 +88,12 @@ public class GoodsServiceImpl implements GoodsService {
      * 依据宝宝ID匹配商品
      * （首页猜你喜欢）
      * @param babyId                宝宝ID
-     * @param hobby                 爱好
      * @param page                  页码
      * @param pageSize              一页大小
      * @return                      商品集合，分页
      */
     @Override
-    public Page<Goods> goodsPageByBabyId(Long babyId, String hobby, int page, int pageSize) {
-        return null;
+    public Page<Goods> goodsPageByBabyId(Long babyId, int page, int pageSize) {
+        return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
     }
 }
