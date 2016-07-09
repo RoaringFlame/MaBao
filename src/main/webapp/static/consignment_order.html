@@ -12,54 +12,74 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!--     <script type="text/javascript" src="../js/jquery.1.10.2.js"></script> -->
-    <link rel="stylesheet" href="../css/order.css">
-    <link rel="stylesheet" href="../css/public.css">
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/module.css">
 </head>
+
 <body>
-<section class="header-top" id="#header-top">
-    <div class="back"><a href="personal.html"><img src="../img/back.png" alt=""></a>
-        <a href="personal.html" class="jump-to">返回</a></div>
-    <div class="title-bar"><p>寄售订单</p></div>
-</section>
-<!--  <div id="wrapper">
-   <div id="scroller"> -->
-<div class="main" id="main">
+    <div class="content-index">
+        <!--标题-->
+        <header>
+           寄售订单
+            <!--操作按钮-->
+           <div class="header-box">
+                <a href="personal.html">
+                  <button class="header-left">
+                  <i class="icon icon-return"></i>
+                   返回
+                </button>
+                </a>
+           </div>
+            <!--操作按钮 END-->
+        </header>
+         <!--标题 END-->
+        <!-- 我是卖家——寄售订单 -->
+        <div class="order"> 
 
-    <div class="top" onclick=window.location.href="personal.html">
-        <img src="../img/u8.jpg" alt="宝物">
-        <div class="b">
-            <p>H&M CARDIGAN</p>
-            <p>尺寸：S</p>
-            <div class="a">
-                <p>出售价格：￥35.5</p>
-                <p>扣除佣金可得：￥30.0</p>
-                <p>等待成交</p>
+          <!-- 寄售订单 -->
+            <div class="order-box" onclick=window.location.href="detail.html">
+                <p class="unpaid-txt">交易完成</p>
+                <img src="../img/u8.jpg" alt="宝物">
+                <div class="order-box-right">
+                    <p>H&M CARDIGAN</p>
+                    <p>尺寸：S</p>
+                    <p class="order-box-left">出售价格：￥35.5</p>
+                    <p class="order-box-left">扣除佣金可得：￥30.0</p>
+                </div>
             </div>
+          <!-- 寄售订单END -->
+          <!-- 寄售订单 -->
+            <div class="order-box" onclick=window.location.href="detail.html">
+                <p class="unpaid-txt">商品已上架</p>
+                <img src="../img/u20.jpg" alt="宝物">
+                <div class="order-box-right">
+                    <p>H&M CARDIGAN</p>
+                    <p>尺寸：S</p>
+                    <p class="order-box-left">出售价格：￥35.5</p>
+                    <p class="order-box-left">扣除佣金可得：￥30.0</p>
+                </div>
+            </div>
+          <!-- 寄售订单END -->
+                    <!-- 寄售订单 -->
+            <div class="order-box" onclick=window.location.href="detail.html">
+                <p class="unpaid-txt">商品上架中</p>
+                <img src="../img/u20.jpg" alt="宝物">
+                <div class="order-box-right">
+                    <p>H&M CARDIGAN</p>
+                    <p>尺寸：S</p>
+                    <p class="order-box-left">出售价格：￥35.5</p>
+                    <p class="order-box-left">扣除佣金可得：￥30.0</p>
+                </div>
+            </div>
+          <!-- 寄售订单END -->
+          <!-- 共计 -->
+            <div class="order-bottom">
+                <p>共计2件商品 小计：<span>￥101</span> (含运费￥10)</p>
+            </div>
+           <!-- 共计END -->
+        </div>
+         <!-- 我是买家-寄售订单END -->
+    </div>
 
-        </div>
-    </div>
-    <div class="top" onclick=window.location.href="personal.html">
-        <img src="../img/u20.jpg" alt="宝物">
-        <div class="b">
-            <p>H&M CARDIGAN</p>
-            <p>尺寸：S</p>
-            <div class="a">
-                <p>出售价格：￥35.5</p>
-                <p>扣除佣金可得：￥30.0</p>
-                <p>等待成交</p>
-            </div>
-        </div>
-    </div>
-    <div class="clear"></div>
-    <div class="bottom"><p>共计2件商品 小计：<span>￥101</span> (含运费￥10)</p></div>
-</div>
-<!--     <div id="pullUp">
-			<span class="pullUpLabel"></span>
-	</div> -->
-<!--     </div>
-</div>  -->
-<!--     <script type="text/javascript" src="../js/analyPara.js"></script>
-    <script type="text/javascript" src="../js/order2.js"></script>
-    <script type="text/javascript" src="../js/iscroll.js"></script> -->
 </body>
 </html>

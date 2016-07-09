@@ -11,18 +11,27 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="../css/public.css">
-    <link rel="stylesheet" href="../css/res.css">
-    <link href="../css/bootstrap-switch.css" rel="stylesheet">
+     <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/module.css">
 </head>
+
 <body>
-<section class="header-top">
-    <div class="back">
-        <a href="consignment.html"><img src="../img/back.png" alt=""></a>
-        <a href="consignment.html"  class="jump-to">返回</a>
-    </div>
-    <div class="title-bar"><p>转让宝物</p></div>
-</section>
+    <div class="content-index">
+        <!--标题-->
+        <header>
+           转让宝物
+            <!--操作按钮-->
+           <div class="header-box">
+                <a href="consignment.html">
+                  <button class="header-left">
+                  <i class="icon icon-return"></i>
+                   返回
+                </button>
+                </a>
+           </div>
+            <!--操作按钮 END-->
+        </header>
+         <!--标题 END-->
 <section class="container">
     <div class="main-tit">
         <p><span>请如实填写您的转让信息</span><a href="" class="need-a">卖家须知</a></p>
@@ -132,7 +141,7 @@
 </html>
 
 <!-- //按钮 -->
-<script type="text/javascript" src="../js/jquery.1.10.2.js"></script>
+<script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/bootstrap-switch.js"></script>
 <script>

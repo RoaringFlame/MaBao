@@ -12,19 +12,27 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!-- 	<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
-    <link rel="stylesheet" href="../css/buy.css">
-    <link rel="stylesheet" href="../css/public.css">
+     <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/module.css">
 </head>
+
 <body>
-<section class="header-top">
-    <div class="back" onclick=window.location.href="index.html">
-        <img src="../img/back.png" alt="">
-        <a class="jump-to">返回</a>
-    </div>
-    <div class="title-bar"><p>购物车</p></div>
-    <p class="edit" id="edit">编辑</p>
-</section>
+    <div class="content-index">
+        <!--标题-->
+        <header>
+           购物车
+            <!--操作按钮-->
+           <div class="header-box">
+                <a href="index.html">
+                  <button class="header-left">
+                  <i class="icon icon-return"></i>
+                   返回
+                </button>
+                </a>
+           </div>
+            <!--操作按钮 END-->
+        </header>
+         <!--标题 END-->
 
 <form method="" action="">
     <div class="container">
@@ -39,10 +47,10 @@
                 <p>尺寸&nbsp;:&nbsp;S</p>
                 <p class="mark">￥35.50</p>
             </div>
-            <img class="del" src="../img/del.png" alt="">
             <div class="add-reduce">
                 <div class="reduce">
                     <img src="../img/reduce.png" alt="">
+                    <div></div>
                 </div>
                 <div class="sum">
                     2
@@ -54,7 +62,7 @@
         </section>
         <section class="main-item">
 
-            <input class="select" name="itemContainer" type="checkBox" checked="checked">
+            <input class="select" name="itemContainer" type="checkBox">
             <div class="user-img">
                 <img src="../img/main-new1.png" alt="">
             </div>
@@ -86,6 +94,20 @@
             </li>
         </ul>
     </div>
+    <div class="up-to-pay" id="txt">
+        <ul>
+            <li>
+                <div>
+                    <input class="select" name="itemContainer" type="checkBox" id="checkAll"
+                           style="margin:1rem 0rem 1rem 3rem;">
+                    <p class="choose">全选</p>
+                </div>
+            </li>
+            <li>删除
+                <input type="reset" value="删除" class="sr_button">
+            </li>
+        </ul>
+    </div>
 </form>
 
 <section class="clear"></section>
@@ -107,16 +129,35 @@
     </a>
 </div>
 <!-- 显示删除选项 -->
+<script type="text/javascript">
+    function _block() {
+        var mychar = document.getElementById('txt');
+        if (mychar.style.display == "none") {
+            mychar.style.display = "block";
+            var sta = document.getElementById('finish');
+            sta.innerHTML = "完成";
+        }
+        else {
+            mychar.style.display = "none";
+            var sta = document.getElementById('finish');
+            sta.innerHTML = "编辑";
+        }
+    }
+    // 全选or不选
+    window.onload = init;
+    function init() {
+        var checkAllNode = document.getElementById("checkAll"),
+                items = document.getElementsByName("itemContainer"),
+                _select = document.getElementsByName("_select");
+
+        checkAllNode.onclick = function () {
+
+            for (var i = 0, j = items.length; i < j; i++) {
+                items[i].checked = this.checked;
+            }
+        }
+    }
+
+</script>
 </body>
 </html>
-<script type="text/javascript" src="../js/jquery.1.10.2.js"></script>
-<script type="text/javascript" src="../js/jquery.1.10.2.js"></script>
-<script type="text/javascript">
-    $(function(){
-        $("#edit").click(function(){
-            if($(this).text()=="编辑"){
-                $(".del").show();
-                $(this).html("完成");}
-        });
-    });
-</script>

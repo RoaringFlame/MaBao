@@ -11,38 +11,44 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/scrollbar.css">
-    <link rel="stylesheet" href="../css/public.css">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/module.css">
 </head>
+
 <body>
-<section class="header-top" id="header-top">
+    <div class="content-index">
+        <!--标题-->
+        <header>
+           首页
+            <!--操作按钮-->
+           <div class="header-box">
+                <a href="login.html">
+                  <button class="header-left">
+                     <i class="icon icon-return"></i>
+                     登陆
+                  </button>
+                </a>
+           </div>
+            <!--操作按钮 END-->
+        </header>
+        <!--标题 END-->
 
-    <div class="back">
-        <a href="login.html"><img src="../img/back.png" alt=""></a>
-        <a href="login.html" class="jump-to">登陆</a>
-    </div>
-    <div class="title-bar">
-        <p>首页</p>
-    </div>
-
-</section>
-<!-- 顶部搜索框 -->
-
-<div id="wrapper">
-    <div id="scroller">
-        <div id="header" class="home">
-            <div class="sidebar" id="sidebar">
-                <img src="../img/menu.png" alt="">
+        <!--搜索框-->
+        <div class="search">
+            <div class="column">
+                <i class="icon icon-dire"></i>
             </div>
-            <div class="search">
-                <i id="search" class="search-button"></i>
-                <input type="text" name="search" id="input">
+            <div class="search-input">
+                <button>
+                    <i class="icon icon-search"></i>
+                </button>
+                <input>
             </div>
         </div>
-        <!-- 隐藏分类 -->
-        <section class="classify" id="classify">
+        <!-- 侧导航栏 -->
+        <div class="sidebar" id="sidebar">
             <ul>
                 <li><a href="javascript:;">婴儿车</a></li>
                 <li><a href="javascript:;">安全座椅</a></li>
@@ -52,8 +58,10 @@
                 <li><a href="javascript:;">图片绘本</a></li>
                 <li><a href="javascript:;">其它产品</a></li>
             </ul>
-        </section>
+        </div>
+        <!--搜索框 END-->
 
+        <!--轮播图-->
         <div id="myCarousel" class="carousel slide">
             <!-- 轮播（Carousel）指标 -->
             <ol class="carousel-indicators">
@@ -79,35 +87,110 @@
             <a class="carousel-control right" href="#myCarousel"
                data-slide="next">&rsaquo;</a>
         </div>
-
-        <div class="title" id="title">
-            <ul>
-                <li class="focus">新品</li>
-                <li>猜你喜欢</li>
-            </ul>
+        <!--轮播图 END-->
+        <!--商品-->
+       <div class="goods">
+        <!-- 功能切换-->
+        <div class="scroll-menu">
+          <ul>
+              <li><a class="focus" href="">新品</a></li>
+              <li><a href="">猜你喜欢</a></li>
+          </ul>
         </div>
-
-        <div class="main" id="main">
-            <section class="main-cons" style="display:block">
-                <div id="main-cons"></div>
-                <div id="pullUp">
-                    <span class="pullUpIcon"></span>
-                    <span class="pullUpLabel">加载更多</span>
-                </div>
-            </section>
-
-            <section class="main-cons" style="display:none">
+        <!-- 功能切换 END-->
+           <ul class="goods-list clearfix">
+               <!--部品列表-->
+              <li>
+                  <img src="../img/main-new1.png" alt="">
+                  <div>
+                    <p>
+                      <span>￥30.00</span>
+                      <span>九成新</span>
+                    </p>
+                    <p>H&M&nbsp;CARDIGN</p>
+                    <p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>
+                  </div>
+              </li>
+               <!--部品列表 END-->
+               <!--部品列表-->
+              <li>
+                  <img src="../img/main-new1.png" alt="">
+                  <div>
+                    <p>
+                      <span>￥30.00</span>
+                      <span>九成新</span>
+                    </p>
+                    <p>H&M&nbsp;CARDIGN</p>
+                    <p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>
+                  </div>
+              </li>
+               <!--部品列表 END-->
+               <!--部品列表-->
+              <li>
+                  <img src="../img/main-new1.png" alt="">
+                  <div>
+                    <p>
+                      <span>￥30.00</span>
+                      <span>九成新</span>
+                    </p>
+                    <p>H&M&nbsp;CARDIGN</p>
+                    <p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>
+                  </div>
+              </li>
+               <!--部品列表 END-->
+               <!--部品列表-->
+              <li>
+                  <img src="../img/main-new1.png" alt="">
+                  <div>
+                    <p>
+                      <span>￥30.00</span>
+                      <span>九成新</span>
+                    </p>
+                    <p>H&M&nbsp;CARDIGN</p>
+                    <p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>
+                  </div>
+              </li>
+               <!--部品列表 END-->
+               <!--部品列表-->
+              <li>
+                  <img src="../img/main-new1.png" alt="">
+                  <div>
+                    <p>
+                      <span>￥30.00</span>
+                      <span>九成新</span>
+                    </p>
+                    <p>H&M&nbsp;CARDIGN</p>
+                    <p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>
+                  </div>
+              </li>
+               <!--部品列表 END-->
+               <!--部品列表-->
+              <li>
+                  <img src="../img/main-new1.png" alt="">
+                  <div>
+                    <p>
+                      <span>￥30.00</span>
+                      <span>九成新</span>
+                    </p>
+                    <p>H&M&nbsp;CARDIGN</p>
+                    <p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>
+                  </div>
+              </li>
+               <!--部品列表 END-->
+           </ul>
+           <!-- 猜你喜欢 -->
+           <form  method="" action="" style="display:none">
                 <div class="you-like">
                     <p>系统正在为您查询您感兴趣的宝物......</p>
-                    <p>请填写以下信息</p>
+                    <p>请填写以下信息</p> 
                     <ul>
                         <li>
                             <label>宝宝姓名：</label>
-                            <label><input type="text" id="username"></label>
+                            <label><input name="babyName" type="text" id="username"></label>
                         </li>
                         <li>
                             <label>宝宝生日：</label>
-                            <label><input type="date"></label>
+                            <label><input name="babyData" type="date"></label>
                         </li>
 
                         <li>
@@ -125,42 +208,30 @@
                             <label><input type="text"></label>
                         </li>
                     </ul>
-                    <div class="like-up">
-                        <input type="button" style="border:none" value="提交" id="like-up">
-                    </div>
+                        <button class="like-up-button" type="submit">提交</button>  
                 </div>
-            </section>
+            </form>
+       <!-- 猜你喜欢END -->
+        
+        <!--底部导航-->
+        <div class="menu" id="menu">
+            <a href="index.html">
+                <i class="icon-menu icon-menu1"><img src="../img/footer-c1.png" alt=""></i>
+            </a>
+            <a>
+                <i class="icon-menu icon-menu2"><img src="../img/footer-2.png" alt=""></i>
+            </a>
+            <a href="consignment.html">
+                <i class="icon-menu icon-menu3"><img src="../img/footer-3.png" alt=""></i>
+            </a>
+            <a href="javascript:;" id="shopping">
+                <i class="icon-menu icon-menu4"><img src="../img/footer-4.png" alt=""></i>
+            </a>
+            <a href="personal.html">
+                <i class="icon-menu icon-menu5"><img src="../img/footer-5.png" alt=""></i>
+            </a>
         </div>
+        <!--底部导航 END-->
     </div>
-</div>
-<div class="back-top" id="back-top">
-    <p>回到顶部</p>
-</div>
-
-<div class="menu" id="footer">
-    <a href="index.html">
-        <i class="icon-menu icon-menu1"><img src="../img/footer-c1.png" alt=""></i>
-    </a>
-    <a>
-        <i class="icon-menu icon-menu2"><img src="../img/footer-2.png" alt=""></i>
-    </a>
-    <a href="consignment.html">
-        <i class="icon-menu icon-menu3"><img src="../img/footer-3.png" alt=""></i>
-    </a>
-    <a href="javascript:;" id="shopping">
-        <i class="icon-menu icon-menu4"><img src="../img/footer-4.png" alt=""></i>
-    </a>
-    <a href="personal.html">
-        <i class="icon-menu icon-menu5"><img src="../img/footer-5.png" alt=""></i>
-    </a>
-</div>
-
-<script type="text/javascript" src="../js/jquery.1.10.2.js"></script>
-<!-- 轮播 -->
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-<!-- 下拉刷新 -->
-<script type="text/javascript" src="../js/dataBind.js"></script>
-<script type="text/javascript" src="../js/hhSwipe.js"></script>
-<script type="text/javascript" src="../js/iscroll.js"></script>
 </body>
 </html>

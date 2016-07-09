@@ -71,3 +71,19 @@ $.fn.ProvinceCity = function(){
 	});
 	return _self;
 };
+
+
+    //调用地址插件
+    $(function () {
+        $("#test").ProvinceCity();
+    });
+
+    $('.toggle').click(function (e) {
+        e.preventDefault(); // The flicker is a codepen thing
+        $(this).toggleClass('toggle-on');
+    });
+
+    $(function (argument) {
+        $('[type="checkbox"]').bootstrapSwitch();
+    })
+

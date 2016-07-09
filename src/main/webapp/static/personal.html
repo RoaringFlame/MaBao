@@ -11,17 +11,28 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/personal.css">
-    <link rel="stylesheet" href="../css/public.css">
+    <script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/module.css">
 </head>
+
 <body>
-<section class="header-top">
-    <div class="back">
-        <a href=""><img src="../img/back.png" alt=""></a>
-        <a href="" class="jump-to">返回</a></div>
-    <div class="title-bar"><p>个人中心</p></div>
-</section>
+    <div class="content-index">
+        <!--标题-->
+        <header>
+           个人中心
+            <!--操作按钮-->
+           <div class="header-box">
+                <a href="personal.html">
+                  <button class="header-left">
+                  <i class="icon icon-return"></i>
+                   返回
+                </button>
+                </a>
+           </div>
+            <!--操作按钮 END-->
+        </header>
+         <!--标题 END-->
 <div class="message">
     <figure><img src="../img/u6.jpg" alt="头像"></figure>
     <figcaption>
@@ -82,4 +93,3 @@
 
 </body>
 </html>
-<script type="text/javascript" src="../js/jquery.1.10.2.js"></script>

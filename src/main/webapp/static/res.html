@@ -12,16 +12,27 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../css/res.css">
-    <link rel="stylesheet" href="../css/public.css">
+     <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/module.css">
 </head>
+
 <body>
-<section class="header-top">
-    <div class="back">
-        <a href="login.html"><img src="../img/back.png" alt=""></a>
-        <a href="login.html" class="jump-to">返回</a></div>
-    <div class="title-bar"><p>注册</p></div>
-</section>
+    <div class="content-index">
+        <!--标题-->
+        <header>
+           注册
+            <!--操作按钮-->
+           <div class="header-box">
+                <a href="login.html">
+                  <button class="header-left">
+                  <i class="icon icon-return"></i>
+                   返回
+                </button>
+                </a>
+           </div>
+            <!--操作按钮 END-->
+        </header>
+         <!--标题 END-->
 <section class="container">
     <dl>
         <dt>帐&nbsp;户&nbsp;名：</dt>
@@ -35,6 +46,9 @@
     </dl>
     <p class="warning"></p>
 </section>
+          <!-- 注册按钮 -->
+          <button type="submit" class="submit-button">登陆</button>
+          <!-- 注册按钮END -->
 <div class="input-res">
     <input type="button" value="注册" id="up-to-login">
 </div>
