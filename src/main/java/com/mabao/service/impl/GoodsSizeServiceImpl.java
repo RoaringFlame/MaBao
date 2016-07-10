@@ -20,8 +20,9 @@ public class GoodsSizeServiceImpl implements GoodsSizeService{
     private GoodsSizeRepository goodsSizeRepository;
     /**
      * 宝物尺码下拉菜单
+     * 依据需求确认尺码是否根据类型联动
      */
-    public List<Selector> findGoodsSizeForSelector(Long goodsTypeId){
+    /*public List<Selector> findGoodsSizeForSelector(Long goodsTypeId){
         List<Selector> selectors = new ArrayList<>();
         List<GoodsSize> goodsSizeList = this.goodsSizeRepository.findByGoodsTypeId(goodsTypeId);
         for (GoodsSize gs : goodsSizeList){
@@ -29,10 +30,18 @@ public class GoodsSizeServiceImpl implements GoodsSizeService{
             selectors.add(selector);
         }
         return selectors;
-    }
-
+    }*/
+    /**
+     * 宝物尺码下拉菜单
+     */
     @Override
     public List<Selector> findGoodsSizeForSelector() {
-        return null;
+        List<Selector> selectors = new ArrayList<>();
+        List<GoodsSize> goodsSizeList = this.goodsSizeRepository.findAll();
+        for (GoodsSize gs : goodsSizeList){
+            Selector selector = new Selector(gs.getId().toString(),gs.getName(),gs.getGoodsType().getId().toString());
+            selectors.add(selector);
+        }
+        return selectors;
     }
 }

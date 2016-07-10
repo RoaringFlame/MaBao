@@ -3,10 +3,17 @@ package com.mabao.util;
 public class Selector {
     private String key;
     private String value;
+    private String MiddleKey;
 
     public Selector(String key, String value) {
         this.key = key;
         this.value = value;
+    }
+
+    public Selector(String key, String value, String middleKey) {
+        this.key = key;
+        this.value = value;
+        MiddleKey = middleKey;
     }
 
     public String getKey() {
@@ -23,5 +30,13 @@ public class Selector {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getMiddleKey() {
+        return MiddleKey;
+    }
+
+    public void setMiddleKey(String middleKey) {
+        MiddleKey = middleKey;
     }
 }

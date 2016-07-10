@@ -14,7 +14,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @RequestMapping(value = "/cart")
-//@SessionAttributes(value = "userId")
 public class CartRESTController {
     @Autowired
     private CartService cartService;

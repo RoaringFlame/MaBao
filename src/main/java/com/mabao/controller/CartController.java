@@ -1,10 +1,12 @@
 package com.mabao.controller;
 
 import com.mabao.controller.vo.GoodsVO;
+import com.mabao.pojo.Address;
 import com.mabao.pojo.Goods;
 import com.mabao.service.AddressService;
 import com.mabao.service.CartService;
 import com.mabao.service.GoodsService;
+import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +31,8 @@ public class CartController {
     private CartService cartService;
     @Autowired
     private GoodsService goodsService;
+    @Autowired
+    private AddressService addressService;
 
     /**
      * 购物车添加商品
@@ -61,9 +65,10 @@ public class CartController {
             Long goodsId = this.cartService.get(cartId).getGoods().getId();
             goodsIdList.add(goodsId);
         }
-        //根据ID查商品列表
         List<GoodsVO> goodsList = GoodsVO.generateBy(this.goodsService.findGoodsByIdIn(goodsIdList));
-        map.put("checkedGoods",goodsList);
+        map.put("checkedGoods",goodsList);  //选中的商品列表
+        Address address = this.addressService.getDefaultAddress(UserManager.getUser().getId());
+        map.put("defaultAddress",address);      //默认地址
         map.put("cartAndNum",cartAndNum);
         map.put("freight",10);              //运费
         model.addAllAttributes(map);
