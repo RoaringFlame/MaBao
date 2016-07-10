@@ -1,15 +1,16 @@
 package com.mabao.pojo;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "t_shopping_cart")
 public class Cart {
-    private Long id;                         //编号
+    private Long id;                          //编号
     private User user;                        //用户ID
     private Goods goods;                      //商品ID
-    private Integer quantity;                   //商品数量
-    private Integer createTime;                 //添加时间
+    private Integer quantity;                 //商品数量
+    private Date createTime;                  //添加时间
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,11 +48,11 @@ public class Cart {
         this.quantity = quantity;
     }
 
-    public Integer getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Integer createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }

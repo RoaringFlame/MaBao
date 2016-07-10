@@ -55,6 +55,7 @@ public class User {
         this.email = email;
     }
 
+    @Column(name = "create_time")
     public Date getCreateTime() {
         return createTime;
     }

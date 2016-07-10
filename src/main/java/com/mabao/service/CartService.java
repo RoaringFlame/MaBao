@@ -3,7 +3,6 @@ package com.mabao.service;
 import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.Cart;
 import com.mabao.pojo.Goods;
-import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -15,24 +14,22 @@ public interface CartService {
 
     /**
      * 购物车添加商品
-     * @param userId        用户ID
      * @param goodsId       商品ID
      * @return              商品list
      */
-    List<Goods> addCartGoods(int userId, int goodsId);
+    Cart addCart(Long goodsId);
 
     /**
      * 删除购物车内商品
-     * @param userId            用户ID
-     * @param goodsId           商品ID
+     * @param cartId           购物车ID
      * @return                  结果VO
      */
-    JsonResultVO deleteCartGoods(Long userId,Integer goodsId);
+    JsonResultVO deleteCartGoods(Long cartId);
     /**
      * 用户购物车中商品列表
      * @return                  商品list
      */
-    Page<Goods> findAllGoodsByUser(Long userId);
+    List<Goods> findAllGoodsByUser(Long userId);
 
     /**
      * get一条购物车信息
@@ -40,4 +37,6 @@ public interface CartService {
      * @return                  购物车对象
      */
     Cart get(Long cartId);
+
+
 }

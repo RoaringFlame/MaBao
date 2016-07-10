@@ -2,6 +2,7 @@ package com.mabao.controller;
 
 import com.mabao.controller.vo.GoodsVO;
 import com.mabao.pojo.Address;
+import com.mabao.pojo.Cart;
 import com.mabao.pojo.Goods;
 import com.mabao.service.AddressService;
 import com.mabao.service.CartService;
@@ -30,22 +31,25 @@ public class CartController {
     @Autowired
     private CartService cartService;
     @Autowired
-    private GoodsService goodsService;
-    @Autowired
     private AddressService addressService;
 
     /**
      * 购物车添加商品
-     * @param userId        用户ID
      * @param goodsId       商品ID
      * @param model         商品list
      * @return              购物车页
      */
     @RequestMapping(value = "/cartAddGoods",method = GET)
-    public String shoppingCarGoodsAdd(int userId, int goodsId,Model model){
-        List<Goods> goodsList=this.cartService.addCartGoods(userId,goodsId);
-        model.addAttribute("cartGoodsList",goodsList);
-        return "shopping";
+    public String shoppingCarGoodsAdd(@RequestParam Long goodsId,Model model){
+        Cart cart = this.cartService.addCart(goodsId);
+        if (cart != null){
+            List<Goods> goodsList = this.cartService.findAllGoodsByUser(UserManager.getUser().getId());
+            model.addAttribute("cartGoodsList",goodsList);
+            return "shopping";
+        }else {
+            return "shopping_add_failure";
+        }
+
     }
 
     /**
@@ -59,18 +63,23 @@ public class CartController {
                                Model model){
         Map<String,Object> map = new HashMap<>();
         String[] cartAndNumArray = cartAndNum.trim().split(",");
+        Map<Object,Integer> goodsAndNumMap = new HashMap<>();
         List<Long> goodsIdList = new ArrayList<>();
         for (String one : cartAndNumArray){
+            //获得购物车ID
             Long cartId =Long.valueOf(one.trim().split("-")[0]);
-            Long goodsId = this.cartService.get(cartId).getGoods().getId();
-            goodsIdList.add(goodsId);
+            //查找商品
+            Goods goods = this.cartService.get(cartId).getGoods();
+            //查找对应数量
+            Integer num =Integer.valueOf(one.trim().split("-")[1]);
+            goodsAndNumMap.put(GoodsVO.generateBy(goods),num);
+
         }
-        List<GoodsVO> goodsList = GoodsVO.generateBy(this.goodsService.findGoodsByIdIn(goodsIdList));
-        map.put("checkedGoods",goodsList);  //选中的商品列表
+        map.put("checkedGoodsMap",goodsAndNumMap);  //选中的商品列表
         Address address = this.addressService.getDefaultAddress(UserManager.getUser().getId());
-        map.put("defaultAddress",address);      //默认地址
+        map.put("defaultAddress",address);          //默认地址
         map.put("cartAndNum",cartAndNum);
-        map.put("freight",10);              //运费
+        map.put("freight",10);                      //运费
         model.addAllAttributes(map);
         return "pay";
     }
