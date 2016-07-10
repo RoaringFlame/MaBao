@@ -313,7 +313,7 @@
     cursor: pointer;
     font-size: 1.1rem;
 }
-
+/*宝物详情*/
 .baby-img {
     width: 13rem;
     height: auto;
@@ -690,6 +690,9 @@
 }
 
 .up-to-pay {
+    position: fixed;
+    bottom: 4rem;
+    z-index: 9997;
     width: 32rem;
     margin: 0 auto;
 }
@@ -900,7 +903,7 @@
 }
 
 .container {
-    width: 32rem;
+    max-width: 32rem;
     margin: 0 auto;
 }
 
@@ -911,7 +914,6 @@
     padding: 1rem .5rem;
     margin-bottom: .5rem;
     border-bottom: .1rem solid #ccc;
-    border-top: .1rem solid #ccc;
 }
 
 .select {
@@ -951,13 +953,18 @@
 }
 
 .goods-del {
+    position:absolute;
+    right:2rem;
     width: 2rem;
     height:2rem;
     background: url("../img/del.png") no-repeat 0 0;
+    background-size:2rem;
 }
 
 /*加减商品按钮*/
 .shopping-cart {
+    position:absolute;
+    right:2rem;
     width: 7rem;
     float: left;
     height: 3rem;
@@ -970,7 +977,8 @@
     height: 3rem;
     float: left;
     border-right: 0.1rem solid #ccc;
-    background: url("../img/reduce.png") no-repeat -.2rem -.5rem;
+    background: url("../img/reduce.png") no-repeat 0 0;
+    background-size:2rem;
 }
 
 .shopping-cart-add {
@@ -978,7 +986,8 @@
     height: 3rem;
     float: left;
     border-left: 0.1rem solid #ccc;
-    background: url("../img/shopping-1.png") no-repeat -.2rem -.5rem;
+    background: url("../img/shopping-1.png") no-repeat 0 0;
+    background-size:2rem;
 }
 
 .shopping-cart-sum {
@@ -1564,13 +1573,13 @@
 }
 
 /*转让宝物*/
-.main-tit p {
+.transfer-box p {
     height: 3rem;
     line-height: 3rem;
     margin-top: 1rem;
 }
 
-.main-tit p span {
+.transfer-box p span {
     width: 18rem;
     padding: 0 1rem;
     float: left;
@@ -1578,7 +1587,7 @@
     font-size: 1.25rem;
 }
 
-.main-tit p a {
+.transfer-box p a {
     width: 8rem;
     margin: 0 1.5rem;
     float: right;
