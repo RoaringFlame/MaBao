@@ -38,7 +38,7 @@ public class BabyServiceImpl implements BabyService {
      */
     @Override
     public Baby updateBabyInfo(Baby babyInfo) {
-        return null;
+        return this.babyRepository.saveAndFlush(babyInfo);
     }
     /**
      * 查看某用户宝宝信息

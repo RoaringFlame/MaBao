@@ -2,14 +2,18 @@ package com.mabao.pojo;
 
 import javax.persistence.*;
 
+/**
+ * 收货地址
+ */
 @Entity
 @Table(name = "t_address")
 public class Address {
-    private Long id;                             //地址编号
-    private User user;                         //用户编号
+    private Long id;                                //地址编号
+    private User user;                              //用户编号
     private String recipients;                      //收件人
     private String tel;                             //手机号
-    private String location;                        //地址详情
+    private Area area;                              //所在行政区域
+    private String location;                        //详细地址
     private boolean state;                          //地址状态，是否为默认收货地址，0为否、1为是。
 
     @Id
@@ -30,6 +34,16 @@ public class Address {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "area_id")
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
     }
 
     @Basic
