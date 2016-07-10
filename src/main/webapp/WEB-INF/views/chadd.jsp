@@ -16,8 +16,8 @@
 <!--     <link href="css/bootstrap.min.css" rel="stylesheet"> -->
     <script src="../../js/jquery.min.js"></script>
     <script src="../../script/lib/jquery.1.10.2.js" type="text/javascript"></script>
-    <script src="../../script/lib/bootstrap.min.js"></script>
-    <script src="../../script/lib/bootstrap-switch.js"></script>
+    <script src="../../script/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="../../script/lib/bootstrap/bootstrap-switch.js"></script>
     <script src="../../script/lib/jquery.provincesCity.js" type="text/javascript"></script>
     <script src="../../js/provincesdata.js" type="text/javascript"></script>
 </head>

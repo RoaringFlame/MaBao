@@ -129,8 +129,8 @@
 
 <!-- //按钮 -->
 <script src="../../js/jquery.min.js"></script>
-<script src="../../script/lib/bootstrap.min.js"></script>
-<script src="../../script/lib/bootstrap-switch.js"></script>
+<script src="../../script/lib/bootstrap/bootstrap.min.js"></script>
+<script src="../../script/lib/bootstrap/bootstrap-switch.js"></script>
 <script>
 $(function(argument) {
   $('[type="checkbox"]').bootstrapSwitch();

@@ -188,7 +188,7 @@
 <script type="text/javascript" src="../../js/iscroll.js"></script>
 <script type="text/javascript" src="../../js/analyPara.js"></script>
 <script type="text/javascript" src="../../js/jquery.min.js"></script>
-<script type="text/javascript" src="../../script/lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../script/lib/bootstrap/bootstrap.min.js"></script>
 <script>
     $('.carousel').carousel({
         interval: 2500

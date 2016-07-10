@@ -15,9 +15,10 @@
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/master.css">
     <link rel="stylesheet" href="../../css/module.css">
+    <link rel="stylesheet" href="../../script/lib/iscroll/iscroll.css">
     <script src="../../script/lib/jquery.1.10.2.js"></script>
-    <script src="../../script/lib/bootstrap.min.js"></script>
-    <script src="../../script/lib/iscroll.js"></script>
+    <script src="../../script/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="../../script/lib/iscroll/iscroll.js"></script>
     <script src="../../script/index.js"></script>
 </head>
 
@@ -51,15 +52,15 @@
             <input title="请输入关键字">
         </div>
     </div>
+    <!--搜索框 END-->
     <!-- 侧导航栏 -->
     <div class="sidebar hide" id="sidebar">
         <ul>
         </ul>
     </div>
-    <!--搜索框 END-->
 
-    <div id="wrapper">
-        <div id="scroll">
+    <div class="iscroll-wrapper" style="top:48px;bottom: -12px;">
+        <div class="iscroll-scroller">
             <!--轮播图-->
             <div id="myCarousel" class="carousel slide">
                 <!-- 轮播（Carousel）指标 -->
@@ -104,52 +105,58 @@
                 </ul>
                 <ul id="likeGoodsList" class="goods-list clearfix">
                 </ul>
-                <!-- 猜你喜欢 -->
-                <ul>
-                    <li>
-                        <label>宝宝姓名：</label>
-                        <label><input name="babyName" type="text" id="username"></label>
-                    </li>
-                    <li>
-                        <label>宝宝生日：</label>
-                        <label><input name="babyDate" type="date"></label>
-                    </li>
-
-                    <li>
-                        <label>宝宝性别：</label>
-                        <label>
-                            <select name="sex" id="sex"></select>
-                        </label>
-                    </li>
-
-                    <li>
-                        <label>宝宝爱好：</label>
-                        <label><input name="hobby" type="text"></label>
-                    </li>
-                </ul>
-                <!-- 猜你喜欢END -->
             </div>
         </div>
-        <!--底部导航-->
-        <div class="menu" id="menu">
-            <a href="#">
-                <i class="icon-menu icon-menu1"><img src="../../img/footer-c1.png" alt=""></i>
-            </a>
-            <a href="#">
-                <i class="icon-menu icon-menu2"><img src="../../img/footer-2.png" alt=""></i>
-            </a>
-            <a href="#">
-                <i class="icon-menu icon-menu3"><img src="../../img/footer-3.png" alt=""></i>
-            </a>
-            <a href="#">
-                <i class="icon-menu icon-menu4"><img src="../../img/footer-4.png" alt=""></i>
-            </a>
-            <a href="#">
-                <i class="icon-menu icon-menu5"><img src="../../img/footer-5.png" alt=""></i>
-            </a>
-        </div>
-        <!--底部导航 END-->
     </div>
+    <!-- 猜你喜欢 -->
+    <form id="likeForm" action="">
+        <div class="you-like">
+            <p>请填写以下信息</p>
+            <ul>
+                <li>
+                    <label>宝宝姓名：</label>
+                    <label><input name="babyName" type="text" id="username"></label>
+                </li>
+                <li>
+                    <label>宝宝生日：</label>
+                    <label><input name="babyDate" type="date"></label>
+                </li>
+
+                <li>
+                    <label>宝宝性别：</label>
+                    <label>
+                        <select name="sex" id="sex"></select>
+                    </label>
+                </li>
+
+                <li>
+                    <label>宝宝爱好：</label>
+                    <label><input name="hobby" type="text"></label>
+                </li>
+            </ul>
+            <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
+        </div>
+    </form>
+    <!-- 猜你喜欢END -->
+    <!--底部导航-->
+    <div class="menu" id="menu">
+        <a href="#">
+            <i class="icon-menu icon-menu1"><img src="../../img/footer-c1.png" alt=""></i>
+        </a>
+        <a href="#">
+            <i class="icon-menu icon-menu2"><img src="../../img/footer-2.png" alt=""></i>
+        </a>
+        <a href="#">
+            <i class="icon-menu icon-menu3"><img src="../../img/footer-3.png" alt=""></i>
+        </a>
+        <a href="#">
+            <i class="icon-menu icon-menu4"><img src="../../img/footer-4.png" alt=""></i>
+        </a>
+        <a href="#">
+            <i class="icon-menu icon-menu5"><img src="../../img/footer-5.png" alt=""></i>
+        </a>
+    </div>
+    <!--底部导航 END-->
 </div>
 </body>
 </html>
