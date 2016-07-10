@@ -117,7 +117,7 @@ $(function(){
                     likeGoods.find("div>p:eq(2)").text(goods.title);
                     likeGoodsBox.append(likeGoods);
                 });
-
+                initScroll();
             });
         }
         else{
@@ -164,8 +164,13 @@ $(function(){
                         loadNewGoods();
                     }
                     else{
-                        currentPageLike++;
-                        loadLikeGoods();
+                        if(babyId){
+                            currentPageLike++;
+                            loadLikeGoods();
+                        }
+                        else{
+                            console.log(112);
+                        }
                     }
                 }
                 //console.log(currentPageNew+"------"+myScroll.y+"-"+myScroll.absStartY+"-"+myScroll.distY+"-"+myScroll.maxScrollY);
