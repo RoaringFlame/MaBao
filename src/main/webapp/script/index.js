@@ -1,11 +1,14 @@
 "use strict";
 $(function(){
-    var currentPage=0;
+    var currentPageNew=0;
+    var currentPageLike=0;
     var pageSize=4;
     var searchKey="";
     var goodsTypeId="";
     var myScroll;
     var upOrDown="";
+    var babyId=null;
+    var isNew=true;     //是否当前展示的是新品
     function initGoodsTypeAndCarousel(){
         $.get("/home",{},function(data){
             //初始化轮播
@@ -52,15 +55,80 @@ $(function(){
                 searchKey=$(this).next("input").val();
                 loadNewGoods();
             });
+            //初始化宝宝信息
+            if(data.baby){
+                babyId=data.baby.id;
+                babyId=null;
+            }
+            //初始化宝宝性别
+            var genderList=data.gender;
+            var genderSelector=$("#sex");
+            $(genderList).each(function(index,gender){
+                var option=$("<option></option>").val(gender.key).text(gender.value);
+                genderSelector.append(option);
+            });
+            initGoods();
         },"json");
     }
+
     function initGoods(){
+        //初始化新品和猜你喜欢的切换
+        $("#newGoodsList").show();
+        $("#likeGoodsList").hide();
+        var newGoods=$("#newGoods");
+        newGoods.find("div.scroll-menu ul li:eq(0)").click(function(){
+            $(this).find("a").addClass("focus");
+            $(this).next("li").find("a").removeClass("focus");
+            $("#newGoodsList").show();
+            $("#likeGoodsList").hide();
+            isNew=true;
+        });
+        newGoods.find("div.scroll-menu ul li:eq(1)").click(function(){
+            $(this).find("a").addClass("focus");
+            $(this).prev("li").find("a").removeClass("focus");
+            $("#newGoodsList").hide();
+            $("#likeGoodsList").show();
+            isNew=false;
+        });
+        //加载新品
         loadNewGoods();
+        //加载猜你喜欢
+        loadLikeGoods();
+    }
+    //加载猜你喜欢
+    function loadLikeGoods(){
+        if(babyId){
+            var backGoods=$("#hideGoods").find("li");
+            var likeGoodsBox=$("#likeGoodsList");
+            $("#likeForm").hide();
+            likeGoodsBox.show();
+            var params={
+                page:currentPageLike,
+                pageSize:pageSize
+            };
+            $.get("/home/goodsGuess/baby/"+babyId,{params:params},function(data){
+                var goodsList=data.items;
+                $(goodsList).each(function(index,goods){
+                    var likeGoods=backGoods.clone();
+                    likeGoods.find("img").attr("src","../upload/"+goods.picture);
+                    likeGoods.find("div>p:eq(0)>span:eq(0)").text("￥"+goods.price);
+                    likeGoods.find("div>p:eq(0)>span:eq(1)").text(goods.newDegree);
+                    likeGoods.find("div>p:eq(1)").text(goods.brand);
+                    likeGoods.find("div>p:eq(2)").text(goods.title);
+                    likeGoodsBox.append(likeGoods);
+                });
+
+            });
+        }
+        else{
+            $("#likeForm").show();
+            $("#likeGoodsList").hide();
+        }
     }
     //加载新品数据集
     function loadNewGoods(){
         var params={
-            page:currentPage,
+            page:currentPageNew,
             pageSize:pageSize,
             searchKey:searchKey,
             goodsTypeId:goodsTypeId
@@ -82,22 +150,7 @@ $(function(){
     }
     function init(){
         initGoodsTypeAndCarousel();
-        initGoods();
-        $("#newGoodsList").show();
-        $("#likeGoodsList").hide();
-        var newGoods=$("#newGoods");
-        newGoods.find("div.scroll-menu ul li:eq(0)").click(function(){
-            $(this).find("a").addClass("focus");
-            $(this).next("li").find("a").removeClass("focus");
-            $("#newGoodsList").show();
-            $("#likeGoodsList").hide();
-        });
-        newGoods.find("div.scroll-menu ul li:eq(1)").click(function(){
-            $(this).find("a").addClass("focus");
-            $(this).prev("li").find("a").removeClass("focus");
-            $("#newGoodsList").hide();
-            $("#likeGoodsList").show();
-        });
+
         //拉动刷新
         myScroll=new iScroll("wrapper",{
             onRefresh: function () {
@@ -116,10 +169,26 @@ $(function(){
                     loadNewGoods();
                 }
                 else if(upOrDown=="down"){
-                    currentPage++;
-                    loadNewGoods();
+                    if(isNew){
+                        currentPageNew++;
+                        loadNewGoods();
+                    }
+                    else{
+                        currentPageLike++;
+                        loadLikeGoods();
+                    }
+
                 }
             }
+        });
+    }
+    function initFormAction(){
+        $("#btnLikeSubmit").click(function () {
+            var likeForm=$("#likeForm");
+            var babyName=likeForm.find("input[name='babyName']").val();
+            var babyDate=likeForm.find("input[name='babyDate']").val();
+            var babyName=likeForm.find("input[name='babyName']").val();
+            var hobby=likeForm.find("input[name='hobby']").val();
         });
     }
     init();
