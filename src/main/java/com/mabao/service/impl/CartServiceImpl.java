@@ -10,6 +10,7 @@ import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -59,7 +60,12 @@ public class CartServiceImpl implements CartService {
      */
     @Override
     public List<Goods> findAllGoodsByUser(Long userId) {
-        return this.cartRepository.findByUserId(userId);
+        List<Cart> cartList = this.cartRepository.findByUserId(userId);
+        List<Goods> goodsList = new ArrayList<>();
+        for (Cart cart : cartList){
+            goodsList.add(cart.getGoods());
+        }
+        return goodsList;
     }
 
     /**

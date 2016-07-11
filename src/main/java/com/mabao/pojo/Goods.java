@@ -41,7 +41,7 @@ public class Goods {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     public User getUser() {
         return user;
@@ -107,7 +107,7 @@ public class Goods {
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "type_id")
     public GoodsType getType() {
         return type;
@@ -221,7 +221,7 @@ public class Goods {
         this.state = state;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brand_id")
     public GoodsBrand getBrand() {
         return brand;

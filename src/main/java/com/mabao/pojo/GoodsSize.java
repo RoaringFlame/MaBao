@@ -23,7 +23,7 @@ public class GoodsSize {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "goods_type_id")
     public GoodsType getGoodsType() {
         return goodsType;
