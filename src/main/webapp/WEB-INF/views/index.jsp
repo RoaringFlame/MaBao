@@ -29,7 +29,7 @@
         首页
         <!--操作按钮-->
         <div class="header-box">
-            <a href="login.html">
+            <a href="/login">
                 <button class="header-left">
                     <i class="icon icon-return"></i>
                     登陆

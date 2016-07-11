@@ -13,36 +13,47 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../css/login.css">
-    <link rel="stylesheet" href="../../css/public.css">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="stylesheet" href="../../css/module.css">
 </head>
+
 <body>
-<section class="header-top">
-    <div class="back"><a href=""><img src="../../img/back.png" alt=""></a>
-        <a href="" class="jump-to">返回</a></div>
-    <div class="title-bar"><p>登录</p></div>
-</section>
-
-<div class="top1">
-
-    <p class="warning"></p>
-    <div>
-        <!-- <p class="changepwd">用户名：</p> -->
-        <input type="text" name="username" placeholder="用户名">
-    </div>
-    <div class="clear">
-        <!-- <p class="changepwd">密&nbsp;码：</p> -->
-        <input type="password" name="password" placeholder="密码">
-    </div>
+<div class="content-index">
+    <!--标题-->
+    <header>
+        登录
+        <!--操作按钮-->
+        <div class="header-box">
+            <a href="personal.html">
+                <button class="header-left">
+                    <i class="icon icon-return"></i>
+                    返回
+                </button>
+            </a>
+        </div>
+        <!--操作按钮 END-->
+    </header>
+    <!--标题 END-->
+    <!-- 登陆表单 -->
+    <form class="login-box" action="/login" method="POST">
+        <!-- 校验提示 -->
+        <c:if test="${not empty error}">
+        <p class="warning">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
+        </c:if>
+        <label for="userName">用户名
+            <input type="text" name="username" id="userName">
+        </label>
+        <label for="passWord">密码
+            <input type="password" name="password" id="passWord">
+        </label>
+        <!-- 登陆按钮 -->
+        <button name="sumbit" type="submit">登陆</button>
+        <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
+        <!-- 登陆按钮END -->
+        <a href="findpwd.html" class="login-right">忘记密码</a>
+        <a href="res.html" class="login-bottom">免费注册</a>
+    </form>
+    <!-- 登陆表单END -->
 </div>
-
-<div class="bottom" id="login"><p>登陆</p></div>
-
-<div class="forget-psd"><a href="findpwd.html" class="forget-psd">忘记密码</a></div>
-
-<div class="free-res" id="free-res">免费注册</div>
-
-<script type="text/javascript" src="../js/jquery.1.10.2.js"></script>
-<script type="text/javascript" src="../js/login.js"></script>
 </body>
 </html>

@@ -20,7 +20,13 @@
     <beans:property name="suffix" value=".jsp" />
   </beans:bean>
 
-  <resources mapping="/resources/**" location="/resources/" />
+  <!-- spring security 国际化 -->
+  <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    <beans:property name="basename" value="loginMessages"/>
+  </beans:bean>
+  <beans:bean id="localeResolver"
+              class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver">
+  </beans:bean>
 
   <!-- 
   <view-controller path="/" view-name="home" />
