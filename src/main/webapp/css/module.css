@@ -1352,43 +1352,34 @@
     font-size: 1.3rem;
     cursor: pointer;
 }
-/*找回密码*/
+/*找回密码短信验证*/
 
 .get-back-pwd {
-    margin: 0 auto;
-    padding: 1rem;
     max-width: 32rem;
-    text-align: center;
-}
-
-.get-back-pwd label {
-    margin: 0 auto;
-    display: block;
-    height: 4rem;
-    padding: 0 2rem;
-    text-align: right;
+    margin:0 auto;
+    padding: 4rem 2rem ;  }
+.get-back-pwd p{font-size: 1.4rem;
+    color: #333;
+    line-height: 3rem;}
+.get-back-pwd input{
+    width:74%;
+    height:2.5rem;
+    margin:1rem 0  0.3rem 0;
     font-size: 1.4rem;
+    text-indent: .5rem;
 }
-
-.get-back-pwd input {
-    height: 2.5rem;
-    width: 75%;
-}
-
-.get-back-pwd button {
-    display: block;
-    width: 80%;
-    height: 3rem;
-    font-size: 1.4rem;
+.button-right{ font-size: 1.4rem;
     color: #fff;
-    background-color: #0099ff;
-    margin: 2rem auto;
+    background-color:#0099ff;
+    width: 23%;
+    height: 2.65rem;
     text-align: center;
-    line-height: 3rem;
-    cursor: pointer;
-    border-radius: .4rem;
 }
-
+.button-bottom{
+    display: block;
+    margin: 4rem auto;
+    text-align: center;
+}
 /*绑定手机*/
 
 .bind-top {

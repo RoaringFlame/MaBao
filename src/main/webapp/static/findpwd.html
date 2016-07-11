@@ -35,20 +35,20 @@
     <!--标题 END-->
     <!-- 找回密码表单 -->
     <form class="get-back-pwd" action="">
-        <!-- <p>当前绑定手机号为159****3504</p> -->
-
-        <!-- 找回密码跳转到登陆页面 -->
-        <label for="">请输入注册邮箱
+        <!-- 找回密码跳转到修改密码页面 -->
+        <label>
             <input type="email" id="email" placeholder="请输入注册邮箱">
         </label>
-        <label for="">验证码
-            <input type="email" id="email" placeholder="请输入注册邮箱">
+        <button type="submit" class="button-right">发送邮件</button>
+        <label>
+            <input type="text" placeholder="验证码">
         </label>
-        <input type="submit" class="button" value="发送邮件">
         <p class="warning"></p>
-
-        <div class="bottom">
-            <input type="submit" class="submit" value="提交"></div>
+        <!--提交按钮-->
+        <a class="button-bottom" href="changepwd.html">
+            <button type="submit" class="submit">提交</button>
+        </a>
+        <!--提交按钮END-->
     </form>
     <!--找回密码表单END-->
 </div>

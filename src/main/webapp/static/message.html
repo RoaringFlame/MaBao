@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>短信验证</title>
+    <title>找回密码</title>
     <meta name="viewport"
           content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
     <!-- 禁止将数字变为电话号码 -->
@@ -17,51 +17,42 @@
 </head>
 
 <body>
-    <div class="content-index">
-        <!--标题-->
-        <header>
-           短信验证
-            <!--操作按钮-->
-           <div class="header-box">
-                <a href="personal.html">
-                  <button class="header-left">
-                  <i class="icon icon-return"></i>
-                   返回
+<div class="content-index">
+    <!--标题-->
+    <header>
+        找回密码
+        <!--操作按钮-->
+        <div class="header-box">
+            <a href="personal.html">
+                <button class="header-left">
+                    <i class="icon icon-return"></i>
+                    返回
                 </button>
-                </a>
-           </div>
-            <!--操作按钮 END-->
-        </header>
-         <!--标题 END-->
-<div class="top"><p>当前绑定手机号为159****3504</p>
-    <form action="">
-        <!-- 显示当前绑定手机号信息，成功后跳转到修改密码页面 -->
-        <input type="text" id="dianhua" placeholder="输入完整手机号"><input type="submit" value="发送验证" class="button"/>
-        <input type="text" id="id-code" placeholder="验证码">
+            </a>
+        </div>
+        <!--操作按钮 END-->
+    </header>
+    <!--标题 END-->
+    <!-- 找回密码表单 -->
+    <form class="get-back-pwd" action="">
+        <!--当前绑定手机号为用户号码-->
+        <p>当前绑定手机号为159****3504</p>
+        <!-- 找回密码跳转到修改密码页面 -->
+        <label>
+            <input type="email" id="email" placeholder="请输入完整手机号">
+        </label>
+        <button type="submit" class="button-right">发送验证</button>
+        <label>
+            <input type="text" placeholder="验证码">
+        </label>
         <p class="warning"></p>
+        <!--提交按钮-->
+        <a class="button-bottom" href="changepwd.html">
+            <button type="submit" class="submit">提交</button>
+        </a>
+        <!--提交按钮END-->
+    </form>
+    <!--找回密码表单END-->
 </div>
-
-<div class="bottom"><input type="submit" value="提交" class="submit"/></div>
-</form>
-<script type="text/javascript" src="../script/lib/jquery.1.10.2.js"></script>
-<script type="text/javascript">
-    $("#dianhua").focus(function () {
-        $(".warning").text("");
-    }).blur(function () {
-        var dianhua = $("#dianhua").val();
-        if (dianhua.length == 0) {
-            $(".warning").text("请输入手机号");
-        }
-        if (dianhua.length != 11) {
-            $(".warning").text("请输入有效手机号");
-        }
-        var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
-        if (!myreg.test(dianhua)) {
-            $(".warning").text("请输入有效手机号");
-        }
-    })
-
-
-</script>
 </body>
 </html>
