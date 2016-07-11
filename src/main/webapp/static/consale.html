@@ -17,43 +17,66 @@
 </head>
 
 <body>
-    <div class="content-index">
-        <!--标题-->
-        <header>
-           增加售货地址
-            <!--操作按钮-->
-           <div class="header-box">
-                <a href="pay.html">
-                  <button class="header-left">
-                  <i class="icon icon-return"></i>
-                   返回
+<div class="content-index">
+    <!--标题-->
+    <header>
+        增加售货地址
+        <!--操作按钮-->
+        <div class="header-box">
+            <a href="pay.html">
+                <button class="header-left">
+                    <i class="icon icon-return"></i>
+                    返回
                 </button>
-                </a>
-           </div>
-            <!--操作按钮 END-->
-        </header>
-         <!--标题 END-->
-         <!-- 绑定手机表单 -->
-<section class="container">
-    <p class="p-tit">请填写您的地址及电话，我们会安排上门收货</p>
-    <section class="msg-sale">
-        <input type="text" placeholder="收件人">
-        <input type="text" placeholder="手机号">
-        <input type="text" placeholder="所在地">
-        <input type="text" placeholder="详细地址">
-    </section>
-    <section class="server">
-        <div class="terms">
-            <p >寄售服务条款</p>
-            <p >
-                哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+            </a>
         </div>
-        <p><input type="checkbox" checked="true"><span class="agree">我同意寄售服务条款</span></p>
-    </section>
-    <div class="clear"></div>
-    <section class="up">
-        <input type="button" value="提交" onclick=window.location.href="consignment_success.html">
-    </section>
-</section>
+        <!--操作按钮 END-->
+    </header>
+    <!--标题 END-->
+    <!-- 编辑收货地址 -->
+    <form action="">
+        <div class="edit-add-box">
+            <p class="p-tit">请填写您的地址及电话，我们会安排上门收货</p>
+            <label>
+                <input name="addressee" type="text" placeholder="收件人：">
+            </label>
+            <label>
+                <input name="tel" type="text" placeholder="手机号：">
+            </label>
+            <label>
+                <input name="location" type="text" placeholder="所在地：">
+            </label>
+            <!-- 省市级联地址插件 -->
+            <div id="test"></div>
+            <!-- 省市级联地址插件END -->
+            <label>
+                <input name="detail-add" type="text" class="write" placeholder="详细地址：">
+            </label>
+            <div class="clear"></div>
+        </div>
+        <!-- 清楚浮动 -->
+        <!--服务条款-->
+        <label class="terms">
+            <textarea name="terms" cols="30" rows="10">
+服务条款
+            </textarea>
+        </label>
+        <!-- 清楚浮动 -->
+        <div class="clear"></div>
+        <label class="terms">
+            <input type="checkbox" checked="true">
+            <span class="agree">我同意寄售服务条款</span>
+        </label>
+        <!--服务条款END-->
+        <div class="edit-add-input">
+            <!-- 保存按钮 -->
+            <label>
+                <input type="button" value="保存并使用" onclick=window.location.href="address.html">
+            </label>
+            <!-- 保存按钮END -->
+        </div>
+    </form>
+    <!-- 编辑收货地址END -->
+</div>
 </body>
 </html>
