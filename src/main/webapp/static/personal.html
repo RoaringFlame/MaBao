@@ -11,41 +11,42 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
     <link rel="stylesheet" href="../css/master.css">
     <link rel="stylesheet" href="../css/module.css">
 </head>
 
 <body>
-    <div class="content-index">
-        <!--标题-->
-        <header>
-           个人中心
-            <!--操作按钮-->
-           <div class="header-box">
-                <a href="personal.html">
-                  <button class="header-left">
-                  <i class="icon icon-return"></i>
-                   返回
+<div class="content-index">
+    <!--标题-->
+    <header>
+        个人中心
+        <!--操作按钮-->
+        <div class="header-box">
+            <a href="personal.html">
+                <button class="header-left">
+                    <i class="icon icon-return"></i>
+                    返回
                 </button>
-                </a>
-           </div>
-            <!--操作按钮 END-->
-        </header>
-         <!--标题 END-->
-<div class="message">
-    <figure><img src="../img/u6.jpg" alt="头像"></figure>
-    <figcaption>
-        <p>lei.yin</p>
-        <p class="line">宝宝：八个月的霸王龙</p>
-    </figcaption>
-</div>
-<div class="main-i">
-
-    <div class="order">
-        <p class="top">我的订单：</p>
+            </a>
+        </div>
+        <!--操作按钮 END-->
+    </header>
+    <!--标题 END-->
+    <!--宝宝图片上传-->
+    <div class="baby-photo">
+        <figure><img src="../img/u6.jpg" alt="头像"></figure>
+        <figcaption>
+            <p>lei.yin</p>
+            <p class="line">宝宝：八个月的霸王龙</p>
+        </figcaption>
+    </div>
+    <!--宝宝图片上传-END-->
+    <!--个人中心信息-->
+    <div class="personal-center">
+        <p class="order-top">我的订单：</p>
+        <!--我是买家订单-->
         <div>
-            <p class="left">我是<span>买家</span></p>
+            <p class="order-bottom">我是<span class="red">买家</span></p>
             <ul>
                 <li><a class="link" href="purchase_order.html">全部</a></li>
                 <li><a href="unpaid_order.html">待付款</a></li>
@@ -53,8 +54,10 @@
                 <li><a href="ckeck_order.html">待确认</a></li>
             </ul>
         </div>
+        <!--我是买家订单END-->
+        <!--我是买家订单-->
         <div>
-            <p class="right">我是<span>卖家</span></p>
+            <p class="order-bottom">我是<span class="blue">卖家</span></p>
             <ul>
                 <li><a class="link" href="consignment_order.html">全部</a></li>
                 <li><a href="finish_order.html">已出售</a></li>
@@ -62,34 +65,42 @@
                 <li><a href="unpublished_order.html">待发布</a></li>
             </ul>
         </div>
-        <div class="order-i">
+        <!--我是买家订单END-->
+        <!--个人中心操作-->
+        <div class="personal-center-control">
             <a href="message.html"><p>修改密码</p></a>
             <a href="javascript:;"><p>绑定微信（调用微信接口）</p></a>
             <a href="address.html"><p>收货地址</p></a>
             <a href="permsg.html"><p>宝宝信息</p></a>
             <a href="bindphone.html"><p>绑定手机</p></a>
         </div>
+        <!--个人中心操作END-->
     </div>
+    <!--个人中心信息END-->
+    <!--注销按钮-->
+    <a class="personal-center-button" href="login.html">
+        <button type="reset">注销</button>
+    </a>
+    <!--注销按钮END-->
+    <!--底部导航-->
+    <div class="menu" id="menu">
+        <a href="index.html">
+            <i class="icon-menu icon-menu1"><img src="../img/footer-c1.png" alt=""></i>
+        </a>
+        <a>
+            <i class="icon-menu icon-menu2"><img src="../img/footer-2.png" alt=""></i>
+        </a>
+        <a href="consignment.html">
+            <i class="icon-menu icon-menu3"><img src="../img/footer-3.png" alt=""></i>
+        </a>
+        <a href="" id="shopping">
+            <i class="icon-menu icon-menu4"><img src="../img/footer-4.png" alt=""></i>
+        </a>
+        <a href="personal.html">
+            <i class="icon-menu icon-menu5"><img src="../img/footer-5.png" alt=""></i>
+        </a>
+    </div>
+    <!--底部导航 END-->
 </div>
-<div class="bottom"><p onclick=window.location.href="login.html">注销</p></div>
-<section class="clear"></section>
-<div class="menu">
-    <a class="active" href="index.html">
-        <i class="icon-menu icon-menu1"><img src="../img/footer-1.png" alt=""></i>
-    </a>
-    <a>
-        <i class="icon-menu icon-menu2"><img src="../img/footer-2.png" alt=""></i>
-    </a>
-    <a href="consignment.html">
-        <i class="icon-menu icon-menu3"><img src="../img/footer-3.png" alt=""></i>
-    </a>
-    <a href="shopping.html">
-        <i class="icon-menu icon-menu4"><img src="../img/footer-4.png" alt=""></i>
-    </a>
-    <a href="personal.html">
-        <i class="icon-menu icon-menu5"><img src="../img/footer-c5.png" alt=""></i>
-    </a>
-</div>
-
 </body>
 </html>

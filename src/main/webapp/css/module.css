@@ -313,6 +313,7 @@
     cursor: pointer;
     font-size: 1.1rem;
 }
+
 /*宝物详情*/
 .baby-img {
     width: 13rem;
@@ -720,7 +721,11 @@
 .up-to-pay ul li:nth-child(2) {
     background: #E70C2D;
 }
-.up-to-pay ul li a{display:block;}
+
+.up-to-pay ul li a {
+    display: block;
+}
+
 .up-to-pay ul li button {
     color: #fff;
     font-size: 1.3rem;
@@ -735,11 +740,14 @@
     padding-bottom: 1rem;
 }
 
+/*选择收货地址按钮*/
 .input-add {
     width: 32rem;
     margin: 0 auto;
     position: fixed;
     bottom: 1rem;
+    text-align: center;
+
 }
 
 .input-add button {
@@ -749,7 +757,7 @@
     color: #fff;
     text-align: center;
     background: #E70C2D;
-    width: 100%;
+    width: 90%;
     margin: 0 auto;
     border-radius: 0.5rem;
 }
@@ -785,6 +793,7 @@
 /*删除/提交地址按钮*/
 .edit-add-input {
     margin: 0 auto;
+    padding-top: 4rem;
     text-align: center;
 }
 
@@ -798,11 +807,11 @@
     font-size: 1.3rem;
 }
 
-.edit-add-input input:nth-child(1) {
+.edit-add-input label:nth-child(1) input {
     background: #FF9933;
 }
 
-.edit-add-input input:nth-child(2) {
+.edit-add-input label:nth-child(2) input {
     background: #0099FF;
 }
 
@@ -908,6 +917,7 @@
 }
 
 .main-item {
+    position: relative;
     height: 10rem;
     clear: both;
     background: #fff;
@@ -929,7 +939,7 @@
 }
 
 .goods-img {
-    float:left;
+    float: left;
     width: 8rem;
     height: 8rem;
     margin: 1rem 1rem .5rem;
@@ -953,18 +963,18 @@
 }
 
 .goods-del {
-    position:absolute;
-    right:2rem;
+    position: absolute;
+    right: 1rem;
     width: 2rem;
-    height:2rem;
+    height: 2rem;
     background: url("../img/del.png") no-repeat 0 0;
-    background-size:2rem;
+    background-size: 2rem;
 }
 
 /*加减商品按钮*/
 .shopping-cart {
-    position:absolute;
-    right:2rem;
+    position: absolute;
+    right: 2rem;
     width: 7rem;
     float: left;
     height: 3rem;
@@ -978,7 +988,7 @@
     float: left;
     border-right: 0.1rem solid #ccc;
     background: url("../img/reduce.png") no-repeat 0 0;
-    background-size:2rem;
+    background-size: 2rem;
 }
 
 .shopping-cart-add {
@@ -987,7 +997,7 @@
     float: left;
     border-left: 0.1rem solid #ccc;
     background: url("../img/shopping-1.png") no-repeat 0 0;
-    background-size:2rem;
+    background-size: 2rem;
 }
 
 .shopping-cart-sum {
@@ -1086,7 +1096,7 @@
     margin: 0 auto
 }
 
-.title-1 {
+.consignment-title {
     width: 100%;
     height: 3rem;
     font-size: 1.7rem;
@@ -1094,49 +1104,49 @@
     margin-top: 2rem;
 }
 
-.title-2 {
+.consignment-top {
     width: 100%;
     height: 5rem;
     font-size: 1.7rem;
     text-align: center;
 }
 
-.service {
+.consignment-content {
     width: 100%;
     height: 22rem;
 }
 
-.service ul {
+.consignment-content ul {
     width: 80%;
     height: 16rem;
     margin: 0 auto;
 }
 
-.service ul li {
+.consignment-content ul li {
     width: 100%;
     height: 5rem;
 }
 
-.service ul li:last-child {
+.consignment-content ul li:last-child {
     margin-top: 1.8rem;
 }
 
-.index {
+.consignment-content ul li span:nth-child(1) {
     color: rgb(255, 51, 153);
     font-size: 3rem;
     float: left;
     line-height: 3rem
 }
 
-.service ul li img {
+.consignment-content ul li img {
     width: 3rem;
     height: 3rem;
     float: left;
     margin-left: 1.5rem
 }
 
-.content {
-    font-size: 1.3rem;
+.consignment-content ul li span:last-child {
+    font-size: 1.5rem;
     height: 4rem;
     display: block;
     margin-left: 9rem;
@@ -1148,13 +1158,14 @@
     height: 100px;
 }
 
-.consignment-ok {
+.consignment-button {
+    display: block;
     width: 90%;
     margin: 0 auto;
     height: 3rem;
 }
 
-.consignment-ok button {
+.consignment-button button {
     width: 100%;
     height: 3rem;
     background-color: rgb(255, 51, 153);
@@ -1164,7 +1175,11 @@
     border: none;
 }
 
-.release {
+.consignment-bottom {
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+    display: block;
+    font-size: 1.4rem;
     text-align: center;
     width: 100%;
     height: 4rem;
@@ -1271,40 +1286,52 @@
     margin: 0 auto;
     display: block;
     height: 4rem;
-    width: 80%;
+    padding: 0 2rem;
     text-align: right;
+    font-size: 1.4rem;
 }
 
 .change-pwd input {
     height: 2.5rem;
-    width: 80%;
+    width: 75%;
 }
 
+/*登陆*/
 .login-box {
+    margin: 0 auto;
+    padding: 1rem;
+    max-width: 32rem;
     text-align: center;
 }
 
-.login-box input {
-    width: 74%;
-    height: 2.5rem;
-    margin: 1rem 0 0.3rem 0;
+.login-box label {
+    margin: 0 auto;
+    display: block;
+    height: 4rem;
+    padding: 0 2rem;
+    text-align: right;
     font-size: 1.4rem;
-    text-indent: .5rem;
 }
 
-/*.submit-button{*/
-/*display: block;*/
-/*width: 80%;*/
-/*height:3rem;*/
-/*font-size: 1.4rem;*/
-/*color: #fff;*/
-/*background-color: #0099ff;*/
-/*margin: 2rem auto;*/
-/*text-align: center;*/
-/*line-height: 3rem;*/
-/*cursor:pointer;*/
-/*border-radius: .4rem;*/
-/*}*/
+.login-box input {
+    height: 2.5rem;
+    width: 75%;
+}
+
+.login-box button {
+    display: block;
+    width: 80%;
+    height: 3rem;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: #0099ff;
+    margin: 2rem auto;
+    text-align: center;
+    line-height: 3rem;
+    cursor: pointer;
+    border-radius: .4rem;
+}
+
 .login-right {
     height: 3rem;
     float: right;
@@ -1312,19 +1339,55 @@
     font-size: 1.3rem
 }
 
-/*.login-bottom{*/
-/*display: block;*/
-/*width: 7rem;*/
-/*height:2.5rem;*/
-/*border: 1px solid #0099ff;*/
-/*border-radius: 2px;*/
-/*margin: 3rem auto;*/
-/*color: #0099ff;*/
-/*line-height: 2.5rem;*/
-/*text-align: center;*/
-/*font-size: 1.3rem;*/
-/*cursor:pointer;*/
-/*}*/
+.login-bottom {
+    display: block;
+    width: 7rem;
+    height: 2.5rem;
+    border: 1px solid #0099ff;
+    border-radius: 2px;
+    margin: 3rem auto;
+    color: #0099ff;
+    line-height: 2.5rem;
+    text-align: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+/*找回密码*/
+
+.get-back-pwd {
+    margin: 0 auto;
+    padding: 1rem;
+    max-width: 32rem;
+    text-align: center;
+}
+
+.get-back-pwd label {
+    margin: 0 auto;
+    display: block;
+    height: 4rem;
+    padding: 0 2rem;
+    text-align: right;
+    font-size: 1.4rem;
+}
+
+.get-back-pwd input {
+    height: 2.5rem;
+    width: 75%;
+}
+
+.get-back-pwd button {
+    display: block;
+    width: 80%;
+    height: 3rem;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: #0099ff;
+    margin: 2rem auto;
+    text-align: center;
+    line-height: 3rem;
+    cursor: pointer;
+    border-radius: .4rem;
+}
 
 /*绑定手机*/
 
@@ -1447,48 +1510,47 @@
 }
 
 /*个人中心*/
-.message {
+.baby-photo {
     margin: 0 auto;
-    max-width: 64rem;
+    max-width: 32rem;
 }
 
-.message .line {
+.baby-photo .line {
     padding: 0 1rem 1rem;
-    border-bottom: .1rem solid #eee;
 }
 
-.message figure {
+.baby-photo figure {
     margin: 0 auto;
     padding-top: 2.5rem;
     max-width: 6.8rem;
 }
 
-.message figure img {
+.baby-photo figure img {
     width: 6.8rem;
     height: 6.8rem;
     text-align: center;
 }
 
-.message figcaption {
+.baby-photo figcaption {
     font-size: 1.2rem;
     color: #999;
     text-align: center;
 }
 
-.main-i {
-    max-width: 64rem;
-    padding: 1rem;
+.personal-center {
+    max-width: 32rem;
     margin: 0 auto;
+    padding: 1rem;
 }
 
-.main-i .top {
+.order-top {
     font-size: 1.4rem;
     color: #000;
     padding: 1rem 0;
     border-top: .1rem solid #ccc;
 }
 
-.main-i .left {
+.order-bottom {
     font-size: 1.4rem;
     color: #000;
     width: 100%;
@@ -1497,24 +1559,15 @@
     padding: .2rem 0;
 }
 
-.main-i .right {
-    font-size: 1.4rem;
-    color: #000;
-    width: 100%;
-    text-indent: 1rem;
-    line-height: 2.0rem;
-    padding: .2rem 0;
-}
-
-.main-i .left span {
+.red {
     color: red;
 }
 
-.main-i .right span {
+.blue {
     color: blue;
 }
 
-.order ul {
+.personal-center ul {
     text-align: center;
     height: 2rem;
     padding: .2rem 0;
@@ -1522,12 +1575,12 @@
     border-bottom: 0.1rem solid #ccc;
 }
 
-.order ul li {
+.personal-center ul li {
     float: left;
     width: 25%;
 }
 
-.order ul li a {
+.personal-center ul li a {
     font-size: 1.3rem;
     color: #666;
     line-height: 2rem;
@@ -1535,41 +1588,42 @@
     border-left: 1px solid #ccc
 }
 
-.order ul .link {
+.personal-center ul .link {
     border: none;
 }
 
-.order-i {
+.personal-center-control {
     margin-top: .5rem;
 }
 
-.order-i a {
+.personal-center-control a {
     border-bottom: 0.1rem solid #ccc;
     display: block;
 }
 
-.order-i a p {
+.personal-center-control a p {
     font-size: 1.4rem;
     line-height: 4.0rem;
     color: #666
 }
 
-#footer {
-    width: 100%;
-    background-color: #E1E4E6;
-    position: fixed;
-    bottom: 0;
-}
-
-#footer ul {
+.personal-center-button {
+    display: block;
+    margin: 0 auto;
     text-align: center;
-    display: block;
+    padding-bottom: 6rem;
+    padding-top: 1rem;
 }
 
-#footer ul li {
-    float: left;
-    width: 20%;
-    display: block;
+.personal-center-button button {
+
+    width: 80%;
+    height: 3rem;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: #fc5477;
+    line-height: 3rem;
+    border-radius: 0.6rem;
 }
 
 /*转让宝物*/
@@ -1601,15 +1655,16 @@
     background: #999999;
 }
 
-.baby-sale {
-    width: 100%;
-    height: 22rem;
+.transfer-form {
+    position: relative;
     border-top: 0.1rem solid #787878;
     margin-top: 1.2rem;
-    position: relative;
+
 }
 
+/*宝物标题*/
 .title {
+    display: block;
     height: 3.2rem;
     line-height: 3.2rem;
     padding: 0 1rem;
@@ -1618,94 +1673,46 @@
 
 .title > input {
     font-size: 1.3rem;
-    height: 3.2rem;
-    width: 100%;
+    height: 3.1rem;
+    width: 30rem;
     line-height: 3.2rem;
     border: none;
 }
 
-.baby-sale ul li {
+.transfer-form ul li {
+    float: left;
+    width: 50%;
+    text-align: center;
     height: 4rem;
     line-height: 4rem;
+    font-size: 1.4rem;
 }
 
-.baby-sale ul li .baby {
-    font-size: 1.25rem;
-    width: 6.7rem;
-    padding: 0 0.3rem;
-    float: left;
-}
-
-.baby-sale ul .left select {
-    width: 7rem;
-    height: 2.6rem;
-    font-size: 1.25rem;
-}
-
-.baby-sale ul .left input {
-    width: 6.8rem;
-    height: 2.4rem;
-    font-size: 1rem;
-}
-
-.baby-sale ul .right select {
-    width: 7rem;
-    height: 2.6rem;
-    font-size: 1.25rem;
-}
-
-.baby-sale ul .text input {
+.transfer-form ul li select, .transfer-form ul li input {
     width: 6.8rem;
     height: 2.6rem;
+
 }
 
-.baby-sale ul .text-right input {
-    width: 6.8rem;
-    height: 2.6rem;
-}
-
-.left {
-    width: 15rem;
-    float: left;
-}
-
-.right {
-    width: 15rem;
-    float: right;
-}
-
-/*按钮*/
-.switch1 {
-    position: absolute;
-    left: 6.3rem;
-    bottom: 3.6rem;
-}
-
-.switch2 {
-    position: absolute;
-    right: .2rem;
-    bottom: 3.6rem;
-}
-
-.wish label {
+.transfer-form-bottom label {
     width: 7rem;
     float: left;
     font-size: 1.25rem;
     padding-left: 0.3rem;
 }
 
-.wish textarea {
+.transfer-form-bottom textarea {
     width: 23.3rem;
     float: left;
     resize: none;
     height: 10rem
 }
 
-.wish div {
+.transfer-form-bottom div {
     height: 18rem;
 }
 
-.wish div img {
+.transfer-form-bottom div img {
     width: 6rem;
     height: 6rem;
     display: block;
@@ -1714,22 +1721,16 @@
     margin-right: 1rem;
 }
 
-.quick-sale {
-    width: 95%;
-    margin: 0 auto;
-}
-
-.quick-sale a {
-    width: 100%;
-    height: 6rem;
+.transfer-form-button {
     display: block;
+    clear: both;
+    width: 100%;
+    text-align: center;
 }
 
-.quick-sale input {
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
+.transfer-form-button button {
     background: #FF3399;
-    width: 100%;
+    width: 90%;
     height: 3rem;
     line-height: 3rem;
     text-align: center;
@@ -1800,14 +1801,14 @@
     display: block;
 }
 
-.person-input {
+.person-button {
     width: 80%;
     margin: 0 auto;
-    margin-top: 3rem !important;
-    height: 3rem !important;
+    padding-top: 4rem;
 }
 
-.person-input input {
+.person-button button {
+    margin: .5rem 0;
     border: none;
     width: 100%;
     height: 3.5rem;
