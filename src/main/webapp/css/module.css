@@ -607,6 +607,12 @@
     height: auto
 }
 
+.edit-add-box > p {
+    padding-top:1rem ;
+    text-indent: 1rem;
+    font-size: 1.3rem;
+}
+
 .edit-add-box textarea {
     border: 0;
     width: 31.8rem;
