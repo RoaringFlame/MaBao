@@ -654,7 +654,7 @@
 .edit-add-input label:nth-child(1) input {
     background: #0099FF;
 }
-
+.disabled{background: #d5d5d5;}
 .edit-add-input label:nth-child(2) input {
     background: #FF9933;
 }
