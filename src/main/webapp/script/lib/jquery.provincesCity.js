@@ -83,6 +83,3 @@ $('.toggle').click(function (e) {
     $(this).toggleClass('toggle-on');
 });
 
-//$(function (argument) {
-//    $('[type="checkbox"]').bootstrapSwitch();
-//});
