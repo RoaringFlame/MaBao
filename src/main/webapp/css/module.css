@@ -608,7 +608,7 @@
 }
 
 .edit-add-box > p {
-    padding-top:1rem ;
+    padding-top: 1rem;
     text-indent: 1rem;
     font-size: 1.3rem;
 }
@@ -654,7 +654,11 @@
 .edit-add-input label:nth-child(1) input {
     background: #0099FF;
 }
-.disabled{background: #d5d5d5;}
+
+.disabled {
+    background: #d5d5d5;
+}
+
 .edit-add-input label:nth-child(2) input {
     background: #FF9933;
 }
@@ -1308,12 +1312,12 @@
 }
 
 .baby-photo .line {
-    padding: 0 1rem 1rem;
+    padding: 0 1rem;
 }
 
 .baby-photo figure {
     margin: 0 auto;
-    padding-top: 2.5rem;
+    padding-top: 1.5rem;
     max-width: 6.8rem;
 }
 
@@ -1486,7 +1490,7 @@
 }
 
 .transfer-info li select, .transfer-form ul li input {
-    width: 6.8rem;
+    width: 7.6rem;
     height: 2.6rem;
 
 }
