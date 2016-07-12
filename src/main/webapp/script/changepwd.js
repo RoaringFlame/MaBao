@@ -1,8 +1,8 @@
 "use strict";
 
 $(function () {
-    var ok1 = false; //用户名校验
-    var ok2 = false; //密码校验
+    var ok1 = false; //密码校验
+    var ok2 = false; //重复密码校验
 
     $('#newPwd').focus(function () {
         $('.warning').text('');
@@ -32,7 +32,6 @@ $(function () {
         if (num >= 2 && $(this).val().length >= 6 && $(this).val().length <= 16 && $(this).val() != '') {
             $('.warning').text('');
             ok1 = true;
-
         } else if ($(this).val().length < 6 || $(this).val().length > 16) {
             $('.warning').text('密码为6-16位之间');
         } else if (num == 1) {
@@ -49,18 +48,19 @@ $(function () {
                 $('.warning').text("不能全为字符!");
             }
         }
-
     });
+
     $('#confirm-pwd').focus(function () {
     }).blur(function () {
-
-        if ($(this).val().length >= 6 && $(this).val().length <= 16 && $(this).val() != '' && $(this).val() == $('#newpwd').val()) {
+        if ($(this).val().length >= 6 && $(this).val().length <= 16 && $(this).val() != '' && $(this).val() == $('#newPwd').val()) {
             $('.warning').text('');
             ok2 = true;
         } else {
             $('.warning').text('输入的密码不一致');
         }
-
+        if ($('#newPwd').val() == "") {
+            $('.warning').text("请输入密码！");
+        }
     });
 
     //点击提交
@@ -69,7 +69,7 @@ $(function () {
             $('.warning').text("请输入密码！");
         }
         if (ok1 && ok2) {//当以上判断全部成立，即执行后面的代码
-            $.post("http://localhost:8080/mb/LoginRegisterServlet?method=RegisterCheck",
+            $.post("/LoginRegisterServlet?method=RegisterCheck",
                 {pwd: $('#newPwd').val()}, function (data) {
                 //根据服务器返回的值判断
                 if (data == 0) {

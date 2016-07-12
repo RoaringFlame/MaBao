@@ -49,7 +49,7 @@
         <p class="warning"></p>
         <!-- 提交按钮 -->
         <!--提交后跳转到登陆页面-->
-        <button class="submit" type="submit" value="提交">提交</button>
+        <button class="submit" type="submit" value="提交" id="change-pwd">提交</button>
         <!--提交按钮END-->
     </form>
     <!--修改密码表单END-->
