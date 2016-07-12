@@ -18,7 +18,7 @@ public interface BabyService {
      * @param babyId        宝宝ID
      * @return              宝宝对象
      */
-    Baby getOne(Long babyId);
+    Baby get(Long babyId);
 
     /**
      * 编辑宝宝信息
@@ -33,4 +33,5 @@ public interface BabyService {
      * @return                          宝宝list
      */
     List<Baby> findBabyByUserId(Long userId);
+
 }

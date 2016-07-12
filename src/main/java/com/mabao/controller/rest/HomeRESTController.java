@@ -52,11 +52,6 @@ public class HomeRESTController {
         //轮播图片列表
         List<BannerVO> smallBanner =BannerVO.generateBy(this.bannerService.findByStatusOrderBySortDesc(true));
         homeInitVO.setSmallBanner(smallBanner);
-        //猜你喜欢，宝宝信息
-        Baby baby = this.babyService.findBabyByUserId(UserManager.getUser().getId()).get(0);
-        if (baby != null) {
-           homeInitVO.setBaby(BabyVO.generateBy(baby));
-        }
         //猜你喜欢，宝宝性别
         List<Selector> gender = Gender.toList();
         homeInitVO.setGender(gender);
