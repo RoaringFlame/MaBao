@@ -15,10 +15,6 @@ $(function () {
                 newGoods.find("div.goods-info").find("p:eq(2)").text("￥" + goods.price);      //从后台获取price
                 main.append(newGoods);                                                         //在main中加入商品信息
             });
-            //编辑按钮
-            editBtn.click(function () {
-                edit();                                //完成按钮变成编辑
-                });
             //复选框事件
             main.find(".select")
                 .attr("checked", true)        //默认全选
@@ -37,35 +33,38 @@ $(function () {
                 setTotal();                                                     //点击减少按钮后重新计算总价
             });
             //删除按钮
-            main.find(".goods-del")
-                .hide()
-                .click(function () {
-                    var cartId = $(this).prevAll("div.cartId").text();
-                    var delItem = $(this).parent();
-                    $.ajax({
-                        url: "/cart/deleteGoods/" + cartId,
-                        type: 'DELETE',
-                        success: function () {
-                            alert("OK");
-                            delItem.remove();                //删除购物车商品
-                        }
-                    });
-                    setTotal();                              //删除按钮后重新计算总价
+            main.find(".goods-del").click(function () {
+                var cartId = $(this).prevAll("div.cartId").text();
+                var delItem = $(this).parent();
+                $.ajax({
+                    url: "/cart/deleteGoods/" + cartId,
+                    type: 'DELETE',
+                    success: function () {
+                        alert("OK");
+                        delItem.remove();                //删除购物车商品
+                    }
                 });
+                setTotal();                              //删除按钮后重新计算总价
+            });
             setTotal();
+            initEdit();
         }, "json");
     }
 
     //编辑按钮事件
-    function edit() {
-        if (editBtn.text() == "编辑") {
-            main.find(".goods-del").show();                      //点击编辑，删除按钮出现
-            editBtn.text("完成");                                //编辑按钮变成完成
-        }
-        else {
-            main.find(".goods-del").hide();                      //点击完成，删除按钮隐藏
-            editBtn.text("编辑");                                //完成按钮变成编辑
-        }
+    function initEdit() {
+        main.find(".goods-del").hide();                      //点击编辑，删除按钮出现
+        editBtn.text("编辑");
+        editBtn.click(function(){
+            if (editBtn.text() == "编辑") {
+                main.find(".goods-del").show();                      //点击编辑，删除按钮出现
+                editBtn.text("完成");                                //编辑按钮变成完成
+            }
+            else {
+                main.find(".goods-del").hide();                      //点击完成，删除按钮隐藏
+                editBtn.text("编辑");                                //完成按钮变成编辑
+            }
+        });
     }
 
     //计算总价
