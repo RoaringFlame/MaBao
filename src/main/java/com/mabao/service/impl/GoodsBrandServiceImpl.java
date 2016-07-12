@@ -1,8 +1,8 @@
 package com.mabao.service.impl;
 
-import com.mabao.pojo.Brand;
-import com.mabao.repository.BrandRepository;
-import com.mabao.service.BrandService;
+import com.mabao.pojo.GoodsBrand;
+import com.mabao.repository.GoodsBrandRepository;
+import com.mabao.service.GoodsBrandService;
 import com.mabao.util.Selector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +15,9 @@ import java.util.List;
  * Created by jackie on 2016/07/09.
  */
 @Service
-public class BrandServiceImpl implements BrandService{
+public class GoodsBrandServiceImpl implements GoodsBrandService {
     @Autowired
-    private BrandRepository brandRepository;
+    private GoodsBrandRepository goodsBrandRepository;
 
     /**
      * 获取启用的品牌
@@ -25,8 +25,8 @@ public class BrandServiceImpl implements BrandService{
      * @return                  品牌list
      */
     @Override
-    public List<Brand> findByStatus(Boolean status) {
-        return this.brandRepository.findByStatus(status);
+    public List<GoodsBrand> findByStatus(Boolean status) {
+        return this.goodsBrandRepository.findByStatus(status);
     }
     /**
      * 获取品牌下拉菜单
@@ -35,8 +35,8 @@ public class BrandServiceImpl implements BrandService{
     @Override
     public List<Selector> findBrandForSelector() {
         List<Selector> brandSelector = new ArrayList<>();
-        List<Brand> brandList = this.brandRepository.findByStatus(Boolean.TRUE);
-        for (Brand b : brandList){
+        List<GoodsBrand> brandList = this.goodsBrandRepository.findByStatus(Boolean.TRUE);
+        for (GoodsBrand b : brandList){
             Selector selector = new Selector(b.getId().toString(),b.getBrandName());
             brandSelector.add(selector);
         }
