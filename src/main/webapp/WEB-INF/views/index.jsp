@@ -17,8 +17,10 @@
     <link rel="stylesheet" href="../../css/master.css">
     <link rel="stylesheet" href="../../css/module.css">
 
+    <link rel="stylesheet" href="../../script/lib/iscroll/iscroll.css">
     <script src="../../script/lib/jquery.1.10.2.js"></script>
     <script src="../../script/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="../../script/lib/iscroll/iscroll.js"></script>
     <script src="../../script/index.js"></script>
 </head>
 
@@ -119,29 +121,27 @@
                 <ul>
                     <li>
                         <label>宝宝姓名：</label>
-                        <label><input name="babyName" type="text" id="username"></label>
+                        <label><input name="babyName" type="text" id="babyName"></label>
                     </li>
                     <li>
                         <label>宝宝生日：</label>
-                        <label><input name="babyData" type="date"></label>
+                        <label><input name="babyDate" type="date" id="babyBirthday"></label>
                     </li>
 
                     <li>
                         <label>宝宝性别：</label>
                         <label>
                             <select name="babySex" id="sex">
-                                <option value="">男</option>
-                                <option value="">女</option>
                             </select>
                         </label>
                     </li>
 
                     <li>
                         <label>宝宝爱好：</label>
-                        <label><input type="text"></label>
+                        <label><input type="text" id="hobby"></label>
                     </li>
                 </ul>
-                <button class="like-up-button" type="submit">提交</button>
+                <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
             </div>
         </form>
         <!-- 猜你喜欢END -->
