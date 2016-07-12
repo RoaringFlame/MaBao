@@ -39,59 +39,65 @@
                     返回
                 </button>
             </a>
-                <!--点击编辑出现删除商品按钮-->
-                <button class="header-right">
-                    编辑
-                </button>
+            <!--点击编辑出现删除商品按钮-->
+            <button class="header-right">
+                编辑
+            </button>
         </div>
         <!--操作按钮 END-->
     </header>
     <!--标题 END-->
-<div id="goodsContainer" style="display: none;">
-    <!--商品信息-->
-    <div class="main-item">
-        <div class="cartId" style="display: none;" >1</div>
-        <!--选择商品-->
-        <label>
-            <input class="select" name="itemContainer" type="checkBox">
-        </label>
-        <img class="goods-img" src="../../img/main-new1.png" alt="">
-        <div class="goods-info">
-            <p>H&M&nbsp;&nbsp;CARDIGAN</p>
-            <p>尺寸&nbsp;:&nbsp;S</p>
-            <p>￥35.50</p>
-        </div>
-        <!--删除商品按钮-->
-        <button class="goods-del"></button>
-        <!--删除商品按钮END-->
-        <!--加减商品数量-->
-        <div class="shopping-cart">
-            <button class="shopping-cart-reduce"></button>
-            <p class="shopping-cart-sum">1</p>
-            <button class="shopping-cart-add"></button>
-        </div>
-        <!--加减商品数量END-->
-    </div>
-    <!--商品信息END-->
-</div>
-    <div class="iscroll-wrapper" style="top:48px;bottom: -12px;">
-    <div id="container">
+    <div id="goodsContainer" style="display: none;">
+        <!--商品信息-->
+        <div class="main-item">
+            <div class="cartId" style="display: none;">1</div>
+            <!--选择商品-->
+            <label>
+                <input class="select" name="itemContainer" type="checkBox">
+            </label>
+            <img class="goods-img" src="../../img/main-new1.png" alt="">
 
+            <div class="goods-info">
+                <p>H&M&nbsp;&nbsp;CARDIGAN</p>
+
+                <p>尺寸&nbsp;:&nbsp;S</p>
+
+                <p>￥35.50</p>
+            </div>
+            <!--删除商品按钮-->
+            <button class="goods-del"></button>
+            <!--删除商品按钮END-->
+            <!--加减商品数量-->
+            <div class="shopping-cart">
+                <button class="shopping-cart-reduce"></button>
+                <p class="shopping-cart-sum">1</p>
+                <button class="shopping-cart-add"></button>
+            </div>
+            <!--加减商品数量END-->
+        </div>
+        <!--商品信息END-->
     </div>
+    <div class="iscroll-wrapper" style="top:48px;bottom: -12px;">
+        <div id="container">
+
+        </div>
         <div class="blank"></div>
     </div>
-        <!--付款按钮-->
-        <div class="up-to-pay">
-            <ul>
-                <li>总计&nbsp;:&nbsp;<b>￥131.00</b></li>
-                <li>
-                    <!--<a href="pay.html">-->
-                        <button class="pay" type="submit">付款</button>
-                    <!--</a>-->
-                </li>
-            </ul>
-        </div>
-        <!--付款按钮END-->
+    <!--付款按钮-->
+    <div class="up-to-pay">
+        <ul>
+            <li>总计&nbsp;:&nbsp;<b>￥131.00</b></li>
+            <li>
+                <!--<a href="pay.html">-->
+                <button class="pay" type="submit">付款</button>
+                <!--</a>-->
+            </li>
+        </ul>
+    </div>
+    <form id="frmPay" action="/cart/orderConfirm" method="get">
+        <input type="hidden" name="cartAndNum">
+    </form>
+    <!--付款按钮END-->
     <!--底部导航-->
     <div class="menu" id="menu">
         <a href="index.html">

@@ -32,7 +32,10 @@ public class CartController {
     private CartService cartService;
     @Autowired
     private AddressService addressService;
-
+    @RequestMapping(value = "/index",method = GET)
+    public String cartIndex(){
+        return "shopping";
+    }
     /**
      * 购物车添加商品
      * @param goodsId       商品ID
