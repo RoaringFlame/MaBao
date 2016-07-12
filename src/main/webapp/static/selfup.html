@@ -107,12 +107,12 @@
                 </li>
                 <li>
                     <label for="packet">原装包装：
-                        <input class="form-control" id="packet" type="checkbox" checked>
+                        <input id="packet" type="checkbox" checked="" data-size="mini">
                     </label>
                 </li>
                 <li>
                     <label for="invoice">发票小票：
-                        <input class="form-control" id="invoice" type="checkbox" checked>
+                        <input id="invoice" type="checkbox" checked="" data-size="mini">
                     </label>
                 </li>
                 <li>
@@ -164,8 +164,3 @@
 <script src="../script/lib/jquery.1.10.2.js"></script>
 <script src="../script/lib/bootstrap/bootstrap.min.js"></script>
 <script src="../script/lib/bootstrap/bootstrap-switch.js"></script>
-<script>
-    $(function (argument) {
-        $('[type="checkbox"]').bootstrapSwitch();
-    })
-</script>
