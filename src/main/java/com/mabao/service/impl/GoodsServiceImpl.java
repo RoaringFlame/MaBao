@@ -1,14 +1,18 @@
 package com.mabao.service.impl;
 
 import com.mabao.enums.Gender;
+import com.mabao.pojo.Baby;
 import com.mabao.pojo.Goods;
+import com.mabao.repository.BabyRepository;
 import com.mabao.repository.GoodsRepository;
 import com.mabao.service.GoodsService;
+import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -16,6 +20,8 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
     private GoodsRepository goodsRepository;
+    @Autowired
+    private BabyRepository babyRepository;
 
     /**
      * 新品
@@ -63,6 +69,15 @@ public class GoodsServiceImpl implements GoodsService {
      */
     @Override
     public Page<Goods> goodsListGuess(String babyName, String babyBirthday, Gender gender, String hobby, int page, int pageSize) {
+        if (UserManager.getUser() != null){
+            Baby baby = new Baby();
+            baby.setUser(UserManager.getUser());
+            baby.setName(babyName);
+            baby.setBirthday(Date.valueOf(babyBirthday));
+            baby.setGender(gender);
+            baby.setHobby(hobby);
+            this.babyRepository.save(baby);
+        }
         return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
     }
     /**
