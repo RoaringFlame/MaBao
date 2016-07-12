@@ -12,34 +12,36 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
- <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/master.css">
     <link rel="stylesheet" href="../css/module.css">
 </head>
-
 <body>
-    <div class="content-index">
-        <!--标题-->
-        <header>
-           编辑宝宝信息
-            <!--操作按钮-->
-           <div class="header-box">
-                <a href="permsg.html">
-                  <button class="header-left">
-                  <i class="icon icon-return"></i>
-                   返回
+<div class="content-index">
+    <!--标题-->
+    <header>
+        新增宝宝信息
+        <!--操作按钮-->
+        <div class="header-box">
+            <a href="permsg.html">
+                <button class="header-left">
+                    <i class="icon icon-return"></i>
+                    返回
                 </button>
-                </a>
-           </div>
-            <!--操作按钮 END-->
-        </header>
-         <!--标题 END-->
-<section class="person">
-    <form method="" action="" class="person-msg">
+            </a>
+        </div>
+        <!--操作按钮 END-->
+    </header>
+    <!--标题 END-->
+    <!-- 编辑宝宝信息 -->
+    <form action="" class="person-msg">
+
         <ul>
             <li><label for="babyData">宝宝生日：</label>
-                <input name="babyData" type="date" value="babyData"></li>
+                <input name="baby-data" id="babyData" type="date" value="babyData">
+            </li>
             <li><label for="babyName">宝宝姓名：</label>
-                <input name="babyName" type="text" value="babyName"></li>
+                <input name="baby-name" id="babyName" type="text" value="babyName">
+            </li>
             <li>
                 <label for="sex">宝宝性别：</label>
                 <select name="sex" id="sex">
@@ -48,14 +50,13 @@
                 </select>
             </li>
         </ul>
-        <section class="reset">
-            <input type="submit" value="确  认">
-            <input type="reset" value="取  消">
-        </section>
+
+        <div class="person-button">
+            <button type="submit">确认信息</button>
+        </div>
 
     </form>
-</section>
-
-
+    <!-- 编辑宝宝信息END -->
+</div>
 </body>
 </html>

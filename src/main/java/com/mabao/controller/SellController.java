@@ -35,7 +35,7 @@ public class SellController {
     @Autowired
     private GoodsTypeService goodsTypeService;
     @Autowired
-    private BrandService brandService;
+    private GoodsBrandService goodsBrandService;
     @Autowired
     private GoodsSizeService goodsSizeService;
 
@@ -66,7 +66,7 @@ public class SellController {
         List<Selector> goodsTypeList = this.goodsTypeService.getAllGoodsTypeForSelector();
         map.put("goodsType",goodsTypeList);
         //品牌
-        List<Selector> brand = this.brandService.findBrandForSelector();
+        List<Selector> brand = this.goodsBrandService.findBrandForSelector();
         map.put("brand",brand);
         //宝宝性别
         List<Selector> gender = Gender.toList();

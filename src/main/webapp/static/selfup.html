@@ -48,7 +48,7 @@
                 <input type="text" name="title" value="宝物标题">
             </label>
             <!--宝物信息选框-->
-            <ul id="transferInfo">
+            <ul class="transfer-info" id="transferInfo">
                 <li>
                     <label for="kind">宝物类型：</label>
                     <select name="kind" id="kind">
@@ -107,12 +107,12 @@
                 </li>
                 <li>
                     <label for="packet">原装包装：
-                        <input class="form-control" id="packet" type="checkbox" checked>
+                        <input id="packet" type="checkbox" checked="" data-size="mini">
                     </label>
                 </li>
                 <li>
                     <label for="invoice">发票小票：
-                        <input class="form-control" id="invoice" type="checkbox" checked>
+                        <input id="invoice" type="checkbox" checked="" data-size="mini">
                     </label>
                 </li>
                 <li>
@@ -164,8 +164,3 @@
 <script src="../script/lib/jquery.1.10.2.js"></script>
 <script src="../script/lib/bootstrap/bootstrap.min.js"></script>
 <script src="../script/lib/bootstrap/bootstrap-switch.js"></script>
-<script>
-    $(function (argument) {
-        $('[type="checkbox"]').bootstrapSwitch();
-    })
-</script>

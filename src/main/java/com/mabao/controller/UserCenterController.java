@@ -6,7 +6,10 @@ import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.BabyService;
 import com.mabao.service.UserService;
+import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,42 +27,20 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  */
 @Controller
 @RequestMapping("/user")
-@SessionAttributes("userId")
 public class UserCenterController {
     @Autowired
     private AddressService addressService;
     @Autowired
     private BabyService babyService;
-    @Autowired
-    private UserService userService;
-
-    /**
-     * 用户登录
-     * @param user              用户对象
-     * @param model             用户ID
-     * @return                  首页
-     */
-    @RequestMapping(value ="/login",method = POST)
-    public String userLogin(@RequestParam User user, Model model){
-        User result = this.userService.findByNameAndPassword(user.getName(),user.getPassword());
-        if (result != null){
-            model.addAttribute("userId",result);
-            return "index";
-        }else {
-            return "login_failure";
-        }
-    }
-
 
     /**
      * 该用户所有收货地址
-     * @param userId                用户ID
      * @param model                 地址list
      * @return                      收货地址页
      */
-    @RequestMapping(value ="/address/allAddress",method = GET)
-    public String allAddress(Long userId,Model model){
-        List<Address> addressList=this.addressService.findAllAddress(userId);
+    @RequestMapping(value ="/address/userAllAddress",method = GET)
+    public String userAllAddress(Model model){
+        List<Address> addressList=this.addressService.findUserAllAddress(UserManager.getUser().getId());
         model.addAttribute("addressList",addressList);
         return "address";
     }
