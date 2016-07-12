@@ -4,6 +4,7 @@ import com.mabao.controller.vo.GoodsVO;
 import com.mabao.pojo.Address;
 import com.mabao.pojo.Cart;
 import com.mabao.pojo.Goods;
+import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.CartService;
 import com.mabao.service.GoodsService;
@@ -41,15 +42,19 @@ public class CartController {
      */
     @RequestMapping(value = "/cartAddGoods",method = GET)
     public String shoppingCarGoodsAdd(@RequestParam Long goodsId,Model model){
-        Cart cart = this.cartService.addCart(goodsId);
-        if (cart != null){
-            List<Goods> goodsList = this.cartService.findAllGoodsByUser(UserManager.getUser().getId());
-            model.addAttribute("cartGoodsList",goodsList);
-            return "shopping";
+        User user = UserManager.getUser();
+        if (user != null){
+            Cart cart = this.cartService.addCart(goodsId);
+            if (cart != null){
+                List<Goods> goodsList = this.cartService.findAllGoodsByUser(user.getId());
+                model.addAttribute("cartGoodsList",goodsList);
+                return "shopping";
+            }else {
+                return "shopping_add_failure";
+            }
         }else {
-            return "shopping_add_failure";
+            return "login";
         }
-
     }
 
     /**
@@ -60,28 +65,33 @@ public class CartController {
      */
     @RequestMapping(value = "/orderConfirm",method = GET)
     public String orderConfirm(@RequestParam String cartAndNum,
-                               Model model){
-        Map<String,Object> map = new HashMap<>();
-        String[] cartAndNumArray = cartAndNum.trim().split(",");
-        Map<Object,Integer> goodsAndNumMap = new HashMap<>();
-        List<Long> goodsIdList = new ArrayList<>();
-        for (String one : cartAndNumArray){
-            //获得购物车ID
-            Long cartId =Long.valueOf(one.trim().split("-")[0]);
-            //查找商品
-            Goods goods = this.cartService.get(cartId).getGoods();
-            //查找对应数量
-            Integer num =Integer.valueOf(one.trim().split("-")[1]);
-            goodsAndNumMap.put(GoodsVO.generateBy(goods),num);
+                               Model model) {
+        User user = UserManager.getUser();
+        if (user == null) {
+            return "login";
+        } else {
+            Map<String, Object> map = new HashMap<>();
+            String[] cartAndNumArray = cartAndNum.trim().split(",");
+            Map<Object, Integer> goodsAndNumMap = new HashMap<>();
+            List<Long> goodsIdList = new ArrayList<>();
+            for (String one : cartAndNumArray) {
+                //获得购物车ID
+                Long cartId = Long.valueOf(one.trim().split("-")[0]);
+                //查找商品
+                Goods goods = this.cartService.get(cartId).getGoods();
+                //查找对应数量
+                Integer num = Integer.valueOf(one.trim().split("-")[1]);
+                goodsAndNumMap.put(GoodsVO.generateBy(goods), num);
 
+            }
+            map.put("checkedGoodsMap", goodsAndNumMap);  //选中的商品列表
+            Address address = this.addressService.getDefaultAddress(user.getId());
+            map.put("defaultAddress", address);          //默认地址
+            map.put("cartAndNum", cartAndNum);
+            map.put("freight", 10);                      //运费
+            model.addAllAttributes(map);
+            return "pay";
         }
-        map.put("checkedGoodsMap",goodsAndNumMap);  //选中的商品列表
-        Address address = this.addressService.getDefaultAddress(UserManager.getUser().getId());
-        map.put("defaultAddress",address);          //默认地址
-        map.put("cartAndNum",cartAndNum);
-        map.put("freight",10);                      //运费
-        model.addAllAttributes(map);
-        return "pay";
     }
 
 }

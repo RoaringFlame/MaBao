@@ -27,7 +27,7 @@ public class BabyServiceImpl implements BabyService {
      * @return              宝宝对象
      */
     @Override
-    public Baby getOne(Long babyId) {
+    public Baby get(Long babyId) {
         return this.babyRepository.findOne(babyId);
     }
 
