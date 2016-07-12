@@ -33,6 +33,10 @@ public class MaBaoUserService implements UserDetailsService {
 
             UserInfo userInfo  = new UserInfo(mbuser.getName(),mbuser.getPassword(),authorities);
             userInfo.setUserId(mbuser.getId());
+            userInfo.setEmail(mbuser.getEmail());
+            userInfo.setPhone(mbuser.getPhone());
+            userInfo.setPicture(mbuser.getPicture());
+            userInfo.setCreateTime(mbuser.getCreateTime());
             return userInfo;
         }
 

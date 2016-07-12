@@ -31,7 +31,7 @@ public class Area {
     public void setCode(Long code) {
         this.code = code;
     }
-
+    @Column(name = "parent_id")
     public Long getParentId() {
         return parentId;
     }
