@@ -21,7 +21,8 @@ public class Cart {
     public void setId(Long id) {
         this.id = id;
     }
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+
+    @ManyToOne
     @JoinColumn(name = "user_id")
     public User getUser() {
         return user;
@@ -30,7 +31,8 @@ public class Cart {
     public void setUser(User user) {
         this.user = user;
     }
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+
+    @ManyToOne
     @JoinColumn(name = "goods_id")
     public Goods getGoods() {
         return goods;
@@ -47,7 +49,7 @@ public class Cart {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
-
+    @Column(name = "create_time")
     public Date getCreateTime() {
         return createTime;
     }

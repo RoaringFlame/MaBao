@@ -12,4 +12,12 @@ public interface UserRepository extends BaseRepository<User> {
      * @return                  用户对象
      */
     User findByNameAndPassword(String name, String password);
+
+    /**
+     * 用户名获取用户信息
+     * SpringSecurity模块UserDetailsService接口使用
+     * @param name              用户名
+     * @return                  用户对象
+     */
+    User findByName(String name);
 }

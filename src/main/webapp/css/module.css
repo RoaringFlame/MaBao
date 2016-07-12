@@ -1,6 +1,7 @@
 ﻿@charset "utf-8";
 
 /*首页*/
+
 /*搜索框*/
 .search {
     position: fixed;
@@ -313,181 +314,76 @@
     cursor: pointer;
     font-size: 1.1rem;
 }
+
 /*宝物详情*/
-.baby-img {
-    width: 13rem;
-    height: auto;
-    margin: 3rem auto 0;
+.goods-detail-top {
+    margin: 2rem 8rem 2rem;
 }
 
-.baby-img figcaption {
-    margin-top: 0.5rem;
-}
-
-.baby-img figcaption p {
-    width: 100%;
-    height: 2.4rem;
-    line-height: 2.4rem;
-    text-align: center;
-}
-
-.baby-img figcaption p:nth-child(1) {
-    font-size: 1.2rem;
-    color: #000;
-}
-
-.baby-img figcaption p:nth-child(2) {
-    color: red;
-    font-size: 1.4rem;
-}
-
-.baby-img figcaption p:nth-child(2) span:nth-child(1) {
-    float: left;
-    width: 6rem;
-}
-
-.baby-img img {
-    width: 100%;
-    height: 100%;
+.goods-detail-top img {
+    width: 96%;
+    height: 17.4rem;
+    margin: 3% 2% 0;
     display: block;
 }
 
-.baby-intro {
-    width: 32rem;
-    height: auto;
-    margin: 3rem auto 0;
+.goods-detail-top div {
+    margin: 0 2% 3%;
+    height: 6.5rem;
+    background-color: #fdfeff;
+}
+
+.goods-detail-top div p {
+    padding: 0 1rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
     font-size: 1.3rem;
 }
 
-.baby-intro-p {
-    width: 100%;
-    height: 3rem;
-}
-
-.p-1 div:nth-child(1) {
+.goods-detail-top div p span:nth-child(1) {
     float: left;
     width: 8rem;
-    text-align: right;
+    color: #F0292B;
 }
 
-.p-1 div:nth-child(2) {
-    text-indent: 1.5rem;
-    float: left;
+.goods-detail-top div p span:nth-child(2) {
+    font-size: 1.2rem;
+    float: right;
 }
 
-.p-2 div:nth-child(1) {
-    float: left;
-    width: 8rem;
-    text-align: right;
-}
-
-.p-2 div:nth-child(2) {
-    text-indent: 1.5rem;
-    float: left;
-}
-
-.p-3 div:nth-child(1) {
-    float: left;
-    width: 8rem;
-    text-align: right;
-}
-
-.p-3 div:nth-child(2) {
-    width: 8rem;
-    text-indent: 1.5rem;
-    float: left;
-}
-
-.p-3 div:nth-child(3) {
-    float: left;
-    width: 8rem;
-    text-align: right;
-}
-
-.p-3 div:nth-child(4) {
-    text-indent: 1.5rem;
-}
-
-.p-4 div:nth-child(1) {
-    float: left;
-    width: 8rem;
-    text-align: right;
-}
-
-.p-4 div:nth-child(2) {
-    width: 8rem;
-    text-indent: 1.5rem;
-    float: left;
-}
-
-.p-4 div:nth-child(3) {
-    float: left;
-    width: 5rem;
-    text-align: right;
-}
-
-.p-4 div:nth-child(4) {
-    float: left;
-    width: 2rem;
-}
-
-.p-4 div:nth-child(5) {
-    float: left;
-    width: 5rem;
-    text-align: right;
-}
-
-.p-5 {
-    min-height: 3rem;
-    height: auto;
+.goods-detail-top div p:nth-child(3) {
+    width: 13.5rem;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     overflow: hidden;
 }
 
-.p-5 div:nth-child(1) {
-    float: left;
-    width: 8rem;
-    text-align: right;
+.goods-detail-bottom {
+    font-size: 1.4rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+
 }
 
-.p-5 div:nth-child(2) {
-    width: 21rem;
-    padding-left: 8rem;
-    padding-right: 1rem;
-    height: auto;
-    margin-left: 1.5rem
+.goods-detail-bottom span {
+    display: inline-block;
+    float: right;
+    width: 80%;
+    text-indent: 1rem;
 }
 
-.p-6 div:nth-child(1) {
-    width: 8rem;
-    height: 3rem;
-    text-align: right;
+.goods-detail-bottom img {
+    width: 30rem;
+    height: 18rem;
 }
 
-.p-6 div:nth-child(2) {
-    width: 27rem;
-    height: 12rem;
-    padding-left: 2.5rem;
-    padding-right: 1rem;
-}
-
-.p-6 div:nth-child(2) img {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.p-6 {
-    min-height: 3rem;
-    height: auto;
-    overflow: hidden;
-}
-
-.operate {
+.goods-detail-button {
     margin: 1rem auto;
     text-align: center;
 }
 
-.operate input {
+.goods-detail-button button {
     font-size: 1.3rem;
     height: 3rem;
     line-height: 3rem;
@@ -496,23 +392,13 @@
     border-radius: 0.5rem;
 }
 
-.operate div {
-    text-align: center;
-}
-
-.operate .button-right {
+.goods-detail-button > div button {
     background: #FF9933;
-    width: 46%;
-    margin: .5rem 0 .5rem .5rem;
-}
-
-.operate .button-left {
-    background: #FF9933;
-    width: 46%;
+    width: 46.8%;
     margin: .5rem .5rem .5rem 0;
 }
 
-.operate .button {
+.goods-detail-button .button {
     width: 96%;
     background: #0099FF;
     margin: 1rem auto;
@@ -538,7 +424,7 @@
 .box-left img {
     width: 4.5rem;
     height: 4.5rem;
-    margin: 1rem 1rem 1rem 0;
+    margin: .5rem 1rem 1rem 0;
     display: block;
 }
 
@@ -588,83 +474,36 @@
     background-size: 2rem;
 }
 
-.pay-for-baby {
-    width: 32rem;
-    height: 10rem;
-    margin: 2rem auto 0;
-    border-top: 0.1rem solid #CCC;
-    border-bottom: 0.1rem solid #ccc;
-}
-
-.baby {
-    width: 8rem;
-    height: 8rem;
-    float: left;
-    margin: 1rem;
-}
-
-.baby img {
-    width: 8rem;
-    height: 8rem;
-    display: block;
-}
-
-.intro {
-    width: 15rem;
-    float: left;
-    padding: 2.8rem 0;
-    font-size: 1.3rem
-}
-
-.intro p {
-    height: 2.2rem;
-    line-height: 2.2rem;
-    font-size: 1.3rem
-}
-
-.price {
-    width: 4rem;
-    margin: 0 1rem;
-    padding: 3.5rem 0;
-    float: left;
-    height: 3rem;
-    line-height: 3rem;
-}
-
-.price p {
-    color: red;
-    font-size: 1.4rem;
-}
-
 .lists {
     width: 32rem;
     margin: 2rem auto;
 }
 
-.lists ul li {
+.lists li {
     height: 3rem;
     line-height: 3rem;
     border-bottom: 0.1rem solid #ccc;
     padding-right: 1.2rem;
 }
 
-.lists ul li:nth-child(1) {
+.lists li:nth-child(1) {
     font-size: 1.4rem;
     text-align: right;
+    border-top: 0.1rem solid #ccc;
 }
 
-.lists ul li b {
+.lists li b {
     color: red;
 }
 
-.lists ul li:nth-child(2) span:nth-child(1) {
+.lists li:nth-child(2) span:nth-child(1) {
     float: left;
     width: 5rem;
     margin-left: 1rem;
     font-size: 1.3rem
 }
 
-.lists ul li:nth-child(2) span:nth-child(2) {
+.lists li:nth-child(2) span:nth-child(2) {
     float: right;
     width: 5rem;
     text-align: right;
@@ -673,13 +512,7 @@
 }
 
 .notes {
-    width: 32rem;
-    margin: 1rem auto;
-}
-
-.notes-tit {
-    height: 2.2rem;
-    line-height: 2.2rem;
+    display: block;
     text-indent: 1rem;
     font-size: 1.3rem
 }
@@ -695,6 +528,12 @@
     z-index: 9997;
     width: 32rem;
     margin: 0 auto;
+}
+
+.pay-fixed {
+    position: fixed;
+    bottom: 0 !important;
+    z-index: 999;
 }
 
 .up-to-pay ul {
@@ -720,7 +559,11 @@
 .up-to-pay ul li:nth-child(2) {
     background: #E70C2D;
 }
-.up-to-pay ul li a{display:block;}
+
+.up-to-pay ul li a {
+    display: block;
+}
+
 .up-to-pay ul li button {
     color: #fff;
     font-size: 1.3rem;
@@ -735,11 +578,14 @@
     padding-bottom: 1rem;
 }
 
+/*选择收货地址按钮*/
 .input-add {
     width: 32rem;
     margin: 0 auto;
     position: fixed;
-    bottom: 1rem;
+    bottom: 4rem;
+    text-align: center;
+
 }
 
 .input-add button {
@@ -749,7 +595,7 @@
     color: #fff;
     text-align: center;
     background: #E70C2D;
-    width: 100%;
+    width: 90%;
     margin: 0 auto;
     border-radius: 0.5rem;
 }
@@ -759,6 +605,12 @@
     width: 32rem;
     margin: 0 auto;
     height: auto
+}
+
+.edit-add-box > p {
+    padding-top:1rem ;
+    text-indent: 1rem;
+    font-size: 1.3rem;
 }
 
 .edit-add-box textarea {
@@ -785,6 +637,7 @@
 /*删除/提交地址按钮*/
 .edit-add-input {
     margin: 0 auto;
+    padding-top: 4rem;
     text-align: center;
 }
 
@@ -798,12 +651,12 @@
     font-size: 1.3rem;
 }
 
-.edit-add-input input:nth-child(1) {
-    background: #FF9933;
-}
-
-.edit-add-input input:nth-child(2) {
+.edit-add-input label:nth-child(1) input {
     background: #0099FF;
+}
+.disabled{background: #d5d5d5;}
+.edit-add-input label:nth-child(2) input {
+    background: #FF9933;
 }
 
 .default-add {
@@ -908,6 +761,7 @@
 }
 
 .main-item {
+    position: relative;
     height: 10rem;
     clear: both;
     background: #fff;
@@ -929,7 +783,7 @@
 }
 
 .goods-img {
-    float:left;
+    float: left;
     width: 8rem;
     height: 8rem;
     margin: 1rem 1rem .5rem;
@@ -953,18 +807,18 @@
 }
 
 .goods-del {
-    position:absolute;
-    right:2rem;
+    position: absolute;
+    right: 1rem;
     width: 2rem;
-    height:2rem;
+    height: 2rem;
     background: url("../img/del.png") no-repeat 0 0;
-    background-size:2rem;
+    background-size: 2rem;
 }
 
 /*加减商品按钮*/
 .shopping-cart {
-    position:absolute;
-    right:2rem;
+    position: absolute;
+    right: 2rem;
     width: 7rem;
     float: left;
     height: 3rem;
@@ -978,7 +832,7 @@
     float: left;
     border-right: 0.1rem solid #ccc;
     background: url("../img/reduce.png") no-repeat 0 0;
-    background-size:2rem;
+    background-size: 2rem;
 }
 
 .shopping-cart-add {
@@ -987,7 +841,7 @@
     float: left;
     border-left: 0.1rem solid #ccc;
     background: url("../img/shopping-1.png") no-repeat 0 0;
-    background-size:2rem;
+    background-size: 2rem;
 }
 
 .shopping-cart-sum {
@@ -1000,83 +854,17 @@
 }
 
 /*寄售增加收获地址*/
-.p-tit {
-    width: 100%;
-    text-align: center;
-    height: 4rem;
-    line-height: 4rem;
-    font-size: 1.4rem;
-    color: #666;
-}
-
-.msg-sale input {
-    border-bottom: 0.1rem solid #ccc;
-    width: 31.8rem;
-    height: 3.5rem;
-    line-height: 3.5rem;
-    text-indent: 1rem;
-    font-size: 1.3rem;
-}
-
-.msg-sale input {
-    border: none;
-}
-
-.server {
-    width: 85%;
-    margin: 2.5rem auto;
-}
-
-.server .terms {
-    width: 100%;
-    height: 6rem
-}
-
-.server .terms p {
-    width: 100%;
-    word-break: break-all;
-    line-height: 1.2rem;
-}
-
-.server .terms p:nth-child(1) {
-    text-align: center;
-}
-
-.server .terms p:nth-child(2) {
-    text-indent: 1.5rem;
-}
-
-.server p {
-    text-align: center;
-}
-
-.server p span {
-    font-size: 1rem;
-    line-height: 2rem;
-    display: inline-block;
-}
-
-.agree {
-    position: relative;
-    line-height: 2rem;
-    display: inline-block;
-}
-
-.up {
+.terms {
+    display: block;
     width: 90%;
     margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
 }
 
-.up input {
-    margin-bottom: 1rem;
+.terms textarea {
     width: 100%;
-    background: #0099FF;
-    color: #fff;
-    height: 3rem;
-    line-height: 3rem;
     text-align: center;
-    border-radius: 0.5rem;
-    font-size: 1.4rem;
 }
 
 /*寄售*/
@@ -1086,7 +874,7 @@
     margin: 0 auto
 }
 
-.title-1 {
+.consignment-title {
     width: 100%;
     height: 3rem;
     font-size: 1.7rem;
@@ -1094,52 +882,52 @@
     margin-top: 2rem;
 }
 
-.title-2 {
+.consignment-top {
     width: 100%;
     height: 5rem;
     font-size: 1.7rem;
     text-align: center;
 }
 
-.service {
+.consignment-content {
     width: 100%;
     height: 22rem;
 }
 
-.service ul {
+.consignment-content ul {
     width: 80%;
     height: 16rem;
     margin: 0 auto;
 }
 
-.service ul li {
+.consignment-content ul li {
     width: 100%;
     height: 5rem;
 }
 
-.service ul li:last-child {
+.consignment-content ul li:last-child {
     margin-top: 1.8rem;
 }
 
-.index {
+.consignment-content ul li span:nth-child(1) {
     color: rgb(255, 51, 153);
     font-size: 3rem;
     float: left;
     line-height: 3rem
 }
 
-.service ul li img {
+.consignment-content ul li img {
     width: 3rem;
     height: 3rem;
     float: left;
     margin-left: 1.5rem
 }
 
-.content {
-    font-size: 1.3rem;
+.consignment-content ul li span:last-child {
+    font-size: 1.5rem;
     height: 4rem;
     display: block;
-    margin-left: 9rem;
+    margin-left: 8rem;
     width: 16.6rem
 }
 
@@ -1148,13 +936,14 @@
     height: 100px;
 }
 
-.consignment-ok {
+.consignment-button {
+    display: block;
     width: 90%;
     margin: 0 auto;
     height: 3rem;
 }
 
-.consignment-ok button {
+.consignment-button button {
     width: 100%;
     height: 3rem;
     background-color: rgb(255, 51, 153);
@@ -1164,7 +953,11 @@
     border: none;
 }
 
-.release {
+.consignment-bottom {
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+    display: block;
+    font-size: 1.4rem;
     text-align: center;
     width: 100%;
     height: 4rem;
@@ -1178,39 +971,31 @@
 }
 
 /*寄售成功*/
-.message1 {
+.publish-success-box {
     width: 32rem;
     height: 2rem;
     margin: 0 auto;
     padding-top: 5rem
 }
 
-.message1 p {
+.publish-success-box p:nth-child(1) {
     text-align: center;
     font-weight: bold;
     font-size: 1.8rem;
+    padding-bottom: 2rem;
 }
 
-.message2 {
-    width: 30rem;
-    height: 5rem;
-    margin: 2rem auto;
-}
-
-.message2 p {
+.publish-success-box p:nth-child(2), .publish-success-box p:nth-child(3) {
+    margin: 0 auto;
     text-align: center;
     font-size: 1.4rem
 }
 
-.message3 {
-    width: 30rem;
-    height: 2rem;
+.publish-success-box p:nth-child(4) {
+    padding-top: 2rem;
     margin: 1rem auto;
-}
-
-.message3 p {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #666666;
 }
 
@@ -1230,17 +1015,18 @@
     font-weight: bold;
 }
 
-.share {
-    width: 30rem;
-    height: 4rem;
-    margin: 2rem auto;
+.share-bottom {
+    padding-top: 4rem;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
 }
 
-.share input[type="button"] {
+.share-bottom button {
     border-radius: 0.6rem;
     background-color: rgb(255, 51, 153);
-    width: 30rem;
-    height: 4rem;
+    width: 80%;
+    height: 3.5rem;
     color: #fff;
     font-size: 1.6rem;
     font-weight: bold;
@@ -1258,11 +1044,31 @@
 }
 
 /*注册*/
+.register-box {
+    margin: 0 auto;
+    padding: 4rem 1rem 1rem;
+    max-width: 32rem;
+    text-align: center;
+}
 
-/*//修改密码*/
+.register-box label {
+    margin: 0 auto;
+    display: block;
+    height: 4rem;
+    padding: 0 2rem;
+    text-align: right;
+    font-size: 1.4rem;
+}
+
+.register-box input {
+    height: 2.5rem;
+    width: 70%;
+}
+
+/*修改密码*/
 .change-pwd {
     margin: 0 auto;
-    padding: 1rem;
+    padding: 4rem 1rem 1rem;
     max-width: 32rem;
     text-align: center;
 }
@@ -1271,40 +1077,52 @@
     margin: 0 auto;
     display: block;
     height: 4rem;
-    width: 80%;
+    padding: 0 2rem;
     text-align: right;
+    font-size: 1.4rem;
 }
 
 .change-pwd input {
     height: 2.5rem;
-    width: 80%;
+    width: 75%;
 }
 
+/*登陆*/
 .login-box {
+    margin: 0 auto;
+    padding: 4rem 1rem 1rem;
+    max-width: 32rem;
     text-align: center;
 }
 
-.login-box input {
-    width: 74%;
-    height: 2.5rem;
-    margin: 1rem 0 0.3rem 0;
+.login-box label {
+    margin: 0 auto;
+    display: block;
+    height: 4rem;
+    padding: 0 2rem;
+    text-align: right;
     font-size: 1.4rem;
-    text-indent: .5rem;
 }
 
-/*.submit-button{*/
-/*display: block;*/
-/*width: 80%;*/
-/*height:3rem;*/
-/*font-size: 1.4rem;*/
-/*color: #fff;*/
-/*background-color: #0099ff;*/
-/*margin: 2rem auto;*/
-/*text-align: center;*/
-/*line-height: 3rem;*/
-/*cursor:pointer;*/
-/*border-radius: .4rem;*/
-/*}*/
+.login-box input {
+    height: 2.5rem;
+    width: 75%;
+}
+
+.login-box button {
+    display: block;
+    width: 80%;
+    height: 3rem;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: #0099ff;
+    margin: 2rem auto;
+    text-align: center;
+    line-height: 3rem;
+    cursor: pointer;
+    border-radius: .4rem;
+}
+
 .login-right {
     height: 3rem;
     float: right;
@@ -1312,19 +1130,56 @@
     font-size: 1.3rem
 }
 
-/*.login-bottom{*/
-/*display: block;*/
-/*width: 7rem;*/
-/*height:2.5rem;*/
-/*border: 1px solid #0099ff;*/
-/*border-radius: 2px;*/
-/*margin: 3rem auto;*/
-/*color: #0099ff;*/
-/*line-height: 2.5rem;*/
-/*text-align: center;*/
-/*font-size: 1.3rem;*/
-/*cursor:pointer;*/
-/*}*/
+.login-bottom {
+    display: block;
+    width: 7rem;
+    height: 2.5rem;
+    border: 1px solid #0099ff;
+    border-radius: 2px;
+    margin: 3rem auto;
+    color: #0099ff;
+    line-height: 2.5rem;
+    text-align: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+/*找回密码邮箱验证*/
+
+.get-back-pwd {
+    max-width: 32rem;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.get-back-pwd p {
+    font-size: 1.4rem;
+    color: #333;
+    line-height: 3rem;
+}
+
+.get-back-pwd input {
+    width: 74%;
+    height: 2.5rem;
+    margin: 1rem 0 0.3rem 0;
+    font-size: 1.4rem;
+    text-indent: .5rem;
+}
+
+.button-right {
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: #0099ff;
+    width: 23%;
+    height: 2.65rem;
+    text-align: center;
+}
+
+.button-bottom {
+    display: block;
+    margin: 4rem auto;
+    text-align: center;
+}
 
 /*绑定手机*/
 
@@ -1413,7 +1268,7 @@
     font-size: 1.4rem;
     line-height: 2.5rem;
     text-align: right;
-    right: .5rem;
+    padding-right: 1rem;
     color: red;
 }
 
@@ -1447,48 +1302,47 @@
 }
 
 /*个人中心*/
-.message {
+.baby-photo {
     margin: 0 auto;
-    max-width: 64rem;
+    max-width: 32rem;
 }
 
-.message .line {
+.baby-photo .line {
     padding: 0 1rem 1rem;
-    border-bottom: .1rem solid #eee;
 }
 
-.message figure {
+.baby-photo figure {
     margin: 0 auto;
     padding-top: 2.5rem;
     max-width: 6.8rem;
 }
 
-.message figure img {
+.baby-photo figure img {
     width: 6.8rem;
     height: 6.8rem;
     text-align: center;
 }
 
-.message figcaption {
+.baby-photo figcaption {
     font-size: 1.2rem;
     color: #999;
     text-align: center;
 }
 
-.main-i {
-    max-width: 64rem;
-    padding: 1rem;
+.personal-center {
+    max-width: 32rem;
     margin: 0 auto;
+    padding: 1rem;
 }
 
-.main-i .top {
+.order-top {
     font-size: 1.4rem;
     color: #000;
     padding: 1rem 0;
     border-top: .1rem solid #ccc;
 }
 
-.main-i .left {
+.order-bottom {
     font-size: 1.4rem;
     color: #000;
     width: 100%;
@@ -1497,24 +1351,15 @@
     padding: .2rem 0;
 }
 
-.main-i .right {
-    font-size: 1.4rem;
-    color: #000;
-    width: 100%;
-    text-indent: 1rem;
-    line-height: 2.0rem;
-    padding: .2rem 0;
-}
-
-.main-i .left span {
+.red {
     color: red;
 }
 
-.main-i .right span {
+.blue {
     color: blue;
 }
 
-.order ul {
+.personal-center ul {
     text-align: center;
     height: 2rem;
     padding: .2rem 0;
@@ -1522,12 +1367,12 @@
     border-bottom: 0.1rem solid #ccc;
 }
 
-.order ul li {
+.personal-center ul li {
     float: left;
     width: 25%;
 }
 
-.order ul li a {
+.personal-center ul li a {
     font-size: 1.3rem;
     color: #666;
     line-height: 2rem;
@@ -1535,41 +1380,42 @@
     border-left: 1px solid #ccc
 }
 
-.order ul .link {
+.personal-center ul .link {
     border: none;
 }
 
-.order-i {
+.personal-center-control {
     margin-top: .5rem;
 }
 
-.order-i a {
+.personal-center-control a {
     border-bottom: 0.1rem solid #ccc;
     display: block;
 }
 
-.order-i a p {
+.personal-center-control a p {
     font-size: 1.4rem;
     line-height: 4.0rem;
     color: #666
 }
 
-#footer {
-    width: 100%;
-    background-color: #E1E4E6;
-    position: fixed;
-    bottom: 0;
-}
-
-#footer ul {
+.personal-center-button {
+    display: block;
+    margin: 0 auto;
     text-align: center;
-    display: block;
+    padding-bottom: 6rem;
+    padding-top: 1rem;
 }
 
-#footer ul li {
-    float: left;
-    width: 20%;
-    display: block;
+.personal-center-button button {
+
+    width: 80%;
+    height: 3rem;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: #fc5477;
+    line-height: 3rem;
+    border-radius: 0.6rem;
 }
 
 /*转让宝物*/
@@ -1601,15 +1447,16 @@
     background: #999999;
 }
 
-.baby-sale {
-    width: 100%;
-    height: 22rem;
+.transfer-form {
+    position: relative;
     border-top: 0.1rem solid #787878;
     margin-top: 1.2rem;
-    position: relative;
+
 }
 
+/*宝物标题*/
 .title {
+    display: block;
     height: 3.2rem;
     line-height: 3.2rem;
     padding: 0 1rem;
@@ -1618,94 +1465,51 @@
 
 .title > input {
     font-size: 1.3rem;
-    height: 3.2rem;
-    width: 100%;
+    height: 3.1rem;
+    width: 30rem;
     line-height: 3.2rem;
     border: none;
 }
 
-.baby-sale ul li {
+.transfer-info li {
+    float: left;
+    width: 50%;
+    text-align: left;
     height: 4rem;
     line-height: 4rem;
+    font-size: 1.4rem;
 }
 
-.baby-sale ul li .baby {
-    font-size: 1.25rem;
-    width: 6.7rem;
-    padding: 0 0.3rem;
-    float: left;
+.transfer-info li span {
+    display: inline-block;
+    text-indent: 1rem;
 }
 
-.baby-sale ul .left select {
-    width: 7rem;
-    height: 2.6rem;
-    font-size: 1.25rem;
-}
-
-.baby-sale ul .left input {
-    width: 6.8rem;
-    height: 2.4rem;
-    font-size: 1rem;
-}
-
-.baby-sale ul .right select {
-    width: 7rem;
-    height: 2.6rem;
-    font-size: 1.25rem;
-}
-
-.baby-sale ul .text input {
+.transfer-info li select, .transfer-form ul li input {
     width: 6.8rem;
     height: 2.6rem;
+
 }
 
-.baby-sale ul .text-right input {
-    width: 6.8rem;
-    height: 2.6rem;
-}
-
-.left {
-    width: 15rem;
-    float: left;
-}
-
-.right {
-    width: 15rem;
-    float: right;
-}
-
-/*按钮*/
-.switch1 {
-    position: absolute;
-    left: 6.3rem;
-    bottom: 3.6rem;
-}
-
-.switch2 {
-    position: absolute;
-    right: .2rem;
-    bottom: 3.6rem;
-}
-
-.wish label {
+.transfer-form-bottom label {
     width: 7rem;
     float: left;
     font-size: 1.25rem;
     padding-left: 0.3rem;
 }
 
-.wish textarea {
+.transfer-form-bottom textarea {
     width: 23.3rem;
     float: left;
     resize: none;
     height: 10rem
 }
 
-.wish div {
+.transfer-form-bottom div {
     height: 18rem;
 }
 
-.wish div img {
+.transfer-form-bottom div img {
     width: 6rem;
     height: 6rem;
     display: block;
@@ -1714,22 +1518,16 @@
     margin-right: 1rem;
 }
 
-.quick-sale {
-    width: 95%;
-    margin: 0 auto;
-}
-
-.quick-sale a {
-    width: 100%;
-    height: 6rem;
+.transfer-form-button {
     display: block;
+    clear: both;
+    width: 100%;
+    text-align: center;
 }
 
-.quick-sale input {
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
+.transfer-form-button button {
     background: #FF3399;
-    width: 100%;
+    width: 90%;
     height: 3rem;
     line-height: 3rem;
     text-align: center;
@@ -1800,14 +1598,14 @@
     display: block;
 }
 
-.person-input {
+.person-button {
     width: 80%;
     margin: 0 auto;
-    margin-top: 3rem !important;
-    height: 3rem !important;
+    padding-top: 4rem;
 }
 
-.person-input input {
+.person-button button {
+    margin: .5rem 0;
     border: none;
     width: 100%;
     height: 3.5rem;

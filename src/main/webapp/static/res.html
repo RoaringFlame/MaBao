@@ -34,7 +34,7 @@
         </header>
          <!--标题 END-->
 
-		<div class="container">
+		<form class="register-box">
 		<label for="userName">账户名：
 			<input type="text" name="username" id="userName" >
 		</label>
@@ -49,10 +49,14 @@
 		</label>
 
 		    <p class="warning"></p>
-		</div>
-          <!-- 注册按钮 -->
-          <button type="submit" class="submit-button">注册</button>
-          <!-- 注册按钮END -->
+            <!--注册成功跳转到登陆页面-->
+            <!-- 注册按钮 -->
+            <a class="button-bottom" href="login.html">
+                <button type="submit" class="submit">注册</button>
+            </a>
+            <!-- 注册按钮END -->
+		</form>
+
 	</div>
 </body>
 </html>

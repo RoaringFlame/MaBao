@@ -10,6 +10,8 @@ public class User {
     private String password;                        //密码
     private String phone;                           //手机号
     private String email;                           //邮箱
+
+    @javax.persistence.Column(name = "create_time")
     private Date createTime;                        //创建时间
     private String picture;                         //头像
 

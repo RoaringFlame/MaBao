@@ -12,46 +12,56 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-     <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/master.css">
     <link rel="stylesheet" href="../css/module.css">
 </head>
 
 <body>
-    <div class="content-index">
-        <!--标题-->
-        <header>
-           宝宝信息
-            <!--操作按钮-->
-           <div class="header-box">
-                <a href="personal.html">
-                  <button class="header-left">
-                  <i class="icon icon-return"></i>
-                   返回
+<div class="content-index">
+    <!--标题-->
+    <header>
+        宝宝信息
+        <!--操作按钮-->
+        <div class="header-box">
+            <a href="personal.html">
+                <button class="header-left">
+                    <i class="icon icon-return"></i>
+                    返回
                 </button>
-                </a>
-           </div>
-            <!--操作按钮 END-->
-        </header>
-         <!--标题 END-->
-<div class="header home1">
-    <div class="ui-left"><img src="../img/bb.png" alt=""></div>
-    <div class="mes-right" onclick=window.location.href="changemsg.html">
-        <div class="mes-right-top">
-            <dl>
-                <dd>宝宝姓名</dd>
-            </dl>
+            </a>
         </div>
-        <div class="mes-right-bottom">
-            <p>男宝宝&女宝宝</p>
-            <p>生日</p>
-        </div>
-    </div>
+        <!--操作按钮 END-->
+    </header>
+    <!--标题 END-->
 
-    <div class="jump-arrow1" onclick=window.location.href="changemsg.html"></div>
+    <!-- 宝宝信息 -->
+    <div class="box add">
+        <div class="box-left">
+            <img src="../img/bb.png" alt="">
+        </div>
+        <div class="box-right">
+            <div class="box-right-top">
+                <dl>
+                    <dd>宝宝姓名</dd>
+                </dl>
+            </div>
+            <div class="box-right-bottom">
+                <p>男宝宝&女宝宝</p>
+                <p>生日</p>
+            </div>
+        </div>
+        <a href="changemsg.html">
+            <button class="add-jump-arrow"></button>
+        </a>
+    </div>
+    <!-- 宝宝信息END -->
+    <!-- 新增宝宝信息按钮 -->
+    <a href="newmsg.html" class="input-add">
+        <button type="submit">新增宝宝信息</button>
+    </a>
+    <!--新增宝宝信息END-->
+
 </div>
-<div class="clear"></div>
-<form method="" action="" class="input-add">
-    <input type="submit" value="新增宝宝信息" onclick=window.location.href="changemsg.html">
-</form>
+
 </body>
 </html>

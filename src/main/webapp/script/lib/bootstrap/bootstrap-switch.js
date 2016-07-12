@@ -742,3 +742,7 @@
   })(window.jQuery, window);
 
 }).call(this);
+
+$(function (argument) {
+    $('[type="checkbox"]').bootstrapSwitch();
+});
