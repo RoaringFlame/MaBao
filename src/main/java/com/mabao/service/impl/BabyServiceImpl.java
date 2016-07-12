@@ -49,4 +49,14 @@ public class BabyServiceImpl implements BabyService {
     public List<Baby> findBabyByUserId(Long userId) {
         return this.babyRepository.findByUserId(userId);
     }
+
+    /**
+     * 保存宝宝
+     * @param baby                      宝宝实体
+     * @return                          宝宝
+     */
+    @Override
+    public Baby saveOne(Baby baby) {
+        return this.babyRepository.save(baby);
+    }
 }
