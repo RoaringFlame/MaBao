@@ -12,11 +12,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/master.css">
     <link rel="stylesheet" href="../../css/module.css">
-
     <link rel="stylesheet" href="../../script/lib/iscroll/iscroll.css">
     <script src="../../script/lib/jquery.1.10.2.js"></script>
     <script src="../../script/lib/bootstrap/bootstrap.min.js"></script>
@@ -31,7 +29,7 @@
         首页
         <!--操作按钮-->
         <div class="header-box">
-            <a href="/jsp/login">
+            <a href="login.html">
                 <button class="header-left">
                     <i class="icon icon-return"></i>
                     登陆
@@ -44,25 +42,24 @@
 
     <!--搜索框-->
     <div id="searchBox" class="search">
-        <!--商品类型查询-->
         <div class="column">
             <i class="icon icon-dire"></i>
         </div>
-        <!--关键字查询-->
         <div class="search-input">
             <button id="btnSearch">
                 <i class="icon icon-search"></i>
             </button>
             <input title="请输入关键字">
         </div>
-        <!-- 侧导航栏 -->
-        <div class="sidebar hide" id="sidebar">
-            <ul>
-            </ul>
-        </div>
     </div>
     <!--搜索框 END-->
-    <div class="iscroll-wrapper">
+    <!-- 侧导航栏 -->
+    <div class="sidebar hide" id="sidebar">
+        <ul>
+        </ul>
+    </div>
+
+    <div class="iscroll-wrapper" style="top:48px;bottom: -12px;">
         <div class="iscroll-scroller">
             <!--轮播图-->
             <div id="myCarousel" class="carousel slide">
@@ -81,93 +78,87 @@
             <!--轮播图 END-->
 
             <ul id="hideGoods" style="display: none;">
-                <!--商品-->
-                <!--新品列表-->
+                <!--部品列表-->
                 <li>
-                    <img src="" alt="">
+                    <img src="../img/main-new1.png" alt="">
                     <div>
                         <p>
-                            <span></span><!--宝物价格-->
-                            <span></span><!--宝物新旧程度-->
+                            <span>￥30.00</span>
+                            <span>九成新</span>
                         </p>
-                        <p></p><!--宝物品牌-->
-                        <p></p><!--宝物标题-->
+                        <p>H&M&nbsp;CARDIGN</p>
+                        <p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>
                     </div>
                 </li>
-                <!--新品列表 END-->
+                <!--部品列表 END-->
             </ul>
-
+            <!--商品-->
             <div id="newGoods" class="goods">
                 <!-- 功能切换-->
                 <div class="scroll-menu">
                     <ul>
-                        <li class="focus"> 新品</li>
-                        <li>猜你喜欢</li>
+                        <li><a class="focus" href="#">新品</a></li>
+                        <li><a href="#">猜你喜欢</a></li>
                     </ul>
                 </div>
                 <!-- 功能切换 END-->
-                <ul class="goods-list">
-                    <!--新品列表的展示-->
-                    <ul id="newGoodsList" class="goods-list clearfix"></ul>
-                    <!--猜你喜欢物品的展示-->
-                    <ul id="likeGoodsList" class="goods-list clearfix">
-                    </ul>
+                <ul id="newGoodsList" class="goods-list clearfix">
                 </ul>
-
+                <ul id="likeGoodsList" class="goods-list clearfix">
+                </ul>
                 <!-- 猜你喜欢 -->
-                <div id="likeForm" class="you-like hide">
-                    <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
-                    <p>请填写以下信息</p>
-                    <ul>
-                        <li>
-                            <label>宝宝姓名：</label>
-                            <label><input name="babyName" type="text"></label>
-                        </li>
-                        <li>
-                            <label>宝宝生日：</label>
-                            <label><input name="babyBirthday" type="date"></label>
-                        </li>
+                <form id="likeForm" style="height: 370px;">
+                    <div class="you-like">
+                        <p>请填写以下信息</p>
+                        <ul>
+                            <li>
+                                <label>宝宝姓名：</label>
+                                <label><input name="babyName" type="text" id="username"></label>
+                            </li>
+                            <li>
+                                <label>宝宝生日：</label>
+                                <label><input name="babyDate" type="date"></label>
+                            </li>
 
-                        <li>
-                            <label>宝宝性别：</label>
-                            <label>
-                                <select name="sex" id="sex">
-                                </select>
-                            </label>
-                        </li>
+                            <li>
+                                <label>宝宝性别：</label>
+                                <label>
+                                    <select name="sex" id="sex"></select>
+                                </label>
+                            </li>
 
-                        <li>
-                            <label>宝宝爱好：</label>
-                            <label><input type="text" name="hobby"></label>
-                        </li>
-                    </ul>
-                    <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
-                </div>
+                            <li>
+                                <label>宝宝爱好：</label>
+                                <label><input name="hobby" type="text"></label>
+                            </li>
+                        </ul>
+                        <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
+                    </div>
+                </form>
                 <!-- 猜你喜欢END -->
             </div>
         </div>
     </div>
-</div>
 
-
-<!--底部导航-->
-<div class="menu" id="menu">
-    <a href="/">
-        <i class="icon-menu icon-menu1"><img src="../../img/footer-c1.png" alt=""></i>
-    </a>
-    <a>
-        <i class="icon-menu icon-menu2"><img src="../../img/footer-2.png" alt=""></i>
-    </a>
-    <a href="/jsp/consignment">
-        <i class="icon-menu icon-menu3"><img src="../../img/footer-3.png" alt=""></i>
-    </a>
-    <a href="/jsp/shopping" id="shopping">
-        <i class="icon-menu icon-menu4"><img src="../../img/footer-4.png" alt=""></i>
-    </a>
-    <a href="/jsp/personal">
-        <i class="icon-menu icon-menu5"><img src="../../img/footer-5.png" alt=""></i>
-    </a>
+    <!--底部导航-->
+    <div class="menu" id="menu">
+        <a href="#">
+            <i class="icon-menu icon-menu1"><img src="../../img/footer-c1.png" alt=""></i>
+        </a>
+        <a href="#">
+            <i class="icon-menu icon-menu2"><img src="../../img/footer-2.png" alt=""></i>
+        </a>
+        <a href="#">
+            <i class="icon-menu icon-menu3"><img src="../../img/footer-3.png" alt=""></i>
+        </a>
+        <a href="#">
+            <i class="icon-menu icon-menu4"><img src="../../img/footer-4.png" alt=""></i>
+        </a>
+        <a href="#">
+            <i class="icon-menu icon-menu5"><img src="../../img/footer-5.png" alt=""></i>
+        </a>
+    </div>
+    <!--底部导航 END-->
 </div>
-<!--底部导航 END-->
 </body>
 </html>
