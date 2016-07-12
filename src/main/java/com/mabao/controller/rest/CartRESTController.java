@@ -37,7 +37,7 @@ public class CartRESTController {
      * @param cartId            购物车ID
      * @return                  结果VO
      */
-    @RequestMapping(value = "/cart/{cartId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deleteGoods/{cartId}", method = RequestMethod.DELETE)
     public JsonResultVO deleteShoppingCartGoods(@PathVariable Long cartId) {
         //移除购物车内商品，查询该用户购物车剩余商品
         return this.cartService.deleteCartGoods(cartId);
