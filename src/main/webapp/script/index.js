@@ -9,45 +9,52 @@ $(function () {
     var myScroll;
     var upOrDown="";
     var babyId=null;
-    var isNew=true;     //是否当前展示的是新品
-
+    var isNew=true;                             //是否当前展示的是新品
+    var backGoods=$("#hideGoods").find("li");   //查找到新品列表下的li标签
+    var newGoodsBox=$("#newGoodsList");         //新品展示
+    var typeSidebar=$("#sidebar");              //侧边栏
     //1.首页信息初始化
     function initIndexPage(){
         $.get("/home",{},function(data){
             console.log(data);
 
             //1.侧边栏的初始化
-            var typeSidebar=$("#sidebar");
             $("#searchBox").find("div.column").click(function(){
                 typeSidebar.toggleClass("hide");
             });
             var typeList=data.goodsTypeList;
+            typeList.unshift({key:"",value:"所有"});
             $(typeList).each(function(index,goodsType){
-                var li=$($("<li></li>")
-                        .text(goodsType.value)
-                ).click(function(){
-                    if(index>0){
-                    goodsTypeId=goodsType.key;
-                    loadNewGoods();
-                    }
-                });
+                var li=$("<li></li>")
+                    .text(goodsType.value)
+                    .click(function(){
+                        if(index>0){
+                            goodsTypeId=goodsType.key;
+                        }
+                        else{
+                            goodsTypeId=null;
+                        }
+                        newGoodsBox.empty();
+                        loadNewGoods();
+                    });
                 typeSidebar.find("ul").append(li);
             });
 
             //2.搜索框的初始化
             $("#btnSearch").click(function(){
                 searchKey=$(this).next("input").val();
+                newGoodsBox.empty();
                 loadNewGoods();
             });
 
             //3.轮播的初始化
-            var smallBanner=data.smallBanner;//获取轮播图片集
-            var myCarousel=$("#myCarousel");//找到jsp页面对应id为myCarousel的项
+            var smallBanner=data.smallBanner;       //获取轮播图片集
+            var myCarousel=$("#myCarousel");        //找到jsp页面对应id为myCarousel的项
             //遍历获取到的轮播图片集,index为索引（从0开始），banner自己定义的名称用来取smallBanner中的值
             $(smallBanner).each(function(index,banner){
                 var li=$("<li></li>")//添加li标签并为其添加属性值
                     .attr("data-target","#myCarousel")
-                    .attr("data-slide-to",index)
+                    .attr("data-slide-to",index);
                 var img=$("<div></div>").addClass("item")//在div中添加一些属性
                     .append($("<img>")
                     .attr("src","../upload/"+banner.picture)//添加图片
@@ -98,6 +105,7 @@ $(function () {
             $(this).next("li").removeClass("focus");//猜你喜欢下无红色下划线
             $("#newGoodsList").show();//点击新品时新品列表的显示
             $("#likeGoodsList").hide();//猜你喜欢列表的隐藏
+            $("#likeForm").hide();
             isNew=true;//是否为新品 设为真
         });
         newGoods.find("div.scroll-menu ul li:eq(1)").click(function(){
@@ -105,6 +113,7 @@ $(function () {
             $(this).prev("li").removeClass("focus");//新品无下划线
             $("#newGoodsList").hide();//点击猜你喜欢列表的显示
             $("#likeGoodsList").show();//新品的隐藏
+            $("#likeForm").show();
             isNew=false;//是否为新品  设为假
         });
         //加载新品
@@ -115,18 +124,17 @@ $(function () {
 
     //3.加载新品数据集
     function loadNewGoods(){
-        $("#likeForm").show();//猜你喜欢表单的隐藏
         var params={
             page:currentPageNew,//新品当前页面数
             pageSize:pageSize,//新品每页展示的数据信息
             searchKey:searchKey,//搜索关键字
             goodsTypeId:goodsTypeId//宝物对应的id
         };
-        var backGoods=$("#hideGoods").find("li");//查找到新品列表下的li标签
-        var newGoodsBox=$("#newGoodsList");//新品展示
-        $.get("/home/goodsSearch",{params:params},function(data){
+
+        $.get("/home/goodsSearch",params,function(data){
             //打印从后台取出的数据信息
             console.log(data);
+
             var goodsList=data.items;
             $(goodsList).each(function(index,goods){//对新品进行遍历
                 var newGoods=backGoods.clone();//克隆信息
@@ -141,6 +149,7 @@ $(function () {
                 newGoodsBox.append(newGoods);
             });
             //initScroll();
+            typeSidebar.addClass("hide");
         },"json");
     }
 
@@ -172,8 +181,8 @@ $(function () {
         else{
             //宝宝信息不存在点击猜你喜欢时显示表单页面
             $("#newGoods").find("li:eq(1)").click(function(){
-                $("#likeForm").show();
-            })
+                $("#likeForm").removeClass("hide");
+            });
             $("#likeGoodsList").hide();
         }
     }

@@ -56,7 +56,6 @@
         <!-- 侧导航栏 -->
         <div class="sidebar hide" id="sidebar">
             <ul>
-                <li></li>
             </ul>
         </div>
 </div>
@@ -106,8 +105,7 @@
         <!-- 功能切换 END-->
         <ul class="goods-list">
             <!--新品列表的展示-->
-            <ul id="newGoodsList" class="goods-list clearfix">
-            </ul>
+            <ul id="newGoodsList" class="goods-list clearfix"></ul>
             <!--猜你喜欢物品的展示-->
             <ul id="likeGoodsList" class="goods-list clearfix">
             </ul>
