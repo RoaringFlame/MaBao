@@ -60,110 +60,114 @@
             <ul>
             </ul>
         </div>
-</div>
+    </div>
     <!--搜索框 END-->
-
-    <!--轮播图-->
-    <div id="myCarousel" class="carousel slide">
-        <!-- 轮播（Carousel）指标 -->
-        <ol class="carousel-indicators">
-        </ol>
-        <!-- 轮播（Carousel）项目 -->
-        <div class="carousel-inner">
-        </div>
-        <!-- 轮播（Carousel）导航 -->
-        <a class="carousel-control left" href="#myCarousel"
-           data-slide="prev">&lsaquo;</a>
-        <a class="carousel-control right" href="#myCarousel"
-           data-slide="next">&rsaquo;</a>
-    </div>
-    <!--轮播图 END-->
-
-    <ul id="hideGoods" style="display: none;">
-    <!--商品-->
-            <!--新品列表-->
-            <li>
-                <img src="" alt="">
-                <div>
-                    <p>
-                        <span></span><!--宝物价格-->
-                        <span></span><!--宝物新旧程度-->
-                    </p>
-                    <p></p><!--宝物品牌-->
-                    <p></p><!--宝物标题-->
+    <div class="iscroll-wrapper">
+        <div class="iscroll-scroller">
+            <!--轮播图-->
+            <div id="myCarousel" class="carousel slide">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
                 </div>
-            </li>
-            <!--新品列表 END-->
-        </ul>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="carousel-control left" href="#myCarousel"
+                   data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#myCarousel"
+                   data-slide="next">&rsaquo;</a>
+            </div>
+            <!--轮播图 END-->
 
-    <div id="newGoods"  class="goods">
-        <!-- 功能切换-->
-        <div class="scroll-menu">
-            <ul>
-                <li class="focus"> 新品</li>
-                <li>猜你喜欢</li>
+            <ul id="hideGoods" style="display: none;">
+                <!--商品-->
+                <!--新品列表-->
+                <li>
+                    <img src="" alt="">
+                    <div>
+                        <p>
+                            <span></span><!--宝物价格-->
+                            <span></span><!--宝物新旧程度-->
+                        </p>
+                        <p></p><!--宝物品牌-->
+                        <p></p><!--宝物标题-->
+                    </div>
+                </li>
+                <!--新品列表 END-->
             </ul>
+
+            <div id="newGoods" class="goods">
+                <!-- 功能切换-->
+                <div class="scroll-menu">
+                    <ul>
+                        <li class="focus"> 新品</li>
+                        <li>猜你喜欢</li>
+                    </ul>
+                </div>
+                <!-- 功能切换 END-->
+                <ul class="goods-list">
+                    <!--新品列表的展示-->
+                    <ul id="newGoodsList" class="goods-list clearfix"></ul>
+                    <!--猜你喜欢物品的展示-->
+                    <ul id="likeGoodsList" class="goods-list clearfix">
+                    </ul>
+                </ul>
+
+                <!-- 猜你喜欢 -->
+                <div id="likeForm" class="you-like hide">
+                    <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
+                    <p>请填写以下信息</p>
+                    <ul>
+                        <li>
+                            <label>宝宝姓名：</label>
+                            <label><input name="babyName" type="text"></label>
+                        </li>
+                        <li>
+                            <label>宝宝生日：</label>
+                            <label><input name="babyBirthday" type="date"></label>
+                        </li>
+
+                        <li>
+                            <label>宝宝性别：</label>
+                            <label>
+                                <select name="sex" id="sex">
+                                </select>
+                            </label>
+                        </li>
+
+                        <li>
+                            <label>宝宝爱好：</label>
+                            <label><input type="text" name="hobby"></label>
+                        </li>
+                    </ul>
+                    <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
+                </div>
+                <!-- 猜你喜欢END -->
+            </div>
         </div>
-        <!-- 功能切换 END-->
-        <ul class="goods-list">
-            <!--新品列表的展示-->
-            <ul id="newGoodsList" class="goods-list clearfix"></ul>
-            <!--猜你喜欢物品的展示-->
-            <ul id="likeGoodsList" class="goods-list clearfix">
-            </ul>
-        </ul>
-
-        <!-- 猜你喜欢 -->
-        <div id="likeForm" class="you-like hide">
-            <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
-            <p>请填写以下信息</p>
-            <ul>
-                <li>
-                    <label>宝宝姓名：</label>
-                    <label><input name="babyName" type="text"></label>
-                </li>
-                <li>
-                    <label>宝宝生日：</label>
-                    <label><input name="babyBirthday" type="date"></label>
-                </li>
-
-                <li>
-                    <label>宝宝性别：</label>
-                    <label>
-                        <select name="sex" id="sex">
-                        </select>
-                    </label>
-                </li>
-
-                <li>
-                    <label>宝宝爱好：</label>
-                    <label><input type="text" name="hobby"></label>
-                </li>
-            </ul>
-            <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
-        </div>
-        <!-- 猜你喜欢END -->
-
-        <!--底部导航-->
-        <div class="menu" id="menu">
-            <a href="/">
-                <i class="icon-menu icon-menu1"><img src="../../img/footer-c1.png" alt=""></i>
-            </a>
-            <a>
-                <i class="icon-menu icon-menu2"><img src="../../img/footer-2.png" alt=""></i>
-            </a>
-            <a href="/jsp/consignment">
-                <i class="icon-menu icon-menu3"><img src="../../img/footer-3.png" alt=""></i>
-            </a>
-            <a href="/jsp/shopping" id="shopping">
-                <i class="icon-menu icon-menu4"><img src="../../img/footer-4.png" alt=""></i>
-            </a>
-            <a href="/jsp/personal">
-                <i class="icon-menu icon-menu5"><img src="../../img/footer-5.png" alt=""></i>
-            </a>
-        </div>
-        <!--底部导航 END-->
     </div>
 </div>
+
+
+<!--底部导航-->
+<div class="menu" id="menu">
+    <a href="/">
+        <i class="icon-menu icon-menu1"><img src="../../img/footer-c1.png" alt=""></i>
+    </a>
+    <a>
+        <i class="icon-menu icon-menu2"><img src="../../img/footer-2.png" alt=""></i>
+    </a>
+    <a href="/jsp/consignment">
+        <i class="icon-menu icon-menu3"><img src="../../img/footer-3.png" alt=""></i>
+    </a>
+    <a href="/jsp/shopping" id="shopping">
+        <i class="icon-menu icon-menu4"><img src="../../img/footer-4.png" alt=""></i>
+    </a>
+    <a href="/jsp/personal">
+        <i class="icon-menu icon-menu5"><img src="../../img/footer-5.png" alt=""></i>
+    </a>
+</div>
+<!--底部导航 END-->
 </body>
 </html>
