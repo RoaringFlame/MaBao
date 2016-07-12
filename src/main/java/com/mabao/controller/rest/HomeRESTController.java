@@ -7,6 +7,7 @@ import com.mabao.controller.vo.HomeInitVO;
 import com.mabao.enums.Gender;
 import com.mabao.pojo.Baby;
 import com.mabao.pojo.Goods;
+import com.mabao.pojo.User;
 import com.mabao.service.BabyService;
 import com.mabao.service.BannerService;
 import com.mabao.service.GoodsTypeService;
@@ -52,6 +53,14 @@ public class HomeRESTController {
         //轮播图片列表
         List<BannerVO> smallBanner =BannerVO.generateBy(this.bannerService.findByStatusOrderBySortDesc(true));
         homeInitVO.setSmallBanner(smallBanner);
+        //猜你喜欢，宝宝信息
+        User user = UserManager.getUser();
+        if (user != null){
+            Baby baby = this.babyService.findBabyByUserId(user.getId()).get(0);
+            if (baby != null) {
+                homeInitVO.setBaby(BabyVO.generateBy(baby));
+            }
+        }
         //猜你喜欢，宝宝性别
         List<Selector> gender = Gender.toList();
         homeInitVO.setGender(gender);
