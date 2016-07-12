@@ -64,7 +64,7 @@ $(function () {
                         .click(function () {                                   //点击图片跳转到商品详情
                             window.location = "/goods/goodsDetail?goodsId=" + banner.id;
                         })
-                    );
+                );
                 if (index == 0) {
 //索引为0的轮播图设0为主轮播图
                     li.addClass("active");
@@ -87,6 +87,9 @@ $(function () {
             var genderSelector = $("#sex");
             $(genderList).each(function (index, gender) {
                 var option = $("<option></option>").val(gender.key).text(gender.value);
+                if(index==0){
+                    option.attr("checked",true);
+                }
                 genderSelector.append(option);
             });
 //加载新品和猜你喜欢
@@ -193,49 +196,51 @@ $(function () {
             var likeForm = $("#likeForm");
             var babyName = likeForm.find("input[name='babyName']").val();              //宝宝姓名的获取
             var babyBirthday = likeForm.find("input[name='babyBirthday']").val();     //宝宝生日的获取
-            var gender = likeForm.find("input[name='sex']").val();                     //宝宝性别的获取
+            var gender = likeForm.find("select[name='sex']").val();                     //宝宝性别的获取
             var hobby = likeForm.find("input[name='hobby']").val();                    //宝宝爱好的获取
             var params = {
                 babyName: babyName,                   //宝宝姓名
                 babyBirthday: babyBirthday,          //宝宝生日
                 gender: gender,                       //宝宝性别
-                hobby: hobby                          //宝宝爱好
-                //page:currentPageLike,               //猜你喜欢当前页面
-                //pageSize:pageSize                   //猜你喜欢每页展示的物品数量
-
+                hobby: hobby,                          //宝宝爱好
+                page: currentPageLike,               //猜你喜欢当前页面
+                pageSize: pageSize                   //猜你喜欢每页展示的物品数量
             };
-            $.post("/home/goodsGuess", params, function (data) {
-                console.log(data)
+            console.log(params);
+            $.get("/home/goodsGuess", params, function (data) {
+                console.log(data);
                 console.log("猜你喜欢表单初提交");
 //通过宝宝id是否存在的判断，判断页面的跳转
                 loadLikeGoods();
-            }, "json")
+            }, "json");
         });
     }
 
 //拉动刷新和加载更多的实现
-    function initScroll(){
-        if(myScroll){
+    function initScroll() {
+        if (myScroll) {
             myScroll.refresh();
         }
-        else{
-//拉动刷新
+        else {
+            //拉动刷新
             myScroll = new IScroll('div.iscroll-wrapper');
-            myScroll.on("scrollEnd",function(){
-                var wrapperHeight=$('div.iscroll-wrapper').height();
-                if(myScroll.y-wrapperHeight<myScroll.maxScrollY){
-                    if(isNew){
+            myScroll.on("scrollEnd", function () {
+                var wrapperHeight = $('div.iscroll-wrapper').height();
+                if (myScroll.y - wrapperHeight < myScroll.maxScrollY) {
+                    if (isNew) {
                         currentPageNew++;
                         loadNewGoods();
                     }
-                    else{
+                    else {
                         currentPageLike++;
                         loadLikeGoods();
                     }
                 }
                 //console.log(currentPageNew+"------"+myScroll.y+"-"+myScroll.absStartY+"-"+myScroll.distY+"-"+myScroll.maxScrollY);
             });
-            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+            document.addEventListener('touchmove', function (e) {
+                e.preventDefault();
+            }, false);
         }
     }
 

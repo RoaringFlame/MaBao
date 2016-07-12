@@ -114,36 +114,34 @@
         </ul>
 
         <!-- 猜你喜欢 -->
-        <form id="likeForm" action="" class="hide"><!-- class="hide"的删除-->
-            <div class="you-like">
-                <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
-                <p>请填写以下信息</p>
-                <ul>
-                    <li>
-                        <label>宝宝姓名：</label>
-                        <label><input name="babyName" type="text" id="babyName"></label>
-                    </li>
-                    <li>
-                        <label>宝宝生日：</label>
-                        <label><input name="babyDate" type="date" id="babyBirthday"></label>
-                    </li>
+        <div id="likeForm" class="you-like hide">
+            <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
+            <p>请填写以下信息</p>
+            <ul>
+                <li>
+                    <label>宝宝姓名：</label>
+                    <label><input name="babyName" type="text"></label>
+                </li>
+                <li>
+                    <label>宝宝生日：</label>
+                    <label><input name="babyBirthday" type="date"></label>
+                </li>
 
-                    <li>
-                        <label>宝宝性别：</label>
-                        <label>
-                            <select name="babySex" id="sex">
-                            </select>
-                        </label>
-                    </li>
+                <li>
+                    <label>宝宝性别：</label>
+                    <label>
+                        <select name="sex" id="sex">
+                        </select>
+                    </label>
+                </li>
 
-                    <li>
-                        <label>宝宝爱好：</label>
-                        <label><input type="text" id="hobby"></label>
-                    </li>
-                </ul>
-                <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
-            </div>
-        </form>
+                <li>
+                    <label>宝宝爱好：</label>
+                    <label><input type="text" name="hobby"></label>
+                </li>
+            </ul>
+            <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
+        </div>
         <!-- 猜你喜欢END -->
 
         <!--底部导航-->
