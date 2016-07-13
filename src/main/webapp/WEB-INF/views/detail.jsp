@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +12,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <script type="text/javascript" src="../script/lib/jquery.1.10.2.js"></script>
-    <link rel="stylesheet" href="../css/master.css">
-    <link rel="stylesheet" href="../css/module.css">
+    <script type="text/javascript" src="../../script/lib/jquery.1.10.2.js"></script>
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="stylesheet" href="../../css/module.css">
 </head>
 
 <body>
@@ -23,7 +24,7 @@
         宝物详情
         <!--操作按钮-->
         <div class="header-box">
-            <a href="index.html">
+            <a href="/">
                 <button class="header-left">
                     <i class="icon icon-return"></i>
                     返回
@@ -37,78 +38,73 @@
     <div class="goods-detail">
         <!--宝物图片-->
         <div class="goods-detail-top">
-            <img src="../img/main-new1.png" alt="">
+            <img src="/upload/${goodsDetail.picture}" alt="">
             <div>
+                <p>${goodsDetail.brandName}</p>
                 <p>
-                    <span>￥30.00</span>
-                    <span>九成新</span>
+                    <span>￥<fmt:formatNumber type="number" value="${goodsDetail.oldPrice/100}" pattern="0.00"
+                                             maxFractionDigits="2"/></span>
+                    <span>原价：<fmt:formatNumber type="number" value="${goodsDetail.price/100}" pattern="0.00"
+                                               maxFractionDigits="2"/></span>
                 </p>
-                <p>H&M&nbsp;CARDIGN</p>
-                <p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>
             </div>
         </div>
-
         <!--宝物图片END-->
         <!--宝物信息-->
-        <ul class="transfer-info">
-            <li>
+        <div class="goods-detail-content">
+            <p>
                 <span>宝物类型：</span>
-                <span>服装</span>
-            </li>
-            <li>
+                <span>${goodsDetail.typeName}</span>
+            </p>
+            <p>
                 <span>宝物品牌：</span>
-                <span>贝儿</span>
-            </li>
-            <li>
+                <span>${goodsDetail.brandName}</span>
+            </p>
+
+            <p>
                 <span>购物日期：</span>
-                <span>7/11</span>
-            </li>
-            <li>
+                <span><fmt:formatDate value="${goodsDetail.upTime}" type="date" pattern="yyyy/MM/dd"/></span>
+            </p>
+            <p>
                 <span>新旧程度：</span>
-                <span>全新</span>
-            </li>
-            <li>
+                <span>${goodsDetail.newDegree}</span>
+            </p>
+            <p>
                 <span>宝物尺码：</span>
-                <span>0-3m</span>
-            </li>
-            <li>
-                <span>适合宝宝：</span>
-                <span>所有宝宝</span>
-            </li>
-            <li>
+                <span>${goodsDetail.size.name}</span>
+            </p>
+            <p>
                 <span>原包装：</span>
-                <span>有</span>
-            </li>
-            <li>
+                <span>${goodsDetail.pack?'有':'无'}</span>
                 <span>发票/小票：</span>
-                <span>无</span>
-            </li>
-        </ul>
+                <span>${goodsDetail.receipt?'有':'无'}</span>
+            </p>
+        </div>
         <!--宝物信息END-->
         <!--清楚浮动-->
         <div class="clear"></div>
         <!--买家分享-->
         <div class="goods-detail-bottom">
-            <p>卖家分享:
-                <span>卖家分享卖家分享卖家分享卖家分分享卖家分分享卖家分分享卖家分享</span>
+            <p>卖家分享：
+                <span>${goodsDetail.message}</span>
             </p>
             <div class="clear"></div>
             <p>宝物图片:</p>
-            <img src="../img/detail.jpg" alt="">
+            <img src="/upload/${goodsDetail.pictureList}" alt="">
         </div>
 
         <!--卖家分享END-->
         <!--按钮-->
         <div class="goods-detail-button">
             <div>
-                <a href="shopping.html">
+                <a href="/jsp/shopping">
                     <button>加入购物车</button>
                 </a>
-                <a href="pay.html">
+                <a href="/jsp/pay">
                     <button>立即购买</button>
                 </a>
             </div>
-            <a href="consignment.html">
+            <a href="/jsp/consignment">
                 <button class="button">我要转让</button>
             </a>
         </div>
