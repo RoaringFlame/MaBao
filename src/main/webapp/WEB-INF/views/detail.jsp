@@ -97,10 +97,10 @@
         <!--按钮-->
         <div class="goods-detail-button">
             <div>
-                <a href="/jsp/shopping">
+                <a href="/cart/cartAddGoods?goodsId=${goodsDetail.id}">
                     <button>加入购物车</button>
                 </a>
-                <a href="/jsp/pay">
+                <a href="/cart/orderConfirm?goodsId=${goodsDetail.id}">
                     <button>立即购买</button>
                 </a>
             </div>
