@@ -34,4 +34,10 @@ public interface BabyService {
      */
     List<Baby> findBabyByUserId(Long userId);
 
+    /**
+     * 保存宝宝
+     * @param baby                      宝宝实体
+     * @return                          宝宝
+     */
+    Baby saveOne(Baby baby);
 }

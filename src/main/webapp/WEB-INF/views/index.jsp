@@ -62,7 +62,7 @@
         </div>
     </div>
     <!--搜索框 END-->
-    <div class="iscroll-wrapper">
+    <div class="iscroll-wrapper" style="top:48px;bottom: -12px;">
         <div class="iscroll-scroller">
             <!--轮播图-->
             <div id="myCarousel" class="carousel slide">

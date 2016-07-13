@@ -26,7 +26,7 @@ public class Baby {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     public User getUser() {
         return user;
