@@ -17,7 +17,6 @@ public class OrdersController {
     private OrderService orderService;
 
     @RequestMapping(value = "/payConfirm",method = GET)
-
     public String orderConfirm(@RequestParam String cartAndNum,
                                @RequestParam Long addressId,
                                @RequestParam(required = false) String message,
@@ -27,4 +26,5 @@ public class OrdersController {
         //支付
         return "pay";
     }
+
 }

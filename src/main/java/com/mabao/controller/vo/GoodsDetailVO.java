@@ -5,6 +5,7 @@ import com.mabao.util.VoUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,12 +15,14 @@ public class GoodsDetailVO {
     private Long id;                                //宝物的id
     private String title;                           //宝物的描述
     private String picture;                         //宝物图片
-    private String price;                           //宝物价格
+    private Double oldPrice;                        //原价
+    private Double price;                           //宝物价格
     private String newDegree;                       //宝物新旧程度
     private String typeName;                        //类型名称
     private String brandName;                       //宝物品牌
     private String size;                            //宝物尺寸
     private String babyType;                        //适合宝宝类型
+    private Date upTime;                            //上架时间
     private Boolean pack;                           //是否有包装，1有0无
     private Boolean receipt;                        //是否有小票，1有0无
     private String message;                         //卖家分享
@@ -29,7 +32,6 @@ public class GoodsDetailVO {
         GoodsDetailVO vo = VoUtil.copyBasic(GoodsDetailVO.class, goods);
         //将数据库里用数据存储的新旧状态转换为对应string的描述语言
         assert vo != null;
-        vo.setPrice(goods.getPrice().toString());
         vo.setNewDegree(goods.getNewDegree().getText());
         vo.setSize(goods.getSize().getName());
         vo.setBabyType(goods.getBabyType().getText());
@@ -72,11 +74,19 @@ public class GoodsDetailVO {
         this.picture = picture;
     }
 
-    public String getPrice() {
+    public Double getOldPrice() {
+        return oldPrice;
+    }
+
+    public void setOldPrice(Double oldPrice) {
+        this.oldPrice = oldPrice;
+    }
+
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -150,5 +160,13 @@ public class GoodsDetailVO {
 
     public void setPictureList(List<String> pictureList) {
         this.pictureList = pictureList;
+    }
+
+    public Date getUpTime() {
+        return upTime;
+    }
+
+    public void setUpTime(Date upTime) {
+        this.upTime = upTime;
     }
 }
