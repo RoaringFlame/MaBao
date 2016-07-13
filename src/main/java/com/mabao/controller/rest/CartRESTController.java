@@ -1,17 +1,12 @@
 package com.mabao.controller.rest;
 
-import com.mabao.controller.vo.GoodsVO;
 import com.mabao.controller.vo.JsonResultVO;
-import com.mabao.pojo.Goods;
 import com.mabao.service.CartService;
-import com.mabao.util.PageVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
@@ -19,17 +14,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class CartRESTController {
     @Autowired
     private CartService cartService;
-
-    public static final Long userId = 1L;
-    /**
-     * 用户购物车中商品列表
-     * @return                  商品list
-     */
-    @RequestMapping( method = RequestMethod.GET)
-    public List<GoodsVO> findUserCartGoods() {
-        List<Goods> goodsList = this.cartService.findAllGoodsByUser(userId);
-        return GoodsVO.generateBy(goodsList);
-    }
 
     /**
      * 删除购物车内商品

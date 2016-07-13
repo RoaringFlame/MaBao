@@ -67,7 +67,7 @@ public class CartController {
         if (user != null){
             List<Cart> cartGoods = this.cartService.findAllGoodsByUser(user.getId());
             model.addAttribute("cartGoods", CartGoodsVO.generateBy(cartGoods));
-            return "detail";
+            return "shopping";
         }else {
             return "login";
         }
@@ -76,33 +76,29 @@ public class CartController {
 
     /**
      * 购物车页面提交后跳转订单确认页面
-     * @param cartAndNum        <购物车ID-数量,购物车ID-数量...>格式 String
+     * @param cartIds           <购物车ID,购物车ID...>格式 String
      * @param model             map(默认地址，选中支付的商品list)
      * @return                  支付页
      */
     @RequestMapping(value = "/orderConfirm",method = GET)
-    public String orderConfirm(@RequestParam String cartAndNum,
+    public String orderConfirm(@RequestParam String cartIds,
                                Model model) {
         User user = UserManager.getUser();
         if (user == null) {
             return "login";
         } else {
             Map<String, Object> map = new HashMap<>();
-            String[] cartAndNumArray = cartAndNum.trim().split(",");
-            Map<Object, Integer> goodsAndNumMap = new HashMap<>();
-            for (String one : cartAndNumArray) {
+            String[] cartArray = cartIds.trim().split(",");
+            List<Cart> cartList = new ArrayList<>();
+            for (String one : cartArray) {
                 //获得购物车ID
-                Long cartId = Long.valueOf(one.trim().split("-")[0]);
-                //查找商品
-                Goods goods = this.cartService.get(cartId).getGoods();
-                //查找对应数量
-                Integer num = Integer.valueOf(one.trim().split("-")[1]);
-                goodsAndNumMap.put(GoodsVO.generateBy(goods), num);
+                Long cartId = Long.valueOf(one);
+                Cart cart = this.cartService.get(cartId);
+                cartList.add(cart);
             }
-            map.put("checkedGoodsMap", goodsAndNumMap);  //选中的商品列表
+            map.put("checkedGoodsList", CartGoodsVO.generateBy(cartList));  //选中的商品列表
             Address address = this.addressService.getDefaultAddress(user.getId());
             map.put("defaultAddress", address);          //默认地址
-            map.put("cartAndNum", cartAndNum);
             map.put("freight", 10);                      //运费
             model.addAllAttributes(map);
             return "pay";
