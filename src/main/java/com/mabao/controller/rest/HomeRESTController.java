@@ -10,21 +10,19 @@ import com.mabao.pojo.Goods;
 import com.mabao.pojo.User;
 import com.mabao.service.BabyService;
 import com.mabao.service.BannerService;
+import com.mabao.service.GoodsService;
 import com.mabao.service.GoodsTypeService;
 import com.mabao.util.PageVO;
-import com.mabao.service.GoodsService;
 import com.mabao.util.Selector;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 
 @RestController
