@@ -35,7 +35,7 @@ public class SellController {
     @Autowired
     private GoodsTypeService goodsTypeService;
     @Autowired
-    private BrandService brandService;
+    private GoodsBrandService goodsBrandService;
     @Autowired
     private GoodsSizeService goodsSizeService;
 
@@ -66,7 +66,7 @@ public class SellController {
         List<Selector> goodsTypeList = this.goodsTypeService.getAllGoodsTypeForSelector();
         map.put("goodsType",goodsTypeList);
         //品牌
-        List<Selector> brand = this.brandService.findBrandForSelector();
+        List<Selector> brand = this.goodsBrandService.findBrandForSelector();
         map.put("brand",brand);
         //宝宝性别
         List<Selector> gender = Gender.toList();
@@ -81,15 +81,12 @@ public class SellController {
     /**
      * 自助发布宝物
      * 添加商品
-     * @param newGoods          商品对象，需包含用户ID
-     * @param model             success or false
+     * @param newGoods          商品对象
      * @return                  寄售成功页
      */
     @RequestMapping(value = "/release",method = POST)
-    public String releaseGoods(Goods newGoods,Model model){
-/*      Goods result =  this.goodsService.saveOne(newGoods);
-        String result = this.goodsService.saveOne(newGoods) != null ? "success" : "failure";
-        model.addAttribute("result",result);*/
+    public String releaseGoods(Goods newGoods){
+        newGoods.setUser(UserManager.getUser());
         if (this.goodsService.saveOne(newGoods) != null){
             return "publish_success";
         }else {

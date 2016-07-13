@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-07-12 14:43:26
+Date: 2016-07-12 15:59:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -231,7 +231,7 @@ CREATE TABLE `t_order` (
   `pay_time` datetime DEFAULT NULL COMMENT '订单支付时间',
   `deal_time` datetime DEFAULT NULL COMMENT '订单完成时间',
   `port_number` varchar(20) DEFAULT NULL COMMENT '运单号',
-  `transcation_num` varchar(30) DEFAULT NULL COMMENT '支付单号',
+  `payment_no` varchar(30) DEFAULT NULL COMMENT '支付单号',
   `address_id` int(11) DEFAULT NULL COMMENT '地址默认地址编号',
   `message` varchar(100) DEFAULT NULL COMMENT '买家留言',
   `state` int(1) NOT NULL COMMENT '订单状态，0待支付（买家），1待发货（卖家），2待收货（买家），3已完成（卖家），4已取消（买家）',
@@ -284,7 +284,6 @@ CREATE TABLE `t_shopping_cart` (
 INSERT INTO `t_shopping_cart` VALUES ('1', '1', '1', '2', '2016-07-10 14:30:35');
 INSERT INTO `t_shopping_cart` VALUES ('2', '1', '2', '1', '2016-07-10 14:33:15');
 INSERT INTO `t_shopping_cart` VALUES ('3', '1', '3', '1', '2016-07-10 14:33:27');
-INSERT INTO `t_shopping_cart` VALUES ('4', '1', '4', '1', '2016-07-06 14:33:39');
 
 -- ----------------------------
 -- Table structure for t_user

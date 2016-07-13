@@ -1,5 +1,7 @@
 package com.mabao.pojo;
 
+import com.fasterxml.jackson.core.sym.Name;
+
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Date;
@@ -87,7 +89,7 @@ public class Order {
     public void setState(Integer state) {
         this.state = state;
     }
-
+    @Column(name = "payment_no")
     public String getPaymentNo() {
         return paymentNo;
     }

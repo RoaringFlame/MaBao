@@ -31,8 +31,8 @@ public class AddressServiceImpl implements AddressService {
      * 显示当前用户的所有收货地址
      * @return                  地址list
      */
-    public List<Address> findAllAddress(Long userId){
-        return this.addressRepository.findAll();
+    public List<Address> findUserAllAddress(Long userId){
+        return this.addressRepository.findByUserId(userId);
     }
     /**
      * 新增收货地址

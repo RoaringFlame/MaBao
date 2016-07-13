@@ -12,18 +12,18 @@
 	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-	<link rel="stylesheet" href="css/buy.css">
-	<link rel="stylesheet" href="css/public.css">
+	<link rel="stylesheet" href="../../css/master.css">
+    <link rel="stylesheet" href="../../css/module.css">
 </head>
 <body>
  	<section class="header-top">
 		<!--商品详情页面的url传递-->
     	<div class="fanhui"><a onclick=window.location.href="/goodsDetail?id=${goods.id}" >
-			<img src="img/back.png" alt=""></a><a onclick=window.location.href="/goodsDetail?id=${goods.id}" class="tiaozhuan">返回</a></div>
+			<img src="../../img/back.png" alt=""></a><a onclick=window.location.href="/goodsDetail?id=${goods.id}" class="tiaozhuan">返回</a></div>
     	<div class="shouye"><p>确认订单</p></div>
     </section>
 	<div class="header home" onclick=window.location.href="address.html">
-		<div class="ui-left"><img src="img/pay-1.png" alt=""></div>
+		<div class="ui-left"><img src="../../img/pay-1.png" alt=""></div>
 		<div class="mes-right">
 			<div class="mes-right-top">
 				<dl>
@@ -40,7 +40,7 @@
 	</div>
 	<div class="pay-for-baobei">
 		<div class="baobei">
-			<img src="img/main-new1.png" alt="">
+			<img src="../../img/main-new1.png" alt="">
 		</div>
 		<div class="intro">
 			<p>H&M&nbsp;&nbsp;CARDIGAN</p>
