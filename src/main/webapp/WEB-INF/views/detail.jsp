@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,10 +43,8 @@
             <div>
                 <p>${goodsDetail.brandName}</p>
                 <p>
-                    <span>￥<fmt:formatNumber type="number" value="${goodsDetail.oldPrice/100}" pattern="0.00"
-                                             maxFractionDigits="2"/></span>
-                    <span>原价：<fmt:formatNumber type="number" value="${goodsDetail.price/100}" pattern="0.00"
-                                               maxFractionDigits="2"/></span>
+                    <span>￥<fmt:formatNumber type="number" value="${goodsDetail.price}" pattern="0.00" maxFractionDigits="2"/>元</span
+                    <span>原价：<fmt:formatNumber type="number" value="${goodsDetail.oldPrice}" pattern="0.00" maxFractionDigits="2"/>元</span>
                 </p>
             </div>
         </div>
@@ -63,6 +62,7 @@
 
             <p>
                 <span>购物日期：</span>
+                <%--<span><fmt:formatDate value="${goodsDetail.upTime}" type="date" pattern="yyyy/MM/dd"/></span>--%>
                 <span><fmt:formatDate value="${goodsDetail.upTime}" type="date" pattern="yyyy/MM/dd"/></span>
             </p>
             <p>
