@@ -1,115 +1,71 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>宝物详情</title>
-	<meta name="viewport"
-		  content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
 	<!-- 禁止将数字变为电话号码 -->
-	<meta name="format-detection" content="telephone=no"/>
+	<meta name="format-detection" content="telephone=no" />
 	<!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
-	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<script type="text/javascript" src="../../script/lib/jquery.1.10.2.js"></script>
-	<link rel="stylesheet" href="../../css/master.css">
-	<link rel="stylesheet" href="../../css/module.css">
+	<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+	<link rel="stylesheet" href="/css/public.css">
+	<link rel="stylesheet" href="/css/buy.css">
+		
 </head>
-
 <body>
-<div class="content-index">
-	<!--标题-->
-	<header>
-		宝物详情
-		<!--操作按钮-->
-		<div class="header-box">
-			<a href="/">
-				<button class="header-left">
-					<i class="icon icon-return"></i>
-					返回
-				</button>
-			</a>
-		</div>
-		<!--操作按钮 END-->
-	</header>
-	<!--标题 END-->
-	<!--宝物详情-->
-	<div class="goods-detail">
-		<!--宝物图片-->
-		<div class="goods-detail-top">
-			<img src="/upload/${goodsDetail.picture}"  alt="">
-			<div>
-				<p>${goodsDetail.brandName}</p>
-				<p>
-					<span>￥<fmt:formatNumber type="number" value="${goodsDetail.oldPrice/100}" pattern="0.00" maxFractionDigits="2"/></span>
-					<span>原价：<fmt:formatNumber type="number" value="${goodsDetail.price/100}" pattern="0.00" maxFractionDigits="2"/></span>
-				</p>
-			</div>
-		</div>
-		<!--宝物图片END-->
-		<!--宝物信息-->
-		<div class="goods-detail-content">
-			<p>
-				<span>宝物类型：</span>
-				<span>${goodsDetail.typeName}</span>
-			</p>
-			<p>
-				<span>宝物品牌：</span>
-				<span>${goodsDetail.brandName}</span>
-			</p>
+	<section class="header-top">
+    	<div class="fanhui"><a href="index_liu.jsp" ><img src="/img/back.png" alt=""></a>
+			<a href="index_liu.jsp" class="tiaozhuan">返回</a></div>
+    	<div class="shouye"><p>宝物详情</p></div>
+    </section>
 
-			<p>
-				<span>购物日期：</span>
-				<span><fmt:formatDate value="${goodsDetail.upTime}" type="date" pattern="yyyy/MM/dd"/></span>
-			</p>
-			<p>
-				<span>新旧程度：</span>
-				<span>${goodsDetail.newDegree}</span>
-			</p>
-			<p>
-				<span>宝物尺码：</span>
-				<span>${goodsDetail.size}</span>
-			</p>
-			<p>
-				<span>原包装：</span>
-				<span>${goodsDetail.pack?'有':'无'}</span>
-				<span>发票/小票：</span>
-				<span>${goodsDetail.receipt?'有':'无'}</span>
-			</p>
-		</div>
-		<!--宝物信息END-->
-		<!--清楚浮动-->
-		<div class="clear"></div>
-		<!--买家分享-->
-		<div class="goods-detail-bottom">
-			<p>卖家分享：
-				<span>${goodsDetail.message}</span>
-			</p>
-			<div class="clear"></div>
-			<p>宝物图片:</p>
-			<img src="/upload/${goodsDetail.pictureList}" alt="">
-		</div>
-
-		<!--卖家分享END-->
-		<!--按钮-->
-		<div class="goods-detail-button">
-			<div>
-				<a href="/jsp/shopping">
-					<button>加入购物车</button>
-				</a>
-				<a href="/jsp/pay">
-					<button>立即购买</button>
-				</a>
-			</div>
-			<a href="/jsp/consignment">
-				<button class="button">我要转让</button>
-			</a>
-		</div>
-		<!--按钮END-->
-		<!--宝物详情END-->
-
+	<div class="baobei-img" id="baby-img">
+		<figure>
+			<img src="/upload/<c:out value="${goods.picture}" />" alt="">
+			<figcaption>
+				<p></p>
+				<p><span></span><span><i>原价：</i>
+					<i>￥<fmt:formatNumber type="number" value="${goods.price/100}" pattern="0.00" maxFractionDigits="2"/>
+				</i></span> </p>
+			</figcaption>
+		</figure>
 	</div>
-</div>
+	<div class="baobei-intro" id="baby-intro">
+		<div class="baobei-intro-p p-1"><div>宝物类型&nbsp;:</div><div><c:out value="${goods.typeName}" /></div></div>
+		<div class="baobei-intro-p p-2"><div>宝物品牌&nbsp;:</div><div><c:out value="${goods.brand}" /></div></div>
+		<div class="baobei-intro-p p-3"><div>购买日期&nbsp;:</div><div>
+			<fmt:formatDate value="${goods.upTime}" type="date" pattern="yyyy/MM/dd" /></div><div>
+			新旧程度&nbsp;:</div><div><c:out value="${goods.newDegree>0?goods.newDegree+'成新':'全新'}" /></div></div>
+		<div class="baobei-intro-p p-4"><div> 宝物尺码&nbsp;:</div><div><c:out value="${goods.size}" /><div></div>
+			包装&nbsp;：</div><div><c:out value="${goods.pack?'有':'无'}" /></div><div>
+			小票&nbsp;：</div><div><c:out value="${goods.receipt?'有':'无'}"/></div></div>
+		<div class="baobei-intro-p p-5"><div>卖家分享&nbsp;:</div><div><c:out value="${goods.message}" /></div></div>
+	    <div class="baobei-intro-p p-6"><div>宝物图片&nbsp;:</div><div><img src="../../upload/detail.png" alt=""></div></div>
+	</div>
+	
+	<section class="operate">
+     	<div>
+     		<input type="button" name="button" class="button-left" id="toShop" value="加入购物车">
+	    	<input type="button" name="button" class="button-right" id="toPay" value="立即购买">
+    	</div>
+		<input type="button" name="button" class="button" value="我要转让" onclick=location.href="consignment.html">
+	</section>
+
+	<script type="text/javascript">
+       $("#toShop").click(function(){
+         window.location.href="http://localhost:8080/mb/ShoppingServlet?method=saveToShop&id="+<c:out value="${goods.id}" />;
+  		})
+  	   $("#toPay").click(function(){
+         window.location.href="http://localhost:8080/mb/pay.jsp?id="+<c:out value="${goods.id}" />;
+  		})
+    </script>
+
 </body>
 </html>

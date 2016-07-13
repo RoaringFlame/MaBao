@@ -1,7 +1,6 @@
 package com.mabao.service;
 
 
-import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.User;
 
 public interface UserService {
@@ -19,13 +18,4 @@ public interface UserService {
      * @return                  用户对象
      */
     User get(Long userId);
-
-    /**
-     * 用户注册
-     * @param userName              用户名
-     * @param password              密码
-     * @param email                 邮箱
-     * @return                      收货地址页
-     */
-    JsonResultVO userRegister(String userName, String password, String email);
 }

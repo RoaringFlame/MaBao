@@ -20,7 +20,7 @@ public interface AddressService {
      * 显示当前用户的所有收货地址
      * @return                地址对象List
      */
-    List<Address> findUserAllAddress(Long userId);
+    List<Address> findAllAddress(Long userId);
     /**
      * 新增收货地址
      * @param address           地址对象

@@ -1,13 +1,10 @@
 package com.mabao.service.impl;
 
-import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.User;
 import com.mabao.repository.UserRepository;
 import com.mabao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Date;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -31,27 +28,5 @@ public class UserServiceImpl implements UserService {
     @Override
     public User get(Long userId) {
         return this.userRepository.findOne(userId);
-    }
-
-    /**
-     * 用户注册
-     * @param userName              用户名
-     * @param password              密码
-     * @param email                 邮箱
-     * @return                      收货地址页
-     */
-    @Override
-    public JsonResultVO userRegister(String userName, String password, String email) {
-        try {
-            User user = new User();
-            user.setName(userName);
-            user.setPassword(password);
-            user.setEmail(email);
-            user.setCreateTime(new Date());
-            this.userRepository.save(user);
-            return new JsonResultVO(JsonResultVO.SUCCESS, "注册成功");
-        }catch (Exception e){
-            return new JsonResultVO(JsonResultVO.FAILURE, "注册失败");
-        }
     }
 }

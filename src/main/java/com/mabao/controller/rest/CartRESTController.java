@@ -27,6 +27,7 @@ public class CartRESTController {
      */
     @RequestMapping( method = RequestMethod.GET)
     public List<GoodsVO> findUserCartGoods() {
+        //查询该用户购物车剩余商品
         List<Goods> goodsList = this.cartService.findAllGoodsByUser(userId);
         return GoodsVO.generateBy(goodsList);
     }
@@ -38,6 +39,7 @@ public class CartRESTController {
      */
     @RequestMapping(value = "/deleteGoods/{cartId}", method = RequestMethod.DELETE)
     public JsonResultVO deleteShoppingCartGoods(@PathVariable Long cartId) {
+        //移除购物车内商品，查询该用户购物车剩余商品
         return this.cartService.deleteCartGoods(cartId);
     }
 }
