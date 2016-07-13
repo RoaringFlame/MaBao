@@ -1257,7 +1257,10 @@
     padding-right: 1rem;
     color: red;
 }
-
+.order-box-left span{
+    padding-right:1rem;
+    color:#000;
+}
 .order .order-bottom {
     clear: both;
     padding: 1rem;
