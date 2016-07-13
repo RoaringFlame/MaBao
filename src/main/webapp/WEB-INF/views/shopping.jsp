@@ -33,7 +33,7 @@
         购物车
         <!--操作按钮-->
         <div class="header-box">
-            <a href="../../static/index.html">
+            <a href="/">
                 <button class="header-left">
                     <i class="icon icon-return"></i>
                     返回
@@ -100,19 +100,19 @@
     <!--付款按钮END-->
     <!--底部导航-->
     <div class="menu" id="menu">
-        <a href="index.html">
+        <a href="/">
             <i class="icon-menu icon-menu1"><img src="../../img/footer-c1.png" alt=""></i>
         </a>
         <a>
             <i class="icon-menu icon-menu2"><img src="../../img/footer-2.png" alt=""></i>
         </a>
-        <a href="consignment.html">
+        <a href="/jsp/consignment">
             <i class="icon-menu icon-menu3"><img src="../../img/footer-3.png" alt=""></i>
         </a>
-        <a href="" id="shopping">
+        <a href="/jsp/shopping" id="shopping">
             <i class="icon-menu icon-menu4"><img src="../../img/footer-4.png" alt=""></i>
         </a>
-        <a href="personal.html">
+        <a href="/jsp/personal">
             <i class="icon-menu icon-menu5"><img src="../../img/footer-5.png" alt=""></i>
         </a>
     </div>

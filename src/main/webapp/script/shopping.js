@@ -1,7 +1,7 @@
 "use strict";
 $(function () {
     var main = $("#container");                      //商品列表容器
-    var payForm = $("#frmPay");                      //存储要够买的商品id和num
+    var payForm = $("#frmPay");                      //存储要购买的商品cartId和num
     var editBtn = $("div.header-box").find(".header-right");
     //获取商品信息
     function getGoods() {
@@ -68,6 +68,7 @@ $(function () {
 
     //计算总价
     function setTotal() {
+        $("div.up-to-pay").find("ul li:eq(0) b").text("￥0.00" );                            //初始化总价为0
         var sum = 0;
         main.find(".goods-info").each(function () {
             var price = parseFloat($(this).find("p:eq(2)").text().substring(1));            //获得商品价格
@@ -93,8 +94,8 @@ $(function () {
         $(".pay").click(function () {
             var cart = main.find("div.cartId");
             var cartAndNum = "";                                                               //存储cartId和num
-            cart.each(function () {
-                if (main.find(".select").is(':checked')) {
+            cart.each(function (index) {
+                if (main.find(".select").eq(index).is(':checked')) {
                     var id = $(this).text();                                                  //获取cartId
                     var num = parseInt($(this).nextAll(".shopping-cart").find("p").text());   //获取num
                     cartAndNum += id + "-" + num + ",";                                        //以“1-1，2-1，3-1”形式存储cartId和num
