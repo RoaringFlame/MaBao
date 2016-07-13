@@ -1,7 +1,7 @@
 "use strict";
 $(function () {
     var main = $("#container");                      //商品列表容器
-    var payForm = $("#frmPay");                      //存储要够买的商品id和num
+    var payForm = $("#frmPay");                      //存储要购买的商品cartId和num
     var editBtn = $("div.header-box").find(".header-right");
     //获取商品信息
     function getGoods() {
@@ -40,20 +40,19 @@ $(function () {
                     url: "/cart/deleteGoods/" + cartId,
                     type: 'DELETE',
                     success: function () {
-                        alert("OK");
-                        delItem.remove();                //删除购物车商品
+                        delItem.remove();          //删除购物车商品
+                        setTotal();                //点击删除按钮后重新计算总价
                     }
-                });
-                setTotal();                              //删除按钮后重新计算总价
             });
-            setTotal();
-            initEdit();
+            });
+            setTotal();                      //计算总价
+            initEdit();                      //编辑按钮初始化
         }, "json");
     }
 
     //编辑按钮事件
     function initEdit() {
-        main.find(".goods-del").hide();                      //点击编辑，删除按钮出现
+        main.find(".goods-del").hide();                              //点击编辑，删除按钮出现
         editBtn.text("编辑");
         editBtn.click(function(){
             if (editBtn.text() == "编辑") {
@@ -69,6 +68,7 @@ $(function () {
 
     //计算总价
     function setTotal() {
+        $("div.up-to-pay").find("ul li:eq(0) b").text("￥0.00" );                            //初始化总价为0
         var sum = 0;
         main.find(".goods-info").each(function () {
             var price = parseFloat($(this).find("p:eq(2)").text().substring(1));            //获得商品价格
@@ -90,24 +90,12 @@ $(function () {
     function init() {
         //购物车商品初始化
         getGoods();
-        //编辑按钮
-        //var edit = $("div.header-box").find(".header-right");
-        //edit.click(function () {
-        //    if (edit.text() == "编辑") {
-        //        main.find(".goods-del").show();                    //点击编辑，删除按钮出现
-        //        edit.text("完成");                                 //编辑按钮变成完成
-        //    }
-        //    else {
-        //        main.find(".goods-del").hide();                   //点击完成，删除按钮隐藏
-        //        edit.text("编辑");                                //完成按钮变成编辑
-        //    }
-        //});
         //付款按钮
         $(".pay").click(function () {
             var cart = main.find("div.cartId");
             var cartAndNum = "";                                                               //存储cartId和num
-            cart.each(function () {
-                if (main.find(".select").is(':checked')) {
+            cart.each(function (index) {
+                if (main.find(".select").eq(index).is(':checked')) {
                     var id = $(this).text();                                                  //获取cartId
                     var num = parseInt($(this).nextAll(".shopping-cart").find("p").text());   //获取num
                     cartAndNum += id + "-" + num + ",";                                        //以“1-1，2-1，3-1”形式存储cartId和num
