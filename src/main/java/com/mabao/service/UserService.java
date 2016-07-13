@@ -28,4 +28,11 @@ public interface UserService {
      * @return                      收货地址页
      */
     JsonResultVO userRegister(String userName, String password, String email);
+
+    /**
+     * 修改用户信息
+     * @param user                  用户
+     * @return                      修改的用户
+     */
+    User updateUser(User user);
 }

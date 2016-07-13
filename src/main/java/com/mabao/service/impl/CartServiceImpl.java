@@ -3,10 +3,10 @@ package com.mabao.service.impl;
 import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.Cart;
 import com.mabao.pojo.Goods;
+import com.mabao.pojo.User;
 import com.mabao.repository.CartRepository;
 import com.mabao.service.CartService;
 import com.mabao.service.GoodsService;
-import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,21 +24,6 @@ public class CartServiceImpl implements CartService {
     private CartRepository cartRepository;
     @Autowired
     private GoodsService goodService;
-
-    /**
-     * 购物车添加商品
-     * @param goodsId       商品ID
-     * @return              商品list
-     */
-    @Override
-    public Cart addCart(Long goodsId) {
-        Cart cart = new Cart();
-        cart.setGoods(this.goodService.get(goodsId));
-        cart.setCreateTime(new Date());
-        cart.setQuantity(1);
-        cart.setUser(UserManager.getUser());
-        return this.cartRepository.save(cart);
-    }
 
     /**
      * 删除购物车内商品
@@ -59,13 +44,8 @@ public class CartServiceImpl implements CartService {
      * @return                  商品list
      */
     @Override
-    public List<Goods> findAllGoodsByUser(Long userId) {
-        List<Cart> cartList = this.cartRepository.findByUserId(userId);
-        List<Goods> goodsList = new ArrayList<>();
-        for (Cart cart : cartList){
-            goodsList.add(cart.getGoods());
-        }
-        return goodsList;
+    public List<Cart> findAllGoodsByUser(Long userId) {
+        return this.cartRepository.findByUserId(userId);
     }
 
     /**
@@ -76,5 +56,50 @@ public class CartServiceImpl implements CartService {
     @Override
     public Cart get(Long cartId) {
         return this.cartRepository.findOne(cartId);
+    }
+
+    /**
+     * 商品ID查购物车信息
+     * @param goodsId           商品ID
+     * @return                  购物车
+     */
+    @Override
+    public Cart findByGoodsId(Long goodsId) {
+        return this.cartRepository.findByGoodsId(goodsId);
+    }
+    /**
+     * 更新购物车信息
+     * @param cart              购物车
+     * @return                  更新的购物车
+     */
+    @Override
+    public Cart updateCart(Cart cart) {
+        return this.cartRepository.saveAndFlush(cart);
+    }
+
+    /**
+     * 购物车添加商品
+     * @param goodsId       商品ID
+     * @param user          用户
+     * @return              结果String
+     */
+    @Override
+    public String addCartGoods(Long goodsId, User user) {
+        //判断是否已经添加
+        Cart cart = this.findByGoodsId(goodsId);
+        if (cart != null){
+            cart.setQuantity(cart.getQuantity()+1);
+            this.updateCart(cart);
+            return "添加成功";
+        }else {
+            //新添加
+            Cart newCart = new Cart();
+            newCart.setGoods(this.goodService.get(goodsId));
+            newCart.setCreateTime(new Date());
+            newCart.setQuantity(1);
+            newCart.setUser(user);
+            this.cartRepository.save(newCart);
+            return "添加成功";
+        }
     }
 }

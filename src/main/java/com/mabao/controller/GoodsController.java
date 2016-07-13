@@ -27,7 +27,7 @@ public class GoodsController {
     public String goodsDetail(Long goodsId, Model model) {
         Goods goods = this.goodsService.get(goodsId);
         model.addAttribute("goodsDetail", GoodsDetailVO.generateBy(goods));
-        return "goods_detail";
+        return "detail";
     }
 }
 
