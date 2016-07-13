@@ -1,5 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,80 +11,111 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <script type="text/javascript" src="../../script/lib/jquery.1.10.2.js"></script>
-    <link rel="stylesheet" href="../../css/public.css">
-    <link rel="stylesheet" href="../../css/buy.css">
+    <script type="text/javascript" src="../script/lib/jquery.1.10.2.js"></script>
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/module.css">
 </head>
+
 <body>
-<section class="header-top">
+<div class="content-index">
+    <!--标题-->
+    <header>
+        宝物详情
+        <!--操作按钮-->
+        <div class="header-box">
+            <a href="index.html">
+                <button class="header-left">
+                    <i class="icon icon-return"></i>
+                    返回
+                </button>
+            </a>
+        </div>
+        <!--操作按钮 END-->
+    </header>
+    <!--标题 END-->
+    <!--宝物详情-->
+    <div class="goods-detail">
+        <!--宝物图片-->
+        <div class="goods-detail-top">
+            <img src="../img/main-new1.png" alt="">
+            <div>
+                <p>
+                    <span>￥30.00</span>
+                    <span>九成新</span>
+                </p>
+                <p>H&M&nbsp;CARDIGN</p>
+                <p>纯棉轻薄，无刺激，适合宝宝娇嫩肌肤</p>
+            </div>
+        </div>
 
-    <div class="back">
-        <a onclick="window.location.href='/'"><img src="../../img/back.png" alt=""></a>
-        <a onclick="window.location.href='/'" class="jump-to">返回</a>
+        <!--宝物图片END-->
+        <!--宝物信息-->
+        <ul class="transfer-info">
+            <li>
+                <span>宝物类型：</span>
+                <span>服装</span>
+            </li>
+            <li>
+                <span>宝物品牌：</span>
+                <span>贝儿</span>
+            </li>
+            <li>
+                <span>购物日期：</span>
+                <span>7/11</span>
+            </li>
+            <li>
+                <span>新旧程度：</span>
+                <span>全新</span>
+            </li>
+            <li>
+                <span>宝物尺码：</span>
+                <span>0-3m</span>
+            </li>
+            <li>
+                <span>适合宝宝：</span>
+                <span>所有宝宝</span>
+            </li>
+            <li>
+                <span>原包装：</span>
+                <span>有</span>
+            </li>
+            <li>
+                <span>发票/小票：</span>
+                <span>无</span>
+            </li>
+        </ul>
+        <!--宝物信息END-->
+        <!--清楚浮动-->
+        <div class="clear"></div>
+        <!--买家分享-->
+        <div class="goods-detail-bottom">
+            <p>卖家分享:
+                <span>卖家分享卖家分享卖家分享卖家分分享卖家分分享卖家分分享卖家分享</span>
+            </p>
+            <div class="clear"></div>
+            <p>宝物图片:</p>
+            <img src="../img/detail.jpg" alt="">
+        </div>
+
+        <!--卖家分享END-->
+        <!--按钮-->
+        <div class="goods-detail-button">
+            <div>
+                <a href="shopping.html">
+                    <button>加入购物车</button>
+                </a>
+                <a href="pay.html">
+                    <button>立即购买</button>
+                </a>
+            </div>
+            <a href="consignment.html">
+                <button class="button">我要转让</button>
+            </a>
+        </div>
+        <!--按钮END-->
+        <!--宝物详情END-->
+
     </div>
-    <div class="title-bar">
-        <p>宝物详情</p>
-    </div>
-</section>
-<div class="baby-img" id="baby-img">
-    <figure>
-        <!--加载图片信息-->
-        <img src="/upload/<c:out value="${goodsDetail.picture}" />" alt="">
-        <figcaption>
-            <p></p>
-            <p><span></span><span><i>原价：</i>
-                <i>￥<fmt:formatNumber type="number" value="${goodsDetail.price/100}"
-                                      pattern="0.00" maxFractionDigits="2"/></i></span></p>
-        </figcaption>
-    </figure>
 </div>
-<div class="baby-intro" id="baby-intro">
-    <div class="baby-intro-p p-1">
-        <div>宝物类型&nbsp;:</div>
-        <div><c:out value="${goodsDetail.typeName}" /></div>
-    </div>
-    <div class="baby-intro-p p-2">
-        <div>宝物品牌&nbsp;:</div>
-        <div><c:out value="${goodsDetail.brand}" /></div>
-    </div>
-    <div class="baby-intro-p p-3">
-        <div>购买日期&nbsp;:</div>
-        <div><fmt:formatDate value="${goodsDetail.upTime}" type="date" pattern="yyyy/MM/dd" /></div>
-        <div>新旧程度&nbsp;:</div>
-        <div><c:out value="${goodsDetail.newDegree>0?goodsDetail.newDegree+'成新':'全新'}" /></div>
-    </div>
-    <div class="baby-intro-p p-4">
-        <div> 宝物尺码&nbsp;:</div>
-        <div><c:out value="${goodsDetail.size}" /></div>
-        <div>包装&nbsp;：</div>
-        <div><c:out value="${goodsDetail.pack?'有':'无'}" /></div>
-        <div>小票&nbsp;：</div>
-        <div><c:out value="${goodsDetail.receipt?'有':'无'}"/></div>
-    </div>
-    <div class="baby-intro-p p-5">
-        <div>卖家分享&nbsp;:</div>
-        <div><c:out value="${goodsDetail.message}" /></div>
-    </div>
-    <div class="baby-intro-p p-6">
-        <div>宝物图片&nbsp;:</div>
-        <div>
-            <img src="/upload/1.jpg" alt="">
-        </div>
-    </div>
-
-    <section class="operate">
-        <div>
-            <a onclick="window.location.href='shopping.jsp'">
-                <input type="button" name="button" class="button-left" value="加入购物车">
-            </a>
-            <a onclick="window.location.href='pay.jsp'">
-                <input type="button" name="button" class="button-right" value="立即购买">
-            </a>
-        </div>
-        <a onclick="window.location.href='consignment.jsp'">
-            <input type="button" name="button" class="button" value="我要转让">
-        </a>
-    </section>
-    </div>
 </body>
 </html>

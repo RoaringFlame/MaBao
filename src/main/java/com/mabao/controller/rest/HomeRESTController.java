@@ -65,7 +65,7 @@ public class HomeRESTController {
      * @return                  商品
      */
     @RequestMapping(value = "/goodsSearch", method = RequestMethod.GET)
-    public PageVO<GoodsVO> goodsSearch(@RequestParam(required = false) Long goodsTypeId,
+    public PageVO<GoodsVO> goodsSearch(@RequestParam(value = "goodsTypeId",required = false) Long goodsTypeId,
                               @RequestParam(value = "searchKey",required = false) String searchKey,
                               @RequestParam(value = "page", defaultValue = "0") int page,
                               @RequestParam(value = "pageSize", defaultValue = "4") int pageSize) {
