@@ -71,7 +71,7 @@
             </p>
             <p>
                 <span>宝物尺码：</span>
-                <span>${goodsDetail.size.name}</span>
+                <span>${goodsDetail.size}</span>
             </p>
             <p>
                 <span>原包装：</span>

@@ -7,7 +7,6 @@ import com.mabao.pojo.Goods;
 import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.CartService;
-import com.mabao.service.GoodsService;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
