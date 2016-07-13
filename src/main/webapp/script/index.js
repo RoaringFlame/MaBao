@@ -1,30 +1,29 @@
 "use strict";
 $(function () {
     //设置全局参数
-    var totalPageNew = 1;
-    var totalPageLike = 1;
-    var currentPageNew = 0;                            //新品展示页当前页面
-    var currentPageLike = 0;                           //猜你喜欢当前页面
-    var pageSize = 4;                                  //每页展示的宝物数量
+    var totalPageNew = 1;                             //新品总页数
+    var totalPageLike = 1;                            //猜你喜欢总页数
+    var currentPageNew = 0;                           //新品展示页当前页面
+    var currentPageLike = 0;                          //猜你喜欢当前页面
+    var pageSize = 4;                                 //每页展示的宝物数量
     var searchKey = "";                               //搜索栏搜索关键字
     var goodsTypeId = "";                             //商品类型id
     var myScroll;
     var upOrDown = "";                                //判断上下拉动
-    var babyId = null;                               //宝宝id
-    var isNew = true;                                //是否当前展示的是新品
-    var backGoods = $("#hideGoods").find("li");    //查找到新品列表下的li标签
-    var newGoodsBox = $("#newGoodsList");          //新品展示
-    var typeSidebar = $("#sidebar");               //侧边栏
+    var babyId = null;                                //宝宝id
+    var isNew = true;                                 //是否当前展示的是新品
+    var backGoods = $("#hideGoods").find("li");     //查找到新品列表下的li标签
+    var newGoodsBox = $("#newGoodsList");           //新品展示
+    var typeSidebar = $("#sidebar");                 //侧边栏
 
     //首页信息初始化
     function initIndexPage() {
-
         $.get("/home", {}, function (data) {
             console.log(data);
 
             //侧边栏的初始化
             $("#searchBox").find("div.column").click(function () {
-                typeSidebar.toggleClass("hide");                //侧边栏的隐藏与显示，toggleClass()函数，当属性存在则移除，当属性不存在则添加属性
+                typeSidebar.toggleClass("hide");                  //侧边栏的隐藏与显示，toggleClass()函数，当属性存在则移除，当属性不存在则添加属性
             });
             var typeList = data.goodsTypeList;
             typeList.unshift({key: "", value: "所有"});          //添加点击跳所有的选项，unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度
@@ -32,25 +31,23 @@ $(function () {
                 var li = $("<li></li>")
                     .text(goodsType.value)
                     .click(function () {
-                        if (index > 0) {                            //去掉下标为0的值
-                            goodsTypeId = goodsType.key;          //获取商品类型id
+                        if (index > 0) {                           //去掉下标为0的值
+                            goodsTypeId = goodsType.key;           //获取商品类型id
                         }
                         else {
-                            goodsTypeId = null;                   //设置
+                            goodsTypeId = null;                   //设置商品id为空
                         }
-                        newGoodsBox.empty();                    //点击完后清空信息
+                        newGoodsBox.empty();                       //点击完后清空信息
                         loadNewGoods();
                     });
                 typeSidebar.find("ul").append(li);
             });
-
             //搜索框的初始化
             $("#btnSearch").click(function () {
                 searchKey = $(this).next("input").val();
                 newGoodsBox.empty();
                 loadNewGoods();
             });
-
             //轮播的初始化
             var smallBanner = data.smallBanner;                                //获取轮播图片集
             var myCarousel = $("#myCarousel");                               //找到jsp页面对应id为myCarousel的项
@@ -136,15 +133,15 @@ $(function () {
             page: currentPageNew,                //新品当前页面数
             pageSize: pageSize,                  //新品每页展示的数据信息
             searchKey: searchKey,                //搜索关键字
-            goodsTypeId: goodsTypeId,             //宝物对应的id
+            goodsTypeId: goodsTypeId             //宝物对应的id
         };
 
-        if (currentPageNew <=totalPageNew) {
+        if (currentPageNew <= totalPageNew) {
             $.get("/home/goodsSearch", params, function (data) {
                 //打印从后台取出的数据信息
                 console.log(data);
                 var goodsList = data.items;
-                totalPageNew=data.totalPage;                                                      //获取总页数
+                totalPageNew = data.totalPage;                                                     //获取总页数
                 $(goodsList).each(function (index, goods) {                                       //对新品进行遍历
                     var newGoods = backGoods.clone();                                             //克隆信息
                     newGoods.find("img").attr("src", "../upload/" + goods.picture)
@@ -157,28 +154,26 @@ $(function () {
                     newGoods.find("div>p:eq(2)").text(goods.title);
                     newGoodsBox.append(newGoods);
                 });
-                initScroll();                                                                   //下拉滚动刷新
+                initScroll();                                                                    //下拉滚动刷新
                 typeSidebar.addClass("hide");                                                   //侧边栏添加隐藏样式
             }, "json");
         }
     }
-
-
     //加载猜你喜欢
     function loadLikeGoods() {
         if (babyId) {                                             //如果宝宝id是存在加载猜你喜欢物品列表页
             var backGoods = $("#hideGoods").find("li");
             var likeGoodsBox = $("#likeGoodsList");
-            likeGoodsBox.show();                                 //显示猜你喜欢列表页
+            likeGoodsBox.show();                                  //显示猜你喜欢列表页
             var params = {
-                page: currentPageLike,                           //猜你喜欢当前页面
-                pageSize: pageSize,                               //彩泥喜欢每页展示的宝物数量
+                page: currentPageLike,                            //猜你喜欢当前页面
+                pageSize: pageSize                               //彩泥喜欢每页展示的宝物数量
             };
 
             if (currentPageNew <= totalPageLike) {
                 $.get("/home/goodsGuess/baby/" + babyId, params, function (data) {
                     var goodsList = data.items;
-                    totalPageNew=data.totalPageLike;                //获取总页数
+                    totalPageNew = data.totalPageLike;                         //获取猜你喜欢总页数
                     $(goodsList).each(function (index, goods) {
                         var likeGoods = backGoods.clone();
                         likeGoods.find("img").attr("src", "../upload/" + goods.picture);
@@ -198,20 +193,19 @@ $(function () {
             $("#likeGoodsList").hide();                                     //猜你喜欢列表页的隐藏
         }
     }
-
     //猜你喜欢表单初提交
     function initFormAction() {
         $("#btnLikeSubmit").click(function () {
             var likeForm = $("#likeForm");
             var babyName = likeForm.find("input[name='babyName']").val();              //宝宝姓名的获取
             var babyBirthday = likeForm.find("input[name='babyBirthday']").val();     //宝宝生日的获取
-            var gender = likeForm.find("select[name='sex']").val();                     //宝宝性别的获取
+            var gender = likeForm.find("select[name='sex']").val();                    //宝宝性别的获取
             var hobby = likeForm.find("input[name='hobby']").val();                    //宝宝爱好的获取
             var params = {
-                babyName: babyName,                   //宝宝姓名
-                babyBirthday: babyBirthday,          //宝宝生日
-                gender: gender,                       //宝宝性别
-                hobby: hobby,                          //宝宝爱好
+                babyName: babyName,                  //宝宝姓名
+                babyBirthday: babyBirthday,         //宝宝生日
+                gender: gender,                      //宝宝性别
+                hobby: hobby,                        //宝宝爱好
                 page: currentPageLike,               //猜你喜欢当前页面
                 pageSize: pageSize                   //猜你喜欢每页展示的物品数量
             };
@@ -224,7 +218,6 @@ $(function () {
             }, "json");
         });
     }
-
     //拉动刷新和加载更多的实现
     function initScroll() {
         if (myScroll) {
@@ -236,29 +229,25 @@ $(function () {
             myScroll.on("scrollEnd", function () {
                 var wrapperHeight = $('div.iscroll-wrapper').height();
                 if (myScroll.y - wrapperHeight < myScroll.maxScrollY) {
-                    if (isNew) {
+                    if (isNew) {                        //若为新品页面，新品页面增加
                         currentPageNew++;
                         loadNewGoods();
                     }
                     else {
-                        currentPageLike++;
+                        currentPageLike++;              //若为猜你喜欢页面，新品页面增加
                         loadLikeGoods();
                     }
                 }
-                //console.log(currentPageNew+"------"+myScroll.y+"-"+myScroll.absStartY+"-"+myScroll.distY+"-"+myScroll.maxScrollY);
             });
             document.addEventListener('touchmove', function (e) {
                 e.preventDefault();
             }, false);
         }
     }
-
     //初始化函数
     function init() {
         initIndexPage();
     }
-
     //调用初始化函数
     init();
-
 });
