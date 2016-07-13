@@ -13,18 +13,20 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/master.css">
-    <link rel="stylesheet" href="../../css/module.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/module.css">
 
-    <link rel="stylesheet" href="../../script/lib/iscroll/iscroll.css">
-    <script src="../../script/lib/jquery.1.10.2.js"></script>
-    <script src="../../script/lib/bootstrap/bootstrap.min.js"></script>
-    <script src="../../script/lib/iscroll/iscroll.js"></script>
-    <script src="../../script/index.js"></script>
+    <link rel="stylesheet" href="script/lib/iscroll/iscroll.css">
+    <script src="script/lib/jquery.1.10.2.js"></script>
+    <script src="script/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="script/lib/iscroll/iscroll.js"></script>
+    <script src="script/common.js"></script>
+    <script src="script/index.js"></script>
 </head>
 
 <body>
+<div id="err"></div>
 <div class="content-index">
     <!--标题-->
     <header>
@@ -106,13 +108,13 @@
                     </ul>
                 </div>
                 <!-- 功能切换 END-->
-                <ul class="goods-list">
+                <div class="goods-list">
                     <!--新品列表的展示-->
                     <ul id="newGoodsList" class="goods-list clearfix"></ul>
                     <!--猜你喜欢物品的展示-->
                     <ul id="likeGoodsList" class="goods-list clearfix">
                     </ul>
-                </ul>
+                </div>
 
                 <!-- 猜你喜欢 -->
                 <div id="likeForm" class="you-like hide">
@@ -153,19 +155,19 @@
 <!--底部导航-->
 <div class="menu" id="menu">
     <a href="/">
-        <i class="icon-menu icon-menu1"><img src="../../img/footer-c1.png" alt=""></i>
+        <i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
     </a>
     <a>
-        <i class="icon-menu icon-menu2"><img src="../../img/footer-2.png" alt=""></i>
+        <i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
     </a>
     <a href="/jsp/consignment">
-        <i class="icon-menu icon-menu3"><img src="../../img/footer-3.png" alt=""></i>
+        <i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
     </a>
     <a href="/jsp/shopping" id="shopping">
-        <i class="icon-menu icon-menu4"><img src="../../img/footer-4.png" alt=""></i>
+        <i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
     </a>
     <a href="/jsp/personal">
-        <i class="icon-menu icon-menu5"><img src="../../img/footer-5.png" alt=""></i>
+        <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
     </a>
 </div>
 <!--底部导航 END-->
