@@ -317,7 +317,7 @@
 
 /*宝物详情*/
 .goods-detail-top {
-    margin: 2rem 8rem 2rem;
+    margin: 2rem 8rem 1rem;
 }
 
 .goods-detail-top img {
@@ -328,49 +328,49 @@
 }
 
 .goods-detail-top div {
-    margin: 0 2% 3%;
-    height: 6.5rem;
+    margin: 0 auto;
+    text-align: center;
     background-color: #fdfeff;
 }
 
 .goods-detail-top div p {
-    padding: 0 1rem;
     height: 2.2rem;
     line-height: 2.2rem;
     font-size: 1.3rem;
 }
 
-.goods-detail-top div p span:nth-child(1) {
-    float: left;
-    width: 8rem;
+.goods-detail-top div p span {
+
     color: #F0292B;
 }
-
-.goods-detail-top div p span:nth-child(2) {
-    font-size: 1.2rem;
-    float: right;
-}
-
-.goods-detail-top div p:nth-child(3) {
-    width: 13.5rem;
-    font-size: 1.2rem;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.goods-detail-bottom {
-    font-size: 1.4rem;
+.goods-detail-content{
     margin: 0 auto;
     padding: 0 1rem;
+    font-size: 1.3rem;
+    line-height: 2.5rem;
+
+}
+.goods-detail-content p:nth-child(3),.goods-detail-content p:nth-child(5){
+    width: 45%;
+    float: left;
+}
+.goods-detail-content p:nth-child(4),.goods-detail-content p:nth-child(6){
+    width: 55%;
+    float: left;
+}
+.goods-detail-bottom {
+    font-size: 1.3rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    line-height: 2rem;
 
 }
 
 .goods-detail-bottom span {
     display: inline-block;
     float: right;
-    width: 80%;
-    text-indent: 1rem;
+    width: 77%;
+
 }
 
 .goods-detail-bottom img {
@@ -379,7 +379,7 @@
 }
 
 .goods-detail-button {
-    margin: 1rem auto;
+    margin: 1rem 0  2rem 0;
     text-align: center;
 }
 
@@ -794,7 +794,6 @@
 }
 
 .goods-info {
-    width: 9rem;
     float: left;
     padding: 1rem .5rem 1rem;
 }
@@ -959,12 +958,9 @@
 
 .consignment-bottom {
     padding-top: 1rem;
-    padding-bottom: 4rem;
-    display: block;
+    margin: 0 auto;
     font-size: 1.4rem;
     text-align: center;
-    width: 100%;
-    height: 4rem;
 }
 
 .release a {
@@ -1188,18 +1184,21 @@
 /*绑定手机*/
 
 .bind-top {
-    max-width: 64rem;
+    max-width: 32rem;
     margin: 0 auto;
-    padding-top: 7rem;
+    padding: 7rem 1rem;
+    text-align: center;
 }
 
 .bind-top p {
+
     font-size: 1.4rem;
     color: #333;
     line-height: 3rem;
 }
 
 .bind-top input {
+    float: left;
     width: 74%;
     height: 2.5rem;
     margin: 1rem 0 0.3rem 0;
@@ -1208,6 +1207,7 @@
 }
 
 .bind-top .bind-right-button {
+    margin-top: 1rem;
     font-size: 1.4rem;
     color: #fff;
     background-color: #0099ff;
@@ -1217,7 +1217,7 @@
 }
 
 .submit {
-    margin: 0 auto;
+    margin: 2rem 0 0;
     height: 3rem;
     font-size: 1.4rem;
     background-color: #0099ff;
@@ -1230,18 +1230,19 @@
 
 /*订单*/
 .order {
-    max-width: 32rem;
+
     margin: 0 auto;
     padding: 1rem;
 }
 
 .order-box {
-    margin-top: 1rem;
+
     position: relative;
     border-top: .1rem solid #eee;
 }
 
 .unpaid-txt {
+    padding-top: .5rem;
     background: #fff;
     font-size: 1.3rem;
     line-height: 1.5rem;
