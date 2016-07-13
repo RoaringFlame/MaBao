@@ -40,20 +40,19 @@ $(function () {
                     url: "/cart/deleteGoods/" + cartId,
                     type: 'DELETE',
                     success: function () {
-                        alert("OK");
-                        delItem.remove();                //删除购物车商品
+                        delItem.remove();          //删除购物车商品
+                        setTotal();                //点击删除按钮后重新计算总价
                     }
-                });
-                setTotal();                              //删除按钮后重新计算总价
             });
-            setTotal();
-            initEdit();
+            });
+            setTotal();                      //计算总价
+            initEdit();                      //编辑按钮初始化
         }, "json");
     }
 
     //编辑按钮事件
     function initEdit() {
-        main.find(".goods-del").hide();                      //点击编辑，删除按钮出现
+        main.find(".goods-del").hide();                              //点击编辑，删除按钮出现
         editBtn.text("编辑");
         editBtn.click(function(){
             if (editBtn.text() == "编辑") {
@@ -90,18 +89,6 @@ $(function () {
     function init() {
         //购物车商品初始化
         getGoods();
-        //编辑按钮
-        //var edit = $("div.header-box").find(".header-right");
-        //edit.click(function () {
-        //    if (edit.text() == "编辑") {
-        //        main.find(".goods-del").show();                    //点击编辑，删除按钮出现
-        //        edit.text("完成");                                 //编辑按钮变成完成
-        //    }
-        //    else {
-        //        main.find(".goods-del").hide();                   //点击完成，删除按钮隐藏
-        //        edit.text("编辑");                                //完成按钮变成编辑
-        //    }
-        //});
         //付款按钮
         $(".pay").click(function () {
             var cart = main.find("div.cartId");

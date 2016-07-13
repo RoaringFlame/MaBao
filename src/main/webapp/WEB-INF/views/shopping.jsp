@@ -86,7 +86,7 @@
     <!--付款按钮-->
     <div class="up-to-pay">
         <ul>
-            <li>总计&nbsp;:&nbsp;<b>￥131.00</b></li>
+            <li>总计&nbsp;:&nbsp;<b>￥0.00</b></li>
             <li>
                 <!--<a href="pay.html">-->
                 <button class="pay" type="submit">付款</button>
