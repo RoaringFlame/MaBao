@@ -40,8 +40,26 @@ public class UserCenterController {
      */
     @RequestMapping(value ="/address/userAllAddress",method = GET)
     public String userAllAddress(Model model){
-        List<Address> addressList=this.addressService.findUserAllAddress(UserManager.getUser().getId());
-        model.addAttribute("addressList",addressList);
+        User user = UserManager.getUser();
+        if (user != null) {
+            List<Address> addressList = this.addressService.findUserAllAddress(user.getId());
+            model.addAttribute("addressList", addressList);
+            return "address";
+        }else {
+            return "login";
+        }
+    }
+
+    /**
+     * 查某个收货地址详情
+     * @param addressId             收货地址ID
+     * @param model                 地址对象
+     * @return                      收货地址页
+     */
+    @RequestMapping(value ="/address/getAddress",method = GET)
+    public String getAddress(Long addressId,Model model){
+        Address address=this.addressService.get(addressId);
+        model.addAttribute("addressList",address);
         return "address";
     }
 
@@ -52,6 +70,7 @@ public class UserCenterController {
      */
     @RequestMapping(value ="/address/addAddress",method = POST)
     public String addAddress(Address address){
+        address.setUser(UserManager.getUser());
         Address result=this.addressService.addAddress(address);
         if (result != null){
             return "redirect:address/allAddress";
@@ -66,6 +85,7 @@ public class UserCenterController {
      */
     @RequestMapping(value = "/address/updateAddress",method = POST)
     public String updateAddress(Address address,Model model){
+//        address.setUser(UserManager.getUser());
         Address result=this.addressService.updateAddress(address);
         if (result != null){
             return "redirect:address/allAddress";
@@ -93,7 +113,7 @@ public class UserCenterController {
      */
     @RequestMapping(value = "baby/showBabyInfo",method = GET)
     public String showBabyInfo(@RequestParam Long babyId,Model model){
-        Baby baby =  this.babyService.getOne(babyId);
+        Baby baby =  this.babyService.get(babyId);
         if (baby != null){
             model.addAttribute("baby",baby);
             return "redirect:baby/changemsg";
@@ -105,16 +125,19 @@ public class UserCenterController {
 
     /**
      * 查看某用户宝宝信息
-     * @param userId                    用户ID
      * @param model                     宝宝LIST
      * @return                          宝宝信息页
      */
     @RequestMapping(value = "baby/allBabyInfo",method = GET)
-    public String findAllBabyInfo(@RequestParam Long userId,Model model){
-        List<Baby> babyList =  this.babyService.findBabyByUserId(userId);
-        model.addAttribute("babyList",babyList);
-        return "redirect:baby/permsg";
-
+    public String findAllBabyInfo(Model model){
+        User user = UserManager.getUser();
+        if (user != null) {
+            List<Baby> babyList = this.babyService.findBabyByUserId(user.getId());
+            model.addAttribute("babyList", babyList);
+            return "redirect:baby/permsg";
+        }else {
+            return "login";
+        }
     }
 
     /**
