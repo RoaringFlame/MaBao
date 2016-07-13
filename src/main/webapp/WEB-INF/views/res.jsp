@@ -37,7 +37,7 @@
     </header>
     <!--标题 END-->
 
-    <form class="register-box">
+    <div class="register-box">
         <label for="userName">账户名：
             <input type="text" name="username" id="userName">
         </label>
@@ -55,10 +55,10 @@
         <!--注册成功跳转到登陆页面-->
         <!-- 注册按钮 -->
         <a class="button-bottom">
-            <button type="submit" class="submit" id="up-to-login">注册</button>
+            <button type="button" class="submit" id="up-to-login">注册</button>
         </a>
         <!-- 注册按钮END -->
-    </form>
+    </div>
 
 </div>
 </body>
