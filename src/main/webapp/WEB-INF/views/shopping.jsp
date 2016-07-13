@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../../css/module.css">
     <script src="../../script/lib/jquery.1.10.2.js"></script>
     <script src="../../script/shopping.js"></script>
+    <script src="../../script/common.js"></script>
 </head>
 
 <body>
