@@ -4,8 +4,12 @@ import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.User;
 import com.mabao.repository.UserRepository;
 import com.mabao.service.UserService;
+import com.mabao.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
+
 
 import java.util.Date;
 
@@ -42,16 +46,28 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public JsonResultVO userRegister(String userName, String password, String email) {
-        try {
+        User isUser = this.userRepository.findByName(userName);
+        if (isUser !=null){
+            return new JsonResultVO(JsonResultVO.FAILURE, "该用户名已被注册");
+        }else if (this.userRepository.findByEmail(email) != null) {
+            return new JsonResultVO(JsonResultVO.FAILURE, "该邮箱已被使用");
+        }else {
             User user = new User();
             user.setName(userName);
-            user.setPassword(password);
+            user.setPassword(MD5.getMD5ofStr(password));
             user.setEmail(email);
             user.setCreateTime(new Date());
             this.userRepository.save(user);
             return new JsonResultVO(JsonResultVO.SUCCESS, "注册成功");
-        }catch (Exception e){
-            return new JsonResultVO(JsonResultVO.FAILURE, "注册失败");
         }
+    }
+    /**
+     * 修改用户信息
+     * @param user                  用户
+     * @return                      修改的用户
+     */
+    @Override
+    public User updateUser(User user) {
+        return this.userRepository.saveAndFlush(user);
     }
 }

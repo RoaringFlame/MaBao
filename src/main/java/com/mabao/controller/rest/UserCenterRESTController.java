@@ -11,10 +11,7 @@ import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,7 +21,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 /**
  * 用户模块
  */
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserCenterRESTController {
     @Autowired
@@ -38,7 +35,7 @@ public class UserCenterRESTController {
      * @return                      收货地址页
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public JsonResultVO deleteShoppingCartGoods(@RequestParam String userName,
+    public JsonResultVO userRegister(@RequestParam String userName,
                                                 @RequestParam String password,
                                                 @RequestParam String email) {
         return this.userService.userRegister(userName,password,email);
