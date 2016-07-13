@@ -7,23 +7,22 @@ import com.mabao.controller.vo.HomeInitVO;
 import com.mabao.enums.Gender;
 import com.mabao.pojo.Baby;
 import com.mabao.pojo.Goods;
+import com.mabao.pojo.User;
 import com.mabao.service.BabyService;
 import com.mabao.service.BannerService;
+import com.mabao.service.GoodsService;
 import com.mabao.service.GoodsTypeService;
 import com.mabao.util.PageVO;
-import com.mabao.service.GoodsService;
 import com.mabao.util.Selector;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 
 @RestController
@@ -53,9 +52,12 @@ public class HomeRESTController {
         List<BannerVO> smallBanner =BannerVO.generateBy(this.bannerService.findByStatusOrderBySortDesc(true));
         homeInitVO.setSmallBanner(smallBanner);
         //猜你喜欢，宝宝信息
-        Baby baby = this.babyService.findBabyByUserId(UserManager.getUser().getId()).get(0);
-        if (baby != null) {
-           homeInitVO.setBaby(BabyVO.generateBy(baby));
+        User user = UserManager.getUser();
+        if (user != null){
+            Baby baby = this.babyService.findBabyByUserId(user.getId()).get(0);
+            if (baby != null) {
+                homeInitVO.setBaby(BabyVO.generateBy(baby));
+            }
         }
         //猜你喜欢，宝宝性别
         List<Selector> gender = Gender.toList();
@@ -70,7 +72,7 @@ public class HomeRESTController {
      * @return                  商品
      */
     @RequestMapping(value = "/goodsSearch", method = RequestMethod.GET)
-    public PageVO<GoodsVO> goodsSearch(@RequestParam(required = false) Long goodsTypeId,
+    public PageVO<GoodsVO> goodsSearch(@RequestParam(value = "goodsTypeId",required = false) Long goodsTypeId,
                               @RequestParam(value = "searchKey",required = false) String searchKey,
                               @RequestParam(value = "page", defaultValue = "0") int page,
                               @RequestParam(value = "pageSize", defaultValue = "4") int pageSize) {
@@ -113,7 +115,7 @@ public class HomeRESTController {
      * @param pageSize              一页大小
      * @return                      商品集合，分页
      */
-    @RequestMapping(value = "/goodsGuess/baby/{babyId}",method = RequestMethod.GET)
+    /*@RequestMapping(value = "/goodsGuess/baby/{babyId}",method = RequestMethod.GET)
     public PageVO<GoodsVO> goodsListGuessByBaby(@PathVariable Long babyId,
                                           @RequestParam(value = "page", defaultValue = "0")int page,
                                           @RequestParam(value = "pageSize", defaultValue = "4") int pageSize) {
@@ -123,5 +125,5 @@ public class HomeRESTController {
         voPage.setItems(GoodsVO.generateBy(goodsPage.getContent()));
         return voPage;
     }
-
+*/
 }
