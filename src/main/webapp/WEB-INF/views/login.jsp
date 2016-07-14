@@ -1,7 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
+
     <meta charset="UTF-8">
     <title>登陆</title>
     <meta name="viewport"
@@ -13,8 +19,8 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../css/master.css">
-    <link rel="stylesheet" href="../../css/module.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/module.css">
 </head>
 
 <body>
@@ -35,7 +41,7 @@
     </header>
     <!--标题 END-->
     <!-- 登陆表单 -->
-    <form class="login-box" action="/login" method="POST">
+    <form class="login-box" action="login" method="POST">
         <!-- 校验提示 -->
         <c:if test="${not empty error}">
         <p class="warning">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
@@ -50,8 +56,8 @@
         <button name="sumbit" type="submit">登陆</button>
         <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
         <!-- 登陆按钮END -->
-        <a href="findpwd.html" class="login-right">忘记密码</a>
-        <a href="res.html" class="login-bottom">免费注册</a>
+        <a href="/MaBao/findpwd" class="login-right">忘记密码</a>
+        <a href="res" class="login-bottom">免费注册</a>
     </form>
     <!-- 登陆表单END -->
 </div>
