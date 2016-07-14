@@ -52,7 +52,7 @@
 				<p>${defaultAddress.location}</p>
 			</div>
 		</div>
-		<a href="/jsp/chadd">
+		<a href="/user/address/updateAddress">
 			<button class="add-jump-arrow"></button>
 		</a>
 	</div>
@@ -70,7 +70,7 @@
 	<!-- 购买订单END -->
 
 	<ul class="lists">
-		<li>共计1件商品&nbsp;小计：<b>￥${checkedGoodsList.}</b></li>
+		<li>共计1件商品&nbsp;小计：<b>￥${checkedGoodsList.sum}</b></li>
 		<li><span>快递费</span> <span><b>￥${freight}</b></span></li>
 	</ul>
 	</c:forEach>

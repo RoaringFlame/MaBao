@@ -32,17 +32,17 @@
 		<!--操作按钮 END-->
 	</header>
 	<!--标题 END-->
-	<section class="message1">
-		<p>您的寄售已经提交</p>
-	</section>
-	<section class="message2">
+	<!--发布成功提示-->
+	<div class="publish-success-box">
+		<p>您的寄售已经提交！</p>
 		<p>请您收拾好想要寄售的物品</p>
 		<p>两个工作日内，我们会安排快递公司上门取件</p>
 		<p>请保持电话畅通哦～</p>
-	</section>
-	<section class="go-search">
-		<input type="button" name="go" id="go" value="去逛逛" href="/">
-	</section>
+		<a href="/" class="share-bottom">
+			<button>去逛逛</button>
+		</a>
+		<!--发布成功提示END-->
 	</div>
+</div>
 </body>
 </html>
