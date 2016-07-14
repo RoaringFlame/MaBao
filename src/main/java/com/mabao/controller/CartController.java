@@ -41,16 +41,23 @@ public class CartController {
     /**
      * 添加商品到购物车
      * @param goodsId       商品ID
+     * @param jump          是否跳转：true跳转至购物车页面，false留在详情页面
      * @param model         商品list
      * @return              购物车页
      */
     @RequestMapping(value = "/cartAddGoods",method = GET)
-    public String shoppingCarGoodsAdd(@RequestParam Long goodsId,Model model){
+    public String shoppingCarGoodsAdd(@RequestParam Long goodsId,
+                                      @RequestParam Boolean jump,
+                                      Model model){
         User user = UserManager.getUser();
         if (user != null){
             String result = this.cartService.addCartGoods(goodsId, user);
-            model.addAttribute("result",result);
-            return "detail";
+            if (jump){
+                return "redirect:cart/showCart";
+            }else {
+                model.addAttribute("result",result);
+                return "detail";
+            }
         }else {
             return "login";
         }
