@@ -32,7 +32,7 @@ public class CartController {
     @Autowired
     private AddressService addressService;
 
-    @RequestMapping(method = GET)
+    @RequestMapping(value = "/index",method = GET)
     public String cartIndex(){
         return "shopping";
     }
