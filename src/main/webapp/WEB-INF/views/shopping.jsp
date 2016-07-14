@@ -35,15 +35,15 @@
         <!--操作按钮-->
         <div class="header-box">
             <a href="/">
-                <button class="header-left">
+                <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </button>
+                </p>
             </a>
             <!--点击编辑出现删除商品按钮-->
-            <button class="header-right">
+            <p class="header-right">
                 编辑
-            </button>
+            </p>
         </div>
         <!--操作按钮 END-->
     </header>
@@ -110,7 +110,7 @@
         <a href="/jsp/consignment">
             <i class="icon-menu icon-menu3"><img src="../../img/footer-3.png" alt=""></i>
         </a>
-        <a href="/cart/showCart" id="shopping">
+        <a href="/cart/index" id="shopping">
             <i class="icon-menu icon-menu4"><img src="../../img/footer-4.png" alt=""></i>
         </a>
         <a href="/jsp/personal">
