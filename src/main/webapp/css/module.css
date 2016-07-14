@@ -384,7 +384,21 @@
     background: #0099FF;
     margin: 1rem auto;
 }
-
+.tip{
+    position: absolute;
+    left: 7.7rem;
+    top: 18rem;
+    margin: 0 auto;
+    width: 16rem;
+    height: 4rem;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 4rem;
+    background: #333;
+    opacity: .8;
+    color: #FF9933;
+    border-radius: 1rem;
+}
 /*付款页面*/
 .box {
     width: 32rem;
