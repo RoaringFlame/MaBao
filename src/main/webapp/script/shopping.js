@@ -1,7 +1,7 @@
 "use strict";
 $(function () {
     var main = $("#container");                      //商品列表容器
-    var payForm = $("#frmPay");                      //存储要购买的商品cartId和num
+    var payForm = $("#frmPay");                      //存储要购买的商品cartId
     var editBtn = $("div.header-box").find(".header-right");
     //获取商品信息
     function getGoods() {
@@ -83,9 +83,9 @@ $(function () {
     }
 
     //付款
-    function pay(cartAndNum) {
-        payForm.find("input[name='cartAndNum']").val(cartAndNum);                   //给表单中的input赋值
-        payForm.submit();                                                           //提交表单
+    function pay(cartId) {
+        payForm.find("input[name='cartAndNum']").val(cartId);                   //给表单中的input赋值字符串
+        payForm.submit();                                                       //提交表单
     }
 
     function init() {
@@ -93,17 +93,14 @@ $(function () {
         getGoods();
         //付款按钮
         $(".pay").click(function () {
-            var cart = main.find("div.cartId");
-            var cartAndNum = "";                                                               //存储cartId和num
-            cart.each(function (index) {
+            var cartId ="";                         //存储cartId
+            main.find("div.cartId").each(function (index) {
                 if (main.find(".select").eq(index).is(':checked')) {
-                    var id = $(this).text();                                                  //获取cartId
-                    var num = parseInt($(this).nextAll(".shopping-cart").find("p").text());   //获取num
-                    cartAndNum += id + "-" + num + ",";                                        //以“1-1，2-1，3-1”形式存储cartId和num
+                    var id = $(this).text();                                     //获取cartId
+                    cartId +=","+ id ;                                            //以“1,2,3”形式存储cartId
                 }
             });
-            cartAndNum = cartAndNum.substring(0, cartAndNum.length - 1);
-            pay(cartAndNum);
+            pay(cartId);
         });
     }
 
