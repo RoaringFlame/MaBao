@@ -1,4 +1,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,8 +44,10 @@
             <div>
                 <p>${goodsDetail.brandName}</p>
                 <p>
-                    <span>￥<fmt:formatNumber type="number" value="${goodsDetail.price}" pattern="0.00" maxFractionDigits="2"/>元</span
-                    <span>原价：<fmt:formatNumber type="number" value="${goodsDetail.oldPrice}" pattern="0.00" maxFractionDigits="2"/>元</span>
+                    <span>￥<fmt:formatNumber type="number" value="${goodsDetail.price}" pattern="0.00"
+                                             maxFractionDigits="2"/>元</span
+                    <span>原价：<fmt:formatNumber type="number" value="${goodsDetail.oldPrice}" pattern="0.00"
+                                               maxFractionDigits="2"/>元</span>
                 </p>
             </div>
         </div>
@@ -90,7 +93,9 @@
             </p>
             <div class="clear"></div>
             <p>宝物图片:</p>
-            <img src="/upload/${goodsDetail.pictureList}" alt="">
+            <c:forEach items="${goodsDetail.pictureList}" var="goodsPicture">
+                <img src="/upload/${goodsPicture}" alt="">
+            </c:forEach>
         </div>
 
         <!--卖家分享END-->
