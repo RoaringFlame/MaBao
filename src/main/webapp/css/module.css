@@ -38,7 +38,7 @@
     width: 85%;
 }
 
-.search-input button {
+.search-input p {
     position: absolute;
     left: 5rem;
     top: 0;
@@ -1157,8 +1157,9 @@
 }
 
 .button-bottom {
-    display: block;
-    margin: 4rem auto;
+    margin: 0 auto;
+    width: 80%;
+    display:block;
     text-align: center;
 }
 
@@ -1198,12 +1199,12 @@
 }
 
 .submit {
-    margin: 2rem 0 0;
+    margin:0 auto;
     height: 3rem;
     font-size: 1.4rem;
     background-color: #0099ff;
     color: #fff;
-    width: 90%;
+    width: 100%;
     text-align: center;
     line-height: 3rem;
     border-radius: .4rem;
@@ -1392,13 +1393,12 @@
     display: block;
     margin: 0 auto;
     text-align: center;
-    padding-bottom: 6rem;
-    padding-top: 1rem;
+    width: 80%;
 }
 
 .personal-center-button button {
 
-    width: 80%;
+    width: 100%;
     height: 3rem;
     font-size: 1.4rem;
     color: #fff;
