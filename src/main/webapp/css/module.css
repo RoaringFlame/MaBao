@@ -247,6 +247,7 @@
     color: #fff;
     font-size: 1.3rem;
 }
+
 .icon-menu {
     display: block;
     width: 2rem;
@@ -324,21 +325,25 @@
 
     color: #F0292B;
 }
-.goods-detail-content{
+
+.goods-detail-content {
     margin: 0 auto;
     padding: 0 1rem;
     font-size: 1.3rem;
     line-height: 2.5rem;
 
 }
-.goods-detail-content p:nth-child(3),.goods-detail-content p:nth-child(5){
+
+.goods-detail-content p:nth-child(3), .goods-detail-content p:nth-child(5) {
     width: 45%;
     float: left;
 }
-.goods-detail-content p:nth-child(4),.goods-detail-content p:nth-child(6){
+
+.goods-detail-content p:nth-child(4), .goods-detail-content p:nth-child(6) {
     width: 55%;
     float: left;
 }
+
 .goods-detail-bottom {
     font-size: 1.3rem;
     margin: 0 auto;
@@ -360,7 +365,7 @@
 }
 
 .goods-detail-button {
-    margin: 1rem 0  2rem 0;
+    margin: 1rem 0 2rem 0;
     text-align: center;
 }
 
@@ -384,7 +389,8 @@
     background: #0099FF;
     margin: 1rem auto;
 }
-.tip{
+
+.tip {
     position: absolute;
     left: 7.7rem;
     top: 18rem;
@@ -399,6 +405,7 @@
     color: #FF9933;
     border-radius: 1rem;
 }
+
 /*付款页面*/
 .box {
     width: 32rem;
@@ -1104,7 +1111,6 @@
     width: 75%;
 }
 
-
 .login-right {
     height: 3rem;
     float: right;
@@ -1160,7 +1166,7 @@
 .button-bottom {
     margin: 0 auto;
     width: 88%;
-    display:block;
+    display: block;
     text-align: center;
 }
 
@@ -1200,7 +1206,7 @@
 }
 
 .submit {
-    margin:0 auto;
+    margin: 0 auto;
     height: 3rem;
     font-size: 1.4rem;
     background-color: #0099ff;
@@ -1259,10 +1265,12 @@
     padding-right: 1rem;
     color: red;
 }
-.order-box-left span{
-    padding-right:1rem;
-    color:#000;
+
+.order-box-left span {
+    padding-right: 1rem;
+    color: #000;
 }
+
 .order .order-bottom {
     clear: both;
     padding: 1rem;
@@ -1561,31 +1569,26 @@
 
 /*宝宝信息*/
 
-.person-msg li {
-    height: 3.6rem;
-    line-height: 3.6rem;
-    margin-top: 1rem;
+.person-msg {
+    margin: 0 auto;
+    padding: 4rem 1rem 1rem;
+    max-width: 32rem;
+    text-align: center;
 }
 
 .person-msg label {
-    width: 7rem;
-    padding: 0 0.5rem 0 1rem;
-    float: left;
-    height: 2.4rem;
-    line-height: 2.4rem;
-    margin-top: 1rem;
-    font-size: 1.3rem;
+
+    margin: 0 auto;
+    display: block;
+    height: 4rem;
+    padding: 0 2rem;
+    text-align: right;
+    font-size: 1.4rem;
 }
 
-.person-msg input {
-    height: 2.4rem;
-    line-height: 2.4rem;
-    margin-top: 1rem;
-    width: 22rem;
-    float: left;
-    font-size: 1.3rem;
-    text-indent: 1rem;
-    display: block;
+.person-msg input, .person-msg select {
+    height: 2.5rem;
+    width: 70%;
 }
 
 .person-button {
@@ -1606,49 +1609,3 @@
     background: #E70C2D;
     border-radius: 0.6rem;
 }
-
-/*宝宝信息*/
-.top select {
-    width: 75%;
-    height: 2.8rem;
-    margin: 1rem 0 0.3rem 0;
-    font-size: 1.4rem;
-    text-indent: .5rem;
-    border: .2rem solid #eee;
-    border-radius: .4rem;
-}
-
-.top select option {
-    width: 75%;
-    border-style: none;
-}
-
-.bottom1 p {
-    width: 60%;
-    height: 3rem;
-    font-size: 1.4rem;
-    color: #fff;
-    background-color: #dc264d;
-    margin: 0 auto;
-    padding-top: 1rem;
-    text-align: center;
-    line-height: 3rem;
-    border-radius: .4rem;
-}
-
-.bb {
-    background: url(../img/u14.png) no-repeat 2% center;
-}
-
-/*修改个人信息*/
-.person-msg select {
-    width: 22.2rem;
-    height: 2.4rem;
-    line-height: 2.4rem;
-    font-size: 1.3rem;
-    margin-top: 1rem;
-}
-
-
-
-
