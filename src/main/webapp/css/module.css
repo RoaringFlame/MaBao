@@ -1609,3 +1609,20 @@
     background: #E70C2D;
     border-radius: 0.6rem;
 }
+
+.error {
+    margin: 0 auto;
+    padding-top: 6rem;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #039be5;
+}
+
+.error img {
+    width: 16rem;
+    height: 12rem;
+    margin: 0 auto;
+    padding:2rem 0;
+    display: block
+}
