@@ -34,7 +34,7 @@
     </header>
     <!--标题 END-->
     <!-- 编辑收货地址 -->
-    <form action="">
+    <form id="edit-add" action="">
         <div class="edit-add-box">
             <p class="p-tit">请填写您的地址及电话，我们会安排上门收货</p>
             <label>
@@ -55,27 +55,27 @@
             <div class="clear"></div>
         </div>
         <!-- 清楚浮动 -->
-        <!--服务条款-->
-        <label class="terms">
-            <textarea name="terms" cols="30" rows="10">
-服务条款
-            </textarea>
-        </label>
-        <!-- 清楚浮动 -->
-        <div class="clear"></div>
-        <label class="terms">
-            <input type="checkbox" checked="checked">
-            <span class="agree">我同意寄售服务条款</span>
-        </label>
-        <!--服务条款END-->
-        <div class="edit-add-input ">
-            <!-- 保存按钮 -->
-            <label>
-                <input class="disabled" type="button" value="提交" onclick=window.location.href="consignment_success.html">
-            </label>
-            <!-- 保存按钮END -->
-        </div>
     </form>
+    <!--服务条款-->
+    <label class="terms">
+            <textarea name="terms" cols="30" rows="10">服务条款
+
+            </textarea>
+    </label>
+    <!-- 清楚浮动 -->
+    <div class="clear"></div>
+    <label class="terms">
+        <input type="checkbox" checked="checked">
+        <span class="agree">我同意寄售服务条款</span>
+    </label>
+    <!--服务条款END-->
+    <div class="edit-add-input ">
+        <!-- 保存按钮 -->
+        <label>
+            <input class="disabled" type="submit" value="提交"  form="edit-add"  >//跳转到寄售成功页面
+        </label>
+        <!-- 保存按钮END -->
+    </div>
     <!-- 编辑收货地址END -->
 </div>
 </body>
