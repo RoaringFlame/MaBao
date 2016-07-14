@@ -1,12 +1,13 @@
 package com.mabao.controller.rest;
 
-import com.mabao.controller.vo.GoodsVO;
+import com.mabao.controller.vo.CartGoodsVO;
 import com.mabao.controller.vo.JsonResultVO;
-import com.mabao.pojo.Goods;
+import com.mabao.pojo.Cart;
+import com.mabao.pojo.User;
 import com.mabao.service.CartService;
-import com.mabao.util.PageVO;
+import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,16 +21,29 @@ public class CartRESTController {
     @Autowired
     private CartService cartService;
 
-    public static final Long userId = 1L;
+
     /**
-     * 用户购物车中商品列表
-     * @return                  商品list
+     * 查看购物车
+     * @return              购物车页
      */
-    @RequestMapping( method = RequestMethod.GET)
-    public List<GoodsVO> findUserCartGoods() {
-        //查询该用户购物车剩余商品
-        List<Goods> goodsList = this.cartService.findAllGoodsByUser(userId);
-        return GoodsVO.generateBy(goodsList);
+    @RequestMapping(value = "/showCart",method = RequestMethod.GET)
+    public List<CartGoodsVO> showUserCart(){
+        List<Cart> cartGoods = this.cartService.findAllGoodsByUser(UserManager.getUser().getId());
+        return CartGoodsVO.generateBy(cartGoods);
+    }
+
+    /**
+     * 修改购物车内某商品数量
+     * @param cartId        购物车ID
+     * @param opt           操作：1加2减
+     * @param num           数量
+     * @return              JsonResultVO
+     */
+    @RequestMapping(value = "/changeNum/{cartId}",method = RequestMethod.GET)
+    public JsonResultVO changeCartGoodsNum(@PathVariable Long cartId,
+                                           @RequestParam Integer opt,
+                                           @RequestParam(required = false,defaultValue = "1") Integer num){
+        return this.cartService.changeCartGoodsNum(cartId,opt,num);
     }
 
     /**
@@ -39,7 +53,6 @@ public class CartRESTController {
      */
     @RequestMapping(value = "/deleteGoods/{cartId}", method = RequestMethod.DELETE)
     public JsonResultVO deleteShoppingCartGoods(@PathVariable Long cartId) {
-        //移除购物车内商品，查询该用户购物车剩余商品
         return this.cartService.deleteCartGoods(cartId);
     }
 }

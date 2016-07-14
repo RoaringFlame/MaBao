@@ -57,7 +57,7 @@ public class GoodsBrand {
     public void setPicture(String picture) {
         this.picture = picture;
     }
-
+    @Column(name = "brand_name")
     public String getBrandName() {
         return brandName;
     }

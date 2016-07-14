@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class AppWideExceptionHandler {
 
-    @ExceptionHandler(RuntimeException.class)
-    public String runtimeExceptionHandler(){
-        return "error/runtime";
+    @ExceptionHandler(NullPointerException.class)
+    public String nullPointerExceptionHandler(){
+        return "login";
     }
 }
