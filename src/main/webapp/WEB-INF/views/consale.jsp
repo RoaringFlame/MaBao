@@ -34,29 +34,55 @@
 		<!--操作按钮 END-->
 	</header>
 	<!--标题 END-->
-	<!-- 绑定手机表单 -->
-	<section class="container">
-		<p class="p-tit">请填写您的地址及电话，我们会安排上门收货</p>
-		<form method="post">
-		<section class="msg-sale">
-			<input type="text" placeholder="收件人" name="">
-			<input type="text" placeholder="手机号" name="tel">
-			<input type="text" placeholder="所在地" name="">
-			<input type="text" placeholder="详细地址" name="">
-		</section>
-		<section class="server">
-			<div class="terms">
-				<p >寄售服务条款</p>
-				<p >
-					哈哈哈哈哈哈哈哈哈哈哈</p>
-			</div>
-			<p><input type="checkbox" checked="true"><span class="agree">我同意寄售服务条款</span></p>
-		</section>
+	<!-- 编辑收货地址 -->
+	<form action="/sell/receiptPlaceAdd" method="post" modelAttribute="address">
+		<div class="edit-add-box">
+			<p class="p-tit">请填写您的地址及电话，我们会安排上门收货</p>
+			<label>
+				<input path="recipients" type="text" placeholder="收件人：">
+			</label>
+			<label>
+				<input path="tel" type="text" placeholder="手机号：">
+			</label>
+			<label>
+				<input path="area" type="text" placeholder="所在地：">
+			</label>
+			<!-- 省市级联地址插件 -->
+			<div id="test"></div>
+			<!-- 省市级联地址插件END -->
+			<label>
+				<input path="location" type="text" class="write" placeholder="详细地址：">
+			</label>
+			<div class="clear"></div>
+		</div>
+		<!-- 清楚浮动 -->
+		<!--服务条款-->
+		<label class="terms">
+            <textarea name="terms" cols="30" rows="10">
+服务条款
+            </textarea>
+		</label>
+		<!-- 清楚浮动 -->
 		<div class="clear"></div>
-		<section class="up">
-			<input type="button" value="提交" onclick=window.location.href="/jsp/consignment_success">
-		</section>
-	</section>
-	</div>
+		<label class="terms">
+			<input type="checkbox" checked="checked">
+			<span class="agree">我同意寄售服务条款</span>
+		</label>
+		<!--服务条款END-->
+		<div class="edit-add-input ">
+			<!-- 保存按钮 -->
+			<label>
+				<input class="disabled" type="submit" value="提交" >
+			</label>
+			<!-- 保存按钮END -->
+		</div>
+	</form>
+	<!-- 编辑收货地址END -->
+</div>
 </body>
 </html>
+
+<script src="../../script/lib/jquery.1.10.2.js" type="text/javascript"></script>
+<script src="../../script/lib/jquery.provincesCity.js" type="text/javascript"></script>
+<script src="../../script/lib/provinces-data.js" type="text/javascript"></script>
+<script src="../../script/lib/bootstrap/bootstrap.min.js"></script>

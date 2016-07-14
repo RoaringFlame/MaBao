@@ -5,9 +5,10 @@ $(function () {
     var editBtn = $("div.header-box").find(".header-right");
     //获取商品信息
     function getGoods() {
-        MB.sendAjax("get","/cart/showCart", {}, function (data) {
+        $.get("/cart/showCart", {}, function (data) {
+            console.log(data);
             $(data).each(function (index, goods) {
-                console.log(data);
+                //console.log(data);
                 var newGoods = $("#goodsContainer").find("div.main-item").clone();             //克隆goodsContainer中商品信息
                 newGoods.find("div.cartId").text(goods.id);                                    //从后台获取cartId
                 newGoods.find("img").attr("src", "../upload/" + goods.picture);                //从后台获取picture
@@ -15,7 +16,7 @@ $(function () {
                 newGoods.find("div.goods-info").find("p:eq(1)").text(goods.size);              //从后台获取size
                 newGoods.find("div.goods-info").find("p:eq(2)").text("￥" + goods.price);      //从后台获取price
                 main.append(newGoods);                                                         //在main中加入商品信息
-            });
+            },"json");
             //复选框事件
             main.find(".select")
                 .attr("checked", true)        //默认全选
@@ -48,7 +49,7 @@ $(function () {
             });
             setTotal();                      //计算总价
             initEdit();                      //编辑按钮初始化
-        }, "json");
+        });
     }
 
     //编辑按钮事件
@@ -97,9 +98,10 @@ $(function () {
             main.find("div.cartId").each(function (index) {
                 if (main.find(".select").eq(index).is(':checked')) {
                     var id = $(this).text();                                     //获取cartId
-                    cartId +=","+ id ;                                            //以“1,2,3”形式存储cartId
+                    cartId += id+"," ;                                            //以“1,2,3”形式存储cartId
                 }
             });
+            cartId.substring(0,cartId.length-1);
             pay(cartId);
         });
     }
