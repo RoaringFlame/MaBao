@@ -7,6 +7,7 @@ import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.BabyService;
 import com.mabao.service.UserService;
+import com.mabao.util.MD5;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,5 +40,15 @@ public class UserCenterRESTController {
                                                 @RequestParam String password,
                                                 @RequestParam String email) {
         return this.userService.userRegister(userName,password,email);
+    }
+
+    /**
+     * 修改密码
+     * @param password              新密码
+     * @return                      登录页
+     */
+    @RequestMapping(value ="/passwordChange",method = RequestMethod.GET)
+    public JsonResultVO passwordChange(@RequestParam String password){
+        return this.userService.changePassword(password);
     }
 }

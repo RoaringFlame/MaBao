@@ -30,7 +30,6 @@ public class GoodsDetailVO {
 
     public static GoodsDetailVO generateBy(Goods goods){
         GoodsDetailVO vo = VoUtil.copyBasic(GoodsDetailVO.class, goods);
-        //将数据库里用数据存储的新旧状态转换为对应string的描述语言
         assert vo != null;
         vo.setNewDegree(goods.getNewDegree().getText());
         vo.setSize(goods.getSize().getName());

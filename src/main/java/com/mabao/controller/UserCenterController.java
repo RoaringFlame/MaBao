@@ -5,13 +5,12 @@ import com.mabao.pojo.Baby;
 import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.BabyService;
-import com.mabao.service.UserService;
+import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.List;
 
@@ -20,47 +19,42 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * 用户模块
- * Created by maxu on 2016/7/1.
  */
 @Controller
 @RequestMapping("/user")
-@SessionAttributes("userId")
 public class UserCenterController {
     @Autowired
     private AddressService addressService;
     @Autowired
     private BabyService babyService;
-    @Autowired
-    private UserService userService;
-
-    /**
-     * 用户登录
-     * @param user              用户对象
-     * @param model             用户ID
-     * @return                  首页
-     */
-    @RequestMapping(value ="/login",method = POST)
-    public String userLogin(@RequestParam User user, Model model){
-        User result = this.userService.findByNameAndPassword(user.getName(),user.getPassword());
-        if (result != null){
-            model.addAttribute("userId",result);
-            return "index";
-        }else {
-            return "login_failure";
-        }
-    }
-
 
     /**
      * 该用户所有收货地址
-     * @param userId                用户ID
      * @param model                 地址list
      * @return                      收货地址页
      */
-    @RequestMapping(value ="/address/allAddress",method = GET)
-    public String allAddress(Long userId,Model model){
-        List<Address> addressList=this.addressService.findAllAddress(userId);
-        model.addAttribute("addressList",addressList);
+    @RequestMapping(value ="/address/userAllAddress",method = GET)
+    public String userAllAddress(Model model){
+        User user = UserManager.getUser();
+        if (user != null) {
+            List<Address> addressList = this.addressService.findUserAllAddress(user.getId());
+            model.addAttribute("addressList", addressList);
+            return "address";
+        }else {
+            return "login";
+        }
+    }
+
+    /**
+     * 查某个收货地址详情
+     * @param addressId             收货地址ID
+     * @param model                 地址对象
+     * @return                      收货地址页
+     */
+    @RequestMapping(value ="/address/getAddress",method = GET)
+    public String getAddress(Long addressId,Model model){
+        Address address=this.addressService.get(addressId);
+        model.addAttribute("addressList",address);
         return "address";
     }
 
@@ -71,6 +65,7 @@ public class UserCenterController {
      */
     @RequestMapping(value ="/address/addAddress",method = POST)
     public String addAddress(Address address){
+        address.setUser(UserManager.getUser());
         Address result=this.addressService.addAddress(address);
         if (result != null){
             return "redirect:address/allAddress";
@@ -85,6 +80,7 @@ public class UserCenterController {
      */
     @RequestMapping(value = "/address/updateAddress",method = POST)
     public String updateAddress(Address address,Model model){
+//        address.setUser(UserManager.getUser());
         Address result=this.addressService.updateAddress(address);
         if (result != null){
             return "redirect:address/allAddress";
@@ -112,7 +108,7 @@ public class UserCenterController {
      */
     @RequestMapping(value = "baby/showBabyInfo",method = GET)
     public String showBabyInfo(@RequestParam Long babyId,Model model){
-        Baby baby =  this.babyService.getOne(babyId);
+        Baby baby =  this.babyService.get(babyId);
         if (baby != null){
             model.addAttribute("baby",baby);
             return "redirect:baby/changemsg";
@@ -124,16 +120,19 @@ public class UserCenterController {
 
     /**
      * 查看某用户宝宝信息
-     * @param userId                    用户ID
      * @param model                     宝宝LIST
      * @return                          宝宝信息页
      */
     @RequestMapping(value = "baby/allBabyInfo",method = GET)
-    public String findAllBabyInfo(@RequestParam Long userId,Model model){
-        List<Baby> babyList =  this.babyService.findBabyByUserId(userId);
-        model.addAttribute("babyList",babyList);
-        return "redirect:baby/permsg";
-
+    public String findAllBabyInfo(Model model){
+        User user = UserManager.getUser();
+        if (user != null) {
+            List<Baby> babyList = this.babyService.findBabyByUserId(user.getId());
+            model.addAttribute("babyList", babyList);
+            return "redirect:baby/permsg";
+        }else {
+            return "login";
+        }
     }
 
     /**
