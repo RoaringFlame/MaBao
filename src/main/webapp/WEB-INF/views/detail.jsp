@@ -5,6 +5,8 @@
   Time: 16:29
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +24,9 @@
     <script type="text/javascript" src="../../script/lib/jquery.1.10.2.js"></script>
     <link rel="stylesheet" href="../../css/master.css">
     <link rel="stylesheet" href="../../css/module.css">
+    <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId}!=null">
+        <script src="../script/detail.js"></script>
+    </c:if>
 </head>
 
 <body>
@@ -98,14 +103,14 @@
             <div class="clear"></div>
             <p>宝物图片:</p>
             <c:forEach items="${goodsDetail.pictureList}" var="goodsPicture">
-                <img src="/upload/${goodsPicture}" alt="">
+                <img src="/upload/${goodsPicture}" alt="图片正在加载中...">
             </c:forEach>
         </div>
 
         <!--卖家分享END-->
         <!--按钮-->
         <div class="goods-detail-button">
-            <div>
+            <div id="addToCarts">
                 <a href="/cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=false">
                     <button>加入购物车</button>
                 </a>
@@ -120,6 +125,7 @@
         <!--按钮END-->
         <!--宝物详情END-->
     </div>
+    <div class="tip hide" id="textShow">商品已成功添加至购物车</div>
 </div>
 </body>
 </html>
