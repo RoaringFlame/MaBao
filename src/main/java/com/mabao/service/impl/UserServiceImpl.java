@@ -1,9 +1,6 @@
 package com.mabao.service.impl;
 
 import com.mabao.controller.vo.JsonResultVO;
-package com.mabao.service.impl;
-
-import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.User;
 import com.mabao.repository.UserRepository;
 import com.mabao.service.UserService;
