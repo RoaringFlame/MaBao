@@ -1104,19 +1104,6 @@
     width: 75%;
 }
 
-.login-box button {
-    display: block;
-    width: 80%;
-    height: 3rem;
-    font-size: 1.4rem;
-    color: #fff;
-    background-color: #0099ff;
-    margin: 2rem auto;
-    text-align: center;
-    line-height: 3rem;
-    cursor: pointer;
-    border-radius: .4rem;
-}
 
 .login-right {
     height: 3rem;
@@ -1172,7 +1159,7 @@
 
 .button-bottom {
     margin: 0 auto;
-    width: 80%;
+    width: 88%;
     display:block;
     text-align: center;
 }
