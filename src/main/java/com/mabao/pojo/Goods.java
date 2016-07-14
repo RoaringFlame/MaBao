@@ -1,7 +1,6 @@
 package com.mabao.pojo;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.mabao.enums.BabyType;
 import com.mabao.enums.Quality;
 import com.mabao.util.CustomDateSerializer;
 
@@ -18,7 +17,6 @@ public class Goods {
     private String title;                           //标题
     private Double oldPrice;                        //原价
     private Double price;                           //现价
-    private BabyType babyType;                      //适合宝宝类型
     private String typeName;                        //二级类型名称
     private GoodsType type;                         //一级类型编号
     private String brandName;                       //商品品牌名称
@@ -231,13 +229,5 @@ public class Goods {
 
     public void setBrand(GoodsBrand brand) {
         this.brand = brand;
-    }
-    @Column(name = "baby_type")
-    public BabyType getBabyType() {
-        return babyType;
-    }
-
-    public void setBabyType(BabyType babyType) {
-        this.babyType = babyType;
     }
 }

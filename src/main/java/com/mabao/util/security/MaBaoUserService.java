@@ -31,13 +31,8 @@ public class MaBaoUserService implements UserDetailsService {
             List<GrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-            UserInfo userInfo  = new UserInfo(mbuser.getName(),mbuser.getPassword(),authorities);
-            userInfo.setUserId(mbuser.getId());
-            userInfo.setEmail(mbuser.getEmail());
-            userInfo.setPhone(mbuser.getPhone());
-            userInfo.setPicture(mbuser.getPicture());
-            userInfo.setCreateTime(mbuser.getCreateTime());
-            return userInfo;
+            return new org.springframework.security.core.userdetails
+                    .User(mbuser.getName(),mbuser.getPassword(),authorities);
         }
 
         throw new UsernameNotFoundException(

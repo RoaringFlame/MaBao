@@ -12,10 +12,10 @@ import java.util.List;
  */
 public class GoodsVO {
 
-    private Long id;                        //宝物的id
+    private Long id;                         //宝物的id
     private String title;                   //宝物的描述
     private String picture;                 //宝物图片
-    private Double price;                   //宝物价格
+    private String price;                   //宝物价格
     private String newDegree;               //宝物新旧程度
     private String brandName;               //宝物品牌
     private String size;                    //宝物尺寸
@@ -24,6 +24,7 @@ public class GoodsVO {
         GoodsVO vo = VoUtil.copyBasic(GoodsVO.class, goods);
         //将数据库里用数据存储的新旧状态转换为对应string的描述语言
         assert vo != null;
+        vo.setPrice(goods.getPrice().toString());
         vo.setNewDegree(goods.getNewDegree().getText());
         vo.setSize(goods.getSize().getName());
         return vo;
@@ -60,11 +61,11 @@ public class GoodsVO {
         this.picture = picture;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

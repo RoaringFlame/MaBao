@@ -20,11 +20,4 @@ public interface UserRepository extends BaseRepository<User> {
      * @return                  用户对象
      */
     User findByName(String name);
-
-    /**
-     * 通过邮箱查用户
-     * @param email             邮箱
-     * @return                  用户对象
-     */
-    User findByEmail(String email);
 }
