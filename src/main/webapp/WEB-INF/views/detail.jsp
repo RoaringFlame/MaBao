@@ -21,12 +21,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <script type="text/javascript" src="../../script/lib/jquery.1.10.2.js"></script>
-    <link rel="stylesheet" href="../../css/master.css">
-    <link rel="stylesheet" href="../../css/module.css">
-    <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId}!=null">
-        <script src="../script/detail.js"></script>
-    </c:if>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/module.css">
+    <script type="text/javascript" src="script/lib/jquery.1.10.2.js"></script>
+    <script src="script/detail.js"></script>
 </head>
 
 <body>
@@ -43,6 +41,7 @@
                 </p>
             </a>
         </div>
+        <div id="goodsId" style="display:none;">${goodsDetail.id}</div>
         <!--操作按钮 END-->
     </header>
     <!--标题 END-->
@@ -110,8 +109,8 @@
         <!--卖家分享END-->
         <!--按钮-->
         <div class="goods-detail-button">
-            <div id="addToCarts">
-                <a href="/cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=false">
+            <div>
+                <a href="#" id="addToCarts">
                     <button>加入购物车</button>
                 </a>
                 <a href="/cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=true">
@@ -125,7 +124,7 @@
         <!--按钮END-->
         <!--宝物详情END-->
     </div>
-    <div class="tip hide" id="textShow">商品已成功添加至购物车</div>
 </div>
+<div class="tip" id="textShow"></div>
 </body>
 </html>
