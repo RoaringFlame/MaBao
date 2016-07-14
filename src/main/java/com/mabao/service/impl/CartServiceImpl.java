@@ -102,4 +102,30 @@ public class CartServiceImpl implements CartService {
             return "添加成功";
         }
     }
+    /**
+     * 修改购物车内某商品数量
+     * @param cartId        购物车ID
+     * @param opt           操作：1加2减
+     * @param num           数量
+     * @return              JsonResultVO
+     */
+    @Override
+    public JsonResultVO changeCartGoodsNum(Long cartId, Integer opt, Integer num) {
+        Cart cart = this.cartRepository.findOne(cartId);
+        if (opt == 1){
+            cart.setQuantity(cart.getQuantity() + num);
+            this.cartRepository.saveAndFlush(cart);
+            return new JsonResultVO(JsonResultVO.SUCCESS,"成功");
+        }else if (opt == 2){
+            if (cart.getQuantity() < num){
+                return new JsonResultVO(JsonResultVO.FAILURE,"只剩一个啦！");
+            }else {
+                cart.setQuantity(cart.getQuantity() - num);
+                this.cartRepository.saveAndFlush(cart);
+                return new JsonResultVO(JsonResultVO.SUCCESS,"成功");
+            }
+        }else {
+            return new JsonResultVO(JsonResultVO.FAILURE,"参数错误");
+        }
+    }
 }

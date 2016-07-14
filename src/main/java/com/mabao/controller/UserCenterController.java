@@ -5,8 +5,6 @@ import com.mabao.pojo.Baby;
 import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.BabyService;
-import com.mabao.service.UserService;
-import com.mabao.util.MD5;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,23 +27,6 @@ public class UserCenterController {
     private AddressService addressService;
     @Autowired
     private BabyService babyService;
-    @Autowired
-    private UserService userService;
-
-    /**
-     * 修改密码
-     * @param password              新密码
-     * @return                      登录页
-     */
-    @RequestMapping(value ="/passwordChange",method = GET)
-    public String PasswordChange(@RequestParam String password){
-        User user = UserManager.getUser();
-        if (user != null) {
-            user.setPassword(MD5.getMD5ofStr(password));
-            this.userService.updateUser(user);
-        }
-          return "login";
-    }
 
     /**
      * 该用户所有收货地址

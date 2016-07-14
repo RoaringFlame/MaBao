@@ -49,6 +49,12 @@ $(function () {
             //轮播的初始化
             var smallBanner = data.smallBanner;                                                  //获取轮播图片集
             var myCarousel = $("#myCarousel");                                                 //找到jsp页面对应id为myCarousel的项
+            $(function(){                                                                       //设定轮播时间
+
+                $('.carousel').carousel({
+                    interval: 2000
+                })
+            })
             //遍历获取到的轮播图片集,index为索引（从0开始），banner自己定义的名称用来取smallBanner中的值
             $(smallBanner).each(function (index, banner) {
                 var li = $("<li></li>")                                       //添加li标签并为其添加属性值

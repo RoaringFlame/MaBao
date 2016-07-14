@@ -1,12 +1,18 @@
 package com.mabao.controller.rest;
 
+import com.mabao.controller.vo.CartGoodsVO;
 import com.mabao.controller.vo.JsonResultVO;
+import com.mabao.pojo.Cart;
+import com.mabao.pojo.User;
 import com.mabao.service.CartService;
+import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 
 @RestController
@@ -14,6 +20,31 @@ import org.springframework.web.bind.annotation.RestController;
 public class CartRESTController {
     @Autowired
     private CartService cartService;
+
+
+    /**
+     * 查看购物车
+     * @return              购物车页
+     */
+    @RequestMapping(value = "/showCart",method = RequestMethod.GET)
+    public List<CartGoodsVO> showUserCart(){
+        List<Cart> cartGoods = this.cartService.findAllGoodsByUser(UserManager.getUser().getId());
+        return CartGoodsVO.generateBy(cartGoods);
+    }
+
+    /**
+     * 修改购物车内某商品数量
+     * @param cartId        购物车ID
+     * @param opt           操作：1加2减
+     * @param num           数量
+     * @return              JsonResultVO
+     */
+    @RequestMapping(value = "/changeNum/{cartId}",method = RequestMethod.GET)
+    public JsonResultVO changeCartGoodsNum(@PathVariable Long cartId,
+                                           @RequestParam Integer opt,
+                                           @RequestParam(required = false,defaultValue = "1") Integer num){
+        return this.cartService.changeCartGoodsNum(cartId,opt,num);
+    }
 
     /**
      * 删除购物车内商品

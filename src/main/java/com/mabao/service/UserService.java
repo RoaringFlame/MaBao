@@ -35,4 +35,10 @@ public interface UserService {
      * @return                      修改的用户
      */
     User updateUser(User user);
+    /**
+     * 修改密码
+     * @param password              新密码
+     * @return                      登录页
+     */
+    JsonResultVO changePassword(String password);
 }
