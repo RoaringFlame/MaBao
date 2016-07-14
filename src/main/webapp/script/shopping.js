@@ -6,9 +6,8 @@ $(function () {
     //获取商品信息
     function getGoods() {
         $.get("/cart/showCart", {}, function (data) {
-            console.log(data);
             $(data).each(function (index, goods) {
-                //console.log(data);
+                console.log(data);
                 var newGoods = $("#goodsContainer").find("div.main-item").clone();             //克隆goodsContainer中商品信息
                 newGoods.find("div.cartId").text(goods.id);                                    //从后台获取cartId
                 newGoods.find("img").attr("src", "../upload/" + goods.picture);                //从后台获取picture
@@ -45,7 +44,7 @@ $(function () {
                         delItem.remove();          //删除购物车商品
                         setTotal();                //点击删除按钮后重新计算总价
                     }
-            });
+                });
             });
             setTotal();                      //计算总价
             initEdit();                      //编辑按钮初始化
