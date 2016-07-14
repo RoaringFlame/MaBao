@@ -5,8 +5,9 @@ $(function () {
     var editBtn = $("div.header-box").find(".header-right");
     //获取商品信息
     function getGoods() {
-        MB.sendAjax("get","/cart", {}, function (data) {
+        MB.sendAjax("get","/cart/showCart", {}, function (data) {
             $(data).each(function (index, goods) {
+                console.log(data);
                 var newGoods = $("#goodsContainer").find("div.main-item").clone();             //克隆goodsContainer中商品信息
                 newGoods.find("div.cartId").text(goods.id);                                    //从后台获取cartId
                 newGoods.find("img").attr("src", "../upload/" + goods.picture);                //从后台获取picture
