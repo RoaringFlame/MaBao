@@ -6,13 +6,15 @@ import javax.persistence.*;
  * 省市区街道级联
  */
 @Entity
-@Table(name = "t_prov_city_area_street")
+@Table(name = "t_area")
 public class Area {
     private Long id;                                //id
-    private Long code;                              //编号
-    private Long parentId;                          //上级编号
     private String name;                            //名称
-    private String level;                           //行政级别。1省 2市 3区 4街道
+    private String shortName;                       //简称
+    private Long parentId;                          //上级编号
+    private Integer levelType;                       //行政级别。1省 2市 3区 4街道
+    private String mergerName;                      //全称
+    private String spell;                           //拼写
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,13 +26,6 @@ public class Area {
         this.id = id;
     }
 
-    public Long getCode() {
-        return code;
-    }
-
-    public void setCode(Long code) {
-        this.code = code;
-    }
     @Column(name = "parent_id")
     public Long getParentId() {
         return parentId;
@@ -47,12 +42,36 @@ public class Area {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getLevel() {
-        return level;
+    @Column(name = "short_name")
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+    @Column(name = "level_type")
+    public Integer getLevelType() {
+        return levelType;
+    }
+
+    public void setLevelType(Integer levelType) {
+        this.levelType = levelType;
+    }
+    @Column(name = "merger_name")
+    public String getMergerName() {
+        return mergerName;
+    }
+
+    public void setMergerName(String mergerName) {
+        this.mergerName = mergerName;
+    }
+
+    public String getSpell() {
+        return spell;
+    }
+
+    public void setSpell(String spell) {
+        this.spell = spell;
     }
 }

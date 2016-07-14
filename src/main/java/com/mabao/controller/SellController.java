@@ -1,7 +1,9 @@
 package com.mabao.controller;
 
+import com.mabao.controller.vo.AddressVO;
 import com.mabao.enums.Gender;
 import com.mabao.pojo.Address;
+import com.mabao.pojo.Area;
 import com.mabao.pojo.Goods;
 import com.mabao.service.*;
 import com.mabao.util.Selector;
@@ -33,6 +35,8 @@ public class SellController {
     @Autowired
     private AddressService addressService;
     @Autowired
+    private AreaService areaService;
+    @Autowired
     private GoodsTypeService goodsTypeService;
     @Autowired
     private GoodsBrandService goodsBrandService;
@@ -46,10 +50,16 @@ public class SellController {
      * @return                      添加结果页面
      */
     @RequestMapping(value = "/receiptPlaceAdd",method = POST)
-    public String addReceiptPlace(@RequestParam Address address){
-        address.setState(true);//设为默认地址
-        address.setUser(UserManager.getUser());
-        Address adr = this.addressService.addAddress(address);
+    public String addReceiptPlace(@RequestParam AddressVO address){
+        Address newAddress = new Address();
+        newAddress.setId(address.getId());
+        newAddress.setUser(UserManager.getUser());
+        newAddress.setRecipients(address.getRecipients());
+        newAddress.setState(true);//设为默认地址
+        newAddress.setLocation(address.getLocation());
+        newAddress.setTel(address.getTel());
+        newAddress.setArea(this.areaService.get(address.getAreaId()));
+        Address adr = this.addressService.addAddress(newAddress);
         return adr != null ? "consignment_success" : "consignment_failure";
     }
 

@@ -18,6 +18,7 @@ public class BabyVO {
     private Long userId;                        //用户ID
     private String name;                        //宝宝名字
     private Date birthday;                      //宝宝出生日期
+    private String hobby;                       //宝宝爱好
     private Gender gender;                      //宝宝性别
 
     public static BabyVO generateBy(Baby baby){
@@ -73,5 +74,13 @@ public class BabyVO {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
     }
 }
