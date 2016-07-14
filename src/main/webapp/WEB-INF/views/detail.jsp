@@ -101,11 +101,11 @@
         <!--卖家分享END-->
         <!--按钮-->
         <div class="goods-detail-button">
-            <div>
-                <a href="/cart/cartAddGoods?goodsId=${goodsDetail.id}">
+            <div id="addToCart">
+                <a href="/cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=false">
                     <button>加入购物车</button>
                 </a>
-                <a href="/cart/orderConfirm?goodsId=${goodsDetail.id}">
+                <a href="/cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=true">
                     <button>立即购买</button>
                 </a>
             </div>
@@ -115,8 +115,17 @@
         </div>
         <!--按钮END-->
         <!--宝物详情END-->
-
     </div>
 </div>
+<script>
+    $(function () {
+        function init(){
+            $("#addToCart").find("button").click(function () {
+                alert("商品加入购物车成功！").show(300).delay(3000).hide(300);
+            })
+        };
+        init();
+    })
+</script>
 </body>
 </html>
