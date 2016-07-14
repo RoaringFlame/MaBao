@@ -1,7 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
+
     <meta charset="UTF-8">
     <title>修改密码</title>
     <meta name="viewport"
@@ -13,10 +19,11 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../css/master.css">
-    <link rel="stylesheet" href="../../css/module.css">
-    <script type="text/javascript" src="../../script/lib/jquery.1.10.2.js"></script>
-    <script type="text/javascript" src="../../script/changepwd.js"></script>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/module.css">
+    <script type="text/javascript" src="script/lib/jquery.1.10.2.js"></script>
+    <script type="text/javascript" src="script/common.js"></script>
+    <script type="text/javascript" src="script/changepwd.js"></script>
 </head>
 <body>
 <div class="content-index">
