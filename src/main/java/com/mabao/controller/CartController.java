@@ -1,10 +1,8 @@
 package com.mabao.controller;
 
 import com.mabao.controller.vo.CartGoodsVO;
-import com.mabao.controller.vo.GoodsVO;
 import com.mabao.pojo.Address;
 import com.mabao.pojo.Cart;
-import com.mabao.pojo.Goods;
 import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.CartService;
@@ -33,6 +31,7 @@ public class CartController {
     private CartService cartService;
     @Autowired
     private AddressService addressService;
+
     @RequestMapping(value = "/index",method = GET)
     public String cartIndex(){
         return "shopping";
@@ -53,28 +52,11 @@ public class CartController {
         if (user != null){
             String result = this.cartService.addCartGoods(goodsId, user);
             if (jump){
-                return "redirect:cart/showCart";
+                return "shopping";
             }else {
                 model.addAttribute("result",result);
-                return "detail";
+                return "redirect:../goods/goodsDetail?goodsId="+goodsId;
             }
-        }else {
-            return "login";
-        }
-    }
-
-    /**
-     * 查看购物车
-     * @param model         商品list
-     * @return              购物车页
-     */
-    @RequestMapping(value = "/showCart",method = GET)
-    public String showUserCart(Model model){
-        User user = UserManager.getUser();
-        if (user != null){
-            List<Cart> cartGoods = this.cartService.findAllGoodsByUser(user.getId());
-            model.addAttribute("cartGoods", CartGoodsVO.generateBy(cartGoods));
-            return "shopping";
         }else {
             return "login";
         }
@@ -100,13 +82,14 @@ public class CartController {
             for (String one : cartArray) {
                 //获得购物车ID
                 Long cartId = Long.valueOf(one);
+                //查找商品
                 Cart cart = this.cartService.get(cartId);
                 cartList.add(cart);
             }
             map.put("checkedGoodsList", CartGoodsVO.generateBy(cartList));  //选中的商品列表
             Address address = this.addressService.getDefaultAddress(user.getId());
-            map.put("defaultAddress", address);          //默认地址
-            map.put("freight", 10);                      //运费
+            map.put("defaultAddress", address);                             //默认地址
+            map.put("freight", 10);                                         //运费
             model.addAllAttributes(map);
             return "pay";
         }

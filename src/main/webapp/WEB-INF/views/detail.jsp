@@ -1,3 +1,5 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,10 +44,10 @@
             <div>
                 <p>${goodsDetail.brandName}</p>
                 <p>
-                    <span>￥<fmt:formatNumber type="number" value="${goodsDetail.oldPrice/100}" pattern="0.00"
-                                             maxFractionDigits="2"/></span>
-                    <span>原价：<fmt:formatNumber type="number" value="${goodsDetail.price/100}" pattern="0.00"
-                                               maxFractionDigits="2"/></span>
+                    <span>￥<fmt:formatNumber type="number" value="${goodsDetail.price}" pattern="0.00"
+                                             maxFractionDigits="2"/>元</span
+                    <span>原价：<fmt:formatNumber type="number" value="${goodsDetail.oldPrice}" pattern="0.00"
+                                               maxFractionDigits="2"/>元</span>
                 </p>
             </div>
         </div>
@@ -63,6 +65,7 @@
 
             <p>
                 <span>购物日期：</span>
+                <%--<span><fmt:formatDate value="${goodsDetail.upTime}" type="date" pattern="yyyy/MM/dd"/></span>--%>
                 <span><fmt:formatDate value="${goodsDetail.upTime}" type="date" pattern="yyyy/MM/dd"/></span>
             </p>
             <p>
@@ -71,7 +74,7 @@
             </p>
             <p>
                 <span>宝物尺码：</span>
-                <span>${goodsDetail.size.name}</span>
+                <span>${goodsDetail.size}</span>
             </p>
             <p>
                 <span>原包装：</span>
@@ -90,17 +93,19 @@
             </p>
             <div class="clear"></div>
             <p>宝物图片:</p>
-            <img src="/upload/${goodsDetail.pictureList}" alt="">
+            <c:forEach items="${goodsDetail.pictureList}" var="goodsPicture">
+                <img src="/upload/${goodsPicture}" alt="">
+            </c:forEach>
         </div>
 
         <!--卖家分享END-->
         <!--按钮-->
         <div class="goods-detail-button">
-            <div>
-                <a href="/jsp/shopping">
+            <div id="addToCart">
+                <a href="/cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=false">
                     <button>加入购物车</button>
                 </a>
-                <a href="/jsp/pay">
+                <a href="/cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=true">
                     <button>立即购买</button>
                 </a>
             </div>
@@ -110,8 +115,17 @@
         </div>
         <!--按钮END-->
         <!--宝物详情END-->
-
     </div>
 </div>
+<script>
+    $(function () {
+        function init(){
+            $("#addToCart").find("button").click(function () {
+                alert("商品加入购物车成功！").show(300).delay(3000).hide(300);
+            })
+        };
+        init();
+    })
+</script>
 </body>
 </html>

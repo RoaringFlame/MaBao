@@ -52,4 +52,12 @@ public interface CartService {
      * @return              结果String
      */
     String addCartGoods(Long goodsId, User user);
+    /**
+     * 修改购物车内某商品数量
+     * @param cartId        购物车ID
+     * @param opt           操作：1加2减
+     * @param num           数量
+     * @return              JsonResultVO
+     */
+    JsonResultVO changeCartGoodsNum(Long cartId, Integer opt, Integer num);
 }

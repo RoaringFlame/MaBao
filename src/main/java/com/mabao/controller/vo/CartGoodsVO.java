@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class CartGoodsVO {
     private Long id;                        //购物车的id
-
     private Long goodsId;                   //商品ID
     private String title;                   //商品的描述
     private String picture;                 //商品图片
@@ -20,9 +19,7 @@ public class CartGoodsVO {
     private String newDegree;               //商品新旧程度
     private String brandName;               //商品品牌
     private String size;                    //商品尺寸
-
-    private Integer num;                    //购买数量
-    private Double sum;                     //总价
+    private Integer quantity;               //购买数量
 
     public static CartGoodsVO generateBy(Cart cart){
         CartGoodsVO vo = VoUtil.copyBasic(CartGoodsVO.class, cart);
@@ -45,6 +42,13 @@ public class CartGoodsVO {
             list.add(generateBy(g));
         }
         return list;
+    }
+
+    /**
+     * 计算该商品总价
+     */
+    public Double getTotalSum() {
+        return this.price * this.quantity;
     }
 
     public Long getId() {
@@ -111,15 +115,13 @@ public class CartGoodsVO {
         this.goodsId = goodsId;
     }
 
-    public Integer getNum() {
-        return num;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setNum(Integer num) {
-        this.num = num;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public Double getSum() {
-        return this.price * this.num;
-    }
+
 }

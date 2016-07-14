@@ -107,23 +107,4 @@ public class HomeRESTController {
         voPage.setItems(GoodsVO.generateBy(goodsPage.getContent()));
         return voPage;
     }
-
-    /**
-     * （首页猜你喜欢）已添加宝宝信息
-     * @param babyId                宝宝ID
-     * @param page                  页码
-     * @param pageSize              一页大小
-     * @return                      商品集合，分页
-     */
-    /*@RequestMapping(value = "/goodsGuess/baby/{babyId}",method = RequestMethod.GET)
-    public PageVO<GoodsVO> goodsListGuessByBaby(@PathVariable Long babyId,
-                                          @RequestParam(value = "page", defaultValue = "0")int page,
-                                          @RequestParam(value = "pageSize", defaultValue = "4") int pageSize) {
-        Page<Goods> goodsPage = this.goodsService.goodsPageByBabyId(babyId,page,pageSize);
-        PageVO<GoodsVO> voPage = new PageVO<>();
-        voPage.toPage(goodsPage);
-        voPage.setItems(GoodsVO.generateBy(goodsPage.getContent()));
-        return voPage;
-    }
-*/
 }
