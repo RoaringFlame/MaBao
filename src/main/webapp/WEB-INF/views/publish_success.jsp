@@ -31,19 +31,17 @@
 		<!--操作按钮 END-->
 	</header>
 	<!--标题 END-->
-	<section class="message1">
+	<!--发布成功提示-->
+	<div class="publish-success-box">
 		<p>恭喜您发布成功！</p>
-	</section>
-	<section class="message2">
 		<p>感谢您支持低碳生活</p>
 		<p>给了每一件宝物第二次生命</p>
-	</section>
-	<section class="message3">
 		<p>您可以在个人账户中查询详情及交易进度</p>
-	</section>
-	<section class="share">
-		<input type="button" name="goShare" id="goShare" value="分享到朋友圈" onclick=window.location.href="index.html">
-	</section>
+		<a href="/" class="share-bottom">
+			<button>分享到朋友圈</button>
+		</a>
+		<!--发布成功提示END-->
 	</div>
+</div>
 </body>
 </html>
