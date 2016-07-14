@@ -35,7 +35,7 @@
     </header>
     <!--标题 END-->
     <!-- 编辑收货地址 -->
-    <form action="/sell/receiptPlaceAdd" METHOD="post">
+    <form id="edit-add" action="/sell/receiptPlaceAdd" METHOD="post">
         <div class="edit-add-box">
             <p class="p-tit">请填写您的地址及电话，我们会安排上门收货</p>
             <label>
@@ -45,7 +45,7 @@
                 <input name="address.tel" type="text" placeholder="手机号：">
             </label>
             <label>
-                <input name="address.area" type="text" placeholder="所在地：" value="1">
+                <input name="address.area" type="text" placeholder="所在地：">
             </label>
             <!-- 省市级联地址插件 -->
             <div id="test"></div>
@@ -56,10 +56,10 @@
             <div class="clear"></div>
         </div>
         <!-- 清楚浮动 -->
+    </form>
         <!--服务条款-->
         <label class="terms">
-            <textarea name="terms" cols="30" rows="10">
-                服务条款
+            <textarea name="terms" cols="30" rows="10"> 服务条款
             </textarea>
         </label>
         <!-- 清楚浮动 -->
@@ -72,11 +72,11 @@
         <div class="edit-add-input ">
             <!-- 保存按钮 -->
             <label>
-                <input class="disabled" type="submit" value="提交">
+                <input class="disabled" type="submit" value="提交" form="edit-add" >
             </label>
             <!-- 保存按钮END -->
         </div>
-    </form>
+
     <!-- 编辑收货地址END -->
 </div>
 </body>
