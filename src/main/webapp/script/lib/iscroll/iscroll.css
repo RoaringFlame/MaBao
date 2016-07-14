@@ -46,7 +46,7 @@ body {
     top: 1px;
     bottom: 1px;
     left: 0;
-    width: 100%;
+    width: 32rem;                                           //设置宽度 rem根据屏幕自适应 px不会适应屏幕宽度
     background: #ccc;
     overflow: hidden;
 }
@@ -54,8 +54,8 @@ body {
 .iscroll-scroller {
     position: absolute;
     z-index: 1;
+    width:32rem;                                            //设置宽度
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-    width: 100%;
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);

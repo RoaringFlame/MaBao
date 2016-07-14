@@ -1,5 +1,10 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Emma-pc
+  Date: 2016/7/14
+  Time: 16:29
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,10 +32,10 @@
         <!--操作按钮-->
         <div class="header-box">
             <a href="/">
-                <button class="header-left">
+                <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </button>
+                </p>
             </a>
         </div>
         <!--操作按钮 END-->
@@ -45,7 +50,7 @@
                 <p>${goodsDetail.brandName}</p>
                 <p>
                     <span>￥<fmt:formatNumber type="number" value="${goodsDetail.price}" pattern="0.00"
-                                             maxFractionDigits="2"/>元</span
+                                             maxFractionDigits="2"/>元</span>
                     <span>原价：<fmt:formatNumber type="number" value="${goodsDetail.oldPrice}" pattern="0.00"
                                                maxFractionDigits="2"/>元</span>
                 </p>
@@ -56,16 +61,15 @@
         <div class="goods-detail-content">
             <p>
                 <span>宝物类型：</span>
-                <span>${goodsDetail.typeName}</span>
+                <span>${goodsDetail.brandName}</span>
             </p>
             <p>
                 <span>宝物品牌：</span>
-                <span>${goodsDetail.brandName}</span>
+                <span>贝儿</span>
             </p>
 
             <p>
                 <span>购物日期：</span>
-                <%--<span><fmt:formatDate value="${goodsDetail.upTime}" type="date" pattern="yyyy/MM/dd"/></span>--%>
                 <span><fmt:formatDate value="${goodsDetail.upTime}" type="date" pattern="yyyy/MM/dd"/></span>
             </p>
             <p>
@@ -101,7 +105,7 @@
         <!--卖家分享END-->
         <!--按钮-->
         <div class="goods-detail-button">
-            <div id="addToCart">
+            <div>
                 <a href="/cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=false">
                     <button>加入购物车</button>
                 </a>
@@ -117,15 +121,5 @@
         <!--宝物详情END-->
     </div>
 </div>
-<script>
-    $(function () {
-        function init(){
-            $("#addToCart").find("button").click(function () {
-                alert("商品加入购物车成功！").show(300).delay(3000).hide(300);
-            })
-        };
-        init();
-    })
-</script>
 </body>
 </html>
