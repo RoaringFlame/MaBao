@@ -1,13 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="<%=basePath%>">
-
     <meta charset="UTF-8">
     <title>首页</title>
     <meta name="viewport"
@@ -39,7 +33,7 @@
         首页
         <!--操作按钮-->
         <div class="header-box">
-            <a href="/jsp/login">
+            <a href="login">
                 <p class="header-left">
                     <i class="icon icon-return"></i>
                     登陆
@@ -58,17 +52,10 @@
         </div>
         <!--关键字查询-->
         <div class="search-input">
-<<<<<<< HEAD
-            <p id="btnSearch">
-                <i class="icon icon-search"></i>
-            </p>
-            <input title="请输入关键字">
-=======
-            <p >
+            <p>
                 <i class="icon icon-search"></i>
             </p>
             <input id="txtSearch" title="请输入关键字">
->>>>>>> dev
         </div>
         <!-- 侧导航栏 -->
         <div class="sidebar hide" id="sidebar">
@@ -127,39 +114,59 @@
                         <ul class="goods-list clearfix"></ul>
                     </div>
                     <!--猜你喜欢物品的展示-->
-                    <div id="likeGoodsList" >
+                    <div id="likeGoodsList">
                         <!--猜你喜欢主体-->
                         <ul class="goods-list clearfix"></ul>
-                        <!-- 猜你喜欢 -->
+                        <%--<div class="clear"></div>--%>
+                        <%--<!-- 猜你喜欢 -->--%>
+                        <%--<form id="likeForm"  class="hide">--%>
+                        <%--<div class="you-like">--%>
+                        <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
+                        <%--<p>请填写以下信息</p>--%>
+
+                        <%--<label>宝宝姓名：--%>
+                        <%--<input name="babyName" type="text" id="username"></label>--%>
+
+                        <%--<label>宝宝生日：--%>
+                        <%--<input name="babyData" type="date"></label>--%>
+
+                        <%--<label>宝宝性别：--%>
+
+                        <%--<select name="sex" id="sex">--%>
+                        <%--<option value="">男</option>--%>
+                        <%--<option value="">女</option>--%>
+                        <%--</select>--%>
+                        <%--</label>--%>
+
+                        <%--<label>宝宝爱好：--%>
+                        <%--<input type="text">--%>
+                        <%--</label>--%>
+                        <%--<button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>--%>
+                        <%--</div>--%>
+                        <%--</form>--%>
+                        <!-- 猜你喜欢END -->
+                        <%--<!-- 猜你喜欢 -->--%>
                         <div id="likeForm" class="you-like">
                             <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
                             <p>请填写以下信息</p>
-                            <ul>
-                                <li>
-                                    <label>宝宝姓名：</label>
-                                    <label><input name="babyName" type="text"></label>
-                                </li>
-                                <li>
-                                    <label>宝宝生日：</label>
-                                    <label><input name="babyBirthday" type="date"></label>
-                                </li>
 
-                                <li>
-                                    <label>宝宝性别：</label>
-                                    <label>
-                                        <select name="sex" id="sex">
-                                        </select>
-                                    </label>
-                                </li>
+                            <label>宝宝姓名：
+                                <input name="babyName" type="text"></label>
 
-                                <li>
-                                    <label>宝宝爱好：</label>
-                                    <label><input type="text" name="hobby"></label>
-                                </li>
-                            </ul>
+                            <label>宝宝生日：
+                                <input name="babyBirthday" type="date"></label>
+
+                            <label>宝宝性别：
+
+                                <select name="sex" id="sex">
+                                </select>
+                            </label>
+
+                            <label>宝宝爱好：
+                                <input type="text" name="hobby"></label>
                             <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
                         </div>
-                        <!-- 猜你喜欢END -->
+                        <%--<!-- 猜你喜欢END -->--%>
                     </div>
                 </div>
             </div>
@@ -176,13 +183,13 @@
     <a>
         <i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
     </a>
-    <a href="/jsp/consignment">
+    <a href="consignment">
         <i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
     </a>
-    <a href="/jsp/shopping" id="shopping">
+    <a href="shopping" id="shopping">
         <i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
     </a>
-    <a href="/jsp/personal">
+    <a href="personal">
         <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
     </a>
 </div>

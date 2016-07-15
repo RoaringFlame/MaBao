@@ -135,6 +135,7 @@
     list-style: none;
 }
 .goods-list li {
+    list-style: none;
     width: 47.6%;
     float: left;
     border: 0.1rem solid #D0D8D9;

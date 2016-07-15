@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Emma-pc
-  Date: 2016/7/14
-  Time: 16:29
-  To change this template use File | Settings | File Templates.
---%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -29,7 +22,7 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
     <script type="text/javascript" src="script/lib/jquery.1.10.2.js"></script>
-    <script src="script/detail.js"></script>
+    <%--<script src="script/detail.js"></script>--%>
 </head>
 
 <body>
@@ -70,11 +63,11 @@
         <div class="goods-detail-content">
             <p>
                 <span>宝物类型：</span>
-                <span>${goodsDetail.brandName}</span>
+                <span>${goodsDetail.typeName}</span>
             </p>
             <p>
                 <span>宝物品牌：</span>
-                <span>贝儿</span>
+                <span>${goodsDetail.brandName}</span>
             </p>
 
             <p>
@@ -115,14 +108,15 @@
         <!--按钮-->
         <div class="goods-detail-button">
             <div>
-                <a href="#" id="addToCarts">
+                <%--需求为设计弹框内容，暂时不加--%>
+                <a href="cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=false" id="addToCarts">
                     <button>加入购物车</button>
                 </a>
-                <a href="/cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=true">
+                <a href="cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=true">
                     <button>立即购买</button>
                 </a>
             </div>
-            <a href="consignment">
+            <a href="/jsp/consignment">
                 <button class="button">我要转让</button>
             </a>
         </div>
@@ -130,6 +124,6 @@
         <!--宝物详情END-->
     </div>
 </div>
-<div class="tip" id="textShow"></div>
+<%--<div class="tip" id="textShow"></div>目前不需要--%>
 </body>
 </html>
