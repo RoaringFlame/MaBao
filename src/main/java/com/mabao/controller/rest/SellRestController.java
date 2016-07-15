@@ -1,6 +1,5 @@
 package com.mabao.controller.rest;
 
-import com.mabao.pojo.Area;
 import com.mabao.service.AreaService;
 import com.mabao.util.Selector;
 import org.springframework.beans.factory.annotation.Autowired;

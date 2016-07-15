@@ -36,7 +36,7 @@ public class AreaServiceImpl implements AreaService {
         List<Area> areas = this.areaRepository.findByLevelType(1);
         List<Selector> selectors = new ArrayList<>();
         for (Area area : areas){
-            selectors.add(new Selector(area.getId().toString(),area.getShortName(),area.getParentId().toString()));
+            selectors.add(new Selector(area.getId().toString(),area.getShortName()));
         }
         return selectors;
     }
@@ -49,7 +49,7 @@ public class AreaServiceImpl implements AreaService {
         List<Area> areas = this.areaRepository.findByLevelTypeAndParentId(2,provinceId);
         List<Selector> selectors = new ArrayList<>();
         for (Area area : areas){
-            selectors.add(new Selector(area.getId().toString(),area.getShortName(),area.getParentId().toString()));
+            selectors.add(new Selector(area.getId().toString(),area.getShortName()));
         }
         return selectors;
     }
@@ -61,7 +61,7 @@ public class AreaServiceImpl implements AreaService {
         List<Area> areas = this.areaRepository.findByLevelTypeAndParentId(3,cityId);
         List<Selector> selectors = new ArrayList<>();
         for (Area area : areas){
-            selectors.add(new Selector(area.getId().toString(),area.getShortName(),area.getParentId().toString()));
+            selectors.add(new Selector(area.getId().toString(),area.getShortName()));
         }
         return selectors;
     }

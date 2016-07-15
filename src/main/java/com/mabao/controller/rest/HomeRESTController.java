@@ -55,9 +55,11 @@ public class HomeRESTController {
         //猜你喜欢，宝宝信息
         User user = UserManager.getUser();
         if (user != null){
-            Baby baby = this.babyService.findBabyByUserId(user.getId()).get(0);
-            if (baby != null) {
+            try{
+                Baby baby = this.babyService.findBabyByUserId(user.getId()).get(0);
                 homeInitVO.setBaby(BabyVO.generateBy(baby));
+            }catch (Exception e){
+                homeInitVO.setBaby(null);
             }
         }
         //猜你喜欢，宝宝性别
@@ -116,7 +118,7 @@ public class HomeRESTController {
             vo.setGender(baby.getGender());
             vo.setHobby(baby.getHobby());
             vo.setName(baby.getName());
-            vo.setId(-1l);
+            vo.setId(-1L);
             return vo;
         }
     }
