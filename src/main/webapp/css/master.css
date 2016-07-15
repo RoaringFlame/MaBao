@@ -153,6 +153,7 @@ button {
 }
 
 .content-index {
+    position: relative;
     padding-top: 4rem;
     max-width: 32rem;
     margin: 0 auto;
