@@ -2,7 +2,6 @@ package com.mabao.service;
 
 import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.Cart;
-import com.mabao.pojo.User;
 
 import java.util.List;
 
@@ -34,9 +33,10 @@ public interface CartService {
     /**
      * 检测商品是否在购物车内
      * @param goodsId           商品ID
+     * @param userId            用户ID
      * @return                  购物车
      */
-    Cart findByGoodsId(Long goodsId);
+    Cart findUserCartByGoodsId(Long goodsId, Long userId);
 
     /**
      * 更新购物车信息
@@ -48,10 +48,9 @@ public interface CartService {
     /**
      * 购物车添加商品
      * @param goodsId       商品ID
-     * @param user          用户
      * @return              结果String
      */
-    String addCartGoods(Long goodsId, User user);
+    JsonResultVO addCartGoods(Long goodsId);
     /**
      * 修改购物车内某商品数量
      * @param cartId        购物车ID

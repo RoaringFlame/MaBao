@@ -1,5 +1,6 @@
 package com.mabao.controller;
 
+import com.mabao.controller.vo.AddressVO;
 import com.mabao.controller.vo.CartGoodsVO;
 import com.mabao.pojo.Address;
 import com.mabao.pojo.Cart;
@@ -37,31 +38,6 @@ public class CartController {
         return "shopping";
     }
 
-    /**
-     * 添加商品到购物车
-     * @param goodsId       商品ID
-     * @param jump          是否跳转：true跳转至购物车页面，false留在详情页面
-     * @param model         商品list
-     * @return              购物车页
-     */
-    @RequestMapping(value = "/cartAddGoods",method = GET)
-    public String shoppingCarGoodsAdd(@RequestParam Long goodsId,
-                                      @RequestParam Boolean jump,
-                                      Model model){
-        User user = UserManager.getUser();
-        if (user != null){
-            String result = this.cartService.addCartGoods(goodsId, user);
-            if (jump){
-                return "shopping";
-            }else {
-                model.addAttribute("result",result);
-                return "redirect:../goods/goodsDetail?goodsId="+goodsId;
-            }
-        }else {
-            return "login";
-        }
-    }
-
 
     /**
      * 购物车页面提交后跳转订单确认页面
@@ -88,7 +64,7 @@ public class CartController {
             }
             map.put("checkedGoodsList", CartGoodsVO.generateBy(cartList));  //选中的商品列表
             Address address = this.addressService.getDefaultAddress(user.getId());
-            map.put("defaultAddress", address);                             //默认地址
+            map.put("defaultAddress", AddressVO.generateBy(address));                             //默认地址
             map.put("freight", 10);                                         //运费
             model.addAllAttributes(map);
             return "pay";

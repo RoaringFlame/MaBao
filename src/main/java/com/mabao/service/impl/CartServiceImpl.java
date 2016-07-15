@@ -2,15 +2,15 @@ package com.mabao.service.impl;
 
 import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.Cart;
-import com.mabao.pojo.Goods;
 import com.mabao.pojo.User;
 import com.mabao.repository.CartRepository;
 import com.mabao.service.CartService;
 import com.mabao.service.GoodsService;
+import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import javax.transaction.SystemException;
 import java.util.Date;
 import java.util.List;
 
@@ -64,8 +64,8 @@ public class CartServiceImpl implements CartService {
      * @return                  购物车
      */
     @Override
-    public Cart findByGoodsId(Long goodsId) {
-        return this.cartRepository.findByGoodsId(goodsId);
+    public Cart findUserCartByGoodsId(Long goodsId, Long userId) {
+        return this.cartRepository.findByGoodsIdAndUserId(goodsId,userId);
     }
     /**
      * 更新购物车信息
@@ -80,26 +80,35 @@ public class CartServiceImpl implements CartService {
     /**
      * 购物车添加商品
      * @param goodsId       商品ID
-     * @param user          用户
      * @return              结果String
      */
     @Override
-    public String addCartGoods(Long goodsId, User user) {
-        //判断是否已经添加
-        Cart cart = this.findByGoodsId(goodsId);
-        if (cart != null){
-            cart.setQuantity(cart.getQuantity()+1);
-            this.updateCart(cart);
-            return "添加成功";
+    public JsonResultVO addCartGoods(Long goodsId) {
+        User user = UserManager.getUser();
+        if (user != null) {
+            //判断是否已经添加
+            Cart cart = this.findUserCartByGoodsId(goodsId, user.getId());
+            if (cart != null) {
+                cart.setQuantity(cart.getQuantity() + 1);
+                this.updateCart(cart);
+                return new JsonResultVO(JsonResultVO.SUCCESS, "添加成功");
+            } else {
+                try {
+                    //新添加
+                    Cart newCart = new Cart();
+                    newCart.setGoods(this.goodService.get(goodsId));
+                    newCart.setCreateTime(new Date());
+                    newCart.setQuantity(1);
+                    newCart.setUser(user);
+                    this.cartRepository.save(newCart);
+                    return new JsonResultVO(JsonResultVO.SUCCESS, "添加成功");
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                    return new JsonResultVO(JsonResultVO.FAILURE, "添加失败");
+                }
+            }
         }else {
-            //新添加
-            Cart newCart = new Cart();
-            newCart.setGoods(this.goodService.get(goodsId));
-            newCart.setCreateTime(new Date());
-            newCart.setQuantity(1);
-            newCart.setUser(user);
-            this.cartRepository.save(newCart);
-            return "添加成功";
+            throw new NullPointerException("未登录");
         }
     }
     /**
@@ -117,7 +126,7 @@ public class CartServiceImpl implements CartService {
             this.cartRepository.saveAndFlush(cart);
             return new JsonResultVO(JsonResultVO.SUCCESS,"成功");
         }else if (opt == 2){
-            if (cart.getQuantity() < num){
+            if (cart.getQuantity() <= num){
                 return new JsonResultVO(JsonResultVO.FAILURE,"只剩一个啦！");
             }else {
                 cart.setQuantity(cart.getQuantity() - num);

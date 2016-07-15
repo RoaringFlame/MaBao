@@ -2,12 +2,14 @@ package com.mabao.controller;
 
 import com.mabao.controller.vo.AddressVO;
 import com.mabao.controller.vo.BabyVO;
+import com.mabao.controller.vo.UserInfoVO;
 import com.mabao.pojo.Address;
 import com.mabao.pojo.Baby;
 import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.AreaService;
 import com.mabao.service.BabyService;
+import com.mabao.service.UserService;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +34,37 @@ public class UserCenterController {
     private AreaService areaService;
     @Autowired
     private BabyService babyService;
+    @Autowired
+    private UserService userService;
+
+    /**
+     * 个人中心，获取登录用户的基本信息
+     * @param model               UserInfoVO
+     * @return                    personal页
+     */
+    @RequestMapping(method = GET)
+    public String userCenter(Model model){
+        User user = UserManager.getUser();
+        if (user != null) {
+            UserInfoVO vo = new UserInfoVO();
+            Baby baby = this.babyService.findBabyByUserId(user.getId()).get(0);
+            vo.setUserId(user.getId());
+            vo.setUserName(user.getName());
+            vo.setUserPicture(user.getPicture());
+            vo.setBabyId(baby.getId());
+            vo.setBabyName(baby.getName());
+            model.addAttribute("userInfo", vo);
+            return "personal";
+        }else {
+            return "login";
+        }
+    }
+
+
+
+
+
+
 
     /**
      * 该用户所有收货地址
