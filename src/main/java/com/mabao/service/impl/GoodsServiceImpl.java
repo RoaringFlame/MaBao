@@ -45,11 +45,13 @@ public class GoodsServiceImpl implements GoodsService {
         if (goodsTypeId == null && (title == null || "".equals(title))){
             return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
         }if (goodsTypeId != null && title != null && !"".equals(title)){
-            return this.goodsRepository.findByTypeIdAndStateAndTitleLike(goodsTypeId,Boolean.TRUE,title,new PageRequest(page, pageSize));
+            title = "%"+title+"%";
+            return this.goodsRepository.findByTitleLikeAndTypeIdAndState(title,goodsTypeId,Boolean.TRUE,new PageRequest(page, pageSize));
         }else if (title == null || "".equals(title)){
             return this.goodsRepository.findByTypeIdAndState(goodsTypeId,Boolean.TRUE,new PageRequest(page, pageSize));
         }else if (goodsTypeId == null){
-            return this.goodsRepository.findByStateAndTitleLike(Boolean.TRUE,title,new PageRequest(page, pageSize));
+            title = "%"+title+"%";
+            return this.goodsRepository.findByTitleLikeAndState(title,Boolean.TRUE,new PageRequest(page, pageSize));
         }else {
             return null;
         }

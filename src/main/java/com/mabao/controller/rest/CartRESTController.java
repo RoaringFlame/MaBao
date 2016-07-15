@@ -26,7 +26,7 @@ public class CartRESTController {
      * @param goodsId       商品ID
      * @return              购物车页
      */
-    @RequestMapping(value = "/cartAddGoods",method = GET)
+    @RequestMapping(value = "/cartAddGoods",method = RequestMethod.GET)
     public JsonResultVO shoppingCarGoodsAdd(@RequestParam Long goodsId){
         return this.cartService.addCartGoods(goodsId);
     }

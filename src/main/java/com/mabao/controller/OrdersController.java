@@ -1,12 +1,16 @@
 package com.mabao.controller;
 
+import com.mabao.controller.vo.OrderVO;
 import com.mabao.pojo.Order;
+import com.mabao.pojo.OrderDetail;
 import com.mabao.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -34,5 +38,18 @@ public class OrdersController {
         //支付
         return "pay";
     }
+
+    /**
+     * 买家的所有订单
+     * @param model                     买家OrderVO
+     * @return                          purchase_order页
+     */
+    @RequestMapping(value = "/userAllOrder",method = GET)
+    public String userAllOrder(Model model){
+        List<OrderDetail> orderList = this.orderService.findBuyerAllOrder();
+        model.addAttribute("allOrder", OrderVO.generateBy(orderList));
+        return "purchase_order";
+    }
+
 
 }

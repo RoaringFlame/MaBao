@@ -60,12 +60,6 @@ public class UserCenterController {
         }
     }
 
-
-
-
-
-
-
     /**
      * 该用户所有收货地址
      * @param model                 地址list
@@ -219,4 +213,5 @@ public class UserCenterController {
             return "baby_update_failure";
         }
     }
+
 }
