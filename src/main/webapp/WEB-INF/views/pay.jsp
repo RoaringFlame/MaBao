@@ -13,8 +13,8 @@
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
 	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<link rel="stylesheet" href="../../css/master.css">
-	<link rel="stylesheet" href="../../css/module.css">
+	<link rel="stylesheet" href="css/master.css">
+	<link rel="stylesheet" href="css/module.css">
 </head>
 
 <body>

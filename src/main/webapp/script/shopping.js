@@ -103,10 +103,10 @@ $(function () {
             main.find("div.cartId").each(function (index) {
                 if (main.find(".select").eq(index).is(':checked')) {
                     var id = $(this).text();                                     //获取cartId
-                    cartId += id + ",";                                            //以“1,2,3”形式存储cartId
+                    cartId+= id + ",";                                            //以“1,2,3”形式存储cartId
                 }
             });
-            cartId.substring(0, cartId.length - 1);
+            cartId=cartId.substring(0, cartId.length - 1);
             pay(cartId);
         });
     }

@@ -6,9 +6,14 @@
   Time: 15:19
   To change this template use File | Settings | File Templates.
 --%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>购物车</title>
     <meta name="viewport"
@@ -20,11 +25,11 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!-- 	<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script> -->
-    <link rel="stylesheet" href="../../css/master.css">
-    <link rel="stylesheet" href="../../css/module.css">
-    <script src="../../script/lib/jquery.1.10.2.js"></script>
-    <script src="../../script/shopping.js"></script>
-    <script src="../../script/common.js"></script>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/module.css">
+    <script src="script/lib/jquery.1.10.2.js"></script>
+    <script src="script/shopping.js"></script>
+    <script src="script/common.js"></script>
 </head>
 
 <body>
@@ -56,7 +61,7 @@
             <label>
                 <input class="select" name="itemContainer" type="checkBox">
             </label>
-            <img class="goods-img" src="../../img/main-new1.png" alt="">
+            <img class="goods-img" src="img/main-new1.png" alt="">
 
             <div class="goods-info">
                 <p>H&M&nbsp;&nbsp;CARDIGAN</p>
@@ -95,7 +100,7 @@
             </li>
         </ul>
     </div>
-    <form id="frmPay" action="/cart/orderConfirm" method="get">
+    <form id="frmPay" action="cart/orderConfirm" method="get">
         <input type="hidden" name="cartAndNum">
     </form>
     <!--付款按钮END-->
@@ -105,16 +110,16 @@
             <i class="icon-menu icon-menu1"><img src="../../img/footer-c1.png" alt=""></i>
         </a>
         <a>
-            <i class="icon-menu icon-menu2"><img src="../../img/footer-2.png" alt=""></i>
+            <i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
         </a>
         <a href="/jsp/consignment">
-            <i class="icon-menu icon-menu3"><img src="../../img/footer-3.png" alt=""></i>
+            <i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
         </a>
         <a href="/cart/index" id="shopping">
-            <i class="icon-menu icon-menu4"><img src="../../img/footer-4.png" alt=""></i>
+            <i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
         </a>
         <a href="/jsp/personal">
-            <i class="icon-menu icon-menu5"><img src="../../img/footer-5.png" alt=""></i>
+            <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
         </a>
     </div>
     <!--底部导航 END-->
