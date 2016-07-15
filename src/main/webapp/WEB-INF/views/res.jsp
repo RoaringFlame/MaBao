@@ -1,14 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="<%=basePath%>">
-
     <meta charset="UTF-8">
     <title>注册</title>
     <meta name="viewport"
@@ -20,54 +13,51 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/module.css">
-    <script type="text/javascript" src="script/lib/jquery.1.10.2.js"></script>
-    <script type="text/javascript" src="script/common.js"></script>
-    <script type="text/javascript" src="script/res.js"></script>
+     <link rel="stylesheet" href="../../css/master.css">
+    <link rel="stylesheet" href="../../css/module.css">
 </head>
 
 <body>
-<div class="content-index">
-    <!--标题-->
-    <header>
-        注册
-        <!--操作按钮-->
-        <div class="header-box">
-            <a href="/login">
-                <button class="header-left">
-                    <i class="icon icon-return"></i>
-                    返回
+    <div class="content-index">
+        <!--标题-->
+        <header>
+           注册
+            <!--操作按钮-->
+           <div class="header-box">
+                <a href="login.jsp">
+                  <button class="header-left">
+                  <i class="icon icon-return"></i>
+                   返回
                 </button>
+                </a>
+           </div>
+            <!--操作按钮 END-->
+        </header>
+         <!--标题 END-->
+
+		<form class="register-box" action="">       <%--跳转到注册的action--%>
+		<label for="userName">账户名：
+			<input type="text" name="username" id="userName" >
+		</label>
+		<label for="userName">密码：
+			<input type="password" name="password" id="passWord" >
+		</label>
+		<label for="userName">确认密码：
+			<input type="password" name="confirm-pwd" id="confirmPwd" >
+		</label>
+		<label for="userName">邮箱：
+			<input type="email" name="email" id="email" >
+		</label>
+
+		    <p class="warning"></p>
+            <!--注册成功跳转到登陆页面-->
+            <!-- 注册按钮 -->
+            <a class="button-bottom" href="login.jsp">
+                <button type="submit" class="submit">注册</button>
             </a>
-        </div>
-        <!--操作按钮 END-->
-    </header>
-    <!--标题 END-->
+            <!-- 注册按钮END -->
+		</form>
 
-    <div class="register-box">
-        <label for="userName">账户名：
-            <input type="text" name="username" id="userName">
-        </label>
-        <label for="userName">密码：
-            <input type="password" name="password" id="passWord">
-        </label>
-        <label for="userName">确认密码：
-            <input type="password" name="confirm-pwd" id="confirmPwd">
-        </label>
-        <label for="userName">邮箱：
-            <input type="email" name="email" id="email">
-        </label>
-
-        <p class="warning"></p>
-        <!--注册成功跳转到登陆页面-->
-        <!-- 注册按钮 -->
-        <a class="button-bottom">
-            <button type="button" class="submit" id="up-to-login">注册</button>
-        </a>
-        <!-- 注册按钮END -->
-    </div>
-
-</div>
+	</div>
 </body>
 </html>
