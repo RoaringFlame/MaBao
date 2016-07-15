@@ -123,6 +123,5 @@
         <!--宝物详情END-->
     </div>
 </div>
-<div class="tip" id="textShow"></div>
 </body>
 </html>
