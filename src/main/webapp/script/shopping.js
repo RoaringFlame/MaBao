@@ -7,13 +7,14 @@ $(function () {
     function getGoods() {
         MB.sendAjax("get", "/showCart", {}, function (data) {
             $(data).each(function (index, goods) {
-                var newGoods = $("#goodsContainer").find("div.main-item").clone();             //克隆goodsContainer中商品信息
-                newGoods.find("div.cartId").text(goods.id);                                    //从后台获取cartId
-                newGoods.find("img").attr("src", "../upload/" + goods.picture);                //从后台获取picture
-                newGoods.find("div.goods-info").find("p:eq(0)").text(goods.brand);             //从后台获取brand
-                newGoods.find("div.goods-info").find("p:eq(1)").text(goods.size);              //从后台获取size
-                newGoods.find("div.goods-info").find("p:eq(2)").text("￥" + goods.price);      //从后台获取price
-                main.append(newGoods);                                                         //在main中加入商品信息
+                var newGoods = $("#goodsContainer").find("div.main-item").clone();                       //克隆goodsContainer中商品信息
+                newGoods.find("div.cartId").text(goods.id);                                              //从后台获取cartId
+                newGoods.find("img").attr("src", "../upload/" + goods.picture);                          //从后台获取picture
+                newGoods.find("div.goods-info").find("p:eq(0)").text(goods.brand);                       //从后台获取brand
+                newGoods.find("div.goods-info").find("p:eq(1)").text(goods.size);                        //从后台获取size
+                newGoods.find("div.goods-info").find("p:eq(2)").text("￥" + goods.price);                //从后台获取price
+                newGoods.find("div.shopping-cart").find("p").text(goods.quantity);
+                main.append(newGoods);                                                                   //在main中加入商品信息
             });
             //复选框事件
             main.find(".select")
