@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <link rel="stylesheet" href="../../css/master.css">
-    <link rel="stylesheet" href="../../css/module.css">
+    <link rel="stylesheet" href="../css/module.css">
 </head>
 
 <body>
@@ -24,59 +24,69 @@
         增加售货地址
         <!--操作按钮-->
         <div class="header-box">
-            <a href="/jsp/pay">
-                <button class="header-left">
+            <a href="pay.html">
+                <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </button>
+                </p>
             </a>
         </div>
         <!--操作按钮 END-->
     </header>
     <!--标题 END-->
     <!-- 编辑收货地址 -->
-    <form id="edit-add" action="/sell/receiptPlaceAdd" METHOD="post">
+    <form id="edit-add" action="">
         <div class="edit-add-box">
             <p class="p-tit">请填写您的地址及电话，我们会安排上门收货</p>
             <label>
-                <input name="address.recipients" type="text" placeholder="收件人：">
+                <input name="addressee" type="text" placeholder="收件人：">
             </label>
             <label>
-                <input name="address.tel" type="text" placeholder="手机号：">
+                <input name="tel" type="text" placeholder="手机号：">
             </label>
             <label>
-                <input name="address.area" type="text" placeholder="所在地：">
+                <input name="location" type="text" placeholder="所在地：">
             </label>
-            <!-- 省市级联地址插件 -->
-            <div id="test"></div>
-            <!-- 省市级联地址插件END -->
+            <!-- 省市级联地址 -->
             <label>
-                <input name="address.location" type="text" class="write" placeholder="详细地址：">
+                <select name="province">
+                    <option value="请选择">请选择</option>
+                </select>
+                <select name="city">
+                    <option value="请选择">请选择</option>
+                </select>
+                <select name="urban" id="address">
+                    <option value="请选择">请选择</option>
+                </select>
+            </label>
+            <!-- 省市级联地址END -->
+            <label>
+                <input name="detail-add" type="text" class="write" placeholder="详细地址：">
             </label>
             <div class="clear"></div>
         </div>
         <!-- 清楚浮动 -->
     </form>
-        <!--服务条款-->
-        <label class="terms">
-            <textarea name="terms" cols="30" rows="10"> 服务条款
-            </textarea>
-        </label>
-        <!-- 清楚浮动 -->
-        <div class="clear"></div>
-        <label class="terms">
-            <input type="checkbox" checked="checked">
-            <span class="agree">我同意寄售服务条款</span>
-        </label>
-        <!--服务条款END-->
-        <div class="edit-add-input ">
-            <!-- 保存按钮 -->
-            <label>
-                <input class="disabled" type="submit" value="提交" form="edit-add" >
-            </label>
-            <!-- 保存按钮END -->
-        </div>
+    <!--服务条款-->
+    <label class="terms">
+            <textarea name="terms" cols="30" rows="10">服务条款
 
+            </textarea>
+    </label>
+    <!-- 清楚浮动 -->
+    <div class="clear"></div>
+    <label class="terms">
+        <input type="checkbox" checked="checked">
+        <span class="agree">我同意寄售服务条款</span>
+    </label>
+    <!--服务条款END-->
+    <div class="edit-add-input ">
+        <!-- 保存按钮 -->
+        <label>
+            <input class="disabled" type="submit" value="提交"  form="edit-add"  >//跳转到寄售成功页面
+        </label>
+        <!-- 保存按钮END -->
+    </div>
     <!-- 编辑收货地址END -->
 </div>
 </body>
