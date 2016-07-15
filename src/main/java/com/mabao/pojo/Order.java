@@ -1,16 +1,13 @@
 package com.mabao.pojo;
 
-import com.fasterxml.jackson.core.sym.Name;
-
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Date;
 
 @Entity
 @Table(name = "t_order")
 public class Order {
     private Long id;                    //id
-    private User buyer;                 //买家编号
+    private User buyer;                 //买家ID
     private Date createTime;            //订单创建时间
     private Date portTime;              //订单发货时间
     private Date payTime;               //订单支付时间

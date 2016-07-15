@@ -18,7 +18,8 @@ public interface CartRepository extends BaseRepository<Cart> {
     /**
      * 商品ID查购物车信息
      * @param goodsId           商品ID
+     * @param userId            用户ID
      * @return                  购物车
      */
-    Cart findByGoodsId(Long goodsId);
+    Cart findByGoodsIdAndUserId(Long goodsId,Long userId);
 }
