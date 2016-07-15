@@ -4,9 +4,9 @@ import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.User;
 import com.mabao.repository.UserRepository;
 import com.mabao.service.UserService;
-import com.mabao.util.MD5;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -51,9 +51,10 @@ public class UserServiceImpl implements UserService {
         }else if (this.userRepository.findByEmail(email) != null) {
             return new JsonResultVO(JsonResultVO.FAILURE, "该邮箱已被使用");
         }else {
+            Md5PasswordEncoder md5 = new Md5PasswordEncoder();
             User user = new User();
             user.setName(userName);
-            user.setPassword(MD5.getMD5ofStr(password));
+            user.setPassword(md5.encodePassword(password,""));
             user.setEmail(email);
             user.setCreateTime(new Date());
             this.userRepository.save(user);
@@ -78,7 +79,8 @@ public class UserServiceImpl implements UserService {
     public JsonResultVO changePassword(String password) {
         User user = UserManager.getUser();
         if (user != null) {
-            user.setPassword(MD5.getMD5ofStr(password));
+            Md5PasswordEncoder md5 = new Md5PasswordEncoder();
+            user.setPassword(md5.encodePassword(password,""));
             this.updateUser(user);
             return new JsonResultVO(JsonResultVO.SUCCESS,"修改成功");
         }

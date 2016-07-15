@@ -31,10 +31,10 @@
         <!--操作按钮-->
         <div class="header-box">
             <a href="personal.html">
-                <button class="header-left">
+                <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </button>
+                </p>
             </a>
         </div>
         <!--操作按钮 END-->
@@ -43,20 +43,21 @@
     <!-- 登陆表单 -->
     <form class="login-box" action="login" method="POST">
         <!-- 校验提示 -->
-        <c:if test="${not empty error}">
-        <p class="warning">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
-        </c:if>
-        <label for="userName">用户名
+        <label for="userName">用户名:
             <input type="text" name="username" id="userName">
         </label>
-        <label for="passWord">密码
+        <label for="passWord">密码:
             <input type="password" name="password" id="passWord">
         </label>
+        <c:if test="${not empty error}">
+            <p class="warning">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
+        </c:if>
         <!-- 登陆按钮 -->
-        <button name="sumbit" type="submit">登陆</button>
-        <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
+        <a class="button-bottom">
+            <button class="submit" type="submit">登陆</button>
+            <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
+        </a>
         <!-- 登陆按钮END -->
-        <a href="/MaBao/findpwd" class="login-right">忘记密码</a>
         <a href="res" class="login-bottom">免费注册</a>
     </form>
     <!-- 登陆表单END -->

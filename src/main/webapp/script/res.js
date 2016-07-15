@@ -36,39 +36,35 @@ $(function () {
         confirmCheck();
         emailCheck();
         if (ok1 && ok2 && ok3 && ok4) {//当以上判断全部成立，即执行后面的代码
-            $.post(MB.getRootPath()+"/user/register",
+            MB.sendAjax("post","user/register",
                 {userName: $('#userName').val(), password: $('#passWord').val(), email: $('#email').val()},
-                    function (data) {
-                        //根据服务器返回的值判断
-                        if (data.status == "success") {
-                            //跳转到登录页面
-                            window.location.href = MB.getRootPath()+"/login";
-                        }
-                        else if (data.status == "failure") {
-                            $('.warning').text(data.message);
-                        }
-                        else {
-                            $('.warning').text(data.message);
-                        }
-                    }, 'json')
-
-        //    $.post("http://localhost:8080/mb/LoginRegisterServlet?method=RegisterCheck",
-        //        {username: $('#userName').val(), pwd: $('#passWord').val(), email: $('#email').val()},
-        //        function (data) {
-        //            //根据服务器返回的值判断
-        //            if (data == 0) {
-        //                //跳转到登录页面
-        //                window.location.href = "/login";
-        //            }
-        //            else if (data == 1) {
-        //                $('.warning').text("用户名重复");
-        //            }
-        //            else {
-        //                $('.warning').text("邮箱重复");
-        //            }
-        //
-        //        }, 'json')
-
+                function (data) {
+                    //根据服务器返回的值判断
+                    if (data.status == "success") {
+                        //跳转到登录页面
+                        window.location.href = MB.getRootPath()+"/login";
+                    }
+                    else if (data.status == "failure") {
+                        $('.warning').text(data.message);
+                    }
+                    else {
+                        $('.warning').text(data.message);
+                    }})
+            //$.post(MB.getRootPath()+"/user/register",
+            //    {userName: $('#userName').val(), password: $('#passWord').val(), email: $('#email').val()},
+            //        function (data) {
+            //            //根据服务器返回的值判断
+            //            if (data.status == "success") {
+            //                //跳转到登录页面
+            //                window.location.href = MB.getRootPath()+"/login";
+            //            }
+            //            else if (data.status == "failure") {
+            //                $('.warning').text(data.message);
+            //            }
+            //            else {
+            //                $('.warning').text(data.message);
+            //            }
+            //        }, 'json')
         } else {
             return false;
         }
