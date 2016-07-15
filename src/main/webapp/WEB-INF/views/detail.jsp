@@ -5,12 +5,17 @@
   Time: 16:29
   To change this template use File | Settings | File Templates.
 --%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>宝物详情</title>
     <meta name="viewport"
@@ -21,10 +26,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="../../css/master.css">
-    <link rel="stylesheet" href="../../css/module.css">
-    <script type="text/javascript" src="../../script/lib/jquery.1.10.2.js"></script>
-    <script src="../../script/detail.js"></script>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/module.css">
+    <script type="text/javascript" src="script/lib/jquery.1.10.2.js"></script>
+    <script src="script/detail.js"></script>
 </head>
 
 <body>
@@ -49,7 +54,7 @@
     <div class="goods-detail">
         <!--宝物图片-->
         <div class="goods-detail-top">
-            <img src="/upload/${goodsDetail.picture}" alt="">
+            <img src="upload/${goodsDetail.picture}" alt="">
             <div>
                 <p>${goodsDetail.brandName}</p>
                 <p>
@@ -102,7 +107,7 @@
             <div class="clear"></div>
             <p>宝物图片:</p>
             <c:forEach items="${goodsDetail.pictureList}" var="goodsPicture">
-                <img src="/upload/${goodsPicture}" alt="图片正在加载中...">
+                <img src="upload/${goodsPicture}" alt="图片正在加载中...">
             </c:forEach>
         </div>
 
@@ -117,7 +122,7 @@
                     <button>立即购买</button>
                 </a>
             </div>
-            <a href="/jsp/consignment">
+            <a href="consignment">
                 <button class="button">我要转让</button>
             </a>
         </div>

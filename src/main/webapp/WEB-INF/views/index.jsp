@@ -1,7 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
+
     <meta charset="UTF-8">
     <title>首页</title>
     <meta name="viewport"
@@ -52,10 +58,17 @@
         </div>
         <!--关键字查询-->
         <div class="search-input">
+<<<<<<< HEAD
             <p id="btnSearch">
                 <i class="icon icon-search"></i>
             </p>
             <input title="请输入关键字">
+=======
+            <p >
+                <i class="icon icon-search"></i>
+            </p>
+            <input id="txtSearch" title="请输入关键字">
+>>>>>>> dev
         </div>
         <!-- 侧导航栏 -->
         <div class="sidebar hide" id="sidebar">
@@ -110,42 +123,45 @@
                 <!-- 功能切换 END-->
                 <div class="goods-list">
                     <!--新品列表的展示-->
-                    <ul id="newGoodsList" class="goods-list clearfix"></ul>
+                    <div id="newGoodsList">
+                        <ul class="goods-list clearfix"></ul>
+                    </div>
                     <!--猜你喜欢物品的展示-->
-                    <ul id="likeGoodsList" class="goods-list clearfix">
-                    </ul>
+                    <div id="likeGoodsList" >
+                        <!--猜你喜欢主体-->
+                        <ul class="goods-list clearfix"></ul>
+                        <!-- 猜你喜欢 -->
+                        <div id="likeForm" class="you-like">
+                            <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
+                            <p>请填写以下信息</p>
+                            <ul>
+                                <li>
+                                    <label>宝宝姓名：</label>
+                                    <label><input name="babyName" type="text"></label>
+                                </li>
+                                <li>
+                                    <label>宝宝生日：</label>
+                                    <label><input name="babyBirthday" type="date"></label>
+                                </li>
+
+                                <li>
+                                    <label>宝宝性别：</label>
+                                    <label>
+                                        <select name="sex" id="sex">
+                                        </select>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>宝宝爱好：</label>
+                                    <label><input type="text" name="hobby"></label>
+                                </li>
+                            </ul>
+                            <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
+                        </div>
+                        <!-- 猜你喜欢END -->
+                    </div>
                 </div>
-
-                <!-- 猜你喜欢 -->
-                <div id="likeForm" class="you-like hide">
-                    <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
-                    <p>请填写以下信息</p>
-                    <ul>
-                        <li>
-                            <label>宝宝姓名：</label>
-                            <label><input name="babyName" type="text"></label>
-                        </li>
-                        <li>
-                            <label>宝宝生日：</label>
-                            <label><input name="babyBirthday" type="date"></label>
-                        </li>
-
-                        <li>
-                            <label>宝宝性别：</label>
-                            <label>
-                                <select name="sex" id="sex">
-                                </select>
-                            </label>
-                        </li>
-
-                        <li>
-                            <label>宝宝爱好：</label>
-                            <label><input type="text" name="hobby"></label>
-                        </li>
-                    </ul>
-                    <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
-                </div>
-                <!-- 猜你喜欢END -->
             </div>
         </div>
     </div>

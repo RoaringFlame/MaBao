@@ -17,6 +17,7 @@ import com.mabao.util.Selector;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -72,10 +73,7 @@ public class HomeRESTController {
      * @return                  商品
      */
     @RequestMapping(value = "/goodsSearch", method = RequestMethod.GET)
-    public PageVO<GoodsVO> goodsSearch(@RequestParam(value = "goodsTypeId",required = false) Long goodsTypeId,
-                              @RequestParam(value = "searchKey",required = false) String searchKey,
-                              @RequestParam(value = "page", defaultValue = "0") int page,
-                              @RequestParam(value = "pageSize", defaultValue = "4") int pageSize) {
+    public PageVO<GoodsVO> goodsSearch(Long goodsTypeId,String searchKey,int page,int pageSize) {
 
         Page<Goods> goodsList = this.goodsService.goodsSearch(goodsTypeId,searchKey,page,pageSize);
         PageVO<GoodsVO> voPage = new PageVO<>();
@@ -86,25 +84,40 @@ public class HomeRESTController {
 
     /**
      * （首页猜你喜欢）
-     * @param babyName          宝宝姓名
-     * @param babyBirthday      宝宝生日
-     * @param gender            宝宝性别
-     * @param hobby             爱好
      * @param page              页码
      * @param pageSize          一页大小
      * @return                  商品集合，分页
      */
     @RequestMapping(value = "/goodsGuess",method = RequestMethod.GET)
-    public PageVO<GoodsVO> goodsListGuess(@RequestParam String babyName,
-                                          @RequestParam String babyBirthday,
-                                          @RequestParam Gender gender,
-                                          @RequestParam String hobby,
-                                          @RequestParam(value = "page", defaultValue = "0")int page,
-                                          @RequestParam(value = "pageSize", defaultValue = "4") int pageSize) {
-        Page<Goods> goodsPage = this.goodsService.goodsListGuess(babyName,babyBirthday,gender,hobby,page,pageSize);
+    public PageVO<GoodsVO> goodsListGuess(Baby baby,int page,int pageSize) {
+        Page<Goods> goodsPage = this.goodsService.goodsListGuess(baby,page,pageSize);
         PageVO<GoodsVO> voPage = new PageVO<>();
         voPage.toPage(goodsPage);
         voPage.setItems(GoodsVO.generateBy(goodsPage.getContent()));
         return voPage;
+    }
+
+    /**
+     * 猜你喜欢表单提交
+     * @param baby  baby对象
+     * @return      babyVO对象
+     */
+    @RequestMapping(value = "/babySubmit",method = RequestMethod.GET)
+    public BabyVO saveBaby(Baby baby) {
+        User user=UserManager.getUser();
+        if(user!=null){
+            baby.setUser(user);
+            Baby b=this.babyService.saveOne(baby);
+            return BabyVO.generateBy(b);
+        }
+        else{
+            BabyVO vo=new BabyVO();
+            vo.setBirthday(baby.getBirthday());
+            vo.setGender(baby.getGender());
+            vo.setHobby(baby.getHobby());
+            vo.setName(baby.getName());
+            vo.setId(-1l);
+            return vo;
+        }
     }
 }

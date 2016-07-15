@@ -6,10 +6,9 @@ $(function () {
     var currentPageNew = 0;                           //新品展示页当前页面
     var currentPageLike = 0;                          //猜你喜欢当前页面
     var pageSize = 4;                                 //每页展示的宝物数量
-    var searchKey = "";                               //搜索栏搜索关键字
     var goodsTypeId = "";                             //商品类型id
     var myScroll;
-    var babyId = null;                                //宝宝id
+    var baby = null;                                //宝宝对象
     var isNew = true;                                 //是否当前展示的是新品
     var backGoods = $("#hideGoods").find("li");     //查找到新品列表下的li标签
     var newGoodsBox = $("#newGoodsList");           //新品展示
@@ -41,11 +40,11 @@ $(function () {
                 typeSidebar.find("ul").append(li);
             });
             //搜索框的初始化
-            $("#btnSearch").click(function () {
-                searchKey = $(this).next("input").val();
+            $("#txtSearch").change(function () {
                 newGoodsBox.empty();
                 loadNewGoods();
             });
+
             //轮播的初始化
             var smallBanner = data.smallBanner;                                                  //获取轮播图片集
             var myCarousel = $("#myCarousel");                                                 //找到jsp页面对应id为myCarousel的项
@@ -54,7 +53,7 @@ $(function () {
                 $('.carousel').carousel({
                     interval: 2000
                 })
-            })
+            });
             //遍历获取到的轮播图片集,index为索引（从0开始），banner自己定义的名称用来取smallBanner中的值
             $(smallBanner).each(function (index, banner) {
                 var li = $("<li></li>")                                       //添加li标签并为其添加属性值
@@ -81,8 +80,7 @@ $(function () {
 
             //猜你喜欢，初始化宝宝信息
             if (data.baby) {
-                babyId = data.baby.id;
-                babyId = null;
+                baby = data.baby;
             }
 
             //猜你喜欢，初始化宝宝性别
@@ -114,7 +112,6 @@ $(function () {
             $(this).next("li").removeClass("focus");                                    //猜你喜欢下无红色下划线
             $("#newGoodsList").show();                                                  //点击新品时新品列表的显示
             $("#likeGoodsList").hide();                                                 //猜你喜欢列表的隐藏
-            $("#likeForm").hide();
             isNew = true;                                                                //是否为新品 设为真
         });
         newGoods.find("div.scroll-menu ul li:eq(1)").click(function () {
@@ -122,7 +119,6 @@ $(function () {
             $(this).prev("li").removeClass("focus");                                   //新品无下划线
             $("#newGoodsList").hide();                                                 //点击猜你喜欢列表的显示
             $("#likeGoodsList").show();                                                //新品的隐藏
-            $("#likeForm").show();
             isNew = false;                                                              //是否为新品  设为假
         });
         //加载新品
@@ -136,13 +132,13 @@ $(function () {
         var params = {
             page: currentPageNew,                 //新品当前页面数
             pageSize: pageSize,                  //新品每页展示的数据信息
-            searchKey: searchKey,                //搜索关键字
+            searchKey: $("#txtSearch").val(),                //搜索关键字
             goodsTypeId: goodsTypeId             //宝物对应的id
         };
 
         if (currentPageNew <= totalPageNew) {
             MB.sendAjax("get", "home/goodsSearch", params, function (data) {
-                console.log(data);
+                //console.log(data);
                 var goodsList = data.items;
                 totalPageNew = data.totalPage;                                                    //获取总页数
                 $(goodsList).each(function (index, goods) {                                      //对新品进行遍历
@@ -165,17 +161,23 @@ $(function () {
 
     //加载猜你喜欢
     function loadLikeGoods() {
-        if (babyId) {                                             //如果宝宝id是存在加载猜你喜欢物品列表页
+        if (baby) {                                             //如果宝宝id是存在加载猜你喜欢物品列表页
+            $("#likeForm").hide();
             var backGoods = $("#hideGoods").find("li");
             var likeGoodsBox = $("#likeGoodsList");
             likeGoodsBox.show();                                  //显示猜你喜欢列表页
             var params = {
-                page: currentPageLike,                           //猜你喜欢当前页面
-                pageSize: pageSize                               //彩泥喜欢每页展示的宝物数量
+                name: baby.name,                  //宝宝姓名
+                birthday: baby.birthday,         //宝宝生日
+                gender: baby.gender,                      //宝宝性别
+                hobby:baby.hobby,                        //宝宝爱好
+                page: currentPageLike,               //猜你喜欢当前页面
+                pageSize: pageSize                  //猜你喜欢每页展示的物品数量
             };
 
             if (currentPageNew <= totalPageLike) {
-                MB.sendAjax("get", "home/goodsGuess/baby/" + babyId, params, function (data) {
+                MB.sendAjax("get", "home/goodsGuess", params, function (data) {
+                    //console.log(data);
                     var goodsList = data.items;
                     totalPageNew = data.totalPageLike;                         //获取猜你喜欢总页数
                     $(goodsList).each(function (index, goods) {
@@ -191,10 +193,7 @@ $(function () {
             }
         }
         else {                                                                //宝宝信息不存在点击猜你喜欢时显示表单页面
-            $("#newGoods").find("li:eq(1)").click(function () {
-                $("#likeForm").removeClass("hide");                         //移除表单css样式，显示表单
-            });
-            $("#likeGoodsList").hide();                                     //猜你喜欢列表页的隐藏
+            $("#likeForm").show();
         }
     }
 
@@ -207,18 +206,14 @@ $(function () {
             var gender = likeForm.find("select[name='sex']").val();                    //宝宝性别的获取
             var hobby = likeForm.find("input[name='hobby']").val();                    //宝宝爱好的获取
             var params = {
-                babyName: babyName,                  //宝宝姓名
-                babyBirthday: babyBirthday,         //宝宝生日
+                name: babyName,                  //宝宝姓名
+                birthday: babyBirthday,         //宝宝生日
                 gender: gender,                      //宝宝性别
-                hobby: hobby,                        //宝宝爱好
-                page: currentPageLike,               //猜你喜欢当前页面
-                pageSize: pageSize                  //猜你喜欢每页展示的物品数量
+                hobby: hobby                        //宝宝爱好
             };
-            console.log(params);
-            MB.sendAjax("get", "home/goodsGuess", params, function (data) {
-                console.log(data);
-                console.log("猜你喜欢表单初提交");
-                //通过宝宝id是否存在的判断，判断页面的跳转
+            MB.sendAjax("get", "home/babySubmit", params, function (data) {
+                baby=data;
+                $("#likeForm").hide();
                 loadLikeGoods();
             });
         });

@@ -1,6 +1,7 @@
 package com.mabao.service;
 
 import com.mabao.enums.Gender;
+import com.mabao.pojo.Baby;
 import com.mabao.pojo.Goods;
 import org.springframework.data.domain.Page;
 ;
@@ -29,15 +30,12 @@ public interface GoodsService {
 
     /**
      * （首页猜你喜欢）
-     * @param babyName          宝宝姓名
-     * @param babyBirthday      宝宝生日
-     * @param gender            宝宝性别
-     * @param hobby             爱好
+     * @param baby          宝宝
      * @param page              页码
      * @param pageSize          一页大小
      * @return                  商品集合，分页
      */
-    Page<Goods> goodsListGuess(String babyName, String babyBirthday, Gender gender, String hobby, int page, int pageSize);
+    Page<Goods> goodsListGuess(Baby baby,int page, int pageSize);
 
     /**
      * 保存商品

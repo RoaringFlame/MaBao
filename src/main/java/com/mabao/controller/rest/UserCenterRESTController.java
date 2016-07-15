@@ -1,23 +1,12 @@
 package com.mabao.controller.rest;
 
 import com.mabao.controller.vo.JsonResultVO;
-import com.mabao.pojo.Address;
-import com.mabao.pojo.Baby;
-import com.mabao.pojo.User;
-import com.mabao.service.AddressService;
-import com.mabao.service.BabyService;
 import com.mabao.service.UserService;
-import com.mabao.util.MD5;
-import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 用户模块
@@ -47,7 +36,7 @@ public class UserCenterRESTController {
      * @param password              新密码
      * @return                      登录页
      */
-    @RequestMapping(value ="/passwordChange",method = RequestMethod.GET)
+    @RequestMapping(value ="/passwordChange",method = RequestMethod.POST)
     public JsonResultVO passwordChange(@RequestParam String password){
         return this.userService.changePassword(password);
     }

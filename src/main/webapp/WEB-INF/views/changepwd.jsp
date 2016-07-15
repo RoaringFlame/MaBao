@@ -9,7 +9,7 @@
     <base href="<%=basePath%>">
 
     <meta charset="UTF-8">
-    <title>登陆</title>
+    <title>修改密码</title>
     <meta name="viewport"
           content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
     <!-- 禁止将数字变为电话号码 -->
@@ -21,46 +21,45 @@
 
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
+    <script type="text/javascript" src="script/lib/jquery.1.10.2.js"></script>
+    <script type="text/javascript" src="script/common.js"></script>
+    <script type="text/javascript" src="script/changepwd.js"></script>
 </head>
-
 <body>
 <div class="content-index">
     <!--标题-->
     <header>
-        登录
+        修改密码
         <!--操作按钮-->
         <div class="header-box">
-            <a href="personal.html">
-                <p class="header-left">
+            <a href="/jsp/personal">
+                <button class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </p>
+                </button>
             </a>
         </div>
         <!--操作按钮 END-->
     </header>
     <!--标题 END-->
-    <!-- 登陆表单 -->
-    <form class="login-box" action="login" method="POST">
+    <!--修改密码表单-->
+    <div class="change-pwd" action="">
+
+        <!-- 修改密码成功跳转到个人中心页面 -->
+        <label for="newPwd">新密码:
+            <input type="password" id="newPwd">
+        </label>
+        <label for="confirm-pwd">确认密码:
+            <input type="password" id="confirm-pwd">
+        </label>
         <!-- 校验提示 -->
-        <label for="userName">用户名:
-            <input type="text" name="username" id="userName">
-        </label>
-        <label for="passWord">密码:
-            <input type="password" name="password" id="passWord">
-        </label>
-        <c:if test="${not empty error}">
-            <p class="warning">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
-        </c:if>
-        <!-- 登陆按钮 -->
-        <a class="button-bottom">
-            <button class="submit" type="submit">登陆</button>
-            <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
-        </a>
-        <!-- 登陆按钮END -->
-        <a href="res" class="login-bottom">免费注册</a>
-    </form>
-    <!-- 登陆表单END -->
+        <p class="warning"></p>
+        <!-- 提交按钮 -->
+        <!--提交后跳转到登陆页面-->
+        <button class="submit" type="button" value="提交" id="up-pwd">提交</button>
+        <!--提交按钮END-->
+    </div>
+    <!--修改密码表单END-->
 </div>
 </body>
 </html>

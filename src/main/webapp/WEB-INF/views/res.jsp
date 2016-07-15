@@ -3,13 +3,14 @@
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <base href="<%=basePath%>">
 
     <meta charset="UTF-8">
-    <title>登陆</title>
+    <title>注册</title>
     <meta name="viewport"
           content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
     <!-- 禁止将数字变为电话号码 -->
@@ -21,46 +22,52 @@
 
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
+    <script type="text/javascript" src="script/lib/jquery.1.10.2.js"></script>
+    <script type="text/javascript" src="script/common.js"></script>
+    <script type="text/javascript" src="script/res.js"></script>
 </head>
 
 <body>
 <div class="content-index">
     <!--标题-->
     <header>
-        登录
+        注册
         <!--操作按钮-->
         <div class="header-box">
-            <a href="personal.html">
-                <p class="header-left">
+            <a href="/login">
+                <button class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </p>
+                </button>
             </a>
         </div>
         <!--操作按钮 END-->
     </header>
     <!--标题 END-->
-    <!-- 登陆表单 -->
-    <form class="login-box" action="login" method="POST">
-        <!-- 校验提示 -->
-        <label for="userName">用户名:
+
+    <div class="register-box">
+        <label for="userName">账户名：
             <input type="text" name="username" id="userName">
         </label>
-        <label for="passWord">密码:
+        <label for="userName">密码：
             <input type="password" name="password" id="passWord">
         </label>
-        <c:if test="${not empty error}">
-            <p class="warning">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
-        </c:if>
-        <!-- 登陆按钮 -->
+        <label for="userName">确认密码：
+            <input type="password" name="confirm-pwd" id="confirmPwd">
+        </label>
+        <label for="userName">邮箱：
+            <input type="email" name="email" id="email">
+        </label>
+
+        <p class="warning"></p>
+        <!--注册成功跳转到登陆页面-->
+        <!-- 注册按钮 -->
         <a class="button-bottom">
-            <button class="submit" type="submit">登陆</button>
-            <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
+            <button type="button" class="submit" id="up-to-login">注册</button>
         </a>
-        <!-- 登陆按钮END -->
-        <a href="res" class="login-bottom">免费注册</a>
-    </form>
-    <!-- 登陆表单END -->
+        <!-- 注册按钮END -->
+    </div>
+
 </div>
 </body>
 </html>
