@@ -1,6 +1,9 @@
 package com.mabao.service;
 
 import com.mabao.pojo.Area;
+import com.mabao.util.Selector;
+
+import java.util.List;
 
 /**
  * 行政区域业务接口
@@ -14,4 +17,18 @@ public interface AreaService {
      * @return                  area对象
      */
     Area get(Long areaId);
+
+    /**
+     * 获取省
+     */
+    List<Selector> findProvinceForSelector();
+
+    /**
+     * 获取某省下的市
+     */
+    List<Selector> findCityForSelector(Long provinceId);
+    /**
+     * 获取市下的区县
+     */
+    List<Selector> findCountyForSelector(Long cityId);
 }

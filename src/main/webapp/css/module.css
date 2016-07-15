@@ -689,18 +689,12 @@
     border: none;
 }
 
-.edit-add-box #test {
-    margin: 0;
-    padding: 0;
-    height: 0;
-}
-
-.edit-add-box #test select {
+.edit-add-box  select {
     position: relative;
     top: -3.5rem;
     left: 6.5rem;
     height: 3rem;
-    width: 7.5rem;
+    width: 7rem;
     margin-right: 1rem;
 }
 
