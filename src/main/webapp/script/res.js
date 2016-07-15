@@ -50,21 +50,6 @@ $(function () {
                     else {
                         $('.warning').text(data.message);
                     }})
-            //$.post(MB.getRootPath()+"/user/register",
-            //    {userName: $('#userName').val(), password: $('#passWord').val(), email: $('#email').val()},
-            //        function (data) {
-            //            //根据服务器返回的值判断
-            //            if (data.status == "success") {
-            //                //跳转到登录页面
-            //                window.location.href = MB.getRootPath()+"/login";
-            //            }
-            //            else if (data.status == "failure") {
-            //                $('.warning').text(data.message);
-            //            }
-            //            else {
-            //                $('.warning').text(data.message);
-            //            }
-            //        }, 'json')
         } else {
             return false;
         }
