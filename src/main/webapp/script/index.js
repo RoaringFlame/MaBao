@@ -19,7 +19,6 @@ $(function () {
         MB.sendAjax("get", "home", {}, function (data) {
             console.log("首页信息初始化");
             console.log(data);
-
             //1.侧边栏的初始化
             $("#searchBox").find("div.column").click(function () {
                 typeSidebar.toggleClass("hide");                  //侧边栏的隐藏与显示，toggleClass()函数，当属性存在则移除，当属性不存在则添加属性
@@ -41,13 +40,11 @@ $(function () {
                     });
                 typeSidebar.find("ul").append(li);
             });
-
             //2.搜索框的初始化
             $("#txtSearch").change(function () {
                 newGoodsBox.empty();
                 loadNewGoods();
             });
-
             //3.轮播的初始化
             var smallBanner = data.smallBanner;                                                  //获取轮播图片集
             var myCarousel = $("#myCarousel");                                                 //找到jsp页面对应id为myCarousel的项
@@ -80,12 +77,10 @@ $(function () {
                 //将img标签信息添加到论波栏目中
                 myCarousel.find(".carousel-inner").append(img);
             });
-
             //猜你喜欢，初始化宝宝信息
             if (data.baby) {
                 baby = data.baby;
             }
-
             //猜你喜欢，初始化宝宝性别
             var genderList = data.gender;
             var genderSelector = $("#sex");
@@ -101,9 +96,7 @@ $(function () {
             //加载表单信息
             initFormAction();
         });
-
     }
-
     //初始化新品和猜你喜欢的切换
     function initGoods() {
         //$("#likeForm").hide();                                                          //猜你喜欢表单的隐藏
@@ -129,7 +122,6 @@ $(function () {
         //加载猜你喜欢
         loadLikeGoods();
     }
-
     //加载新品数据集
     function loadNewGoods() {
         var params = {
@@ -138,7 +130,6 @@ $(function () {
             searchKey: $("#txtSearch").val(),                //搜索关键字
             goodsTypeId: goodsTypeId             //宝物对应的id
         };
-
         if (currentPageNew <= totalPageNew) {
             MB.sendAjax("get", "home/goodsSearch", params, function (data) {
                 //console.log(data);
@@ -161,7 +152,6 @@ $(function () {
             });
         }
     }
-
     //加载猜你喜欢
     function loadLikeGoods() {
         if (baby) {                                             //如果宝宝id是存在加载猜你喜欢物品列表页
@@ -177,7 +167,6 @@ $(function () {
                 page: currentPageLike,               //猜你喜欢当前页面
                 pageSize: pageSize                  //猜你喜欢每页展示的物品数量
             };
-
             if (currentPageNew <= totalPageLike) {
                 MB.sendAjax("get", "home/goodsGuess", params, function (data) {
                     console.log("猜你喜欢的加载！");
@@ -201,10 +190,9 @@ $(function () {
             }
         }
         else {                                                                //宝宝信息不存在点击猜你喜欢时显示表单页面
-            $("#likeForm").show();
+            $("#likeForm").removeClass("hide");                             //显示猜你喜欢表单
         }
     }
-
     //猜你喜欢表单初提交
     function initFormAction() {
         $("#btnLikeSubmit").click(function () {
@@ -221,12 +209,11 @@ $(function () {
             };
             MB.sendAjax("get", "home/babySubmit", params, function (data) {
                 baby = data;
-                $("#likeForm").hide();
+                //$("#likeForm").hide();
                 loadLikeGoods();
             });
         });
     }
-
     //拉动刷新和加载更多的实现
     function initScroll() {
         if (myScroll) {
@@ -253,12 +240,10 @@ $(function () {
             }, false);
         }
     }
-
     //初始化函数
     function init() {
         initIndexPage();
     }
-
     //调用初始化函数
     init();
 });

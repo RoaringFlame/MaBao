@@ -32,7 +32,7 @@
         宝物详情
         <!--操作按钮-->
         <div class="header-box">
-            <a href="/">
+            <a href="">
                 <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
@@ -52,9 +52,9 @@
                 <p>${goodsDetail.brandName}</p>
                 <p>
                     <span>￥<fmt:formatNumber type="number" value="${goodsDetail.price}" pattern="0.00"
-                                             maxFractionDigits="2"/>元</span>
-                    <span>原价：<fmt:formatNumber type="number" value="${goodsDetail.oldPrice}" pattern="0.00"
-                                               maxFractionDigits="2"/>元</span>
+                                             maxFractionDigits="2"/></span>
+                    <span>原价：￥<fmt:formatNumber type="number" value="${goodsDetail.oldPrice}" pattern="0.00"
+                                               maxFractionDigits="2"/></span>
                 </p>
             </div>
         </div>
@@ -115,7 +115,7 @@
                     <button id="buyNow">立即购买</button>
                 </a>
             </div>
-            <a href="/jsp/consignment">
+            <a href="consignment">
                 <button class="button">我要转让</button>
             </a>
         </div>

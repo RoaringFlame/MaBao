@@ -11,7 +11,7 @@ function init() {                                                               
     $("#textShow").hide();
     var goodsId = $("#goodsId").text();
     $("#addToCarts").click(function () {                                            //点击添加到购物车按钮判断是否成功加入购物车
-        $.get("cart/cartAddGoods", {goodsId: goodsId}, function (data) {
+        $.get(MB.getRootPath()+"cart/cartAddGoods", {goodsId: goodsId}, function (data) {
             showMsg(data.message);                                                    //提示框弹出信息停留3秒消失
             console.log(data);
             console.log("详情页面弹框效果的实现");
@@ -19,7 +19,7 @@ function init() {                                                               
 
     });
     $("#addToCarts").click(function () {
-        $.get("cart/cartAddGoods", {goodsId: goodsId}, function (data) {
+        $.get(MB.getRootPath()+"cart/cartAddGoods", {goodsId: goodsId}, function (data) {
             console.log(data);
             console.log("详情页面弹框效果的实现");
             if (data.status == "success") {

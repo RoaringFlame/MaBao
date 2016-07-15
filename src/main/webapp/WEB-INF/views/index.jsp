@@ -146,7 +146,7 @@
                         <%--</form>--%>
                         <!-- 猜你喜欢END -->
                         <%--<!-- 猜你喜欢 -->--%>
-                        <div id="likeForm" class="you-like">
+                        <div id="likeForm" class="you-like hide">
                             <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
                             <p>请填写以下信息</p>
 
@@ -177,7 +177,7 @@
 
 <!--底部导航-->
 <div class="menu" id="menu">
-    <a href="/">
+    <a href="">
         <i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
     </a>
     <a>
