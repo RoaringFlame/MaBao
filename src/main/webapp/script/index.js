@@ -49,7 +49,7 @@ $(function () {
             //轮播的初始化
             var smallBanner = data.smallBanner;                                                  //获取轮播图片集
             var myCarousel = $("#myCarousel");                                                 //找到jsp页面对应id为myCarousel的项
-            $(function(){                                                                       //设定轮播时间
+            $(function () {                                                                       //设定轮播时间
 
                 $('.carousel').carousel({
                     interval: 2000
@@ -60,7 +60,7 @@ $(function () {
                 var li = $("<li></li>")                                       //添加li标签并为其添加属性值
                     .attr("data-target", "#myCarousel")
                     .attr("data-slide-to", index);
-                                    var img = $("<div></div>").addClass("item")                //在div中添加一些属性
+                var img = $("<div></div>").addClass("item")                //在div中添加一些属性
                     .append($("<img>")
                         .attr("src", MB.getRootPath() + "/upload/" + banner.picture)           //添加图片
                         .attr("alt", banner.alt)                                                //添加提示信息
