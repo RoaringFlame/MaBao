@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
     <script type="text/javascript" src="script/lib/jquery.1.10.2.js"></script>
-    <%--<script src="script/detail.js"></script>--%>
+    <script src="script/detail.js"></script>
 </head>
 
 <body>
@@ -108,12 +108,11 @@
         <!--按钮-->
         <div class="goods-detail-button">
             <div>
-                <%--需求为设计弹框内容，暂时不加--%>
-                <a href="cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=false" id="addToCarts">
-                    <button>加入购物车</button>
+                <a>
+                    <button id="addToCarts">加入购物车</button>
                 </a>
-                <a href="cart/cartAddGoods?goodsId=${goodsDetail.id}&jump=true">
-                    <button>立即购买</button>
+                <a>
+                    <button id="buyNow">立即购买</button>
                 </a>
             </div>
             <a href="/jsp/consignment">
@@ -124,6 +123,6 @@
         <!--宝物详情END-->
     </div>
 </div>
-<%--<div class="tip" id="textShow"></div>目前不需要--%>
+<div class="tip" id="textShow"></div>
 </body>
 </html>
