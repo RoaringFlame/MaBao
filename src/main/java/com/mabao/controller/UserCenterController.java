@@ -98,7 +98,6 @@ public class UserCenterController {
     @RequestMapping(value ="/address/addAddress",method = POST)
     public String addAddress(AddressVO address){
         Address newAddress = new Address();
-        newAddress.setId(address.getId());
         newAddress.setUser(UserManager.getUser());
         newAddress.setRecipients(address.getRecipients());
         newAddress.setState(true);//设为默认地址
@@ -107,7 +106,7 @@ public class UserCenterController {
         newAddress.setArea(this.areaService.get(address.getAreaId()));
         Address result=this.addressService.addAddress(newAddress);
         if (result != null){
-            return "redirect:address/allAddress";
+            return "redirect:userAllAddress";
         }else {
             return "address-failure";
         }

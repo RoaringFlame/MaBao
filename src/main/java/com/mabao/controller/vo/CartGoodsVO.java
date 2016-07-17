@@ -45,9 +45,9 @@ public class CartGoodsVO {
     }
 
     /**
-     * 计算该商品总价
-     */
-    public Double getTotalSum() {
+     * 计算该商品小计
+     * */
+    public Double getSubtotal() {
         return this.price * this.quantity;
     }
 
@@ -122,6 +122,5 @@ public class CartGoodsVO {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
-
 
 }
