@@ -7,7 +7,7 @@ $(function () {
     var currentPageLike = 0;                          //猜你喜欢当前页面
     var pageSize = 4;                                 //每页展示的宝物数量
     var goodsTypeId = "";                             //商品类型id
-    var myScroll;
+    var myScroll="";
     var baby = null;                                 //宝宝对象
     var isNew = true;                                //是否当前展示的是新品
     var backGoods = $("#hideGoods").find("li");     //查找到新品列表下的li标签
@@ -49,7 +49,6 @@ $(function () {
             var smallBanner = data.smallBanner;                                                  //获取轮播图片集
             var myCarousel = $("#myCarousel");                                                 //找到jsp页面对应id为myCarousel的项
             $(function () {                                                                       //设定轮播时间
-
                 $('.carousel').carousel({
                     interval: 2000
                 })
@@ -214,14 +213,30 @@ $(function () {
             });
         });
     }
+
     //拉动刷新和加载更多的实现
+    function iScrollClick(){                                                        //判断函数
+        if (/iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)) return false;
+        if (/Chrome/i.test(navigator.userAgent)) return (/Android/i.test(navigator.userAgent));
+        if (/Silk/i.test(navigator.userAgent)) return false;
+        if (/Android/i.test(navigator.userAgent)) {
+            var s=navigator.userAgent.substr(navigator.userAgent.indexOf('Android')+8,3);
+            return parseFloat(s[0]+s[3]) < 44 ? false : true
+        }
+    }
     function initScroll() {
         if (myScroll) {
             myScroll.refresh();
         }
         else {
             //拉动刷新
-            myScroll = new IScroll('div.iscroll-wrapper');
+            myScroll = new IScroll('div.iscroll-wrapper', {                 //滚动点击事件初始化
+                click:iScrollClick(), //调用判断函数
+                scrollbars: true,//有滚动条
+                mouseWheel: true,//允许滑轮滚动
+                fadeScrollbars: true//滚动时显示滚动条，默认影藏，并且是淡出淡入效果
+            });
+            //myScroll = new IScroll('div.iscroll-wrapper');
             myScroll.on("scrollEnd", function () {
                 var wrapperHeight = $('div.iscroll-wrapper').height();
                 if (myScroll.y - wrapperHeight < myScroll.maxScrollY) {

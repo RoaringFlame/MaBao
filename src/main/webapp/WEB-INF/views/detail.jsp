@@ -21,7 +21,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
-    <script type="text/javascript" src="script/lib/jquery.1.10.2.js"></script>
+    <script src="script/lib/jquery.1.10.2.js"></script>
     <script src="script/detail.js"></script>
 </head>
 

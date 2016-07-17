@@ -117,51 +117,17 @@
                     <div id="likeGoodsList">
                         <!--猜你喜欢主体-->
                         <ul class="goods-list clearfix"></ul>
-                        <%--<div class="clear"></div>--%>
-                        <%--<!-- 猜你喜欢 -->--%>
-                        <%--<form id="likeForm"  class="hide">--%>
-                        <%--<div class="you-like">--%>
-                        <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
-                        <%--<p>请填写以下信息</p>--%>
-
-                        <%--<label>宝宝姓名：--%>
-                        <%--<input name="babyName" type="text" id="username"></label>--%>
-
-                        <%--<label>宝宝生日：--%>
-                        <%--<input name="babyData" type="date"></label>--%>
-
-                        <%--<label>宝宝性别：--%>
-
-                        <%--<select name="sex" id="sex">--%>
-                        <%--<option value="">男</option>--%>
-                        <%--<option value="">女</option>--%>
-                        <%--</select>--%>
-                        <%--</label>--%>
-
-                        <%--<label>宝宝爱好：--%>
-                        <%--<input type="text">--%>
-                        <%--</label>--%>
-                        <%--<button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>--%>
-                        <%--</div>--%>
-                        <%--</form>--%>
-                        <!-- 猜你喜欢END -->
-                        <%--<!-- 猜你喜欢 -->--%>
                         <div id="likeForm" class="you-like hide">
                             <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
                             <p>请填写以下信息</p>
-
                             <label>宝宝姓名：
                                 <input name="babyName" type="text"></label>
-
                             <label>宝宝生日：
                                 <input name="babyBirthday" type="date"></label>
-
                             <label>宝宝性别：
-
                                 <select name="sex" id="sex">
                                 </select>
                             </label>
-
                             <label>宝宝爱好：
                                 <input type="text" name="hobby"></label>
                             <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
