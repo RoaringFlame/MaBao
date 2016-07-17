@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/module.css">
     <script src="script/lib/jquery.1.10.2.js"></script>
     <script src="script/detail.js"></script>
+    <script src="script/common.js"></script>
 </head>
 
 <body>
@@ -122,6 +123,7 @@
         <!--按钮END-->
         <!--宝物详情END-->
     </div>
+    <div class="tip" id="textShow"></div>
 </div>
 </body>
 </html>
