@@ -1,9 +1,9 @@
 package com.mabao.service;
 
+import com.mabao.enums.OrderStatus;
 import com.mabao.pojo.Order;
 import com.mabao.pojo.OrderDetail;
 
-import java.util.HashMap;
 import java.util.List;
 
 public interface OrderService {
@@ -20,6 +20,7 @@ public interface OrderService {
     /**
      * 查买家所有订单
      * @return                          订单list
+     * @param orderStatus
      */
-    List<OrderDetail> findBuyerAllOrder();
+    List<OrderDetail> findBuyerAllOrder(OrderStatus orderStatus);
 }
