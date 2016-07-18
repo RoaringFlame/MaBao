@@ -11,7 +11,7 @@ public interface BabyService {
      * @param babyInfo      Baby对象
      * @return              插入的baby对象
      */
-    Baby addBaby(Baby babyInfo);
+    Baby addBaby(BabyVO babyInfo);
 
     /**
      * ID获取宝宝信息

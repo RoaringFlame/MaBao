@@ -1,5 +1,6 @@
 package com.mabao.service;
 
+import com.mabao.controller.vo.AddressVO;
 import com.mabao.pojo.Address;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public interface AddressService {
      * @param address           地址对象
      * @return                  新增的地址对象
      */
-    Address addAddress(Address address);
+    Address addAddress(AddressVO address);
     /**
      * 更改选中收货地址
      * @param address           地址对象

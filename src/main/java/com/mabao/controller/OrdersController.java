@@ -36,7 +36,7 @@ public class OrdersController {
         //生成订单
         Order order = this.orderService.addOrder(cartIds,addressId,message);
         //支付
-        return "pay";
+        return "personal";
     }
 
     /**

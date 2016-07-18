@@ -3,7 +3,6 @@ package com.mabao.controller;
 import com.mabao.controller.vo.AddressVO;
 import com.mabao.enums.Gender;
 import com.mabao.pojo.Address;
-import com.mabao.pojo.Area;
 import com.mabao.pojo.Goods;
 import com.mabao.service.*;
 import com.mabao.util.Selector;
@@ -12,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +31,6 @@ public class SellController {
     @Autowired
     private AddressService addressService;
     @Autowired
-    private AreaService areaService;
-    @Autowired
     private GoodsTypeService goodsTypeService;
     @Autowired
     private GoodsBrandService goodsBrandService;
@@ -46,21 +40,13 @@ public class SellController {
     /**
      * 寄售
      * (添加售货地址)
-     * @param address               地址对象，需包含用户ID
+     * @param addressVO               地址对象，需包含用户ID
      * @return                      添加结果页面
      */
     @RequestMapping(value = "/receiptPlaceAdd",method = POST)
-    public String addReceiptPlace(@RequestParam AddressVO address){
-        Address newAddress = new Address();
-        newAddress.setId(address.getId());
-        newAddress.setUser(UserManager.getUser());
-        newAddress.setRecipients(address.getRecipients());
-        newAddress.setState(true);//设为默认地址
-        newAddress.setLocation(address.getLocation());
-        newAddress.setTel(address.getTel());
-        newAddress.setArea(this.areaService.get(address.getAreaId()));
-        Address adr = this.addressService.addAddress(newAddress);
-        return adr != null ? "consignment_success" : "consignment_failure";
+    public String addReceiptPlace(AddressVO addressVO){
+        Address address = this.addressService.addAddress(addressVO);
+        return address != null ? "consignment_success" : "consignment_failure";
     }
 
 

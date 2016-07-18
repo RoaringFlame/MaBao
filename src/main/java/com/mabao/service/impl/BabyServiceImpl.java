@@ -1,8 +1,11 @@
 package com.mabao.service.impl;
 
+import com.mabao.controller.vo.BabyVO;
 import com.mabao.pojo.Baby;
+import com.mabao.pojo.User;
 import com.mabao.repository.BabyRepository;
 import com.mabao.service.BabyService;
+import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +21,21 @@ public class BabyServiceImpl implements BabyService {
      * @param babyInfo      Baby对象
      * @return              插入的baby对象
      */
-    public Baby addBaby(Baby babyInfo){
-        return this.babyRepository.save(babyInfo);
+    public Baby addBaby(BabyVO babyInfo){
+        User user = UserManager.getUser();
+        assert (user != null):"用户为空null";
+        List<Baby> babyList = this.babyRepository.findByUserId(user.getId());
+        if (babyList.size()>0){
+            return null;
+        }else {
+            Baby newBaby = new Baby();
+            newBaby.setName(babyInfo.getName());
+            newBaby.setUser(UserManager.getUser());
+            newBaby.setBirthday(babyInfo.getBirthday());
+            newBaby.setGender(babyInfo.getGender());
+            newBaby.setHobby(babyInfo.getHobby());
+            return this.babyRepository.save(newBaby);
+        }
     }
     /**
      * ID获取宝宝信息
