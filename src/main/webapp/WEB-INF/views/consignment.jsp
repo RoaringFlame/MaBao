@@ -1,7 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/" + "MaBao/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<base href="<%=basePath%>">
+
 	<meta charset="UTF-8">
 	<title>寄售</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
@@ -23,11 +28,11 @@
 		转让宝物
 		<!--操作按钮-->
 		<div class="header-box">
-			<a href="index">
-				<button class="header-left">
+			<a href="">
+				<p class="header-left">
 					<i class="icon icon-return"></i>
 					返回
-				</button>
+				</p>
 			</a>
 		</div>
 		<!--操作按钮 END-->
@@ -70,14 +75,17 @@
 		<a class="consignment-button" href="consale">
 			<button>我要寄售</button>
 		</a>
-		<a class="consignment-button" href="/sell/releaseSelector">
-			<button>或者,您也可以自助发布宝物</button>
-		</a>
+		<!--我要寄售按钮END-->
+		<p class="consignment-bottom" >
+			<a href="selfup">或者,您也可以自助发布宝物</a>
+		</p>
 	</div>
+	<div class="blank"></div>
+
 	<!--寄售要求END-->
 	<!--底部导航-->
 	<div class="menu" id="menu">
-		<a href="index">
+		<a href="">
 			<i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
 		</a>
 		<a>
@@ -86,7 +94,7 @@
 		<a href="consignment">
 			<i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
 		</a>
-		<a href="shopping" >
+		<a href="shopping">
 			<i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
 		</a>
 		<a href="personal">

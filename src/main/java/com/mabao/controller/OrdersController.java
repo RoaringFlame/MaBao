@@ -1,7 +1,6 @@
 package com.mabao.controller;
 
 import com.mabao.controller.vo.OrderVO;
-import com.mabao.enums.OrderStatus;
 import com.mabao.pojo.Order;
 import com.mabao.pojo.OrderDetail;
 import com.mabao.service.OrderService;
@@ -41,15 +40,13 @@ public class OrdersController {
     }
 
     /**
-     * 查询买家的订单
-     * @param role                      0买家，1卖家
+     * 买家的所有订单
      * @param model                     买家OrderVO
      * @return                          purchase_order页
      */
     @RequestMapping(value = "/userAllOrder",method = GET)
-    public String userAllOrder(@RequestParam Integer role,
-                               @RequestParam(required = false,defaultValue = "-1") OrderStatus orderStatus, Model model){
-        List<OrderDetail> orderList = this.orderService.findBuyerAllOrder(orderStatus);
+    public String userAllOrder(Model model){
+        List<OrderDetail> orderList = this.orderService.findBuyerAllOrder();
         model.addAttribute("allOrder", OrderVO.generateBy(orderList));
         return "purchase_order";
     }

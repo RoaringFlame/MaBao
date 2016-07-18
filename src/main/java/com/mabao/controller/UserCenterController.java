@@ -118,7 +118,7 @@ public class UserCenterController {
      * @return                  用户地址页
      */
     @RequestMapping(value = "/address/updateAddress",method = POST)
-    public String updateAddress(Address address,Model model){
+    public String updateAddress(Address address, Model model){
         Address result=this.addressService.updateAddress(address);
         if (result != null){
             return "redirect:address/allAddress";

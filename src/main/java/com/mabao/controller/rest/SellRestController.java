@@ -15,7 +15,7 @@ import java.util.List;
  * @author jackie
  */
 @RestController
-public class SellRestController {
+public class SellRESTController {
     @Autowired
     private AreaService areaService;
 

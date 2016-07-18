@@ -1,14 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: maxu
-  Date: 2016/7/14
-  Time: 17:45
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/"+"MaBao/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>修改宝宝信息</title>
     <meta name="viewport"
@@ -20,8 +17,8 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../css/master.css">
-    <link rel="stylesheet" href="../../css/module.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/module.css">
 </head>
 <body>
 <div class="content-index">
@@ -30,7 +27,7 @@
         个人信息
         <!--操作按钮-->
         <div class="header-box">
-            <a href="/jsp/personal">
+            <a href="personal">
                 <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
@@ -41,13 +38,13 @@
     </header>
     <!--标题 END-->
     <!-- 编辑宝宝信息 -->
-    <form action="/user/baby/addBaby" class="person-msg">
+    <form action="" class="person-msg">
 
         <label for="babyData">宝宝生日：
-            <input name="baby-data" id="babyData" type="date" value="babyData">
+            <input name="baby-data" id="babyData" type="date" value="${baby.birthday}">
         </label>
         <label for="babyName">宝宝姓名：
-            <input name="baby-name" id="babyName" type="text" value="babyName">
+            <input name="baby-name" id="babyName" type="text" value="${baby.name}">
         </label>
         <label for="sex">宝宝性别：
             <select name="sex" id="sex">

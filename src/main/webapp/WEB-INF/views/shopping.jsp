@@ -1,19 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: maxu
-  Date: 2016/7/8
-  Time: 15:19
-  To change this template use File | Settings | File Templates.
---%>
 <%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/" + "MaBao/";
 %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <base href="<%=basePath%>">
+
     <meta charset="UTF-8">
     <title>购物车</title>
     <meta name="viewport"
@@ -39,7 +32,7 @@
         购物车
         <!--操作按钮-->
         <div class="header-box">
-            <a href="/">
+            <a href="">
                 <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
@@ -101,24 +94,24 @@
         </ul>
     </div>
     <form id="frmPay" action="cart/orderConfirm" method="get">
-        <input type="hidden" name="cartAndNum">
+        <input type="hidden" name="cartIds">
     </form>
     <!--付款按钮END-->
     <!--底部导航-->
     <div class="menu" id="menu">
-        <a href="/">
-            <i class="icon-menu icon-menu1"><img src="../../img/footer-c1.png" alt=""></i>
+        <a href="">
+            <i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
         </a>
         <a>
             <i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
         </a>
-        <a href="/jsp/consignment">
+        <a href="consignment">
             <i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
         </a>
-        <a href="/cart/index" id="shopping">
+        <a href="shopping" id="shopping">
             <i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
         </a>
-        <a href="/jsp/personal">
+        <a href="personal">
             <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
         </a>
     </div>

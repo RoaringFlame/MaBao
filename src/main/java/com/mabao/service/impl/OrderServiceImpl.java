@@ -75,10 +75,9 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 查购买者所有订单
-     * @param orderStatus               订单状态
      */
     @Override
-    public List<OrderDetail> findBuyerAllOrder(OrderStatus orderStatus) {
+    public List<OrderDetail> findBuyerAllOrder() {
         User user = UserManager.getUser();
         if (user != null){
             return this.orderDetailRepository.findByOrderBuyerId(user.getId());

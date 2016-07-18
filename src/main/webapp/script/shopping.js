@@ -5,15 +5,15 @@ $(function () {
     var editBtn = $("div.header-box").find(".header-right");
     //获取商品信息
     function getGoods() {
-        MB.sendAjax("get", "/showCart", {}, function (data) {
+        MB.sendAjax("get", "cart/showCart", {}, function (data) {
             $(data).each(function (index, goods) {
                 var newGoods = $("#goodsContainer").find("div.main-item").clone();                       //克隆goodsContainer中商品信息
                 newGoods.find("div.cartId").text(goods.id);                                              //从后台获取cartId
-                newGoods.find("img").attr("src", "../upload/" + goods.picture);                          //从后台获取picture
+                newGoods.find("img").attr("src", MB.getRootPath()+"/upload/" + goods.picture);                          //从后台获取picture
                 newGoods.find("div.goods-info").find("p:eq(0)").text(goods.brand);                       //从后台获取brand
                 newGoods.find("div.goods-info").find("p:eq(1)").text(goods.size);                        //从后台获取size
                 newGoods.find("div.goods-info").find("p:eq(2)").text("￥" + goods.price);                //从后台获取price
-                newGoods.find("div.shopping-cart").find("p").text(goods.quantity);
+                newGoods.find("div.shopping-cart").find("p").text(goods.quantity);                       //从后台获取quantity
                 main.append(newGoods);                                                                   //在main中加入商品信息
             });
             //复选框事件
@@ -26,27 +26,26 @@ $(function () {
             main.find(".shopping-cart-add").click(function () {
                 var cartId = $(this).parent().prevAll("div.cartId").text();           //获取当前商品的cartId
                 var num = parseInt($(this).prev("p").text());                         //获取当前商品数量
-                MB.sendAjax("get", "/changeNum/" + cartId, {opt: 1}, function () {
-                    num++;                             //点击增加按钮后商品数量加1
-                    setTotal();                        //点击增加按钮后重新计算总价
+                MB.sendAjax("get", "cart/changeNum/" + cartId, {opt: 1}, function () {
+                    //num++;                             //点击增加按钮后商品数量加1
+                    setTotal();                          //点击增加按钮后重新计算总价
                 });
-                $(this).prev("p").text(num + 1);
+                $(this).prev("p").text(num+1);
             });
             //减少按钮
             main.find(".shopping-cart-reduce").click(function () {
                 var cartId = $(this).parent().prevAll("div.cartId").text();          //获取当前商品的cartId
                 var num = parseInt($(this).next("p").text());                        //获取当前购物车商品数量
-                MB.sendAjax("get", "/changeNum/" + cartId,{opt: 2}, function () {
-                      num--;                                                          //商品数量减1
-                    setTotal();                                                       //点击减少按钮后重新计算总价
+                MB.sendAjax("get", "cart/changeNum/" + cartId,{opt: 2}, function () {
+                    setTotal();                                               //点击减少按钮后重新计算总价
                 });
-                $(this).next("p").text(num <= 1 ? 1 : num - 1);                       //如果商品数量为1则商品数量不变，否则商品数量减1
+                $(this).next("p").text(num<=1?1:num-1);                       //如果商品数量为1则商品数量不变，否则商品数量减1
             });
             //删除按钮
             main.find(".goods-del").click(function () {
                 var cartId = $(this).prevAll("div.cartId").text();
                 var delItem = $(this).parent();
-                MB.sendAjax("DELETE", "/deleteGoods/" + cartId, {}, function () {
+                MB.sendAjax("DELETE", "cart/deleteGoods/" + cartId, {}, function () {
                     delItem.remove();          //删除购物车商品
                     setTotal();                //点击删除按钮后重新计算总价
                 });
@@ -90,8 +89,8 @@ $(function () {
 
     //付款
     function pay(cartId) {
-        payForm.find("input[name='cartAndNum']").val(cartId);                   //给表单中的input赋值字符串
-        payForm.submit();                                                       //提交表单
+        payForm.find("input[name='cartIds']").val(cartId);                   //给表单中的input赋值字符串
+        payForm.submit();                                                    //提交表单
     }
 
     function init() {
