@@ -108,7 +108,7 @@ public class CartServiceImpl implements CartService {
                 }
             }
         }else {
-            throw new NullPointerException("未登录");
+            return new JsonResultVO(JsonResultVO.FAILURE, "请先登录！");
         }
     }
     /**
