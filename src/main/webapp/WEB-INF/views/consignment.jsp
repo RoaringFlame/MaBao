@@ -94,10 +94,10 @@
 		<a href="consignment">
 			<i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
 		</a>
-		<a href="shopping">
+		<a href="user/shopping">
 			<i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
 		</a>
-		<a href="personal">
+		<a href="user/personal">
 			<i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
 		</a>
 	</div>

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 用户模块
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/person")
 public class UserCenterRESTController {
     @Autowired
     private UserService userService;
@@ -26,11 +26,10 @@ public class UserCenterRESTController {
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public JsonResultVO userRegister(@RequestParam String userName,
-                                                @RequestParam String password,
-                                                @RequestParam String email) {
+                                     @RequestParam String password,
+                                     @RequestParam String email) {
         return this.userService.userRegister(userName,password,email);
     }
-
     /**
      * 修改密码
      * @param password              新密码
