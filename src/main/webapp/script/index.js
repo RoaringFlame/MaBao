@@ -24,7 +24,7 @@ $(function () {
                 typeSidebar.toggleClass("hide");                  //侧边栏的隐藏与显示，toggleClass()函数，当属性存在则移除，当属性不存在则添加属性
             });
             var typeList = data.goodsTypeList;
-            typeList.unshift({key: "", value: "所有"});          //添加点击跳所有的选项，unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度
+            typeList.unshift({key: "", value: "所有"});          //添加点击跳转所有的选项，unshift()方法可向数组的开头添加一个或更多元素，并返回新的长度
             $(typeList).each(function (index, goodsType) {
                 var li = $("<li></li>")
                     .text(goodsType.value)
@@ -36,14 +36,17 @@ $(function () {
                             goodsTypeId = null;                   //设置商品id为空
                         }
                         newGoodsBox.empty();                       //点击完后清空信息
+                        currentPageNew = 0;                        //点击完后页面定位1
                         loadNewGoods();
                     });
                 typeSidebar.find("ul").append(li);
             });
             //搜索框的初始化
-            $("#txtSearch").change(function () {
+            $("#txtSearch").change(function () {                 //手机上点击完成实现搜索
                 newGoodsBox.empty();
+                currentPageNew = 0;                                 //点击完后页面定位1
                 loadNewGoods();
+
             });
             //轮播的初始化
             var smallBanner = data.smallBanner;                                                  //获取轮播图片集
