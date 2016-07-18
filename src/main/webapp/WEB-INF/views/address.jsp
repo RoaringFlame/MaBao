@@ -1,8 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/" + "MaBao/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<base href="<%=basePath%>">
+
 	<meta charset="UTF-8">
 	<title>选择收货地址</title>
 	<meta name="viewport"
@@ -24,13 +29,13 @@
 		选择收货地址
 		<!--操作按钮-->
 		<div class="header-box">
-			<a href="/cart/orderConfirm">
-				<button class="header-left">
-					<i class="icon icon-return"></i>
-					返回
-				</button>
-			</a>
-		</div>
+		<a href="user/personal">
+			<p class="header-left">
+				<i class="icon icon-return"></i>
+				返回
+			</p>
+		</a>
+	</div>
 		<!--操作按钮 END-->
 	</header>
 	<!--标题 END-->
@@ -60,7 +65,7 @@
 		</c:forEach>
 	</div>
 	<!-- 新增收货地址按钮 -->
-	<a href="newaddress" class="input-add">
+	<a href="user/new_address" class="input-add">
 		<button type="submit">新增收货地址</button>
 	</a>
 	<!-- 新增收货地址按钮END -->

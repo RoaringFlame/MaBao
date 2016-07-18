@@ -39,14 +39,14 @@
          <!-- 我是买家——购买订单 -->
         <div class="order"> 
           <!-- 购买订单 -->
-            <c:forEach items="${}" var="goods">
-                <div class="order-box" onclick=window.location.href="/goods/goodsDetail?goodsId=goods.id">
+            <c:forEach items="${allOrder}" var="OrderDetail">
+                <div class="order-box" onclick=window.location.href="/goods/goodsDetail?goodsId=OrderDetail.id">
                     <p class="unpaid-txt">卖家已发货</p>
-                    <img src="${goods.picture}" alt="宝物">
+                    <img src="${OrderDetail.picture}" alt="宝物">
                     <div class="order-box-right">
-                        <p>${goods.brand}</p>
-                        <p>${goods.size}/p>
-                        <p class="order-box-left">￥${goods.price}</p>
+                        <p>${OrderDetail.brand}</p>
+                        <p>${OrderDetail.size}</p>
+                        <p class="order-box-left">￥${OrderDetail.unitCost}</p>
                     </div>
                 </div>
           <!-- 购买订单END -->

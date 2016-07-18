@@ -1,7 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/" + "MaBao/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
+
     <meta charset="UTF-8">
     <title>登陆</title>
     <meta name="viewport"
@@ -24,7 +29,7 @@
         登录
         <!--操作按钮-->
         <div class="header-box">
-            <a href="personal.html">
+            <a href="">
                 <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回

@@ -34,9 +34,20 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/res").setViewName("res");
-        registry.addViewController("/changepwd").setViewName("changepwd");
         registry.addViewController("/consignment").setViewName("consignment");
-        registry.addViewController("/shopping").setViewName("shopping");
-        registry.addViewController("/personal").setViewName("personal");
+        registry.addViewController("/user/changepwd").setViewName("changepwd");
+        registry.addViewController("/user/shopping").setViewName("shopping");
+        registry.addViewController("/user/personal").setViewName("personal");
+        registry.addViewController("/user/new_address").setViewName("new_address");
+        registry.addViewController("/user/consale").setViewName("consale");
+        registry.addViewController("/user/selfup").setViewName("selfup");
+        registry.addViewController("/user/purchase_order").setViewName("purchase_order");
+        registry.addViewController("/user/unpaid_order").setViewName("unpaid_order");
+        registry.addViewController("/user/nopackaged_order").setViewName("nopackaged_order");
+        registry.addViewController("/user/ckeck_order").setViewName("ckeck_order");
+        registry.addViewController("/user/consignment_order").setViewName("consignment_order");
+        registry.addViewController("/user/finish_order").setViewName("finish_order");
+        registry.addViewController("/user/published_order").setViewName("published_order");
+        registry.addViewController("/user/unpublished_order").setViewName("unpublished_order");
     }
 }

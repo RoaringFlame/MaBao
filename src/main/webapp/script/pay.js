@@ -1,16 +1,17 @@
-/**
- * Created by maxu on 2016/7/10.
- */
+
 "use strict";
+
 $(function(){
     function init(){
-        //点击按钮跳转到所有收货地址页面
-        $(".add-jump-arrow").click(function(){
-            $.get("/user/address/userAllAddress",{},function(data){
-                console.log(data);
+        //付款按钮点击事件
+        /*$(".pay").click(function(){
+            var cartIds=$(".cartIds").text();
+            var addressId=$(".addressId").text();
+            var message=$("label.notes").text();
+            MB.sendAjax("get","order/payConfirm",{cartIds:cartIds,addressId:addressId,message:message},function(){
+
             });
-        });
-        //宝物点击事件
+        });*/
 
     }
     init();
