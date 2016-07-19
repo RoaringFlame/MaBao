@@ -55,7 +55,7 @@
             <p>
                 <i class="icon icon-search"></i>
             </p>
-            <input id="txtSearch" title="请输入关键字">
+            <input id="txtSearch">
         </div>
         <!-- 侧导航栏 -->
         <div class="sidebar hide" id="sidebar">

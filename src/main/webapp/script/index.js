@@ -44,7 +44,7 @@ $(function () {
                         likeGoodsBox.hide();                    //猜你喜欢列表的隐藏
                         newGoodsBox.empty();                    //点击完后清空信息
                         currentPageNew = 0;                     //点击完后页面定位0;
-                        isNew=true;                            //新品页面展示商品类型列表，isNew设置为true
+                        isNew = true;                            //新品页面展示商品类型列表，isNew设置为true
                         initNewGoodsBox();                      // 数据清空后重新加载分类页面
                     }
                 });
@@ -67,7 +67,7 @@ $(function () {
                 likeGoodsBox.hide();                             //猜你喜欢列表的隐藏
                 newGoodsBox.empty();                             //点击完后清空信息
                 currentPageNew = 0;                              //点击完后页面定位0
-                isNew=true;                                      //新品页面展示搜索物品列表，isNew设置为true
+                isNew = true;                                      //新品页面展示搜索物品列表，isNew设置为true
                 initNewGoodsBox();
             }
         });
@@ -109,7 +109,7 @@ $(function () {
     //4,初始化新品
     function initNewGoodsBox() {
         var params = {
-            page: currentPageNew,                             //新品当前页面数
+            page: currentPageNew,                               //新品当前页面数
             pageSize: pageSize,                                //新品每页展示的数据信息
             searchKey: $("#txtSearch").val(),                //搜索关键字
             goodsTypeId: goodsTypeId                          //宝物对应的id
@@ -138,13 +138,13 @@ $(function () {
     }
 
     //5,初始化猜你喜欢宝宝相关
-    function initBaby(baby,gender){
+    function initBaby(baby, gender) {
         //初始化宝宝
         if (baby) {
-            baby =baby;
+            baby = baby;
         }
         //初始化宝宝性别
-        var genderList =gender;
+        var genderList = gender;
         var genderSelector = $("#sex");
         $(genderList).each(function (index, gender) {
             var option = $("<option></option>").val(gender.key).text(gender.value);
@@ -176,24 +176,22 @@ $(function () {
         });
     }
 
-    //5,初始化猜你喜欢
-    function initLikeBox(){
+    //7,初始化猜你喜欢
+    function initLikeBox() {
         //猜你喜欢商品列表
-        currentPageNew = 0;                         //点击完后页面定位0
-        newGoodsBox.empty();                        //清空新品列表
         typeSidebar.addClass("hide");               //侧边栏添加隐藏样式（假设侧边栏被点开时）
         if (baby) {                                 //如果宝宝id是存在加载猜你喜欢物品列表页
-                $("#likeForm").hide();
-                var backGoods = $("#hideGoods").find("li");
-                likeGoodsBox.show();                           //显示猜你喜欢列表页
-                var params = {
-                    name: baby.name,                         //宝宝姓名
-                    birthday: baby.birthday,                //宝宝生日
-                    gender: baby.gender,                    //宝宝性别
-                    hobby: baby.hobby,                      //宝宝爱好
-                    page: currentPageLike,                   //猜你喜欢当前页面
-                    pageSize: pageSize                      //猜你喜欢每页展示的物品数量
-                };
+            $("#likeForm").hide();
+            var backGoods = $("#hideGoods").find("li");
+            likeGoodsBox.show();                           //显示猜你喜欢列表页
+            var params = {
+                name: baby.name,                         //宝宝姓名
+                birthday: baby.birthday,                //宝宝生日
+                gender: baby.gender,                    //宝宝性别
+                hobby: baby.hobby,                      //宝宝爱好
+                page: currentPageLike,                   //猜你喜欢当前页面
+                pageSize: pageSize                      //猜你喜欢每页展示的物品数量
+            };
             //控制猜你喜欢的加载
             if (currentPageLike <= totalPageLike) {       //判断当前页面是否小于等于总页数
                 MB.sendAjax("get", "home/goodsGuess", params, function (data) {
@@ -223,7 +221,7 @@ $(function () {
         }
     }
 
-    //6，初始化新品和猜你喜欢的切换
+    //8，初始化新品和猜你喜欢的切换
     function initGoods() {
         //进去就加载新品
         $("#newGoodsList").show();                                                          //新品页初始化为显示
@@ -237,7 +235,7 @@ $(function () {
                 $("#likeGoodsList").hide();                                                 //猜你喜欢列表的隐藏
                 isNew = true;                                                                //是否为新品 设为真
                 //加载新品
-                initNewGoodsBox();
+                //initNewGoodsBox();
             }
         });
         newGoods.find("div.scroll-menu ul li:eq(1)").click(function () {
@@ -250,14 +248,13 @@ $(function () {
                 //加载猜你喜欢
                 initLikeBox();
                 typeSidebar.addClass("hide");              //侧边栏添加隐藏样式
-            }else{
+            } else {
 
             }
         });
-        initNewGoodsBox();
     }
 
-    //7，拉动刷新和加载更多的实现
+    //9，拉动刷新和加载更多的实现
     function iScrollClick() {                           //判断函数
         if (/iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)) return false;
         if (/Chrome/i.test(navigator.userAgent)) return (/Android/i.test(navigator.userAgent));
@@ -267,6 +264,7 @@ $(function () {
             return (parseFloat(s[0] + s[3]) < 44 ? false : true);
         }
     }
+
     function initScroll() {
         if (myScroll) {
             myScroll.refresh();
@@ -299,7 +297,7 @@ $(function () {
         }
     }
 
-    //8,首页信息初始化
+    //10,首页信息初始化
     function initIndexPage() {
         MB.sendAjax("get", "home", {}, function (data) {
             console.log("首页信息初始化");
@@ -311,19 +309,23 @@ $(function () {
             //搜索框的初始化
             initSearch();
             //猜你喜欢初始化宝宝相关信息
-            initBaby(data.baby,data.gender);
+            initBaby(data.baby, data.gender);
+            //新品初始化，只初始化一次
+            initNewGoodsBox();
             //表单信息初始化
             initFormAction();
-            //初始化新品和猜你喜欢
-            initGoods();
         });
+
     }
 
-    //9，初始化函数
+    //11，初始化函数
     function init() {
+        //首页初始化
         initIndexPage();
+        //控制新品和猜你喜欢的切换
+        initGoods();
     }
 
-    //10，调用初始化函数
+    //12，调用初始化函数
     init();
 });
