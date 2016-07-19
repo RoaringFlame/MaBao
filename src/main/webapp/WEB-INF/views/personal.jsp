@@ -29,11 +29,11 @@
 		个人中心
 		<!--操作按钮-->
 		<div class="header-box">
-			<a href="personal">
-				<button class="header-left">
+			<a href="">
+				<p class="header-left">
 					<i class="icon icon-return"></i>
 					返回
-				</button>
+				</p>
 			</a>
 		</div>
 		<!--操作按钮 END-->
@@ -92,7 +92,7 @@
 	<!--注销按钮END-->
 	<!--底部导航-->
 	<div class="menu" id="menu">
-		<a href="index">
+		<a href="">
 			<i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
 		</a>
 		<a href="#">
@@ -101,10 +101,10 @@
 		<a href="consignment">
 			<i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
 		</a>
-		<a href="shopping" id="shopping">
+		<a href="user/shopping" id="shopping">
 			<i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
 		</a>
-		<a href="personal">
+		<a href="user/personal">
 			<i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
 		</a>
 	</div>

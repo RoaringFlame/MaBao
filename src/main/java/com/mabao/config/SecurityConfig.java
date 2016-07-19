@@ -22,7 +22,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http.csrf().disable()
         .formLogin().loginPage("/login").defaultSuccessUrl("/");
     http.authorizeRequests().regexMatchers("/user/.*").authenticated()
-            .regexMatchers("/cart/.*").authenticated();
+            .regexMatchers("/cart/showCart").authenticated()
+            .regexMatchers("/person/passwordChange").authenticated();
   }
   
   @Override
