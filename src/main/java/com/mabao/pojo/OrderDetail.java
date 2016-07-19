@@ -9,7 +9,6 @@ public class OrderDetail {
     private Long id;                                //id
     private Order order;                            //订单ID
     private Goods goods;                            //商品ID
-    private Integer quantity;                       //数量
     private String size;                            //尺寸
     private String title;                           //标题
     private String typeName;                        //一级类型名称
@@ -105,11 +104,4 @@ public class OrderDetail {
         this.newDegree = newDegree;
     }
 
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
 }

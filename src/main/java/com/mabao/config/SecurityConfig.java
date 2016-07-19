@@ -21,6 +21,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http.csrf().disable()
         .formLogin().loginPage("/login").defaultSuccessUrl("/");
+    http.authorizeRequests().regexMatchers("/user/.*").authenticated()
+            .regexMatchers("/cart/showCart").authenticated()
+            .regexMatchers("/person/passwordChange").authenticated();
   }
   
   @Override

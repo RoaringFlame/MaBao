@@ -1,6 +1,5 @@
 package com.mabao.controller.rest;
 
-import com.mabao.pojo.Area;
 import com.mabao.service.AreaService;
 import com.mabao.util.Selector;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import java.util.List;
  * @author jackie
  */
 @RestController
-public class SellRestController {
+public class SellRESTController {
     @Autowired
     private AreaService areaService;
 

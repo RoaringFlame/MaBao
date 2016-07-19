@@ -2,12 +2,14 @@ package com.mabao.controller;
 
 import com.mabao.controller.vo.AddressVO;
 import com.mabao.controller.vo.BabyVO;
+import com.mabao.controller.vo.UserInfoVO;
 import com.mabao.pojo.Address;
 import com.mabao.pojo.Baby;
 import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.AreaService;
 import com.mabao.service.BabyService;
+import com.mabao.service.UserService;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,9 +31,32 @@ public class UserCenterController {
     @Autowired
     private AddressService addressService;
     @Autowired
-    private AreaService areaService;
-    @Autowired
     private BabyService babyService;
+    @Autowired
+    private UserService userService;
+
+    /**
+     * 个人中心，获取登录用户的基本信息
+     * @param model               UserInfoVO
+     * @return                    personal页
+     */
+    @RequestMapping(method = GET)
+    public String userCenter(Model model){
+        User user = UserManager.getUser();
+        if (user != null) {
+            UserInfoVO vo = new UserInfoVO();
+            Baby baby = this.babyService.findBabyByUserId(user.getId()).get(0);
+            vo.setUserId(user.getId());
+            vo.setUserName(user.getName());
+            vo.setUserPicture(user.getPicture());
+            vo.setBabyId(baby.getId());
+            vo.setBabyName(baby.getName());
+            model.addAttribute("userInfo", vo);
+            return "personal";
+        }else {
+            return "login";
+        }
+    }
 
     /**
      * 该用户所有收货地址
@@ -65,22 +90,14 @@ public class UserCenterController {
 
     /**
      * 添加收货地址
-     * @param address           地址对象
-     * @return                  地址页
+     * @param addressVO             地址VO
+     * @return                      地址页
      */
     @RequestMapping(value ="/address/addAddress",method = POST)
-    public String addAddress(AddressVO address){
-        Address newAddress = new Address();
-        newAddress.setId(address.getId());
-        newAddress.setUser(UserManager.getUser());
-        newAddress.setRecipients(address.getRecipients());
-        newAddress.setState(true);//设为默认地址
-        newAddress.setLocation(address.getLocation());
-        newAddress.setTel(address.getTel());
-        newAddress.setArea(this.areaService.get(address.getAreaId()));
-        Address result=this.addressService.addAddress(newAddress);
+    public String addAddress(AddressVO addressVO){
+        Address result = this.addressService.addAddress(addressVO);
         if (result != null){
-            return "redirect:address/allAddress";
+            return "redirect:userAllAddress";
         }else {
             return "address-failure";
         }
@@ -92,7 +109,7 @@ public class UserCenterController {
      * @return                  用户地址页
      */
     @RequestMapping(value = "/address/updateAddress",method = POST)
-    public String updateAddress(Address address,Model model){
+    public String updateAddress(Address address, Model model){
         Address result=this.addressService.updateAddress(address);
         if (result != null){
             return "redirect:address/allAddress";
@@ -118,7 +135,7 @@ public class UserCenterController {
      * @param model                 宝宝对象
      * @return                      编辑宝宝信息页
      */
-    @RequestMapping(value = "baby/showBabyInfo",method = GET)
+    /*@RequestMapping(value = "baby/showBabyInfo",method = GET)
     public String showBabyInfo(@RequestParam Long babyId,Model model){
         Baby baby =  this.babyService.get(babyId);
         if (baby != null){
@@ -127,21 +144,25 @@ public class UserCenterController {
         }else {
             return "baby_show_failure";
         }
-    }
-
+    }*/
 
     /**
      * 查看某用户宝宝信息
-     * @param model                     宝宝LIST
-     * @return                          宝宝信息页
+     * @param model                     宝宝
+     * @return                          无宝宝，到新增页；有宝宝，到修改页
      */
     @RequestMapping(value = "baby/allBabyInfo",method = GET)
     public String findAllBabyInfo(Model model){
         User user = UserManager.getUser();
         if (user != null) {
             List<Baby> babyList = this.babyService.findBabyByUserId(user.getId());
-            model.addAttribute("babyList", babyList);
-            return "redirect:baby/permsg";
+            if (babyList.size()>0){
+                Baby baby = babyList.get(0);
+                model.addAttribute("baby", baby);
+                return "changemsg";
+            }else {
+                return "permsg";
+            }
         }else {
             return "login";
         }
@@ -154,18 +175,10 @@ public class UserCenterController {
      * @return                  宝宝列表接口
      */
     @RequestMapping(value = "baby/addBaby",method = POST)
-    public String addBabyInfo(@RequestParam BabyVO babyInfo, Model model){
-        Baby newBaby = new Baby();
-        newBaby.setId(babyInfo.getId());
-        newBaby.setName(babyInfo.getName());
-        newBaby.setUser(UserManager.getUser());
-        newBaby.setBirthday(babyInfo.getBirthday());
-        newBaby.setGender(babyInfo.getGender());
-        newBaby.setHobby(babyInfo.getHobby());
-        Baby baby =  this.babyService.addBaby(newBaby);
+    public String addBabyInfo(BabyVO babyInfo, Model model){
+        Baby baby =  this.babyService.addBaby(babyInfo);
         if (baby != null){
-            model.addAttribute("userId",baby.getUser().getId());
-            return "redirect:baby/allBabyInfo";//转向查询所有宝宝接口(带用户ID)
+            return "redirect:user";     //转向个人中心
         }else {
             return "baby_add_failure";
         }
@@ -177,13 +190,13 @@ public class UserCenterController {
      * @return                      宝宝列表接口
      */
     @RequestMapping(value = "baby/updateBabyInfo",method = POST)
-    public String updateBabyInfo(@RequestParam Baby babyInfo){
+    public String updateBabyInfo(Baby babyInfo){
         Baby baby =  this.babyService.updateBabyInfo(babyInfo);
         if (baby != null){
-            Long userId = baby.getUser().getId();
-            return "redirect:baby/allBabyInfo";//转向查询所有宝宝接口(带用户ID)
+            return "redirect:user";     //转向个人中心
         }else {
             return "baby_update_failure";
         }
     }
+
 }

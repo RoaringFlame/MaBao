@@ -1,25 +1,28 @@
 package com.mabao.pojo;
 
-import com.fasterxml.jackson.core.sym.Name;
+import com.mabao.enums.OrderStatus;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Date;
 
 @Entity
 @Table(name = "t_order")
 public class Order {
     private Long id;                    //id
-    private User buyer;                 //买家编号
+    private User buyer;                 //买家ID
+    private Long sellerId;              //买家ID
+    private Integer quantity;           //数量
+    private Double totalSum;            //总价
     private Date createTime;            //订单创建时间
     private Date portTime;              //订单发货时间
     private Date payTime;               //订单支付时间
     private Date dealTime;              //订单完成时间
     private String portNumber;          //运单号
+    private Double freight;             //运费
     private String paymentNo;           //支付单号
     private Address address;            //地址编号
     private String message;             //买家留言
-    private Integer state;              //订单状态，0待支付（买家），1待发货（卖家），2待收货（买家），3已完成（卖家），4已取消（买家）
+    private OrderStatus state;          //订单状态，0待支付（买家），1待发货（卖家），2待收货（买家），3已完成（卖家），4已取消（买家）
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -82,13 +85,14 @@ public class Order {
     }
 
     @Column(name = "state")
-    public Integer getState() {
+    public OrderStatus getState() {
         return state;
     }
 
-    public void setState(Integer state) {
+    public void setState(OrderStatus state) {
         this.state = state;
     }
+
     @Column(name = "payment_no")
     public String getPaymentNo() {
         return paymentNo;
@@ -98,7 +102,7 @@ public class Order {
         this.paymentNo = paymentNo;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "buyer_id")
     public User getBuyer() {
         return buyer;
@@ -108,7 +112,16 @@ public class Order {
         this.buyer = buyer;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @Column(name = "seller_id")
+    public Long getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Long sellerId) {
+        this.sellerId = sellerId;
+    }
+
+    @ManyToOne
     @JoinColumn(name = "address_id")
     public Address getAddress() {
         return address;
@@ -116,5 +129,29 @@ public class Order {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+    @Column(name = "total_sum")
+    public Double getTotalSum() {
+        return totalSum;
+    }
+
+    public void setTotalSum(Double totalSum) {
+        this.totalSum = totalSum;
+    }
+
+    public Double getFreight() {
+        return freight;
+    }
+
+    public void setFreight(Double freight) {
+        this.freight = freight;
     }
 }

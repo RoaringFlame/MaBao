@@ -45,11 +45,13 @@ public class GoodsServiceImpl implements GoodsService {
         if (goodsTypeId == null && (title == null || "".equals(title))){
             return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
         }if (goodsTypeId != null && title != null && !"".equals(title)){
-            return this.goodsRepository.findByTypeIdAndStateAndTitleLike(goodsTypeId,Boolean.TRUE,title,new PageRequest(page, pageSize));
+            title = "%"+title+"%";
+            return this.goodsRepository.findByTitleLikeAndTypeIdAndState(title,goodsTypeId,Boolean.TRUE,new PageRequest(page, pageSize));
         }else if (title == null || "".equals(title)){
             return this.goodsRepository.findByTypeIdAndState(goodsTypeId,Boolean.TRUE,new PageRequest(page, pageSize));
         }else if (goodsTypeId == null){
-            return this.goodsRepository.findByStateAndTitleLike(Boolean.TRUE,title,new PageRequest(page, pageSize));
+            title = "%"+title+"%";
+            return this.goodsRepository.findByTitleLikeAndState(title,Boolean.TRUE,new PageRequest(page, pageSize));
         }else {
             return null;
         }
@@ -65,24 +67,15 @@ public class GoodsServiceImpl implements GoodsService {
 
     /**
      * （首页猜你喜欢）
-     * @param babyName          宝宝姓名
-     * @param babyBirthday      宝宝生日
-     * @param gender            宝宝性别
-     * @param hobby             爱好
      * @param page              页码
      * @param pageSize          一页大小
      * @return                  商品集合，分页
      */
     @Override
-    public Page<Goods> goodsListGuess(String babyName, String babyBirthday, Gender gender, String hobby, int page, int pageSize) {
+    public Page<Goods> goodsListGuess(Baby baby, int page, int pageSize) {
         User user = UserManager.getUser();
         if (user != null){
-            Baby baby = new Baby();
             baby.setUser(this.userService.get(user.getId()));
-            baby.setName(babyName);
-            baby.setBirthday(Date.valueOf(babyBirthday));
-            baby.setGender(gender);
-            baby.setHobby(hobby);
             this.babyService.saveOne(baby);
         }
         return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));

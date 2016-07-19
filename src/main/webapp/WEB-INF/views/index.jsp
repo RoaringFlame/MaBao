@@ -33,7 +33,7 @@
         首页
         <!--操作按钮-->
         <div class="header-box">
-            <a href="/jsp/login">
+            <a href="login">
                 <p class="header-left">
                     <i class="icon icon-return"></i>
                     登陆
@@ -52,10 +52,10 @@
         </div>
         <!--关键字查询-->
         <div class="search-input">
-            <p id="btnSearch">
+            <p>
                 <i class="icon icon-search"></i>
             </p>
-            <input title="请输入关键字">
+            <input id="txtSearch" title="请输入关键字">
         </div>
         <!-- 侧导航栏 -->
         <div class="sidebar hide" id="sidebar">
@@ -110,42 +110,31 @@
                 <!-- 功能切换 END-->
                 <div class="goods-list">
                     <!--新品列表的展示-->
-                    <ul id="newGoodsList" class="goods-list clearfix"></ul>
+                    <div id="newGoodsList">
+                        <ul class="goods-list clearfix"></ul>
+                    </div>
                     <!--猜你喜欢物品的展示-->
-                    <ul id="likeGoodsList" class="goods-list clearfix">
-                    </ul>
-                </div>
-
-                <!-- 猜你喜欢 -->
-                <div id="likeForm" class="you-like hide">
-                    <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
-                    <p>请填写以下信息</p>
-                    <ul>
-                        <li>
-                            <label>宝宝姓名：</label>
-                            <label><input name="babyName" type="text"></label>
-                        </li>
-                        <li>
-                            <label>宝宝生日：</label>
-                            <label><input name="babyBirthday" type="date"></label>
-                        </li>
-
-                        <li>
-                            <label>宝宝性别：</label>
-                            <label>
+                    <div id="likeGoodsList">
+                        <!--猜你喜欢主体-->
+                        <ul class="goods-list clearfix"></ul>
+                        <div id="likeForm" class="you-like hide">
+                            <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
+                            <p>请填写以下信息</p>
+                            <label>宝宝姓名：
+                                <input name="babyName" type="text"></label>
+                            <label>宝宝生日：
+                                <input name="babyBirthday" type="date"></label>
+                            <label>宝宝性别：
                                 <select name="sex" id="sex">
                                 </select>
                             </label>
-                        </li>
-
-                        <li>
-                            <label>宝宝爱好：</label>
-                            <label><input type="text" name="hobby"></label>
-                        </li>
-                    </ul>
-                    <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
+                            <label>宝宝爱好：
+                                <input type="text" name="hobby"></label>
+                            <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
+                        </div>
+                        <%--<!-- 猜你喜欢END -->--%>
+                    </div>
                 </div>
-                <!-- 猜你喜欢END -->
             </div>
         </div>
     </div>
@@ -154,19 +143,19 @@
 
 <!--底部导航-->
 <div class="menu" id="menu">
-    <a href="/">
+    <a href="">
         <i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
     </a>
     <a>
         <i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
     </a>
-    <a href="/jsp/consignment">
+    <a href="consignment">
         <i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
     </a>
-    <a href="/jsp/shopping" id="shopping">
+    <a href="user/shopping" id="shopping">
         <i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
     </a>
-    <a href="/jsp/personal">
+    <a href="user/personal">
         <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
     </a>
 </div>

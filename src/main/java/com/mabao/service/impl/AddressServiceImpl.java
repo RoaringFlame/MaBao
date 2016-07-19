@@ -1,8 +1,12 @@
 package com.mabao.service.impl;
 
+import com.mabao.controller.vo.AddressVO;
 import com.mabao.pojo.Address;
+import com.mabao.pojo.User;
 import com.mabao.repository.AddressRepository;
 import com.mabao.service.AddressService;
+import com.mabao.service.AreaService;
+import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +20,8 @@ import java.util.List;
 public class AddressServiceImpl implements AddressService {
     @Autowired
     private AddressRepository addressRepository;
+    @Autowired
+    private AreaService areaService;
 
     /**
      * 查默认收货地址
@@ -39,8 +45,26 @@ public class AddressServiceImpl implements AddressService {
      * @param address           地址对象
      * @return                  新增地址对象
      */
-    public Address addAddress(Address address){
-        return this.addressRepository.save(address);
+    public Address addAddress(AddressVO address){
+        Address newAddress = new Address();
+        User user = UserManager.getUser();
+        assert user != null;
+        if (address.isState()){     //修改默认地址
+            Address defaultAddress = this.addressRepository.findByUserIdAndState(user.getId(),Boolean.TRUE);
+            if (defaultAddress !=null){
+                defaultAddress.setState(false);
+                this.addressRepository.save(defaultAddress);
+            }
+            newAddress.setState(true);//设为默认地址
+        }else {
+            newAddress.setState(false);
+        }
+        newAddress.setUser(user);
+        newAddress.setRecipients(address.getRecipients());
+        newAddress.setLocation(address.getLocation());
+        newAddress.setTel(address.getTel());
+        newAddress.setArea(this.areaService.get(address.getAreaId()));
+        return this.addressRepository.save(newAddress);
     }
 
     /**

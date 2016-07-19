@@ -21,6 +21,15 @@ public class CartRESTController {
     @Autowired
     private CartService cartService;
 
+    /**
+     * 添加商品到购物车
+     * @param goodsId       商品ID
+     * @return              购物车页
+     */
+    @RequestMapping(value = "/cartAddGoods",method = RequestMethod.GET)
+    public JsonResultVO shoppingCarGoodsAdd(@RequestParam Long goodsId){
+        return this.cartService.addCartGoods(goodsId);
+    }
 
     /**
      * 查看购物车
@@ -28,8 +37,13 @@ public class CartRESTController {
      */
     @RequestMapping(value = "/showCart",method = RequestMethod.GET)
     public List<CartGoodsVO> showUserCart(){
-        List<Cart> cartGoods = this.cartService.findAllGoodsByUser(UserManager.getUser().getId());
-        return CartGoodsVO.generateBy(cartGoods);
+        User user = UserManager.getUser();
+        if (user != null) {
+            List<Cart> cartGoods = this.cartService.findAllGoodsByUser(user.getId());
+            return CartGoodsVO.generateBy(cartGoods);
+        }else {
+            throw new NullPointerException();
+        }
     }
 
     /**

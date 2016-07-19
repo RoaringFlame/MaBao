@@ -26,7 +26,7 @@ public class Address {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     public User getUser() {
         return user;
@@ -36,7 +36,7 @@ public class Address {
         this.user = user;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "area_id")
     public Area getArea() {
         return area;

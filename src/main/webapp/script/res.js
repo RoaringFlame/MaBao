@@ -36,7 +36,7 @@ $(function () {
         confirmCheck();
         emailCheck();
         if (ok1 && ok2 && ok3 && ok4) {//当以上判断全部成立，即执行后面的代码
-            MB.sendAjax("post","user/register",
+            MB.sendAjax("post","person/register",
                 {userName: $('#userName').val(), password: $('#passWord').val(), email: $('#email').val()},
                 function (data) {
                     //根据服务器返回的值判断
