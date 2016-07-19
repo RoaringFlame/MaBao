@@ -103,7 +103,7 @@
                 <!-- 功能切换-->
                 <div class="scroll-menu">
                     <ul>
-                        <li class="focus"> 新品</li>
+                        <li class="focus">新品</li>
                         <li>猜你喜欢</li>
                     </ul>
                 </div>
