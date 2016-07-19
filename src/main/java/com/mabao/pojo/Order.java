@@ -102,7 +102,7 @@ public class Order {
         this.paymentNo = paymentNo;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "buyer_id")
     public User getBuyer() {
         return buyer;
@@ -121,7 +121,7 @@ public class Order {
         this.sellerId = sellerId;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "address_id")
     public Address getAddress() {
         return address;
