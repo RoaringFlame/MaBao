@@ -1,5 +1,6 @@
 package com.mabao.service;
 
+import com.mabao.controller.vo.AreaIdValue;
 import com.mabao.pojo.Area;
 import com.mabao.util.Selector;
 
@@ -31,4 +32,9 @@ public interface AreaService {
      * 获取市下的区县
      */
     List<Selector> findCountyForSelector(Long cityId);
+    /**
+     * 通过areaID获取对应省市区
+     * @param areaId                            区级areaId
+     */
+    AreaIdValue findEachAreaValueByAreaId(Long areaId);
 }

@@ -44,4 +44,13 @@ public class GoodsSizeServiceImpl implements GoodsSizeService{
         }
         return selectors;
     }
+    /**
+     * ID获取商品
+     * @param id            尺寸ID
+     * @return              尺寸对象
+     */
+    @Override
+    public GoodsSize get(Long id) {
+        return this.goodsSizeRepository.findOne(id);
+    }
 }

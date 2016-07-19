@@ -18,7 +18,9 @@ public class GoodsDetailVO {
     private Double oldPrice;                        //原价
     private Double price;                           //宝物价格
     private String newDegree;                       //宝物新旧程度
+    private Long typeId;                            //一级类型编号
     private String typeName;                        //类型名称
+    private Long brandId;                           //一级类型编号
     private String brandName;                       //宝物品牌
     private String size;                            //宝物尺寸
     private String babyType;                        //适合宝宝类型
@@ -31,6 +33,8 @@ public class GoodsDetailVO {
     public static GoodsDetailVO generateBy(Goods goods){
         GoodsDetailVO vo = VoUtil.copyBasic(GoodsDetailVO.class, goods);
         assert vo != null;
+        vo.setBrandId(goods.getBrand().getId());
+        vo.setTypeId(goods.getType().getId());
         vo.setNewDegree(goods.getNewDegree().getText());
         vo.setSize(goods.getSize().getName());
         vo.setBabyType(goods.getBabyType().getText());
@@ -167,5 +171,21 @@ public class GoodsDetailVO {
 
     public void setUpTime(Date upTime) {
         this.upTime = upTime;
+    }
+
+    public Long getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Long typeId) {
+        this.typeId = typeId;
+    }
+
+    public Long getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
     }
 }

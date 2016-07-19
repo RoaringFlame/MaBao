@@ -1,12 +1,12 @@
 package com.mabao.controller;
 
 import com.mabao.controller.vo.AddressVO;
+import com.mabao.controller.vo.GoodsDetailVO;
 import com.mabao.enums.Gender;
 import com.mabao.pojo.Address;
 import com.mabao.pojo.Goods;
 import com.mabao.service.*;
 import com.mabao.util.Selector;
-import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -81,9 +81,9 @@ public class SellController {
      * @return                  寄售成功页
      */
     @RequestMapping(value = "/release",method = POST)
-    public String releaseGoods(Goods newGoods){
-        newGoods.setUser(UserManager.getUser());
-        if (this.goodsService.saveOne(newGoods) != null){
+    public String releaseGoods(GoodsDetailVO newGoods){
+        Goods result= this.goodsService.releaseGoods(newGoods);
+        if (result != null){
             return "publish_success";
         }else {
             return "publish_failure";

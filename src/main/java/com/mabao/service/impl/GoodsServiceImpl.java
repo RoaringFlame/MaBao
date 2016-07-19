@@ -1,22 +1,19 @@
 package com.mabao.service.impl;
 
-import com.mabao.enums.Gender;
+import com.mabao.controller.vo.GoodsDetailVO;
+import com.mabao.enums.BabyType;
+import com.mabao.enums.Quality;
 import com.mabao.pojo.Baby;
 import com.mabao.pojo.Goods;
 import com.mabao.pojo.User;
-import com.mabao.repository.BabyRepository;
 import com.mabao.repository.GoodsRepository;
-import com.mabao.repository.UserRepository;
-import com.mabao.service.BabyService;
-import com.mabao.service.GoodsService;
-import com.mabao.service.UserService;
+import com.mabao.service.*;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -28,6 +25,12 @@ public class GoodsServiceImpl implements GoodsService {
     private BabyService babyService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private GoodsTypeService goodsTypeService;
+    @Autowired
+    private GoodsBrandService goodsBrandService;
+    @Autowired
+    private GoodsSizeService goodsSizeService;
 
     /**
      * 新品
@@ -110,5 +113,37 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public Page<Goods> goodsPageByBabyId(Long babyId, int page, int pageSize) {
         return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
+    }
+
+    /**
+     * 自助发布宝物
+     * 添加商品
+     * @param goodsVO             商品对象
+     * @return                  寄售成功页
+     */
+    @Override
+    public Goods releaseGoods(GoodsDetailVO goodsVO) {
+        try {
+            Goods goods = new Goods();
+            goods.setUser(UserManager.getUser());
+            goods.setPicture(goodsVO.getPicture());
+            goods.setTitle(goodsVO.getTitle());
+            goods.setOldPrice(goodsVO.getOldPrice());
+            goods.setPrice(goodsVO.getPrice());
+            goods.setBabyType(BabyType.valueOf(goodsVO.getBabyType()));
+            goods.setType(this.goodsTypeService.get(goodsVO.getTypeId()));
+            goods.setTypeName(goodsVO.getTypeName());
+            goods.setBrand(this.goodsBrandService.get(goodsVO.getBrandId()));
+            goods.setBrandName(goodsVO.getBrandName());
+            goods.setUpTime(goodsVO.getUpTime());
+            goods.setNewDegree(Quality.valueOf(goodsVO.getNewDegree()));
+            goods.setSize(this.goodsSizeService.get(Long.valueOf(goodsVO.getSize())));
+            goods.setPack(goodsVO.getPack());
+            goods.setReceipt(goodsVO.getReceipt());
+            goods.setMessage(goodsVO.getMessage());
+            return this.goodsRepository.save(goods);
+        }catch (Exception e){
+            return null;
+        }
     }
 }

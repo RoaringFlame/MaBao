@@ -1,5 +1,6 @@
 package com.mabao.service.impl;
 
+import com.mabao.controller.vo.AreaIdValue;
 import com.mabao.pojo.Area;
 import com.mabao.repository.AreaRepository;
 import com.mabao.service.AreaService;
@@ -64,5 +65,20 @@ public class AreaServiceImpl implements AreaService {
             selectors.add(new Selector(area.getId().toString(),area.getShortName()));
         }
         return selectors;
+    }
+
+    /**
+     * 通过areaID获取对应省市区
+     * @param areaId                            区级areaId
+     */
+    @Override
+    public AreaIdValue findEachAreaValueByAreaId(Long areaId) {
+        Area countyArea = this.areaRepository.findOne(areaId);
+        AreaIdValue value = new AreaIdValue();
+        value.setCountyId(countyArea.getId());
+        value.setCityId(countyArea.getParentId());
+        Area cityArea = this.areaRepository.findOne(countyArea.getParentId());
+        value.setProvinceId(cityArea.getId());
+        return value;
     }
 }
