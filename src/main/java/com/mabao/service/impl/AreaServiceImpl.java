@@ -78,7 +78,7 @@ public class AreaServiceImpl implements AreaService {
         value.setCountyId(countyArea.getId());
         value.setCityId(countyArea.getParentId());
         Area cityArea = this.areaRepository.findOne(countyArea.getParentId());
-        value.setProvinceId(cityArea.getId());
+        value.setProvinceId(cityArea.getParentId());
         return value;
     }
 }

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-07-19 08:59:05
+Date: 2016-07-19 20:07:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -85,7 +85,7 @@ INSERT INTO `t_banner` VALUES ('4', '5', null, '33.jpg', '4', '', null);
 -- ----------------------------
 DROP TABLE IF EXISTS `t_goods`;
 CREATE TABLE `t_goods` (
-  `id` int(11) NOT NULL COMMENT '商品编号，自增',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商品编号，自增',
   `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '商品归属者编号，后台用户编号为0',
   `article_number` varchar(45) DEFAULT NULL COMMENT '货号',
   `picture` varchar(45) DEFAULT NULL COMMENT '图片标签',
@@ -107,7 +107,7 @@ CREATE TABLE `t_goods` (
   `stock_number` int(11) DEFAULT NULL COMMENT '库存数量',
   `state` bit(1) NOT NULL DEFAULT b'1' COMMENT '商品状态，1为存在，0为下架或不存在。',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品表';
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='商品表';
 
 -- ----------------------------
 -- Records of t_goods
@@ -311,7 +311,7 @@ CREATE TABLE `t_user` (
 -- Records of t_user
 -- ----------------------------
 INSERT INTO `t_user` VALUES ('0', 'admin', 'admin', '123123123', '123@126.com', '2016-07-15 19:46:31', 'admin');
-INSERT INTO `t_user` VALUES ('1', 'test', 'test', '12347654', 'qq@qq.com', '2016-07-08 18:03:22', 'test');
+INSERT INTO `t_user` VALUES ('1', 'test', '', '12347654', 'qq@qq.com', '2016-07-08 18:03:22', 'test');
 INSERT INTO `t_user` VALUES ('2', 'test2', 'B6D767D2F8ED5D21A44B0E5886680CB9', null, '2', '2016-07-14 14:58:09', null);
 INSERT INTO `t_user` VALUES ('3', 'test3', 'test', null, '', '2016-07-14 15:03:08', null);
 INSERT INTO `t_user` VALUES ('5', 'jackie', 'b13f6ca2306c73da9e5603947b86a28e', 'jackie123456', '126@qq.com', '2016-07-15 21:04:22', null);

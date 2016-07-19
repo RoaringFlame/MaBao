@@ -3,6 +3,7 @@ package com.mabao.controller;
 import com.mabao.controller.vo.AddressVO;
 import com.mabao.controller.vo.GoodsDetailVO;
 import com.mabao.enums.Gender;
+import com.mabao.enums.Quality;
 import com.mabao.pojo.Address;
 import com.mabao.pojo.Goods;
 import com.mabao.service.*;
@@ -67,6 +68,9 @@ public class SellController {
         //宝宝性别
         List<Selector> gender = Gender.toList();
         map.put("gender",gender);
+        //新旧程度
+        List<Selector> newDegree = Quality.toList();
+        map.put("newDegree",newDegree);
         //尺码
         List<Selector> goodsSize = this.goodsSizeService.findGoodsSizeForSelector();
         map.put("goodsSize",goodsSize);
