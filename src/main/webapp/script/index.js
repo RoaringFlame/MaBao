@@ -7,7 +7,7 @@ $(function () {
     var currentPageLike = 0;                          //猜你喜欢当前页面
     var pageSize = 4;                                 //每页展示的宝物数量
     var goodsTypeId = "";                             //商品类型id
-    var myScroll = "";
+    var myScroll = "";                                //轮播
     var baby = null;                                 //宝宝对象
     var isNew = true;                                //是否当前展示的是新品
     var backGoods = $("#hideGoods").find("li");    //查找到新品列表下的li标签
@@ -15,7 +15,6 @@ $(function () {
     var likeGoodsBox = $("#likeGoodsList");        //猜你喜欢展示
     var typeSidebar = $("#sidebar");                //侧边栏
     var newGoods = $("#newGoods");                  //新品
-    var count = 1;
 
     //首页信息初始化
     function initIndexPage() {
@@ -40,17 +39,17 @@ $(function () {
                         }
                         if (isNew == true) {                     //如果按钮在新品页面点击商品类型直接切换
                             newGoodsBox.empty();                  //点击完后清空信息
-                            currentPageNew = 0;                   //点击完后页面定位1
-                            loadNewGoods();
+                            currentPageNew = 0;                   //点击完后页面定位0
+                            loadNewGoods();                       //数据清空后重新加载分类页面
                         } else if (isNew == false) {             //如果按钮再猜你喜欢页面点击商品类型控制切换
                             //找到div对应的scroll-menu下的ul得第一个li
                             newGoods.find("div.scroll-menu ul li:eq(0)").addClass("focus");                                  //点击新品时给新品加红色下划线
                             newGoods.find("div.scroll-menu ul li:eq(1)").removeClass("focus");                               //猜你喜欢下无红色下划线
                             newGoodsBox.show();                                                 //点击新品时新品列表的显示
                             likeGoodsBox.hide();                                                //猜你喜欢列表的隐藏
-                            newGoodsBox.empty();                   //点击完后清空信息
-                            currentPageNew = 0;                    //点击完后页面定位1
-                            loadNewGoods();
+                            newGoodsBox.empty();                                                //点击完后清空信息
+                            currentPageNew = 0;                                                 //点击完后页面定位0
+                            loadNewGoods();                                                     //数据清空后重新加载分类页面
                         }
                     });
                 typeSidebar.find("ul").append(li);
@@ -59,7 +58,7 @@ $(function () {
             $("#txtSearch").change(function () {                 //手机上点击完成实现搜索
                 if (isNew == true) {
                     newGoodsBox.empty();
-                    currentPageNew = 0;                            //点击完后页面定位1
+                    currentPageNew = 0;                            //点击完后页面定位0
                     loadNewGoods();
                 } else if (isNew == false) {
                     //找到div对应的scroll-menu下的ul得第一个li
@@ -68,14 +67,14 @@ $(function () {
                     newGoodsBox.show();                                                 //点击新品时新品列表的显示
                     likeGoodsBox.hide();                                                //猜你喜欢列表的隐藏
                     newGoodsBox.empty();                   //点击完后清空信息
-                    currentPageNew = 0;                    //点击完后页面定位1
+                    currentPageNew = 0;                    //点击完后页面定位0
                     loadNewGoods();
                 }
             });
             //轮播的初始化
             var smallBanner = data.smallBanner;                                                  //获取轮播图片集
             var myCarousel = $("#myCarousel");                                                 //找到jsp页面对应id为myCarousel的项
-            $(function () {                                                                     //设定轮播时间
+            $(function () {                                                                     //设定轮播时间2秒
                 $('.carousel').carousel({
                     interval: 2000
                 })
@@ -131,31 +130,32 @@ $(function () {
         $("#likeGoodsList").hide();                                                         //猜你喜欢页初始化为隐藏
         loadNewGoods();
         //新品的点击
-        if (newGoods.find("div.scroll-menu ul li:eq(0)").val() != "新品") {                               //如果不在新品上才能点击新品按钮
-            newGoods.find("div.scroll-menu ul li:eq(0)").click(function () {              //找到div对应的scroll-menu下的ul得第一个li
-                console.log("新品的点击正在执行！");
-                $(this).addClass("focus");                                                   //点击新品时给新品加红色下划线
-                $(this).next("li").removeClass("focus");                                    //猜你喜欢下无红色下划线
-                $("#newGoodsList").show();                                                  //点击新品时新品列表的显示
-                $("#likeGoodsList").hide();                                                 //猜你喜欢列表的隐藏
-                isNew = true;                                                                //是否为新品 设为真
-                //加载新品
-                loadNewGoods();
-            });
-        }
+        //if (isNew!=true) {                               //如果不在新品上才能点击新品按钮
+        newGoods.find("div.scroll-menu ul li:eq(0)").click(function () {              //找到div对应的scroll-menu下的ul得第一个li
+            console.log("新品的点击正在执行！");
+            $(this).addClass("focus");                                                   //点击新品时给新品加红色下划线
+            $(this).next("li").removeClass("focus");                                    //猜你喜欢下无红色下划线
+            $("#newGoodsList").show();                                                  //点击新品时新品列表的显示
+            $("#likeGoodsList").hide();                                                 //猜你喜欢列表的隐藏
+            isNew = true;                                                                //是否为新品 设为真
+            //加载新品
+            loadNewGoods();
+        });
+        //}
         //猜你喜欢的点击
-        if (newGoods.find("div.scroll-menu ul li:eq(1)").val() != "猜你喜欢") {              //如果不在猜你喜欢上才能点击新品按钮
-            newGoods.find("div.scroll-menu ul li:eq(1)").click(function () {
-                $(this).addClass("focus");                                                  //点击猜你喜欢时给新品加红色下划线
-                $(this).prev("li").removeClass("focus");                                   //新品无下划线
-                $("#newGoodsList").hide();                                                 //点击猜你喜欢列表的显示
-                $("#likeGoodsList").show();                                                //新品的隐藏
-                isNew = false;                                                              //是否为新品  设为假
-                //加载猜你喜欢
-                loadLikeGoods();
-            });
+        //if (isNew!=false) {              //如果不在猜你喜欢上才能点击猜你喜欢按钮
+        newGoods.find("div.scroll-menu ul li:eq(1)").click(function () {
+            $(this).addClass("focus");                                                  //点击猜你喜欢时给新品加红色下划线
+            $(this).prev("li").removeClass("focus");                                   //新品无下划线
+            $("#newGoodsList").hide();                                                 //点击猜你喜欢列表的显示
+            $("#likeGoodsList").show();                                                //新品的隐藏
+            isNew = false;                                                              //是否为新品  设为假
+            //加载猜你喜欢
+            loadLikeGoods();
+            typeSidebar.addClass("hide");              //侧边栏添加隐藏样式
+        });
         }
-    }
+    //}
 
     //加载新品数据集
     function loadNewGoods() {
@@ -190,6 +190,9 @@ $(function () {
 
     //加载猜你喜欢
     function loadLikeGoods() {
+        currentPageNew = 0;                    //点击完后页面定位0
+        newGoodsBox.empty();                   //清空新品列表
+        typeSidebar.addClass("hide");                      //侧边栏添加隐藏样式（假设侧边栏被点开时）
         if (baby) {                                        //如果宝宝id是存在加载猜你喜欢物品列表页
             $("#likeForm").hide();
             var backGoods = $("#hideGoods").find("li");
@@ -207,7 +210,7 @@ $(function () {
                     console.log("猜你喜欢的加载！");
                     console.log(data);
                     var goodsList = data.items;
-                    totalPageNew = data.totalPageLike;                      //获取猜你喜欢总页数
+                    totalPageLike = data.totalPage;                      //获取猜你喜欢总页数
                     $(goodsList).each(function (index, goods) {
                         var likeGoods = backGoods.clone();
                         likeGoods.find("img")
@@ -221,6 +224,7 @@ $(function () {
                         likeGoods.find("div>p:eq(2)").text(goods.title);
                         likeGoodsBox.append(likeGoods);
                     });
+                    initScroll();                               //下拉滚动刷新
                 });
             }
         }
@@ -245,10 +249,20 @@ $(function () {
             };
             MB.sendAjax("get", "home/babySubmit", params, function (data) {
                 baby = data;
+                //if(babyName!=null&&babyBirthday!=null&&gender!=null&&hobby!=null){
                 loadLikeGoods();
+                //}else{
+                //    showMsg("请填写完整宝宝信息！");
+                //}
             });
         });
     }
+
+    ////表单提交弹框效果的实现
+    //function showMsg(msg) {
+    //    //提示框弹出信息停留3秒消失
+    //    $('#textShow1').text(msg).fadeIn(1000).delay(2000).fadeOut(1000);
+    //}
 
     //拉动刷新和加载更多的实现
     function iScrollClick() {                                                        //判断函数
@@ -257,7 +271,7 @@ $(function () {
         if (/Silk/i.test(navigator.userAgent)) return false;
         if (/Android/i.test(navigator.userAgent)) {
             var s = navigator.userAgent.substr(navigator.userAgent.indexOf('Android') + 8, 3);
-            return parseFloat(s[0] + s[3]) < 44 ? false : true
+            return (parseFloat(s[0] + s[3]) < 44 ? false : true);
         }
     }
 
