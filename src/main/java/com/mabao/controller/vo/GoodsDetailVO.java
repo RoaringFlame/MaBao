@@ -1,7 +1,9 @@
 package com.mabao.controller.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mabao.pojo.Goods;
 import com.mabao.util.VoUtil;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,6 +40,7 @@ public class GoodsDetailVO {
         vo.setNewDegree(goods.getNewDegree().getText());
         vo.setSize(goods.getSize().getName());
         vo.setBabyType(goods.getBabyType().getText());
+//        vo.setUpTime(goods.getUpTime().toString());
         if (goods.getPictureList() != null) {
             List<String> pictures = new ArrayList<>();
             Collections.addAll(pictures, goods.getPictureList().split(","));
@@ -164,6 +167,14 @@ public class GoodsDetailVO {
     public void setPictureList(List<String> pictureList) {
         this.pictureList = pictureList;
     }
+
+    /*public String getUpTime() {
+        return upTime;
+    }
+
+    public void setUpTime(String upTime) {
+        this.upTime = upTime;
+    }*/
 
     public Date getUpTime() {
         return upTime;

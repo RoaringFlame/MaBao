@@ -2,6 +2,7 @@ package com.mabao.service.impl;
 
 import com.mabao.controller.vo.GoodsDetailVO;
 import com.mabao.enums.BabyType;
+import com.mabao.enums.OrderStatus;
 import com.mabao.enums.Quality;
 import com.mabao.pojo.*;
 import com.mabao.repository.GoodsRepository;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,6 +31,10 @@ public class GoodsServiceImpl implements GoodsService {
     private GoodsBrandService goodsBrandService;
     @Autowired
     private GoodsSizeService goodsSizeService;
+    @Autowired
+    private AddressService addressService;
+    @Autowired
+    private OrderService orderService;
 
     /**
      * 新品
@@ -122,8 +128,11 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public Goods releaseGoods(GoodsDetailVO goodsVO) {
         try {
+            User user = UserManager.getUser();
+            assert user != null;
+            //保存宝物
             Goods goods = new Goods();
-            goods.setUser(UserManager.getUser());
+            goods.setUser(user);
             goods.setTitle(goodsVO.getTitle());
             goods.setOldPrice(goodsVO.getOldPrice());
             goods.setPrice(goodsVO.getPrice());
@@ -142,7 +151,32 @@ public class GoodsServiceImpl implements GoodsService {
             goods.setMessage(goodsVO.getMessage());
             goods.setState(false);
             goods.setStockNumber(1);
-            return this.goodsRepository.save(goods);
+            Goods saveGoods = this.goodsRepository.save(goods);
+            //生成订单
+            Order order = new Order();
+            order.setBuyer(this.userService.get(0L));
+            order.setSellerId(user.getId());
+            order.setQuantity(1);
+            order.setAddress(this.addressService.getDefaultAddress(user.getId()));
+            order.setMessage("自助寄卖");
+            order.setCreateTime(new Date());
+            order.setState(OrderStatus.ToBeRelease);
+            order.setFreight(10.00);                    //运费
+            order.setTotalSum(order.getFreight()+saveGoods.getPrice());
+            //订单明细
+            OrderDetail od = new OrderDetail();
+            od.setGoods(saveGoods);
+            od.setOrder(order);
+            od.setUnitCost(saveGoods.getPrice());
+            od.setSize(saveGoods.getSize().getName());
+            od.setNewDegree(saveGoods.getNewDegree().getText());
+            od.setTitle(saveGoods.getTitle());
+            od.setTypeName(saveGoods.getType().getTypeName());
+            od.setUpTime(saveGoods.getUpTime());
+            od.setBrand(saveGoods.getBrand().getBrandName());
+            this.orderService.saveOrderDetail(od);
+            this.orderService.saveOrder(order);
+            return saveGoods;
         }catch (Exception e){
             return null;
         }

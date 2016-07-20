@@ -1,5 +1,6 @@
 package com.mabao.service.impl;
 
+import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.enums.OrderStatus;
 import com.mabao.pojo.Goods;
 import com.mabao.pojo.Order;
@@ -21,8 +22,6 @@ import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-    @Autowired
-    private GoodsService goodsService;
     @Autowired
     private AddressService addressService;
     @Autowired
@@ -100,6 +99,59 @@ public class OrderServiceImpl implements OrderService {
             }
         }else {
             throw new NullPointerException();
+        }
+    }
+
+    /**
+     * 保存订单明细
+     * @param orderDetail               明细对象
+     * @return                          插入的订单明细
+     */
+    @Override
+    public OrderDetail saveOrderDetail(OrderDetail orderDetail) {
+        return this.orderDetailRepository.save(orderDetail);
+    }
+
+    /**
+     * 保存订单
+     * @param order                     订单对象
+     * @return                          插入的订单
+     */
+    @Override
+    public Order saveOrder(Order order) {
+        return this.orderRepository.save(order);
+    }
+    /**
+     * 修改订单状态
+     * @param orderDetailIds            订单明细ID，使用逗号分割
+     * @param orderStatus               新订单状态
+     */
+    @Override
+    public JsonResultVO changeOrderStatus(String orderDetailIds, OrderStatus orderStatus) {
+        return null;
+    }
+
+    /**
+     * 确认收货
+     * @param orderDetailIds            订单明细ID，使用逗号分割
+     * @return                          JsonResultVO
+     */
+    @Override
+    public JsonResultVO confirmReceipt(String orderDetailIds) {
+        try {
+            for(String s : orderDetailIds.trim().split(",")){
+                Order o = this.orderDetailRepository.findOne(Long.valueOf(s)).getOrder();
+                if (o.getState().equals(OrderStatus.ToBeReceipt)){
+                    o.setState(OrderStatus.Completed);
+                    this.orderRepository.saveAndFlush(o);
+                }else {
+                    return new JsonResultVO(JsonResultVO.FAILURE,"订单不是待收货状态！");
+                }
+            }
+            return new JsonResultVO(JsonResultVO.SUCCESS,"确认收货！");
+        }catch (Exception e){
+            e.getStackTrace();
+            return  new JsonResultVO(JsonResultVO.FAILURE,"系统错误！");
         }
     }
 }

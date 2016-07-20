@@ -1,5 +1,7 @@
 package com.mabao.service;
 
+
+import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.enums.OrderStatus;
 import com.mabao.pojo.Order;
 import com.mabao.pojo.OrderDetail;
@@ -24,4 +26,31 @@ public interface OrderService {
      * @return                          订单明细
      */
     List<OrderDetail> findUserAllOrder(Integer userIdentity, String orderStatus);
+
+    /**
+     * 保存订单明细
+     * @param orderDetail               明细对象
+     * @return                          插入的订单明细
+     */
+    OrderDetail saveOrderDetail(OrderDetail orderDetail);
+
+    /**
+     * 保存订单
+     * @param order                     订单对象
+     * @return                          插入的订单
+     */
+    Order saveOrder(Order order);
+    /**
+     * 修改订单状态
+     * @param orderDetailIds            订单明细ID，使用逗号分割
+     * @param orderStatus               新订单状态
+     */
+    JsonResultVO changeOrderStatus(String orderDetailIds, OrderStatus orderStatus);
+
+    /**
+     * 确认收货
+     * @param orderDetailIds            订单明细ID，使用逗号分割
+     * @return                          JsonResultVO
+     */
+    JsonResultVO confirmReceipt(String orderDetailIds);
 }

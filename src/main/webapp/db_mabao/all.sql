@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-07-19 20:07:38
+Date: 2016-07-20 20:16:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,18 +24,20 @@ CREATE TABLE `t_address` (
   `user_id` int(11) NOT NULL COMMENT '用户编号',
   `recipients` varchar(25) NOT NULL COMMENT '收件人',
   `tel` varchar(25) NOT NULL COMMENT '手机号',
-  `area_id` int(11) NOT NULL COMMENT '所在行政区域',
+  `area_id` int(11) NOT NULL DEFAULT '100000' COMMENT '所在行政区域',
   `location` varchar(100) NOT NULL COMMENT '地址详情',
   `state` tinyint(1) NOT NULL DEFAULT '0' COMMENT '地址状态，是否为默认收货地址，0为否、1为是。',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='地址信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='地址信息表';
 
 -- ----------------------------
 -- Records of t_address
 -- ----------------------------
-INSERT INTO `t_address` VALUES ('1', '1', '二汪', '110', '0', '中北路汪汪汪路2号门', '1');
+INSERT INTO `t_address` VALUES ('1', '1', '二汪', '110', '220581', '中北路汪汪汪路2号门', '1');
 INSERT INTO `t_address` VALUES ('2', '5', '5', '423', '220581', '344fghgf', '0');
 INSERT INTO `t_address` VALUES ('3', '5', '4554', '567868678', '150825', '67876tfghf', '0');
+INSERT INTO `t_address` VALUES ('4', '5', 'jackie', '110', '150821', '五原五环', '1');
+INSERT INTO `t_address` VALUES ('5', '1', '大汪', '120', '220581', '喵喵家', '0');
 
 -- ----------------------------
 -- Table structure for t_baby
@@ -112,31 +114,31 @@ CREATE TABLE `t_goods` (
 -- ----------------------------
 -- Records of t_goods
 -- ----------------------------
-INSERT INTO `t_goods` VALUES ('1', '0', 'AX9008', '12.jpg', '适合两岁宝宝的婴儿车', '80.00', '66.30', '0', '婴儿车', '1', '0', 'H&M', '2016-06-02 11:31:31', '0', '1', '1', '1', '这是一款带有未来设计感的婴儿车', null, '100', '');
-INSERT INTO `t_goods` VALUES ('2', '0', null, '1.jpg', '适合三岁宝宝的玩具', '110.00', '124.85', '0', '玩具', '2', '0', 'LV', '2016-06-04 00:00:00', '0', '1', '1', '1', '结实，耐折腾', null, '150', '');
+INSERT INTO `t_goods` VALUES ('1', '0', 'AX9008', '12.jpg', '适合两岁宝宝的婴儿车', '80.00', '66.30', '0', '婴儿车', '1', '1', 'H&M', '2016-06-02 11:31:31', '0', '1', '1', '1', '这是一款带有未来设计感的婴儿车', null, '100', '');
+INSERT INTO `t_goods` VALUES ('2', '0', null, '1.jpg', '适合三岁宝宝的玩具', '110.00', '124.85', '1', '玩具', '2', '1', 'LV', '2016-06-04 00:00:00', '0', '1', '1', '1', '结实，耐折腾', null, '150', '');
 INSERT INTO `t_goods` VALUES ('3', '0', null, '2.jpg', '遥控车', '200.00', '300.00', '0', '玩具', '2', '1', 'T&R', '2016-06-03 00:00:00', '0', '1', '1', '1', '玩具遥控车', null, '20', '');
-INSERT INTO `t_goods` VALUES ('4', '0', null, 'main-new1.png', 'H&M', '66.90', '100.00', '0', '服饰鞋帽', '3', '3', 'M&D', '2016-06-05 00:00:00', '0', '1', '1', '1', '简约，奢华', null, '10', '');
+INSERT INTO `t_goods` VALUES ('4', '0', null, 'main-new1.png', 'H&M', '66.90', '100.00', '1', '服饰鞋帽', '3', '3', 'M&D', '2016-06-05 00:00:00', '0', '1', '1', '1', '简约，奢华', null, '10', '');
 INSERT INTO `t_goods` VALUES ('5', '0', null, 'main-new2.png', 'CARDING', '280.00', '350.00', '0', '服饰鞋帽', '3', '1', 'T&R', '2016-06-06 23:08:18', '0', '1', '1', '1', '结实，耐折腾', null, '200', '');
-INSERT INTO `t_goods` VALUES ('6', '0', null, '13.jpg', '三岁', '270.00', '280.00', '0', '安全座椅', '1', '1', 'T&R', '2016-06-20 23:08:21', '0', '1', '1', '1', '结实，耐折腾', null, '25', '');
+INSERT INTO `t_goods` VALUES ('6', '0', null, '13.jpg', '三岁', '270.00', '280.00', '1', '安全座椅', '1', '1', 'T&R', '2016-06-20 23:08:21', '0', '1', '1', '1', '结实，耐折腾', null, '25', '');
 INSERT INTO `t_goods` VALUES ('7', '0', null, '13.jpg', '沙发', '130.00', '150.00', '0', '安全座椅', '4', '1', 'T&R', '2016-06-21 23:08:23', '0', '1', '1', '1', '结实，耐折腾', null, '30', '');
 INSERT INTO `t_goods` VALUES ('8', '0', null, '13.jpg', '三岁', '200.00', '240.00', '0', '安全座椅', '4', '1', 'T&R', '2016-06-20 23:08:26', '0', '1', '1', '1', '结实，耐折腾', null, '35', '');
-INSERT INTO `t_goods` VALUES ('9', '0', null, '14.jpg', '三岁', '420.00', '460.00', '0', '图片绘本', '1', '1', 'T&R', '2016-06-14 23:08:29', '0', '1', '1', '1', '结实，耐折腾', null, '50', '');
-INSERT INTO `t_goods` VALUES ('10', '0', null, '14.jpg', '画板', '250.00', '280.00', '0', '图片绘本', '5', '1', 'T&R', '2016-06-06 23:08:33', '0', '1', '1', '1', '结实，耐折腾', null, '80', '');
+INSERT INTO `t_goods` VALUES ('9', '0', null, '14.jpg', '三岁', '420.00', '460.00', '1', '图片绘本', '1', '1', 'T&R', '2016-06-14 23:08:29', '0', '1', '1', '1', '结实，耐折腾', null, '50', '');
+INSERT INTO `t_goods` VALUES ('10', '0', null, '14.jpg', '画板', '250.00', '280.00', '2', '图片绘本', '5', '1', 'T&R', '2016-06-06 23:08:33', '0', '1', '1', '1', '结实，耐折腾', null, '80', '');
 INSERT INTO `t_goods` VALUES ('12', '0', null, '16.jpg', '奶瓶', '35.00', '35.00', '0', '生活用品', '9', '2', 'BOBO', '2016-06-30 16:03:47', '0', '1', '1', '1', '结实好用', '', '30', '');
-INSERT INTO `t_goods` VALUES ('13', '0', null, '17.jpg', '奶粉', '280.00', '280.00', '0', '玩具', '2', '4', 'Enfamil', '2016-06-30 16:05:22', '3', '1', '1', '1', '安全有营养', null, '35', '');
+INSERT INTO `t_goods` VALUES ('13', '0', null, '17.jpg', '奶粉', '280.00', '280.00', '2', '玩具', '2', '4', 'Enfamil', '2016-06-30 16:05:22', '3', '1', '1', '1', '安全有营养', null, '35', '');
 INSERT INTO `t_goods` VALUES ('14', '0', null, '18.jpg', '抽纸', '9.50', '9.50', '0', '日常用品', '6', '5', '花王', '2016-06-30 16:06:30', '3', '1', '1', '1', '卫生', null, '15', '');
-INSERT INTO `t_goods` VALUES ('15', '0', null, '19.jpg', '洗浴套', '130.00', '130.00', '0', '玩具', '2', '6', '屈臣氏', '2016-06-30 16:07:31', '3', '1', '1', '1', '家庭套', null, '10', '');
+INSERT INTO `t_goods` VALUES ('15', '0', null, '19.jpg', '洗浴套', '130.00', '130.00', '2', '玩具', '2', '6', '屈臣氏', '2016-06-30 16:07:31', '3', '1', '1', '1', '家庭套', null, '10', '');
 INSERT INTO `t_goods` VALUES ('16', '0', null, '20.jpg', '尿不湿', '23.00', '23.00', '0', '日常用品', '6', '7', '帮宝适', '2016-06-30 16:08:44', '5', '1', '1', '1', '方便好用', null, '15', '');
 INSERT INTO `t_goods` VALUES ('17', '0', null, '21.jpg', '奶嘴', '13.00', '13.00', '0', '日常用品', '6', '5', '花王', '2016-06-30 16:09:33', '4', '1', '1', '1', '材质好', null, '8', '');
 INSERT INTO `t_goods` VALUES ('18', '0', null, '22.jpg', '浴巾', '49.00', '49.00', '0', '日常用品', '6', '8', '竹纤维', '2016-06-30 16:10:42', '4', '1', '1', '1', '安全优质', null, '35', '');
-INSERT INTO `t_goods` VALUES ('19', '0', null, '23.jpg', '背带裤', '89.00', '89.00', '0', '玩具', '2', '9', '七波辉', '2016-06-30 16:11:38', '4', '1', '1', '1', '好看舒适', null, '80', '');
-INSERT INTO `t_goods` VALUES ('20', '0', null, '24.jpg', '玩具', '13.00', '13.00', '0', '日常用品', '6', '10', '轨迹', '2016-06-30 16:12:33', '1', '1', '1', '1', '耐久', null, '15', '');
-INSERT INTO `t_goods` VALUES ('21', '0', null, '25.jpg', '洗手液', '28.00', '28.00', '0', '洗浴用品', '8', '11', '好娃娃', '2016-06-30 16:13:32', '1', '1', '1', '1', '经用且环保', null, '18', '');
+INSERT INTO `t_goods` VALUES ('19', '0', null, '23.jpg', '背带裤', '89.00', '89.00', '2', '玩具', '2', '9', '七波辉', '2016-06-30 16:11:38', '4', '1', '1', '1', '好看舒适', null, '80', '');
+INSERT INTO `t_goods` VALUES ('20', '0', null, '24.jpg', '玩具', '13.00', '13.00', '2', '日常用品', '6', '10', '轨迹', '2016-06-30 16:12:33', '1', '1', '1', '1', '耐久', null, '15', '');
+INSERT INTO `t_goods` VALUES ('21', '0', null, '25.jpg', '洗手液', '28.00', '28.00', '2', '洗浴用品', '8', '11', '好娃娃', '2016-06-30 16:13:32', '1', '1', '1', '1', '经用且环保', null, '18', '');
 INSERT INTO `t_goods` VALUES ('22', '0', null, '26.jpg', '被子', '280.00', '280.00', '0', '玩具', '2', '12', 'BinBe', '2016-06-30 16:14:40', '5', '1', '1', '1', '质地好', null, '200', '');
-INSERT INTO `t_goods` VALUES ('30', '0', null, '30.jpg', '童装', '360.00', '250.00', '0', '服饰鞋帽', '3', '1', 'T&R', '2015-06-16 23:07:33', '0', '1', '1', '1', '简约', null, null, '');
-INSERT INTO `t_goods` VALUES ('31', '0', null, '31.jpg', '童装', '250.00', '200.00', '0', '服饰鞋帽', '3', '1', 'T&R', '2015-06-15 23:07:33', '0', '1', '1', '1', '简约', null, null, '');
-INSERT INTO `t_goods` VALUES ('32', '0', null, '32.jpg', '童装', '480.00', '360.00', '0', '服饰鞋帽', '3', '1', 'T&R', '2015-06-14 23:07:33', '0', '1', '1', '1', '简约', null, null, '');
-INSERT INTO `t_goods` VALUES ('33', '0', null, '33.jpg', '童装', '360.00', '270.00', '0', '服饰鞋帽', '3', '1', 'T&R', '2015-06-13 23:07:33', '0', '1', '1', '1', '简约', null, null, '');
+INSERT INTO `t_goods` VALUES ('30', '0', null, '30.jpg', '童装', '360.00', '250.00', '1', '服饰鞋帽', '3', '1', 'T&R', '2015-06-16 23:07:33', '0', '1', '1', '1', '简约', null, '1', '');
+INSERT INTO `t_goods` VALUES ('31', '0', null, '31.jpg', '童装', '250.00', '200.00', '1', '服饰鞋帽', '3', '1', 'T&R', '2015-06-15 23:07:33', '0', '1', '1', '1', '简约', null, '1', '');
+INSERT INTO `t_goods` VALUES ('32', '0', null, '32.jpg', '童装', '480.00', '360.00', '2', '服饰鞋帽', '3', '1', 'T&R', '2015-06-14 23:07:33', '0', '1', '1', '1', '简约', null, '1', '');
+INSERT INTO `t_goods` VALUES ('33', '0', null, '33.jpg', '童装', '360.00', '270.00', '1', '服饰鞋帽', '3', '1', 'T&R', '2015-06-13 23:07:33', '0', '1', '1', '1', '简约', null, '1', '');
 
 -- ----------------------------
 -- Table structure for t_goods_brand
@@ -228,7 +230,7 @@ INSERT INTO `t_goods_type` VALUES ('9', '生活用品', null);
 -- ----------------------------
 DROP TABLE IF EXISTS `t_order`;
 CREATE TABLE `t_order` (
-  `id` int(11) NOT NULL COMMENT '编号',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `buyer_id` int(11) NOT NULL COMMENT '买家编号',
   `seller_id` int(11) NOT NULL COMMENT '卖家',
   `quantity` int(11) NOT NULL COMMENT '数量',
@@ -244,11 +246,19 @@ CREATE TABLE `t_order` (
   `message` varchar(100) DEFAULT NULL COMMENT '买家留言',
   `state` int(1) NOT NULL COMMENT '订单状态，0待支付（买家），1待发货（卖家），2待收货（买家），3已完成（卖家），4已取消（买家）',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
+INSERT INTO `t_order` VALUES ('1', '5', '0', '4', '1120', '2016-07-20 19:35:16', null, null, null, '5', null, null, '4', '买', '0');
+INSERT INTO `t_order` VALUES ('2', '5', '0', '2', '300', '2016-07-20 19:35:16', null, null, null, '9', null, null, '4', '买', '0');
+INSERT INTO `t_order` VALUES ('4', '0', '5', '3', '375', '2016-07-20 19:34:06', null, null, null, '2', null, null, '4', '卖', '4');
+INSERT INTO `t_order` VALUES ('5', '0', '5', '1', '300', '2016-07-20 19:34:51', null, null, null, '13', null, null, '4', '卖', '5');
+INSERT INTO `t_order` VALUES ('6', '0', '5', '5', '500', '2016-07-20 19:34:55', null, null, null, '1', null, null, '4', '卖', '6');
+INSERT INTO `t_order` VALUES ('7', '5', '0', '5', '1750', '2016-07-20 19:35:16', null, null, null, '26', null, null, '4', '买', '0');
+INSERT INTO `t_order` VALUES ('8', '5', '0', '4', '1120', '2016-07-20 19:35:16', null, null, null, '5', null, null, '4', '买', '0');
+INSERT INTO `t_order` VALUES ('9', '5', '0', '2', '300', '2016-07-20 19:35:16', null, null, null, '10', null, null, '4', '买', '0');
 
 -- ----------------------------
 -- Table structure for t_order_details
@@ -261,16 +271,22 @@ CREATE TABLE `t_order_details` (
   `unit_cost` double NOT NULL COMMENT '单价',
   `size` varchar(255) DEFAULT NULL COMMENT '尺寸',
   `title` varchar(255) DEFAULT NULL COMMENT '标题',
-  `typeName` varchar(255) DEFAULT NULL COMMENT '一级类型名称',
+  `type_name` varchar(255) DEFAULT NULL COMMENT '一级类型名称',
   `brand` varchar(255) DEFAULT NULL COMMENT '商品品牌',
-  `upTime` datetime DEFAULT NULL COMMENT '上架时间',
-  `newDegree` varchar(255) DEFAULT NULL COMMENT '新旧程度',
+  `up_time` datetime DEFAULT NULL COMMENT '上架时间',
+  `new_degree` varchar(255) DEFAULT NULL COMMENT '新旧程度',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单详情';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='订单详情';
 
 -- ----------------------------
 -- Records of t_order_details
 -- ----------------------------
+INSERT INTO `t_order_details` VALUES ('1', '1', '2', '3', '1', '适合三岁宝宝的玩具', '玩具', 'LV', '2016-07-20 19:34:06', '0');
+INSERT INTO `t_order_details` VALUES ('2', '1', '3', '1', '1', '遥控车', '玩具', 'T&R', '2016-07-20 19:34:51', '0');
+INSERT INTO `t_order_details` VALUES ('3', '1', '4', '5', '1', 'H&M', '服饰鞋帽', 'M&D', '2016-07-20 19:34:55', '0');
+INSERT INTO `t_order_details` VALUES ('4', '2', '5', '5', '1', 'CARDING', '服饰鞋帽', 'T&R', '2016-07-20 19:35:16', '0');
+INSERT INTO `t_order_details` VALUES ('5', '2', '6', '4', '1', '三岁', '安全座椅', 'T&R', '2016-07-20 19:35:16', '0');
+INSERT INTO `t_order_details` VALUES ('6', '2', '7', '2', '1', '沙发', '安全座椅', 'T&R', '2016-07-20 19:35:16', '0');
 
 -- ----------------------------
 -- Table structure for t_shopping_cart
