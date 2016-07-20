@@ -1,8 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>寄售订单</title>
     <meta name="viewport"
@@ -24,7 +29,7 @@
            已发布
             <!--操作按钮-->
            <div class="header-box">
-                <a href="personal">
+                <a href="user">
                   <p class="header-left">
                   <i class="icon icon-return"></i>
                    返回
@@ -38,8 +43,8 @@
          <div class="order"> 
 
            <!-- 已发布商品 -->
-             <c:forEach var="goods" items="${}">
-                <div class="order-box" onclick=window.location.href="/goods/goodsDetail？goodsId=${}">
+             <c:forEach var="goods" items="${allOrder}">
+                <div class="order-box" onclick=window.location.href="/goods/goodsDetail？goodsId=${goods.id}">
                     <p class="unpaid-txt">商品已上架</p>
                     <img src="${goods.picture}" alt="宝物">
                     <div class="order-box-right">
@@ -53,7 +58,7 @@
             <!-- 已发布商品END -->
             <!-- 共计 -->
             <div class="order-bottom">
-                <p>共计${}件商品 小计：<span>${}</span> (含运费￥${})</p>
+                <p>共计${goodsNum}件商品 小计：<span>${totalSum}</span> (含运费￥${totalFreight})</p>
             </div>
            <!-- 共计END -->
         </div>

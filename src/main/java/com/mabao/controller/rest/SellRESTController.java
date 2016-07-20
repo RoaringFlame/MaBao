@@ -1,10 +1,12 @@
 package com.mabao.controller.rest;
 
-import com.mabao.controller.vo.AreaIdValue;
 import com.mabao.service.AreaService;
 import com.mabao.util.Selector;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 

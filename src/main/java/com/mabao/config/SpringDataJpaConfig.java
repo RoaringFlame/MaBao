@@ -3,8 +3,6 @@ package com.mabao.config;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-//通过JavaConfig使用Spring来为这些接口创建代理实例（configuration关于jap的使用）
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -17,7 +15,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.inject.Inject;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import java.beans.PropertyVetoException;
+
+//通过JavaConfig使用Spring来为这些接口创建代理实例（configuration关于jap的使用）
 
 @Configuration
 @EnableJpaRepositories(basePackages= "com.mabao.repository")    //  创建代理实例

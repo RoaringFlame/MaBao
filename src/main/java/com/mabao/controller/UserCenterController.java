@@ -7,7 +7,6 @@ import com.mabao.pojo.Address;
 import com.mabao.pojo.Baby;
 import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
-import com.mabao.service.AreaService;
 import com.mabao.service.BabyService;
 import com.mabao.service.UserService;
 import com.mabao.util.UserManager;
@@ -15,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 

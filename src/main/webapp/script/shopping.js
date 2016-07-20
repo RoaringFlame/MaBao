@@ -1,17 +1,20 @@
 "use strict";
 $(function () {
-    var main = $("#container");                      //商品列表容器
-    var payForm = $("#frmPay");                      //存储要购买的商品cartId
-    var editBtn = $("div.header-box").find(".header-right");
+    var main = $("#container");                                //商品列表容器
+    var payForm = $("#frmPay");                                //存储要购买的商品cartId
+    var editBtn = $("div.header-box").find(".header-right");   //编辑按钮
+    var payBtn = $(".pay");
+    var cartIds;                                          //存储cartId
     //获取商品信息
     function getGoods() {
         MB.sendAjax("get", "cart/showCart", {}, function (data) {
             $(data).each(function (index, goods) {
                 var newGoods = $("#goodsContainer").find("div.main-item").clone();                       //克隆goodsContainer中商品信息
                 newGoods.find("div.cartId").text(goods.id);                                              //从后台获取cartId
-                newGoods.find("img").attr("src", MB.getRootPath()+"/upload/" + goods.picture);                          //从后台获取picture
+                newGoods.find("img").attr("src", MB.getRootPath() + "/upload/" + goods.picture);                          //从后台获取picture
                 newGoods.find("div.goods-info").find("p:eq(0)").text(goods.brand);                       //从后台获取brand
                 newGoods.find("div.goods-info").find("p:eq(1)").text(goods.size);                        //从后台获取size
+                newGoods.find("div.goodsId").text(goods.goodsId);                                              //从后台获取cartId
                 newGoods.find("div.goods-info").find("p:eq(2)").text("￥" + goods.price);                //从后台获取price
                 newGoods.find("div.shopping-cart").find("p").text(goods.quantity);                       //从后台获取quantity
                 main.append(newGoods);                                                                   //在main中加入商品信息
@@ -21,6 +24,7 @@ $(function () {
                 .attr("checked", true)        //默认全选
                 .click(function () {
                     setTotal();               //复选框点击后重新计算总价
+                    isPay();                  //判断付款按钮是否可用
                 });
             //增加按钮
             main.find(".shopping-cart-add").click(function () {
@@ -30,16 +34,16 @@ $(function () {
                     //num++;                             //点击增加按钮后商品数量加1
                     setTotal();                          //点击增加按钮后重新计算总价
                 });
-                $(this).prev("p").text(num+1);
+                $(this).prev("p").text(num + 1);
             });
             //减少按钮
             main.find(".shopping-cart-reduce").click(function () {
                 var cartId = $(this).parent().prevAll("div.cartId").text();          //获取当前商品的cartId
                 var num = parseInt($(this).next("p").text());                        //获取当前购物车商品数量
-                MB.sendAjax("get", "cart/changeNum/" + cartId,{opt: 2}, function () {
+                MB.sendAjax("get", "cart/changeNum/" + cartId, {opt: 2}, function () {
                     setTotal();                                               //点击减少按钮后重新计算总价
                 });
-                $(this).next("p").text(num<=1?1:num-1);                       //如果商品数量为1则商品数量不变，否则商品数量减1
+                $(this).next("p").text(num <= 1 ? 1 : num - 1);                       //如果商品数量为1则商品数量不变，否则商品数量减1
             });
             //删除按钮
             main.find(".goods-del").click(function () {
@@ -48,11 +52,24 @@ $(function () {
                 MB.sendAjax("DELETE", "cart/deleteGoods/" + cartId, {}, function () {
                     delItem.remove();          //删除购物车商品
                     setTotal();                //点击删除按钮后重新计算总价
+                    cartIds = cartIds.replace(cartId + ",", '');                          //从cartIds中删除已经删除的商品的cartId
+                    if (cartIds == "") {
+                        payBtn.removeClass("confirm");                                    //如果cartIds为空则按钮为灰色，不可点击
+                        payBtn.addClass("disabled");
+                        payBtn.attr("disabled", true);
+                    }
+
                 });
+
+            });
+            //点击图片进入商品详情
+            main.find(".main-item").find("img").click(function () {
+                var goodsId = $(this).prevAll(".goodsId").text();
+                window.location = "goods/goodsDetail?goodsId=" + goodsId;
             });
             setTotal();                      //计算总价
             initEdit();                      //编辑按钮初始化
-
+            isPay();
         });
     }
 
@@ -88,26 +105,41 @@ $(function () {
     }
 
     //付款
-    function pay(cartId) {
-        payForm.find("input[name='cartIds']").val(cartId);                   //给表单中的input赋值字符串
+    function pay(cartIds) {
+        cartIds = cartIds.substring(0, cartIds.length - 1);
+        payForm.find("input[name='cartIds']").val(cartIds);                   //给表单中的input赋值字符串
         payForm.submit();                                                    //提交表单
+    }
+
+
+    //判断付款按钮是否可用
+    function isPay() {
+        cartIds = "";                                                          //cartId初始化
+        main.find("div.cartId").each(function (index) {
+            if (main.find(".select").eq(index).is(':checked')) {
+                var id = $(this).text();                                     //获取cartId
+                cartIds += id + ",";                                           //以“1,2,3”形式存储cartId
+            }
+        });
+        if (cartIds !== "") {
+            payBtn.removeClass("disabled");                                    //如果cartId不为空则按钮为红色，可点击
+            payBtn.addClass("confirm");
+            payBtn.attr("disabled", false);
+        } else {
+            payBtn.removeClass("confirm");                                    //如果cartId为空则按钮为灰色，不可点击
+            payBtn.addClass("disabled");
+            payBtn.attr("disabled", true);
+        }
     }
 
     function init() {
         //购物车商品初始化
         getGoods();
-        //付款按钮
-        $(".pay").click(function () {
-            var cartId = "";                         //存储cartId
-            main.find("div.cartId").each(function (index) {
-                if (main.find(".select").eq(index).is(':checked')) {
-                    var id = $(this).text();                                     //获取cartId
-                    cartId+= id + ",";                                            //以“1,2,3”形式存储cartId
-                }
-            });
-            cartId=cartId.substring(0, cartId.length - 1);
-            pay(cartId);
+        //付款按钮点击事件
+        payBtn.click(function () {
+            pay(cartIds);
         });
+
     }
 
     init();

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/"+"MaBao/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +28,7 @@
         个人信息
         <!--操作按钮-->
         <div class="header-box">
-            <a href="personal">
+            <a href="user">
                 <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
@@ -38,18 +39,19 @@
     </header>
     <!--标题 END-->
     <!-- 编辑宝宝信息 -->
-    <form action="" class="person-msg">
-
+    <form action="user/baby/addBaby" class="person-msg"  method="post">
+        <%--<input name="userId" style="display: none" type="text" value="8">--%>
         <label for="babyData">宝宝生日：
-            <input name="baby-data" id="babyData" type="date" value="${baby.birthday}">
+            <input name="birthday" id="babyData" type="date" value="${baby.birthday}">
         </label>
         <label for="babyName">宝宝姓名：
-            <input name="baby-name" id="babyName" type="text" value="${baby.name}">
+            <input name="name" id="babyName" type="text" value="${baby.name}">
         </label>
         <label for="sex">宝宝性别：
-            <select name="sex" id="sex">
-                <option value="男">男</option>
-                <option value="女">女</option>
+            <select name="gender" id="sex">
+                <option value="MEN">男</option>
+                <option value="WOMEN">女</option>
+                <option value="UNLIMITED">中性</option>
             </select>
         </label>
 

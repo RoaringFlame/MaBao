@@ -1,7 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<base href="<%=basePath%>">
 	<meta charset="UTF-8">
 	<title>寄售成功</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
@@ -11,8 +16,8 @@
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
 	<!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<link rel="stylesheet" href="../../css/master.css">
-	<link rel="stylesheet" href="../../css/module.css">
+	<link rel="stylesheet" href="css/master.css">
+	<link rel="stylesheet" href="css/module.css">
 </head>
 
 <body>
@@ -22,7 +27,7 @@
 		转让宝物
 		<!--操作按钮-->
 		<div class="header-box">
-			<a href="/jsp/selfup">
+			<a href="sell/releaseSelector">
 				<button class="header-left">
 					<i class="icon icon-return"></i>
 					返回

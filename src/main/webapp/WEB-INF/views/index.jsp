@@ -55,7 +55,7 @@
             <p>
                 <i class="icon icon-search"></i>
             </p>
-            <input id="txtSearch" title="请输入关键字">
+            <input id="txtSearch">
         </div>
         <!-- 侧导航栏 -->
         <div class="sidebar hide" id="sidebar">
@@ -103,7 +103,7 @@
                 <!-- 功能切换-->
                 <div class="scroll-menu">
                     <ul>
-                        <li class="focus"> 新品</li>
+                        <li class="focus">新品</li>
                         <li>猜你喜欢</li>
                     </ul>
                 </div>
@@ -155,7 +155,7 @@
     <a href="user/shopping" id="shopping">
         <i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
     </a>
-    <a href="user/personal">
+    <a href="user">
         <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
     </a>
 </div>

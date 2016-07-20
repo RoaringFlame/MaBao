@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/"+"MaBao/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +28,7 @@
         个人信息
         <!--操作按钮-->
         <div class="header-box">
-            <a href="permsg">
+            <a href="user">
                 <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
@@ -38,19 +39,19 @@
     </header>
     <!--标题 END-->
     <!-- 编辑宝宝信息 -->
-    <form action="/MaBao/user/baby/addBaby" class="person-msg" method="post">
-
+    <form action="/MaBao/user/baby/updateBabyInfo" class="person-msg" method="post">
+        <input style="display: none" name="id" value="${baby.id}">
         <label for="babyData">宝宝生日：
-            <input name="baby-data" id="babyData" type="date" value="${baby.birthday}">
+            <input name="<%--Baby.--%>birthday" id="babyData" type="date" value="${baby.birthday}">
         </label>
         <label for="babyName">宝宝姓名：
-            <input name="baby-name" id="babyName" type="text" value="${baby.name}" >
+            <input name="name" id="babyName" type="text" value="${baby.name}" >
         </label>
         <label for="sex">宝宝性别：
-            <select name="sex" id="sex">
-                <%--<option value="${baby.gender}">${baby.gender}</option>--%>
-                <option value="男">男</option>
-                <option value="女">女</option>
+            <select name="gender" id="sex">
+                <option value="MEN" ${baby.gender == 'MEN' ? 'selected = "selected"' : '' }>男</option>
+                <option value="WOMEN" ${baby.gender == 'WOMEN' ? 'selected = "selected"' : '' }>女</option>
+                <option value="UNLIMITED"  ${baby.gender == 'UNLIMITED' ? 'selected = "selected"' : '' }>中性</option>
             </select>
         </label>
         <div class="person-button">

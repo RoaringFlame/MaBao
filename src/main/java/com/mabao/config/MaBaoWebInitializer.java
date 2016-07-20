@@ -1,6 +1,7 @@
 package com.mabao.config;
 
 import com.mabao.util.filter.MyCharacterEncodingFilter;
+import org.springframework.web.filter.RequestContextFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
@@ -24,7 +25,7 @@ public class MaBaoWebInitializer extends AbstractAnnotationConfigDispatcherServl
 
     @Override
     protected Filter[] getServletFilters() {
-        return new Filter[]{new MyCharacterEncodingFilter()};
+        return new Filter[]{new MyCharacterEncodingFilter(),new RequestContextFilter()};
     }
 
 }

@@ -23,6 +23,10 @@
   </beans:bean>
 
   <!-- spring security 国际化 -->
+  <beans:bean id="authenticationManager"
+              class="org.springframework.security.authentication.ProviderManager">
+    <beans:property name="messageSource" ref="messageSource" />
+  </beans:bean>
   <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
     <beans:property name="basename" value="loginMessages"/>
   </beans:bean>
