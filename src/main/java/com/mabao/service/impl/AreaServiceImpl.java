@@ -1,6 +1,5 @@
 package com.mabao.service.impl;
 
-import com.mabao.controller.vo.AreaIdValue;
 import com.mabao.pojo.Area;
 import com.mabao.repository.AreaRepository;
 import com.mabao.service.AreaService;
@@ -37,7 +36,7 @@ public class AreaServiceImpl implements AreaService {
         List<Area> areas = this.areaRepository.findByLevelType(1);
         List<Selector> selectors = new ArrayList<>();
         for (Area area : areas){
-            selectors.add(new Selector(area.getId().toString(),area.getShortName()));
+            selectors.add(new Selector(area.getId().toString(),area.getShortName(),area.getSpell()));
         }
         return selectors;
     }
@@ -47,10 +46,10 @@ public class AreaServiceImpl implements AreaService {
      */
     @Override
     public List<Selector> findCityForSelector(Long provinceId) {
-        List<Area> areas = this.areaRepository.findByLevelTypeAndParentId(2,provinceId);
+        List<Area> areas = this.areaRepository.findByLevelTypeAndParentsAreaId(2,provinceId);
         List<Selector> selectors = new ArrayList<>();
         for (Area area : areas){
-            selectors.add(new Selector(area.getId().toString(),area.getShortName()));
+            selectors.add(new Selector(area.getId().toString(),area.getShortName(),area.getSpell()));
         }
         return selectors;
     }
@@ -59,26 +58,12 @@ public class AreaServiceImpl implements AreaService {
      */
     @Override
     public List<Selector> findCountyForSelector(Long cityId) {
-        List<Area> areas = this.areaRepository.findByLevelTypeAndParentId(3,cityId);
+        List<Area> areas = this.areaRepository.findByLevelTypeAndParentsAreaId(3,cityId);
         List<Selector> selectors = new ArrayList<>();
         for (Area area : areas){
-            selectors.add(new Selector(area.getId().toString(),area.getShortName()));
+            selectors.add(new Selector(area.getId().toString(),area.getShortName(),area.getSpell()));
         }
         return selectors;
     }
 
-    /**
-     * 通过areaID获取对应省市区
-     * @param areaId                            区级areaId
-     */
-    @Override
-    public AreaIdValue findEachAreaValueByAreaId(Long areaId) {
-        Area countyArea = this.areaRepository.findOne(areaId);
-        AreaIdValue value = new AreaIdValue();
-        value.setCountyId(countyArea.getId());
-        value.setCityId(countyArea.getParentId());
-        Area cityArea = this.areaRepository.findOne(countyArea.getParentId());
-        value.setProvinceId(cityArea.getParentId());
-        return value;
-    }
 }

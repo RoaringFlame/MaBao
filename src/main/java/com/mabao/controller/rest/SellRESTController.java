@@ -42,14 +42,5 @@ public class SellRESTController {
     }
 
 
-    /**
-     * 通过areaID获取对应省市区
-     * @param areaId                            区级areaId
-     */
-    @RequestMapping(value = "/getProvinceCityCounty",method = RequestMethod.GET)
-    public AreaIdValue findEachAreaValueByAreaId(@RequestParam Long areaId){
-        return this.areaService.findEachAreaValueByAreaId(areaId);
-    }
-
 }
 
