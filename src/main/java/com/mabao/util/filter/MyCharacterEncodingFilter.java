@@ -8,5 +8,6 @@ public class MyCharacterEncodingFilter extends CharacterEncodingFilter {
     public MyCharacterEncodingFilter(){
         super();
         super.setEncoding(this.encoding);
+        super.setForceEncoding(true);
     }
 }
