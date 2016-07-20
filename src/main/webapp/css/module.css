@@ -360,6 +360,7 @@
     position: absolute;
     left: 7.7rem;
     top: 18rem;
+    z-index: 10;
     margin: 0 auto;
     width: 16rem;
     height: 4rem;
@@ -437,7 +438,8 @@
     width: 3rem;
     height: 6rem;
     padding: 0 1.5rem 0 0;
-    float: left;
+    position: absolute;
+    right: 1rem;
     background: url(../img/u129.png) no-repeat center center;
     background-size: 2rem;
 }
@@ -1196,6 +1198,7 @@
     position: absolute;
     top: .8rem;
     left: .8rem;
+    z-index: 5;
 }
 
 .order-box-right {
@@ -1399,6 +1402,28 @@
     border-top: 0.1rem solid #787878;
     margin-top: 1.2rem;
 
+}
+
+.car {
+    position: relative;
+    height: 100%;
+}
+.car img {
+    height: 28px;
+    display: block;
+    margin: 0 auto;
+}
+.car .img-cont {
+    width: 80px;
+    height: 28px;
+    text-align: center;
+    float: left;
+    position: relative;
+    top: 50%;
+    margin-top: -14px;
+}
+.car span {
+    float: left;
 }
 
 /*宝物标题*/
