@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/" + "MaBao/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +51,7 @@
         <!--商品信息-->
         <div class="main-item">
             <div class="cartId" style="display: none;">1</div>
+            <div class="goodsId" style="display: none;">1</div>
             <!--选择商品-->
             <label>
                 <input class="select" name="itemContainer" type="checkBox">
@@ -87,9 +89,7 @@
         <ul>
             <li>总计&nbsp;:&nbsp;<b>￥0.00</b></li>
             <li>
-                <!--<a href="pay.html">-->
                 <button class="pay" type="submit">付款</button>
-                <!--</a>-->
             </li>
         </ul>
     </div>
@@ -108,10 +108,10 @@
         <a href="consignment">
             <i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
         </a>
-        <a href="user/shopping" id="shopping">
+        <a href="user/shopping" >
             <i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
         </a>
-        <a href="user/personal">
+        <a href="user">
             <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
         </a>
     </div>

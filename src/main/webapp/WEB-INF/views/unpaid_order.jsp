@@ -1,8 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>我是买家</title>
     <meta name="viewport"
@@ -24,7 +29,7 @@
            待付款
             <!--操作按钮-->
            <div class="header-box">
-                <a href="personal">
+                <a href="user">
                   <p class="header-left">
                   <i class="icon icon-return"></i>
                    返回

@@ -36,7 +36,7 @@ public class AreaServiceImpl implements AreaService {
         List<Area> areas = this.areaRepository.findByLevelType(1);
         List<Selector> selectors = new ArrayList<>();
         for (Area area : areas){
-            selectors.add(new Selector(area.getId().toString(),area.getShortName()));
+            selectors.add(new Selector(area.getId().toString(),area.getShortName(),area.getSpell()));
         }
         return selectors;
     }
@@ -46,10 +46,10 @@ public class AreaServiceImpl implements AreaService {
      */
     @Override
     public List<Selector> findCityForSelector(Long provinceId) {
-        List<Area> areas = this.areaRepository.findByLevelTypeAndParentId(2,provinceId);
+        List<Area> areas = this.areaRepository.findByLevelTypeAndParentsAreaId(2,provinceId);
         List<Selector> selectors = new ArrayList<>();
         for (Area area : areas){
-            selectors.add(new Selector(area.getId().toString(),area.getShortName()));
+            selectors.add(new Selector(area.getId().toString(),area.getShortName(),area.getSpell()));
         }
         return selectors;
     }
@@ -58,11 +58,12 @@ public class AreaServiceImpl implements AreaService {
      */
     @Override
     public List<Selector> findCountyForSelector(Long cityId) {
-        List<Area> areas = this.areaRepository.findByLevelTypeAndParentId(3,cityId);
+        List<Area> areas = this.areaRepository.findByLevelTypeAndParentsAreaId(3,cityId);
         List<Selector> selectors = new ArrayList<>();
         for (Area area : areas){
-            selectors.add(new Selector(area.getId().toString(),area.getShortName()));
+            selectors.add(new Selector(area.getId().toString(),area.getShortName(),area.getSpell()));
         }
         return selectors;
     }
+
 }

@@ -155,7 +155,7 @@
     <a href="user/shopping" id="shopping">
         <i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
     </a>
-    <a href="user/personal">
+    <a href="user">
         <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
     </a>
 </div>

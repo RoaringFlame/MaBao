@@ -1,5 +1,7 @@
 package com.mabao.pojo;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 
 /**
@@ -11,8 +13,8 @@ public class Area {
     private Long id;                                //id
     private String name;                            //名称
     private String shortName;                       //简称
-    private Long parentId;                          //上级编号
-    private Integer levelType;                       //行政级别。1省 2市 3区 4街道
+    private Area parentsArea;                        //上级编号
+    private Integer levelType;                      //行政级别。1省 2市 3区 4街道
     private String mergerName;                      //全称
     private String spell;                           //拼写
 
@@ -26,13 +28,14 @@ public class Area {
         this.id = id;
     }
 
-    @Column(name = "parent_id")
-    public Long getParentId() {
-        return parentId;
+    @ManyToOne
+    @JoinColumn(name = "parent_id",nullable=true,referencedColumnName = "id")
+    public Area getParentsArea() {
+        return parentsArea;
     }
 
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
+    public void setParentsArea(Area parentsArea) {
+        this.parentsArea = parentsArea;
     }
 
     public String getName() {

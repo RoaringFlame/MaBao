@@ -21,6 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http.csrf().disable()
         .formLogin().loginPage("/login").defaultSuccessUrl("/");
+    http.logout().logoutSuccessUrl("/");
     http.authorizeRequests().regexMatchers("/user/.*").authenticated()
             .regexMatchers("/cart/showCart").authenticated()
             .regexMatchers("/person/passwordChange").authenticated();
@@ -30,5 +31,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth.userDetailsService(new MaBaoUserService(userRepository)).passwordEncoder(new Md5PasswordEncoder());
   }
-
 }

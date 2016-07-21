@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/" + "MaBao/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,7 @@
 		选择收货地址
 		<!--操作按钮-->
 		<div class="header-box">
-		<a href="user/personal">
+		<a href="user">
 			<p class="header-left">
 				<i class="icon icon-return"></i>
 				返回
@@ -41,8 +42,9 @@
 	<!--标题 END-->
 
 	<!-- 收货地址 -->
-	<div class="box add">
-		<c:forEach  var="address" items="${addressList}">
+
+	<c:forEach  var="address" items="${addressList}">
+		<div class="box add">
 			<div class="box-left">
 				<img src="img/pay-1.png" alt="">
 			</div>
@@ -55,15 +57,15 @@
 					</dl>
 				</div>
 				<div class="box-right-bottom">
-					<%--<p>${address.area}</p>--%>							<%--地区还有问题--%>
+					<p>${address.area.mergerName}</p>
 					<p>${address.location}</p>
 				</div>
 			</div>
 			<a href="user/address/getAddress?addressId=${address.id}">
 				<button class="add-jump-arrow"></button>
 			</a>
-		</c:forEach>
-	</div>
+		</div>
+	</c:forEach>
 	<!-- 新增收货地址按钮 -->
 	<a href="user/new_address" class="input-add">
 		<button type="submit">新增收货地址</button>

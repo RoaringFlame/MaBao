@@ -12,8 +12,12 @@ public interface AreaRepository extends BaseRepository<Area>  {
      * 获取省
      */
     List<Area> findByLevelType(Integer levelType);
+
     /**
-     * 获取某省下的市
+     * 查某级别下级所有
+     * @param i                             级别
+     * @param parentsId                    父级ID
+     * @return
      */
-    List<Area> findByLevelTypeAndParentId(int i, Long provinceId);
+    List<Area> findByLevelTypeAndParentsAreaId(int i, Long parentsId);
 }

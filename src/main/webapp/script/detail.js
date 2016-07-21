@@ -36,7 +36,7 @@ $(function () {
                 console.log(data);
                 console.log("详情页面弹框效果的实现");
                 if (data.status == "success") {
-                    window.location = "http://localhost:8080/MaBao/cart/index";
+                    window.location = MB.getContextPath()+"/cart/index";
                 } else {
                     showMsg(data.message);
                 }

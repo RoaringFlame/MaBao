@@ -13,7 +13,8 @@ import java.util.List;
  * Created by lies on 2016/6/30.
  */
 public class OrderVO {
-    private Long id;                                //订单明细的id
+    private Long orderDetailId;                     //订单明细的id
+    private Long goodsId;                           //商品ID
     private String size;                            //尺寸
     private String title;                           //标题
     private String picture;                         //图片
@@ -27,8 +28,12 @@ public class OrderVO {
     public static OrderVO generateBy(OrderDetail o){
         OrderVO vo = VoUtil.copyBasic(OrderVO.class, o);
         assert vo != null;
+        vo.setGoodsId(o.getGoods().getId());
+        vo.setPicture(o.getGoods().getPicture());
+        vo.setOrderDetailId(o.getId());
         vo.setQuantity(o.getOrder().getQuantity());
         vo.setTotalSum(o.getOrder().getTotalSum());
+        vo.setFreight(o.getOrder().getFreight());
         vo.setState(o.getOrder().getState());
         return vo;
     }
@@ -40,12 +45,12 @@ public class OrderVO {
         return list;
     }
 
-    public Long getId() {
-        return id;
+    public Long getOrderDetailId() {
+        return orderDetailId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setOrderDetailId(Long orderDetailId) {
+        this.orderDetailId = orderDetailId;
     }
 
     public String getTitle() {
@@ -118,5 +123,13 @@ public class OrderVO {
 
     public void setState(OrderStatus state) {
         this.state = state;
+    }
+
+    public Long getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(Long goodsId) {
+        this.goodsId = goodsId;
     }
 }

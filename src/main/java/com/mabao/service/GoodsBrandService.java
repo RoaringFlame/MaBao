@@ -21,4 +21,11 @@ public interface GoodsBrandService {
      * @return                  Selector
      */
     List<Selector> findBrandForSelector();
+
+    /**
+     * ID获取品牌
+     * @param brandId           品牌ID
+     * @return                  品牌
+     */
+    GoodsBrand get(Long brandId);
 }

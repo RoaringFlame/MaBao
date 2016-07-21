@@ -22,7 +22,7 @@ public class SellRESTController {
     /**
      * 获取省
      */
-    @RequestMapping(value = "/Provinces",method = RequestMethod.GET)
+    @RequestMapping(value = "/provinces",method = RequestMethod.GET)
     public List<Selector> findProvinces(){
         return this.areaService.findProvinceForSelector();
     }
@@ -30,7 +30,7 @@ public class SellRESTController {
     /**
      * 获取某省下的市
      */
-    @RequestMapping(value = "/Province/{provinceId}/allCity",method = RequestMethod.GET)
+    @RequestMapping(value = "/province/{provinceId}/allCity",method = RequestMethod.GET)
     public List<Selector> findCityFromProvince(@PathVariable Long provinceId){
         return this.areaService.findCityForSelector(provinceId);
     }

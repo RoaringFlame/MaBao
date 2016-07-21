@@ -42,4 +42,13 @@ public class GoodsBrandServiceImpl implements GoodsBrandService {
         }
         return brandSelector;
     }
+    /**
+     * ID获取品牌
+     * @param brandId           品牌ID
+     * @return                  品牌
+     */
+    @Override
+    public GoodsBrand get(Long brandId) {
+        return this.goodsBrandRepository.findOne(brandId);
+    }
 }

@@ -28,7 +28,7 @@ public class OrderDetail {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "order_id")
     public Order getOrder() {
         return order;
@@ -37,7 +37,7 @@ public class OrderDetail {
     public void setOrder(Order order) {
         this.order = order;
     }
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "goods_id")
     public Goods getGoods() {
         return goods;
