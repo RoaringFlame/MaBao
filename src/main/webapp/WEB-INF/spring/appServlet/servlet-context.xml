@@ -22,21 +22,8 @@
     <beans:property name="suffix" value=".jsp" />
   </beans:bean>
 
-  <!-- spring security 国际化 -->
-  <beans:bean id="authenticationManager"
-              class="org.springframework.security.authentication.ProviderManager">
-    <beans:property name="messageSource" ref="messageSource" />
-  </beans:bean>
-  <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-    <beans:property name="basename" value="loginMessages"/>
-  </beans:bean>
-  <beans:bean id="localeResolver"
-              class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver">
-  </beans:bean>
-
   <!-- 
   <view-controller path="/" view-name="home" />
   -->
-
 
 </beans:beans>

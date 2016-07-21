@@ -1,3 +1,5 @@
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,9 +36,13 @@
         <!--操作按钮-->
         <div class="header-box">
             <a href="login">
-                <p class="header-left">
-                    <i class="icon icon-return"></i>
-                    登录
+                <p class="header-left" style="font-size: 1.1rem;">
+                    <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">
+                        ${sessionScope["SPRING_SECURITY_CONTEXT"].authentication.principal.username}
+                    </c:if>
+                    <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId eq null}">
+                        请登录
+                    </c:if>
                 </p>
             </a>
         </div>
