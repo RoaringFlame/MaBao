@@ -163,6 +163,7 @@ public class GoodsServiceImpl implements GoodsService {
             order.setState(OrderStatus.ToBeRelease);
             order.setFreight(10.00);                    //运费
             order.setTotalSum(order.getFreight()+saveGoods.getPrice());
+            this.orderService.saveOrder(order);
             //订单明细
             OrderDetail od = new OrderDetail();
             od.setGoods(saveGoods);
@@ -175,7 +176,6 @@ public class GoodsServiceImpl implements GoodsService {
             od.setUpTime(saveGoods.getUpTime());
             od.setBrand(saveGoods.getBrand().getBrandName());
             this.orderService.saveOrderDetail(od);
-            this.orderService.saveOrder(order);
             return saveGoods;
         }catch (Exception e){
             return null;

@@ -44,10 +44,9 @@ public class UserCenterController {
         if (user != null) {
             UserInfoVO vo = new UserInfoVO();
             vo.setBabyId(null);
-            vo.setBabyName(null);
-            List<Baby> babyList = this.babyService.findBabyByUserId(user.getId());
-            if (babyList !=null){
-               Baby baby = babyList.get(0);
+            vo.setBabyName("未添加宝宝");
+            Baby baby = this.babyService.findBabyByUserId(user.getId());
+            if (baby !=null){
                 vo.setBabyId(baby.getId());
                 vo.setBabyName(baby.getName());
             }
@@ -115,7 +114,7 @@ public class UserCenterController {
     public String updateAddress(Address address, Model model){
         Address result=this.addressService.updateAddress(address);
         if (result != null){
-            return "redirect:address/allAddress";
+            return "redirect:userAllAddress";
         }else {
             return "address-failure";
         }
@@ -128,7 +127,7 @@ public class UserCenterController {
     @RequestMapping(value = "/address/deleteAddress",method = GET)
     public String removeAddress(Long addressId){
         this.addressService.deleteAddress(addressId);
-        return "redirect:address/allAddress";
+        return "redirect:userAllAddress";
 
     }
 
@@ -158,9 +157,8 @@ public class UserCenterController {
     public String findAllBabyInfo(Model model){
         User user = UserManager.getUser();
         if (user != null) {
-            List<Baby> babyList = this.babyService.findBabyByUserId(user.getId());
-            if (babyList !=null){
-                Baby baby = babyList.get(0);
+            Baby baby = this.babyService.findBabyByUserId(user.getId());
+            if (baby !=null){
                 model.addAttribute("baby", baby);
                 return "changemsg";
             }else {

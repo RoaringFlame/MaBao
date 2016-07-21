@@ -3,8 +3,6 @@ package com.mabao.service;
 import com.mabao.controller.vo.BabyVO;
 import com.mabao.pojo.Baby;
 
-import java.util.List;
-
 public interface BabyService {
     /**
      * 添加宝宝信息
@@ -32,7 +30,7 @@ public interface BabyService {
      * @param userId                    用户ID
      * @return                          宝宝list
      */
-    List<Baby> findBabyByUserId(Long userId);
+    Baby findBabyByUserId(Long userId);
 
     /**
      * 保存宝宝
@@ -40,4 +38,10 @@ public interface BabyService {
      * @return                          宝宝
      */
     Baby saveOne(Baby baby);
+    /**
+     * 猜你喜欢宝宝表单（保存宝宝信息）
+     * @param baby  baby对象
+     * @return      babyVO对象
+     */
+    BabyVO guessForBabyInfo(Baby baby);
 }
