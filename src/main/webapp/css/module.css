@@ -35,9 +35,11 @@
 /*搜索框*/
 .search-input {
     float: left;
-    width: 85%;
+    width:28rem;
 }
-
+@media (max-width: 320px) {
+    .search-input{  width: 22rem;   }
+}
 .search-input p {
     position: absolute;
     left: 5rem;
@@ -53,9 +55,9 @@
     float: left;
     border-radius: .5rem;
     border: .1rem solid #ddd;
-    width: 100%;
     height: 2.8rem;
     padding-left: 3.5rem;
+    width:100%;
 }
 
 /*侧导航栏*/
@@ -152,6 +154,7 @@
 }
 
 .goods-list li div {
+    position: relative;
     margin: 0 2% 3%;
     height: 6.5rem;
     background-color: #fdfeff;
@@ -166,13 +169,20 @@
 
 .goods-list li div p span:nth-child(1) {
     float: left;
-    width: 8rem;
     color: #F0292B;
 }
-
 .goods-list li div p span:nth-child(2) {
+    position: absolute;
+    right:1rem;
+    top:0;
+    display: inline;
+}
+.goods-list li div p:nth-child(2) {
+    width: 13.5rem;
     font-size: 1.2rem;
-    float: right;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .goods-list li div p:nth-child(3) {
@@ -358,11 +368,11 @@
 
 .tip {
     position: absolute;
-    left: 7.7rem;
+    left:20%;
     top: 18rem;
     z-index: 10;
     margin: 0 auto;
-    width: 16rem;
+    width: 60%;
     height: 4rem;
     text-align: center;
     font-size: 1.4rem;
@@ -824,11 +834,11 @@
 .terms textarea {
     width: 100%;
     text-align: center;
+    background: #fff;
 }
 
 /*寄售*/
 .consignment {
-    width: 32rem;
     height: auto;
     margin: 0 auto
 }
@@ -887,7 +897,6 @@
     height: 4rem;
     display: block;
     margin-left: 8rem;
-    width: 16.6rem
 }
 
 .blank {
