@@ -1,7 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <!-- 禁止将数字变为电话号码 -->
@@ -21,7 +27,7 @@
         发布成功
         <!--操作按钮-->
         <div class="header-box">
-            <a href="/sell/releaseSelector">
+            <a href="">
                 <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回

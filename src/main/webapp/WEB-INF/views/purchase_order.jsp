@@ -30,7 +30,7 @@
            购买订单
             <!--操作按钮-->
            <div class="header-box">
-                <a href="uer">
+                <a href="user">
                   <button class="header-left">
                   <i class="icon icon-return"></i>
                    返回

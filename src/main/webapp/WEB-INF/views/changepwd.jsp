@@ -32,11 +32,11 @@
         修改密码
         <!--操作按钮-->
         <div class="header-box">
-            <a href="/jsp/personal">
-                <button class="header-left">
+            <a href="user">
+                <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </button>
+                </p>
             </a>
         </div>
         <!--操作按钮 END-->

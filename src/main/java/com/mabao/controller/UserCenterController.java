@@ -43,12 +43,17 @@ public class UserCenterController {
         User user = UserManager.getUser();
         if (user != null) {
             UserInfoVO vo = new UserInfoVO();
-            Baby baby = this.babyService.findBabyByUserId(user.getId()).get(0);
+            vo.setBabyId(null);
+            vo.setBabyName(null);
+            List<Baby> babyList = this.babyService.findBabyByUserId(user.getId());
+            if (babyList !=null){
+               Baby baby = babyList.get(0);
+                vo.setBabyId(baby.getId());
+                vo.setBabyName(baby.getName());
+            }
             vo.setUserId(user.getId());
             vo.setUserName(user.getName());
             vo.setUserPicture(user.getPicture());
-            vo.setBabyId(baby.getId());
-            vo.setBabyName(baby.getName());
             model.addAttribute("userInfo", vo);
             return "personal";
         }else {
@@ -154,7 +159,7 @@ public class UserCenterController {
         User user = UserManager.getUser();
         if (user != null) {
             List<Baby> babyList = this.babyService.findBabyByUserId(user.getId());
-            if (babyList.size()>0){
+            if (babyList !=null){
                 Baby baby = babyList.get(0);
                 model.addAttribute("baby", baby);
                 return "changemsg";
@@ -176,7 +181,7 @@ public class UserCenterController {
     public String addBabyInfo(BabyVO babyInfo, Model model){
         Baby baby =  this.babyService.addBaby(babyInfo);
         if (baby != null){
-            return "redirect:user";     //转向个人中心
+            return "redirect:/user";     //转向个人中心
         }else {
             return "baby_add_failure";
         }
@@ -189,9 +194,11 @@ public class UserCenterController {
      */
     @RequestMapping(value = "baby/updateBabyInfo",method = POST)
     public String updateBabyInfo(Baby babyInfo){
+        User user = UserManager.getUser();
+        babyInfo.setUser(user);
         Baby baby =  this.babyService.updateBabyInfo(babyInfo);
         if (baby != null){
-            return "redirect:user";     //转向个人中心
+            return "redirect:/user";     //转向个人中心
         }else {
             return "baby_update_failure";
         }

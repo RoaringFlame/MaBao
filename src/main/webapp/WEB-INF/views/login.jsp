@@ -1,8 +1,11 @@
+<%@ page import="org.springframework.context.i18n.LocaleContextHolder" %>
+<%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,15 +46,17 @@
     <!-- 登陆表单 -->
     <form class="login-box" action="login" method="POST">
         <!-- 校验提示 -->
+        <c:if test="${not empty error}">
+            <p class="warning">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
+        </c:if>
+
         <label for="userName">用户名:
             <input type="text" name="username" id="userName">
         </label>
         <label for="passWord">密码:
             <input type="password" name="password" id="passWord">
         </label>
-        <c:if test="${not empty error}">
-            <p class="warning">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
-        </c:if>
+
         <!-- 登陆按钮 -->
         <a class="button-bottom">
             <button class="submit" type="submit">登陆</button>
