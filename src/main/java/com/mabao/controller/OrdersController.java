@@ -1,6 +1,7 @@
 package com.mabao.controller;
 
 import com.mabao.controller.vo.OrderVO;
+import com.mabao.enums.OrderStatus;
 import com.mabao.pojo.Order;
 import com.mabao.pojo.OrderDetail;
 import com.mabao.service.OrderService;
@@ -63,7 +64,14 @@ public class OrdersController {
         model.addAttribute("goodsNum", goodsNum);       //总数量
         model.addAttribute("totalSum", totalSum);       //总计
         model.addAttribute("totalFreight", freight);    //总运费
-        if (orderStatus.equals("ToBePaid")){
+        if(orderStatus == null || orderStatus.equals("")) {
+            switch (userIdentity) {
+                case 1: return "purchase_order";
+                case 2: return "consignment_order";
+                default: return null;
+            }
+        }
+        else if (orderStatus.equals("ToBePaid")){
             return "unpaid_order";
         }else if (orderStatus .equals("ToBeSend")) {
             return "nopackaged_order";
@@ -75,13 +83,8 @@ public class OrdersController {
             return "published_order";
         }else if (orderStatus .equals("Sold")) {
             return "finish_order";
-        }else if (orderStatus.equals("") && userIdentity == 1) {
-            return "purchase_order";
-        }else if (orderStatus.equals("") && userIdentity == 2) {
-            return "consignment_order";
         }else {
             return null;
         }
     }
-
 }
