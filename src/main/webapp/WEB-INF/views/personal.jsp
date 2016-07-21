@@ -28,7 +28,7 @@
 		个人中心
 		<!--操作按钮-->
 		<div class="header-box">
-			<a href="user">
+			<a href="">
 				<p class="header-left">
 					<i class="icon icon-return"></i>
 					返回
@@ -84,7 +84,7 @@
 	</div>
 	<!--个人中心信息END-->
 	<!--注销按钮-->
-	<a class="personal-center-button" href="logout">
+	<a class="personal-center-button" href="login">
 		<button type="reset">注销</button>
 	</a>
 	<div class="blank"></div>

@@ -63,7 +63,12 @@ public class BabyServiceImpl implements BabyService {
      */
     @Override
     public List<Baby> findBabyByUserId(Long userId) {
-        return this.babyRepository.findByUserId(userId);
+        List<Baby> babyList =  this.babyRepository.findByUserId(userId);
+        if (babyList.size()>0){
+            return babyList;
+        }else {
+            return null;
+        }
     }
 
     /**
