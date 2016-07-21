@@ -8,7 +8,7 @@ $(function () {
     var pageSize = 4;                                   //每页展示的宝物数量
     var goodsTypeId = "";                               //商品类型id
     var myScroll = "";                                  //轮播
-    var baby = null;                                    //宝宝对象
+    var babyIF = null;                                    //宝宝对象
     var isNew = true;                                   //是否当前展示的是新品
     var backGoods = $("#hideGoods").find("li");       //查找到新品列表下的li标签
     var newGoodsBox = $("#newGoodsList");             //新品展示
@@ -140,8 +140,9 @@ $(function () {
     //5,初始化猜你喜欢宝宝相关
     function initBaby(baby, gender) {
         //初始化宝宝
-        if (baby) {
-            baby = baby;
+        if (baby != "" && baby != null && typeof(baby) != "undefined") {
+            console.log(babyIF);
+            babyIF = baby;
         }
         //初始化宝宝性别
         var genderList = gender;
@@ -169,26 +170,33 @@ $(function () {
                 gender: gender,                      //宝宝性别
                 hobby: hobby                         //宝宝爱好
             };
-            MB.sendAjax("get", "home/babySubmit", params, function (data) {
-                baby = data;
-                initLikeBox();
-            });
+            if (babyName !== "" && babyBirthday !== "" && gender !== "" && hobby !== "") {
+                MB.sendAjax("get", "home/babySubmit", params, function (data) {
+                    babyIF = data;
+                    console.log(babyIF);
+                    initLikeBox();
+                });
+            } else {
+                alert("请填写完整宝宝信息!");
+            }
         });
     }
 
     //7,初始化猜你喜欢
     function initLikeBox() {
         //猜你喜欢商品列表
+        console.log(babyIF);
         typeSidebar.addClass("hide");               //侧边栏添加隐藏样式（假设侧边栏被点开时）
-        if (baby) {                                 //如果宝宝id是存在加载猜你喜欢物品列表页
+        if (babyIF != "" && babyIF != null && typeof(babyIF) != "undefined") {                                 //如果宝宝id是存在加载猜你喜欢物品列表页
             $("#likeForm").hide();
             var backGoods = $("#hideGoods").find("li");
             likeGoodsBox.show();                           //显示猜你喜欢列表页
+
             var params = {
-                name: baby.name,                         //宝宝姓名
-                birthday: baby.birthday,                //宝宝生日
-                gender: baby.gender,                    //宝宝性别
-                hobby: baby.hobby,                      //宝宝爱好
+                name: babyIF.name,                        //宝宝姓名
+                birthday: babyIF.birthday,                //宝宝生日
+                gender: babyIF.gender,                    //宝宝性别
+                hobby: babyIF.hobby,                      //宝宝爱好
                 page: currentPageLike,                   //猜你喜欢当前页面
                 pageSize: pageSize                      //猜你喜欢每页展示的物品数量
             };
@@ -312,10 +320,11 @@ $(function () {
             initBaby(data.baby, data.gender);
             //新品初始化，只初始化一次
             initNewGoodsBox();
+            //猜你喜欢初始化
+            initLikeBox();
             //表单信息初始化
             initFormAction();
         });
-
     }
 
     //11，初始化函数
