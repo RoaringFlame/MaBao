@@ -94,7 +94,7 @@
 		<a href="">
 			<i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
 		</a>
-		<a>
+		<a href="developing">
 			<i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
 		</a>
 		<a href="consignment">
