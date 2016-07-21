@@ -1240,8 +1240,9 @@
 /*订单*/
 .order {
 
-    margin: 0 auto;
+    margin: 2rem 0;
     padding: 1rem;
+    background-color: #fcfff4;
 }
 
 .order-box {
@@ -1252,7 +1253,6 @@
 
 .unpaid-txt {
     padding-top: .5rem;
-    background: #fff;
     font-size: 1.3rem;
     line-height: 1.5rem;
     height: 1.5rem;
@@ -1365,7 +1365,6 @@
 .order-bottom {
     font-size: 1.4rem;
     color: #000;
-    width: 100%;
     text-indent: 1rem;
     line-height: 2.0rem;
     padding: .2rem 0;
