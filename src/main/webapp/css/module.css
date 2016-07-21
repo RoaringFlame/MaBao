@@ -35,11 +35,15 @@
 /*搜索框*/
 .search-input {
     float: left;
-    width:28rem;
+    width: 28rem;
 }
+
 @media (max-width: 320px) {
-    .search-input{  width: 22rem;   }
+    .search-input {
+        width: 22rem;
+    }
 }
+
 .search-input p {
     position: absolute;
     left: 5rem;
@@ -57,7 +61,7 @@
     border: .1rem solid #ddd;
     height: 2.8rem;
     padding-left: 3.5rem;
-    width:100%;
+    width: 100%;
 }
 
 /*侧导航栏*/
@@ -152,7 +156,11 @@
     margin: 3% 2% 0;
     display: block;
 }
-
+@media  (max-width: 320px)  {
+    .goods-list li img {
+        height: 15rem;
+    }
+}
 .goods-list li div {
     position: relative;
     margin: 0 2% 3%;
@@ -171,12 +179,14 @@
     float: left;
     color: #F0292B;
 }
+
 .goods-list li div p span:nth-child(2) {
     position: absolute;
-    right:1rem;
-    top:0;
+    right: 1rem;
+    top: 0;
     display: inline;
 }
+
 .goods-list li div p:nth-child(2) {
     width: 13.5rem;
     font-size: 1.2rem;
@@ -339,7 +349,12 @@
     width: 30rem;
     height: 18rem;
 }
-
+@media  (max-width: 320px)  {
+    .goods-detail-bottom img {
+        width: 25rem;
+        height: 16rem;
+    }
+}
 .goods-detail-button {
     margin: 1rem 0 2rem 0;
     text-align: center;
@@ -368,7 +383,7 @@
 
 .tip {
     position: absolute;
-    left:20%;
+    left: 20%;
     top: 18rem;
     z-index: 10;
     margin: 0 auto;
@@ -385,7 +400,7 @@
 
 /*付款页面*/
 .box {
-    width: 32rem;
+    max-width: 32rem;
     margin: 1rem auto;
     height: auto;
     min-height: 6rem;
@@ -409,7 +424,8 @@
 
 .box-right {
     width: 21rem;
-    float: left;
+    position: absolute;
+    left: 4.5rem;
     font-size: 1.3rem;
     margin: 0 1rem;
 }
@@ -455,7 +471,7 @@
 }
 
 .lists {
-    width: 32rem;
+    max-width: 32rem;
     margin: 2rem auto;
 }
 
@@ -494,12 +510,19 @@
 .notes {
     display: block;
     text-indent: 1rem;
-    font-size: 1.3rem
+    font-size: 1.3rem;
+    padding: 0 1rem;
 }
 
 .notes textarea {
     resize: none;
-    width: 31.8rem;
+    width: 30rem;
+}
+
+@media (max-width: 320px) {
+    .notes textarea {
+        width: 24rem;
+    }
 }
 
 .up-to-pay {
@@ -508,6 +531,12 @@
     z-index: 9997;
     width: 32rem;
     margin: 0 auto;
+}
+
+@media (max-width: 320px) {
+    .up-to-pay {
+        width: 28rem;
+    }
 }
 
 .pay-fixed {
@@ -550,7 +579,11 @@
     width: 16rem;
     height: 4rem;
 }
-
+@media (max-width: 320px) {
+    .up-to-pay ul li button {
+        width: 14rem;
+    }
+}
 /*收货地址页面*/
 
 .add {
@@ -560,7 +593,7 @@
 
 /*编辑收货地址*/
 .edit-add-box {
-    width: 32rem;
+    max-width: 32rem;
     margin: 0 auto;
     height: auto
 }
@@ -583,6 +616,11 @@
     font-family: serif;
     border-bottom: 0.1rem solid #DCDCDC !important;
 }
+@media (max-width: 320px) {
+    .address {
+        width: 26rem;
+    }
+}
 
 .edit-add-box textarea {
     border: 0;
@@ -604,6 +642,12 @@
     font-size: 1.4rem;
     border-bottom: 0.1rem solid #DCDCDC !important;
 }
+@media (max-width: 320px) {
+    .edit-add-box input{
+        width: 26rem;
+    }
+}
+
 
 /*删除/提交地址按钮*/
 .edit-add-input {
@@ -616,13 +660,18 @@
 .edit-add-input input {
     margin: .5rem;
     width: 28rem;
-    border-radius: 0.8rem;
+    border-radius: 0.4rem;
     height: 3rem;
     line-height: 3rem;
     color: #fff;
     font-size: 1.3rem;
 }
+@media (max-width: 320px)   {
 
+    .edit-add-input input {
+        width: 22rem;
+    }
+}
 .default {
     background: #0099FF;
 }
@@ -668,7 +717,11 @@
     width: 7rem;
     margin-right: 1rem;
 }
-
+@media (max-width: 320px) {
+    .edit-add-box select{
+        width: 5.5rem;
+    }
+}
 /*新增收货地址*/
 .message-box {
     width: 32rem;
@@ -861,6 +914,7 @@
 .consignment-content {
     width: 100%;
     height: 22rem;
+    padding-bottom: 4rem;
 }
 
 .consignment-content ul {
@@ -934,7 +988,7 @@
 
 /*寄售成功*/
 .publish-success-box {
-    width: 32rem;
+    max-width: 32rem;
     height: 2rem;
     margin: 0 auto;
     padding-top: 5rem
@@ -985,10 +1039,10 @@
 }
 
 .share-bottom button {
-    border-radius: 0.6rem;
+    border-radius: 1.2rem;
     background-color: rgb(255, 51, 153);
     width: 80%;
-    height: 3.5rem;
+    height: 3rem;
     color: #fff;
     font-size: 1.6rem;
     font-weight: bold;
@@ -1017,9 +1071,15 @@
     margin: 0 auto;
     display: block;
     height: 4rem;
-    padding: 0 2rem;
+    width: 85%;
     text-align: right;
     font-size: 1.4rem;
+}
+
+@media (max-width: 320px) {
+    .register-box label {
+        width: 22rem;
+    }
 }
 
 .register-box input {
@@ -1359,12 +1419,12 @@
     color: #666
 }
 
-.personal-center-button {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    width: 80%;
-}
+/*.personal-center-button {*/
+    /*display: block;*/
+    /*margin: 0 auto;*/
+    /*text-align: center;*/
+    /*width: 80%;*/
+/*}*/
 
 .personal-center-button button {
 
@@ -1384,14 +1444,20 @@
     margin-top: 1rem;
 }
 
+
+
 .transfer-box p span {
-    width: 18rem;
+    width: 16rem;
     padding: 0 1rem;
     float: left;
     color: #FF3399;
     font-size: 1.25rem;
 }
-
+@media (max-width: 320px) {
+    .transfer-box p span {
+        width: 12rem;
+    }
+}
 .transfer-box p a {
     width: 8rem;
     margin: 0 1.5rem;
@@ -1410,6 +1476,7 @@
     position: relative;
     border-top: 0.1rem solid #787878;
     margin-top: 1.2rem;
+    padding: 0 .2rem;
 
 }
 
@@ -1417,11 +1484,13 @@
     position: relative;
     height: 100%;
 }
+
 .car img {
     height: 28px;
     display: block;
     margin: 0 auto;
 }
+
 .car .img-cont {
     width: 80px;
     height: 28px;
@@ -1431,6 +1500,7 @@
     top: 50%;
     margin-top: -14px;
 }
+
 .car span {
     float: left;
 }
@@ -1451,12 +1521,15 @@
     line-height: 3.2rem;
     border: none;
 }
-
+@media (max-width: 320px) {
+    .title > input {
+        width: 24rem;
+    }
+}
 .transfer-info li {
     float: left;
     width: 50%;
     text-align: left;
-    height: 4rem;
     line-height: 4rem;
     font-size: 1.4rem;
 }
@@ -1470,6 +1543,12 @@
     width: 7.6rem;
     height: 2.6rem;
 
+}
+@media (max-width: 320px) {
+    .transfer-info li select, .transfer-form ul li input {
+        width: 6.6rem;
+
+    }
 }
 
 .transfer-form-bottom label {
@@ -1485,7 +1564,11 @@
     resize: none;
     height: 10rem
 }
-
+@media (max-width: 320px) {
+    .transfer-form-bottom textarea {
+        width: 18rem;
+    }
+}
 .transfer-form-bottom div {
     height: 18rem;
 }
