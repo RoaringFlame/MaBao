@@ -36,7 +36,7 @@
             <a href="login">
                 <p class="header-left">
                     <i class="icon icon-return"></i>
-                    登陆
+                    登录
                 </p>
             </a>
         </div>
