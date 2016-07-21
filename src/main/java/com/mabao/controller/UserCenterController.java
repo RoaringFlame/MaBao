@@ -181,7 +181,7 @@ public class UserCenterController {
     public String addBabyInfo(BabyVO babyInfo, Model model){
         Baby baby =  this.babyService.addBaby(babyInfo);
         if (baby != null){
-            return "redirect:user";     //转向个人中心
+            return "redirect:/user";     //转向个人中心
         }else {
             return "baby_add_failure";
         }
@@ -194,9 +194,11 @@ public class UserCenterController {
      */
     @RequestMapping(value = "baby/updateBabyInfo",method = POST)
     public String updateBabyInfo(Baby babyInfo){
+        User user = UserManager.getUser();
+        babyInfo.setUser(user);
         Baby baby =  this.babyService.updateBabyInfo(babyInfo);
         if (baby != null){
-            return "redirect:user";     //转向个人中心
+            return "redirect:/user";     //转向个人中心
         }else {
             return "baby_update_failure";
         }
