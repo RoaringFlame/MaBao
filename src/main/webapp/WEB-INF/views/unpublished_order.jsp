@@ -18,52 +18,56 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
+    <script src="script/lib/jquery.1.10.2.js"></script>
+    <script src="script/order.js"></script>
+    <script src="script/common.js"></script>
 </head>
 
 <body>
-    <div class="content-index">
-        <!--标题-->
-        <header>
-           待发布
-            <!--操作按钮-->
-           <div class="header-box">
-                <a href="user">
-                  <p class="header-left">
-                  <i class="icon icon-return"></i>
-                   返回
+<div class="content-index">
+    <!--标题-->
+    <header>
+        待发布
+        <!--操作按钮-->
+        <div class="header-box">
+            <a href="user">
+                <p class="header-left">
+                    <i class="icon icon-return"></i>
+                    返回
                 </p>
-                </a>
-           </div>
-            <!--操作按钮 END-->
-        </header>
-         <!--标题 END-->
-         
-        <div class="order"> 
-         <!-- 未发布商品 -->
-            <c:forEach var="goods" items="${allOrder}">
-                <div class="order-box" onclick=window.location.href="/goods/goodsDetail？goodsId=${goods.id}">
-                    <p class="unpaid-txt">商品未上架</p>
-                    <img src="${goods.picture}" alt="宝物">
-                    <div class="order-box-right">
-                        <p>${goods.brand}</p>
-                        <p>尺寸：${goods.size}</p>
-                        <p class="order-box-left">出售价格：${goods.price}</p>
-                        <p class="order-box-left">扣除佣金可得：￥${goods.realprice}</p>
-                    </div>
-                </div>
-            </c:forEach>
-            <!-- 未发布商品END -->
-
-            <!-- 共计 -->
-            <div class="order-bottom">
-                <p>共计${goodsNum}件商品 小计：<span>${totalSum}</span> (含运费￥${totalFreight})</p>
-            </div>
-           <!-- 共计END -->
+            </a>
         </div>
+        <!--操作按钮 END-->
+    </header>
+    <!--标题 END-->
 
+    <div class="order">
+        <!-- 未发布商品 -->
+        <c:forEach var="goods" items="${allOrder}">
+            <div class="order-box" >
+                <div class="goodsId" style="display: none;">${OrderDetail.goodsId}</div>
+                <p class="unpaid-txt">${OrderDetail.state.getText()}</p>
+                <img src="upload/${goods.picture}" alt="宝物">
+                <div class="order-box-right">
+                    <p>${goods.brand}</p>
+                    <p>尺寸：${goods.size}</p>
+                    <p class="order-box-left">出售价格：${goods.unitCost}</p>
+                    <p class="order-box-left">扣除佣金可得：￥${goods.realprice}</p>
+                </div>
+            </div>
+        </c:forEach>
+        <!-- 未发布商品END -->
+
+        <!-- 共计 -->
+        <div class="order-bottom">
+            <p>共计${goodsNum}件商品 小计：<span>${totalSum}</span> (含运费￥${totalFreight})</p>
+        </div>
+        <!-- 共计END -->
     </div>
+
+</div>
 
 </body>
 </html>
