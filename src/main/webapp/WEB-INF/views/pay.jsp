@@ -45,9 +45,8 @@
     <!--标题 END-->
     <!-- 收货地址 -->
 
-    <a href="user/address/userAllAddress">
-        <button class="add-jump-arrow"></button>
-    </a>
+
+    <button class="add-jump-arrow"></button>
     <form id="pay" action="order/payConfirm">
         <div class="box">
             <div class="box-left">
