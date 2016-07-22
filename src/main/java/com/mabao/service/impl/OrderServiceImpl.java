@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
         String[] cartIdArray = cartIds.trim().split(",");
         Order order = new Order();
         order.setBuyer(UserManager.getUser());
-        order.setSellerId(0L);
+        order.setSellerId(1L);
         order.setQuantity(cartIdArray.length);
         order.setAddress(this.addressService.get(addressId));
         order.setMessage(message);
