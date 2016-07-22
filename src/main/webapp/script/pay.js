@@ -19,7 +19,7 @@ $(function () {
             payBtn.removeClass("confirm");           //如果默认地址为空，付款按钮为灰色，不可点击，弹出提示框
             payBtn.addClass("disabled");
             payBtn.attr("disabled",true);
-            showMsg("请添加默认地址！");
+            showMsg("请添加收货地址！");
         }
     }
 
@@ -31,6 +31,19 @@ $(function () {
         $(".order-box img").click(function(){
             var goodsId=$(this).prev(".goodsId").text();
             window.location = "goods/goodsDetail?goodsId=" + goodsId;
+        });
+        //点击地址信息进入所有地址页面
+        $(".box-right").click(function () {
+            window.location = "user/address/userAllAddress";
+        });
+        //点击编辑地址按钮进入编辑地址页面
+        $("button.add-jump-arrow").click(function () {
+            var addressId = $("input[name='addressId']").val();
+            if (addressId !== "") {
+                window.location = "user/address/getAddress?addressId=" + addressId;
+            }else {
+                showMsg("请先添加收货地址！");
+            }
         });
     }
 

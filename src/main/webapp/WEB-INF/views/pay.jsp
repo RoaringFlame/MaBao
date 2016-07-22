@@ -34,10 +34,10 @@
         <!--操作按钮-->
         <div class="header-box">
             <a href="user/shopping">
-                <button class="header-left">
+                <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </button>
+                </p>
             </a>
         </div>
         <!--操作按钮 END-->
@@ -49,7 +49,7 @@
         <button class="add-jump-arrow"></button>
     </a>
     <form id="pay" action="order/payConfirm">
-        <div class="box add">
+        <div class="box">
             <div class="box-left">
                 <img src="img/pay-1.png" alt="">
             </div>

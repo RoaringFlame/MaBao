@@ -31,7 +31,6 @@ $(function () {
                 var cartId = $(this).parent().prevAll("div.cartId").text();           //获取当前商品的cartId
                 var num = parseInt($(this).prev("p").text());                         //获取当前商品数量
                 MB.sendAjax("get", "cart/changeNum/" + cartId, {opt: 1}, function () {
-                    //num++;                             //点击增加按钮后商品数量加1
                     setTotal();                          //点击增加按钮后重新计算总价
                 });
                 $(this).prev("p").text(num + 1);
@@ -64,6 +63,11 @@ $(function () {
             });
             //点击图片进入商品详情
             main.find(".main-item").find("img").click(function () {
+                var goodsId = $(this).prevAll(".goodsId").text();
+                window.location = "goods/goodsDetail?goodsId=" + goodsId;
+            });
+            //点击商品信息进入商品详情
+            $(".goods-info").click(function () {
                 var goodsId = $(this).prevAll(".goodsId").text();
                 window.location = "goods/goodsDetail?goodsId=" + goodsId;
             });
