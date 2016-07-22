@@ -40,7 +40,7 @@
     <!--标题 END-->
     <!--发布成功提示-->
     <div class="publish-success-box">
-        <p>此功能页面正在开发中！</p>
+        <p>此页面正在开发中！</p>
         <p>敬请期待哟～</p>
         <a href="" class="share-bottom">
             <button>去逛逛</button>

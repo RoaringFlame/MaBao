@@ -1162,7 +1162,7 @@
 /*修改密码*/
 .change-pwd {
     margin: 0 auto;
-    padding: 4rem 1rem 1rem;
+    padding: 4rem 0 1rem;
     max-width: 32rem;
     text-align: center;
 }
@@ -1176,6 +1176,11 @@
     font-size: 1.4rem;
 }
 
+@media (max-width: 320px) {
+    .change-pwd {
+        padding: 4rem 0 1rem;
+    }
+}
 .change-pwd input {
     height: 2.5rem;
     width: 75%;

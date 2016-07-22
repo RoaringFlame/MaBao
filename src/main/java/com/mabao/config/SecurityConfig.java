@@ -27,7 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http.logout().logoutSuccessUrl("/");
     http.authorizeRequests().regexMatchers("/user/.*").authenticated()
             .regexMatchers("/cart/showCart").authenticated()
-            .regexMatchers("/person/passwordChange").authenticated();
+            .regexMatchers("/person/passwordChange").authenticated()
+            .regexMatchers("/sell/releaseSelector").authenticated();
   }
   
   @Override

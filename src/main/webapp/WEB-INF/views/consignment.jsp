@@ -70,7 +70,6 @@
 			</ul>
 		</div>
 		<!-- 后续内容 -->
-		<div class="blank"></div>
 		<!--我要寄售按钮-->
 		<a class="consignment-button" href="user/consale">
 			<button>我要寄售</button>

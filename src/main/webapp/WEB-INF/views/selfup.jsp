@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/"+"MaBao/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +18,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="css/bootstrap-switch.css">
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/module.css">
+
     <script src="script/lib/jquery.1.10.2.js"></script>
     <script src="script/lib/bootstrap/bootstrap.min.js"></script>
     <script src="script/lib/bootstrap/bootstrap-switch.js"></script>
@@ -70,6 +69,9 @@
             $('#demo').trigger('change');
         });
     </script>
+    <link rel="stylesheet" href="css/bootstrap-switch.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/module.css">
 
 </head>
 
@@ -81,10 +83,10 @@
         <!--操作按钮-->
         <div class="header-box">
             <a href="consignment">
-                <button class="header-left">
+                <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </button>
+                </p>
             </a>
         </div>
         <!--操作按钮 END-->
