@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/"+"MaBao/";
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +17,12 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-
-
+    <link rel="stylesheet" href="css/bootstrap-switch.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/module.css">
+    <script src="script/lib/jquery.1.10.2.js"></script>
+    <script src="script/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="script/lib/bootstrap/bootstrap-switch.js"></script>
     <%--关于图片上传下载的插件--%>
     <link rel="stylesheet" type="text/css" href="script/lib/imageupload/css/webuploader.css" />
     <link rel="stylesheet" type="text/css" href="script/lib/imageupload/css/style.css" />
@@ -69,12 +71,6 @@
         });
     </script>
 
-    <link rel="stylesheet" href="css/bootstrap-switch.css">
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/module.css">
-    <script src="script/lib/jquery.1.10.2.js"></script>
-    <script src="script/lib/bootstrap/bootstrap.min.js"></script>
-    <script src="script/lib/bootstrap/bootstrap-switch.js"></script>
 </head>
 
 <body>
@@ -106,7 +102,7 @@
         <!--转让宝物信息表单-->
         <form class="transfer-form" action="<%--sell/release--%>user/consignment_success" id="console-form" method="post" >
             <label class="title">
-                <input type="text" name="title" value="宝物标题">
+                <input type="text" name="title" value="宝物标题:">
             </label>
             <!--宝物信息选框-->
             <ul class="transfer-info" id="transferInfo">
@@ -211,8 +207,7 @@
                         <div class="progress">
                             <span class="text">0%</span>
                             <span class="percentage"></span>
-                        </div>
-
+                        </div><div class="info"></div>
                         <div class="btns">
                             <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
                         </div>
@@ -226,7 +221,6 @@
         </form>
         <!--转让宝物信息表单END-->
         <!--提交按钮-->
-        <div class="warning"></div>
         <a href="#" class="transfer-form-button">
             <button type="submit" form="console-form">一键卖出</button>
         </a>
