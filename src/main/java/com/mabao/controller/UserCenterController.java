@@ -7,6 +7,7 @@ import com.mabao.pojo.Address;
 import com.mabao.pojo.Baby;
 import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
+import com.mabao.service.AreaService;
 import com.mabao.service.BabyService;
 import com.mabao.service.UserService;
 import com.mabao.util.UserManager;
@@ -32,6 +33,8 @@ public class UserCenterController {
     private BabyService babyService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private AreaService areaService;
 
     /**
      * 个人中心，获取登录用户的基本信息
@@ -87,7 +90,7 @@ public class UserCenterController {
     public String getAddress(Long addressId,Model model){
         Address address=this.addressService.get(addressId);
         model.addAttribute("addressList",address);
-        return "address";
+        return "chadd";
     }
 
     /**
@@ -112,6 +115,7 @@ public class UserCenterController {
      */
     @RequestMapping(value = "/address/updateAddress",method = POST)
     public String updateAddress(Address address, Model model){
+        address.setArea(this.areaService.get(address.getArea().getId()));
         Address result=this.addressService.updateAddress(address);
         if (result != null){
             return "redirect:userAllAddress";

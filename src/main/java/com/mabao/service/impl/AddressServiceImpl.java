@@ -101,4 +101,23 @@ public class AddressServiceImpl implements AddressService {
     public Address get(Long addressId) {
         return this.addressRepository.findOne(addressId);
     }
+
+    /**
+     * 修改收货地址默认状态
+     * @param addressId           地址对象
+     * @return                  用户地址页
+     */
+    @Override
+    public Address updateAddressStatus(Long addressId) {
+        User user =UserManager.getUser();
+        assert user != null;
+        Address defaultAddress =this.getDefaultAddress(user.getId());
+        if (defaultAddress != null){
+            defaultAddress.setState(false);
+            this.addressRepository.saveAndFlush(defaultAddress);
+        }
+        Address address =this.addressRepository.findOne(addressId);
+        address.setState(true);
+        return this.addressRepository.saveAndFlush(address);
+    }
 }

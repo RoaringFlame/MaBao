@@ -46,4 +46,11 @@ public interface AddressService {
      * @return                  地址对象
      */
     Address get(Long addressId);
+
+    /**
+     * 修改收货地址默认状态
+     * @param addressId           地址对象
+     * @return                  用户地址页
+     */
+    Address updateAddressStatus(Long addressId);
 }

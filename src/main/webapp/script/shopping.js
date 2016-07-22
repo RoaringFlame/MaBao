@@ -15,7 +15,7 @@ $(function () {
                 newGoods.find("div.goods-info").find("p:eq(0)").text(goods.brand);                       //从后台获取brand
                 newGoods.find("div.goods-info").find("p:eq(1)").text(goods.size);                        //从后台获取size
                 newGoods.find("div.goodsId").text(goods.goodsId);                                              //从后台获取cartId
-                newGoods.find("div.goods-info").find("p:eq(2)").text("￥" + goods.price);                //从后台获取price
+                newGoods.find("div.goods-info").find("p:eq(2)").text("￥" + goods.price.toFixed(2));                //从后台获取price
                 newGoods.find("div.shopping-cart").find("p").text(goods.quantity);                       //从后台获取quantity
                 main.append(newGoods);                                                                   //在main中加入商品信息
             });

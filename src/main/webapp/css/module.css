@@ -496,6 +496,7 @@
     height: 6rem;
     padding: 0 1.5rem 0 0;
     position: absolute;
+    z-index: 9;
     right: 1rem;
     background: url(../img/u129.png) no-repeat center center;
     background-size: 2rem;
@@ -1353,7 +1354,7 @@
     position: absolute;
     top: .8rem;
     left: .8rem;
-    z-index: 5;
+    z-index:5;
 }
 
 .order-box-right {
