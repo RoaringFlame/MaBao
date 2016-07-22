@@ -16,6 +16,12 @@ $(function () {
     var typeSidebar = $("#sidebar");                  //侧边栏
     var newGoods = $("#newGoods");                    //新品
 
+
+    function showMsg(msg) {
+        //提示框弹出信息停留3秒消失
+        $('#textShow1').text(msg).fadeIn(1000).delay(2000).fadeOut(1000);
+    }
+
     //1,侧边栏初始化
     function initGoodsType(typeList) {
         $("#searchBox").find("div.column").click(function () {
@@ -127,7 +133,7 @@ $(function () {
                         });
                     newGoods.find("div>p:eq(0)>span:eq(0)").text("￥" + goods.price);
                     newGoods.find("div>p:eq(0)>span:eq(1)").text(goods.newDegree);
-                    newGoods.find("div>p:eq(1)").text(goods.brand);
+                    newGoods.find("div>p:eq(1)").text(goods.brandName);
                     newGoods.find("div>p:eq(2)").text(goods.title);
                     newGoodsBox.append(newGoods);
                 });
@@ -177,7 +183,7 @@ $(function () {
                     initLikeBox();
                 });
             } else {
-                alert("请填写完整宝宝信息!");
+                showMsg("请填写完整宝宝信息!");
             }
         });
     }
@@ -191,7 +197,6 @@ $(function () {
             $("#likeForm").hide();
             var backGoods = $("#hideGoods").find("li");
             likeGoodsBox.show();                           //显示猜你喜欢列表页
-
             var params = {
                 name: babyIF.name,                        //宝宝姓名
                 birthday: babyIF.birthday,                //宝宝生日
@@ -203,8 +208,6 @@ $(function () {
             //控制猜你喜欢的加载
             if (currentPageLike <= totalPageLike) {       //判断当前页面是否小于等于总页数
                 MB.sendAjax("get", "home/goodsGuess", params, function (data) {
-                    console.log("猜你喜欢的加载！");
-                    console.log(data);
                     var goodsList = data.items;
                     totalPageLike = data.totalPage;       //获取猜你喜欢总页数
                     $(goodsList).each(function (index, goods) {
@@ -285,7 +288,6 @@ $(function () {
                 mouseWheel: true,                                              //允许滑轮滚动
                 fadeScrollbars: true                                           //滚动时显示滚动条，默认影藏，并且是淡出淡入效果
             });
-            //myScroll = new IScroll('div.iscroll-wrapper');
             myScroll.on("scrollEnd", function () {
                 var wrapperHeight = $('div.iscroll-wrapper').height();
                 if (myScroll.y - wrapperHeight < myScroll.maxScrollY) {
@@ -308,8 +310,7 @@ $(function () {
     //10,首页信息初始化
     function initIndexPage() {
         MB.sendAjax("get", "home", {}, function (data) {
-            console.log("首页信息初始化");
-            console.log(data);
+            $("#textShow1").hide();                                      //提示框的隐藏
             //侧边栏的初始化
             initGoodsType(data.goodsTypeList);
             //轮播的初始化
@@ -324,6 +325,7 @@ $(function () {
             initLikeBox();
             //表单信息初始化
             initFormAction();
+
         });
     }
 

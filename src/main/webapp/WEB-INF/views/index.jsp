@@ -172,6 +172,7 @@
             </div>
         </div>
     </div>
+    <div class="tip" id="textShow1"></div>
 </div>
 
 
