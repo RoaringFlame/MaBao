@@ -51,16 +51,16 @@
         首页
         <!--操作按钮-->
         <div class="header-box">
-            <a href="login">
+            <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">
                 <p class="header-left" style="font-size: 1.1rem;">
-                    <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">
                         ${sessionScope["SPRING_SECURITY_CONTEXT"].authentication.principal.username}
-                    </c:if>
-                    <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId eq null}">
-                        请登录
-                    </c:if>
                 </p>
-            </a>
+            </c:if>
+            <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId eq null}">
+                <a href="login">
+                    <p class="header-left">请登录</p>
+                </a>
+            </c:if>
         </div>
         <!--操作按钮 END-->
     </header>
@@ -154,7 +154,7 @@
                             </div>
                             <div id="demo_default" class="demos">
                                 <label for="test_default">宝宝生日：
-                                    <input type="date" name="babyBirthday" id="test_default" />
+                                    <input type="date" name="babyBirthday" id="test_default"/>
                                 </label>
                             </div>
 

@@ -84,7 +84,7 @@
 	</div>
 	<!--个人中心信息END-->
 	<!--注销按钮-->
-	<a class="button-bottom" href="login">
+	<a class="button-bottom" href="logout">
 		<button class="submit" type="reset">注销</button>
 	</a>
 	<div class="blank"></div>
