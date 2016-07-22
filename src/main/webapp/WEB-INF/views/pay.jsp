@@ -45,53 +45,54 @@
     <!--标题 END-->
     <!-- 收货地址 -->
 
+        <form id="pay" action="order/payConfirm">
+            <div class="box">
+                <div class="box-left">
+                    <img src="img/pay-1.png" alt="">
+                </div>
+                <div class="box-right">
+                    <input name="addressId" style="display: none" value="${defaultAddress.id}">
+                    <div class="box-right-top">
+                        <dl>
+                            <dd>${defaultAddress.recipients}</dd>
+                            <dt>${defaultAddress.tel}</dt>
+                        </dl>
+                    </div>
+                    <div class="box-right-bottom">
+                        <p>${defaultAddress.mergerName}</p>
+                        <p>${defaultAddress.location}</p>
+                    </div>
+                    <p class="add-jump-arrow-pay "></p>
+                </div>
 
-    <button class="add-jump-arrow"></button>
-    <form id="pay" action="order/payConfirm">
-        <div class="box">
-            <div class="box-left">
-                <img src="img/pay-1.png" alt="">
             </div>
-            <div class="box-right">
-                <input name="addressId" style="display: none" value="${defaultAddress.id}">
-                <div class="box-right-top">
-                    <dl>
-                        <dd>${defaultAddress.recipients}</dd>
-                        <dt>${defaultAddress.tel}</dt>
-                    </dl>
+            <!-- 收货地址 END-->
+            <!-- 购买订单 -->
+            <input name="cartIds" type="hidden" value="${cartIds}">
+            <c:forEach var="goods" items="${checkedGoodsList}">
+                <div class="order-box">
+                    <div class="goodsId" style="display: none">${goods.goodsId}</div>
+                    <img src="upload/${goods.picture}" alt="宝物">
+                    <div class="order-box-right">
+                        <p>${goods.brandName}</p>
+                        <p>尺寸：${goods.size}</p>
+                        <p class="order-box-left"><span>×${goods.quantity}</span>￥${goods.price}</p>
+                    </div>
                 </div>
-                <div class="box-right-bottom">
-                    <p>${defaultAddress.mergerName}</p>
-                    <p>${defaultAddress.location}</p>
-                </div>
-            </div>
-        </div>
-        <!-- 收货地址 END-->
-        <!-- 购买订单 -->
-        <input name="cartIds" type="hidden" value="${cartIds}">
-        <c:forEach var="goods" items="${checkedGoodsList}">
-            <div class="order-box">
-                <div class="goodsId" style="display: none">${goods.goodsId}</div>
-                <img src="upload/${goods.picture}" alt="宝物">
-                <div class="order-box-right">
-                    <p>${goods.brandName}</p>
-                    <p>尺寸：${goods.size}</p>
-                    <p class="order-box-left"><span>×${goods.quantity}</span>￥${goods.price}</p>
-                </div>
-            </div>
-            <!-- 购买订单END -->
+                <!-- 购买订单END -->
 
+                <ul class="lists">
+                    <li>共计${goods.quantity}件商品&nbsp;小计：<b>￥${goods.getSubtotal()}</b></li>
+                </ul>
+            </c:forEach>
             <ul class="lists">
-                <li>共计${goods.quantity}件商品&nbsp;小计：<b>￥${goods.getSubtotal()}</b></li>
+                <li><span>快递费</span> <span><b>￥${freight}</b></span></li>
             </ul>
-        </c:forEach>
-        <ul class="lists">
-            <li><span>快递费</span> <span><b>￥${freight}</b></span></li>
-        </ul>
-        <label class="notes">备注
-            <textarea name="message" cols="30" rows="10"></textarea>
-        </label>
-    </form>
+            <label class="notes">备注
+                <textarea name="message" cols="30" rows="10"></textarea>
+            </label>
+        </form>
+
     <!--付款按钮-->
     <div class="up-to-pay pay-fixed">
         <ul>
