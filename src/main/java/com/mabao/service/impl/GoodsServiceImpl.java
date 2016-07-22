@@ -12,7 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -180,5 +186,54 @@ public class GoodsServiceImpl implements GoodsService {
         }catch (Exception e){
             return null;
         }
+    }
+
+    /*@Override
+    public void uploads(MultipartFile[] files, String destDir,
+                        HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        String path = request.getContextPath();
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" +
+                request.getServerPort() + path;
+        // 获取文件上传的真实路径
+        String uploadPath = request.getSession().getServletContext().getRealPath("/");
+        List<String> picPaths = new ArrayList<String>();
+        try {
+            String[] fileNames = new String[files.length];
+            int index = 0;
+            //上传文件过程
+            for (MultipartFile file : files) {
+                String suffix=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+                int length = getAllowSuffix().indexOf(suffix);
+                if (length == -1) {
+                    throw new Exception("请上传允许格式的文件");
+                }
+                destDir = "webapp/upload/" + user.getId();
+                File destFile = new File(uploadPath + destDir);
+                if (!destFile.exists()) {
+                    destFile.mkdirs();
+                }
+                String fileNameNew = getFileNameNew() + "." + suffix;//
+                File f = new File(destFile.getAbsoluteFile() + File.separator + fileNameNew);
+                //如果当前文件已经存在了，就跳过。
+                if(f.exists()){
+                    continue;
+                }
+                file.transferTo(f);
+                f.createNewFile();
+                fileNames[index++] = basePath + destDir + fileNameNew;
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }*/
+
+    /**
+     * 为文件重新命名，命名规则为当前系统时间毫秒数
+     * @return string
+     */
+    private String getFileNameNew() {
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        return fmt.format(new Date());
     }
 }

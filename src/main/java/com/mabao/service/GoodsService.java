@@ -4,7 +4,10 @@ import com.mabao.controller.vo.GoodsDetailVO;
 import com.mabao.pojo.Baby;
 import com.mabao.pojo.Goods;
 import org.springframework.data.domain.Page;
+import org.springframework.web.multipart.MultipartFile;
 ;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**

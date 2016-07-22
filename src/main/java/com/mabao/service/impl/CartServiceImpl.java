@@ -137,4 +137,15 @@ public class CartServiceImpl implements CartService {
             return new JsonResultVO(JsonResultVO.FAILURE,"参数错误");
         }
     }
+
+    /**
+     * 生成订单后，购物车商品删除
+     * @param cartIds       购物车ids
+     */
+    @Override
+    public void deleteCartGoodsList(String cartIds) {
+        for (String cartId : cartIds.split(",")){
+            this.cartRepository.delete(Long.valueOf(cartId));
+        }
+    }
 }

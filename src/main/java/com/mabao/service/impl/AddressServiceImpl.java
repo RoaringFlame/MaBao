@@ -73,6 +73,15 @@ public class AddressServiceImpl implements AddressService {
      * @return                  修改的地址对象
      */
     public Address updateAddress(Address address){
+        User user = UserManager.getUser();
+        assert user != null;
+        if (address.isState()){     //修改默认地址
+            Address defaultAddress = this.getDefaultAddress(user.getId());
+            if (defaultAddress !=null){
+                defaultAddress.setState(false);
+                this.addressRepository.save(defaultAddress);
+            }
+        }
         return this.addressRepository.saveAndFlush(address);
     }
 
