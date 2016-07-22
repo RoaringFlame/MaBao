@@ -404,6 +404,7 @@
     margin: 1rem auto;
     height: auto;
     min-height: 6rem;
+    position: relative;
 }
 
 .home {
@@ -437,20 +438,34 @@
 }
 
 .box-right-top dd {
-    width: 5.5rem;
+    width: 6.5rem;
     float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .box-right-top dt {
-    width: 15rem;
+    width: 13rem;
     float: left;
 }
 
 .box-right-bottom p {
     height: 2rem;
     line-height: 2rem;
+    width: 22rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
-
+@media (max-width: 320px) {
+    .box-right-bottom p {
+        width: 17rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
 .jump-arrow {
     width: 3rem;
     height: 6rem;
