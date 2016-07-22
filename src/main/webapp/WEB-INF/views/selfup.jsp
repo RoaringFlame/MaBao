@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/"+"MaBao/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +104,7 @@
         </p>
         <!--提示信息END-->
         <!--转让宝物信息表单-->
-        <form class="transfer-form" action="sell/release" id="console-form" method="post" >
+        <form class="transfer-form" action="<%--sell/release--%>user/consignment_success" id="console-form" method="post" >
             <label class="title">
                 <input type="text" name="title" value="宝物标题">
             </label>
