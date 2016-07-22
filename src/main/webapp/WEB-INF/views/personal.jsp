@@ -40,7 +40,7 @@
 	<!--标题 END-->
 	<!--宝宝图片上传-->
 	<div class="baby-photo">
-		<figure><img src="upload/${userInfo.userPicture}" alt="头像"></figure>
+		<figure><img src="photo/${userInfo.userPicture}" alt="头像"></figure>
 		<figcaption>
 			<p>${userInfo.userName}</p>
 			<p class="line">宝宝：${userInfo.babyName}</p>
