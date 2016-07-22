@@ -25,6 +25,22 @@
     <script src="script/lib/iscroll/iscroll.js"></script>
     <script src="script/common.js"></script>
     <script src="script/index.js"></script>
+
+    <%--宝宝生日相关--%>
+    <link href="script/lib/date/dev/css/mobiscroll.core-2.6.2.css" rel="stylesheet"/>
+    <link href="script/lib/date/dev/css/mobiscroll.android-2.6.2.css" rel="stylesheet"/>
+    <link href="script/lib/date/dev/css/mobiscroll.android-ics-2.6.2.css" rel="stylesheet"/>
+    <link href="script/lib/date/dev/css/mobiscroll.ios-2.6.2.css" rel="stylesheet"/>
+
+    <script src="script/lib/date/dev/js/mobiscroll.core-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.datetime-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.list-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.select-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.android-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.android-ics-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.ios-2.6.2.js"></script>
+
+    <script src="script/index_babybirthday.js"></script>
 </head>
 
 <body>
@@ -128,8 +144,20 @@
                             <p>请填写以下信息</p>
                             <label>宝宝姓名：
                                 <input name="babyName" type="text"></label>
-                            <label>宝宝生日：
-                                <input name="babyBirthday" type="date"></label>
+                            <!--宝宝生日相关-->
+                            <div style="display: none">
+                                <label for="demo">Demo</label>
+                                <select name="demo" id="demo" class="changes">
+                                    <option value="date" selected>Date</option>
+                                    &lt;!&ndash;Demos&ndash;&gt;
+                                </select>
+                            </div>
+                            <div id="demo_default" class="demos">
+                                <label for="test_default">宝宝生日：
+                                    <input type="date" name="babyBirthday" id="test_default" />
+                                </label>
+                            </div>
+
                             <label>宝宝性别：
                                 <select name="sex" id="sex">
                                 </select>
@@ -144,6 +172,7 @@
             </div>
         </div>
     </div>
+    <div class="tip" id="textShow1"></div>
 </div>
 
 
@@ -152,7 +181,7 @@
     <a href="">
         <i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
     </a>
-    <a href="developing">
+    <a>
         <i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
     </a>
     <a href="consignment">
