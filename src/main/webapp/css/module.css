@@ -404,7 +404,7 @@
 
 /*付款页面*/
 /*.add {*/
-    /*border-bottom: 1rem solid #eee;*/
+/*border-bottom: 1rem solid #eee;*/
 /*}*/
 
 .box {
@@ -479,7 +479,7 @@
 .confirm-top-box {
     position: relative;
     width: 100%;
-    height:4rem;
+    height: 4rem;
 }
 
 .jump-arrow {
@@ -850,11 +850,17 @@
     z-index: 10;
 }
 
-.container {
+.container-cart{
     max-width: 32rem;
     margin: 0 auto;
 }
-
+.container-cart{
+    max-width: 32rem;
+    margin: 0 auto;
+    height:40rem ;
+    background: url("../img/cart.png") no-repeat center center;
+    background-size:16rem;
+}
 .main-item {
     position: relative;
     height: 10rem;
@@ -1181,6 +1187,7 @@
         padding: 4rem 0 1rem;
     }
 }
+
 .change-pwd input {
     height: 2.5rem;
     width: 75%;
