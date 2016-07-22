@@ -18,16 +18,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
+    <link rel="stylesheet" href="css/bootstrap-switch.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/module.css">
     <script src="script/lib/jquery.1.10.2.js"></script>
     <script src="script/lib/bootstrap/bootstrap.min.js"></script>
     <script src="script/lib/bootstrap/bootstrap-switch.js"></script>
-    <%--关于图片上传下载的插件--%>
-    <link rel="stylesheet" type="text/css" href="script/lib/imageupload/css/webuploader.css" />
-    <link rel="stylesheet" type="text/css" href="script/lib/imageupload/css/style.css" />
-    <script type="text/javascript" src="script/lib/imageupload/js/jquery.js"></script>
-    <script type="text/javascript" src="script/lib/imageupload/js/webuploader.js"></script>
-    <script type="text/javascript" src="script/lib/imageupload/js/upload.js"></script>
+
     <%--关于时间插件的js--%>
     <script src="script/lib/date/dev/js/mobiscroll.core-2.6.2.js" type="text/javascript"></script>
     <link href="script/lib/date/dev/css/mobiscroll.core-2.6.2.css" rel="stylesheet" type="text/css" />
@@ -69,9 +66,6 @@
             $('#demo').trigger('change');
         });
     </script>
-    <link rel="stylesheet" href="css/bootstrap-switch.css">
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/module.css">
 
 </head>
 
@@ -195,7 +189,7 @@
             <div class="transfer-form-bottom">
                 <label for="">卖家寄语：<br>宝物详情&nbsp;/<br>使用心得&nbsp;/<br>瑕疵情况等</label>
                 <textarea name="message" id="" cols="30" rows="10"></textarea>
-                <input name="state" style="display: none" value="1">
+                <input name="state" style="display: none" value="0">
                 <!--上传照片-->
                 <div>
                     <input name="goodsPic" type="file" accept="image/png,image/gif" style="display: none;" id="fileUpload">
