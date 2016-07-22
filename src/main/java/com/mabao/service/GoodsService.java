@@ -68,7 +68,8 @@ public interface GoodsService {
      * 自助发布宝物
      * 添加商品
      * @param goodsVO             商品对象
-     * @return                  寄售成功页
-     */
-    Goods releaseGoods(GoodsDetailVO goodsVO);
+     * @param goodsPic
+     * @param request
+     * */
+    Goods releaseGoods(GoodsDetailVO goodsVO, MultipartFile[] goodsPic, HttpServletRequest request) throws Exception;
 }

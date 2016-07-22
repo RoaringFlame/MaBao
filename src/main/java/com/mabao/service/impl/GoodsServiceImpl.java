@@ -7,6 +7,7 @@ import com.mabao.enums.Quality;
 import com.mabao.pojo.*;
 import com.mabao.repository.GoodsRepository;
 import com.mabao.service.*;
+import com.mabao.util.BaseAction;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,14 +17,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 @Service
-public class GoodsServiceImpl implements GoodsService {
+public class GoodsServiceImpl extends BaseAction implements GoodsService {
 
     @Autowired
     private GoodsRepository goodsRepository;
@@ -129,11 +130,13 @@ public class GoodsServiceImpl implements GoodsService {
      * 自助发布宝物
      * 添加商品
      * @param goodsVO             商品对象
+     * @param goodsPic
+     * @param request
      * @return                  寄售成功页
      */
     @Override
-    public Goods releaseGoods(GoodsDetailVO goodsVO) {
-        try {
+    public Goods releaseGoods(GoodsDetailVO goodsVO, MultipartFile[] goodsPic, HttpServletRequest request) throws Exception  {
+       try {
             User user = UserManager.getUser();
             assert user != null;
             //保存宝物
@@ -157,10 +160,26 @@ public class GoodsServiceImpl implements GoodsService {
             goods.setMessage(goodsVO.getMessage());
             goods.setState(false);
             goods.setStockNumber(1);
+           //保存文件
+           if (goodsPic !=null){
+               String picURL = "/upload/user/"+user.getId()+"/";
+               //上传文件过程
+               super.uploads(goodsPic, picURL, request);
+               String [] nameArray = super.getFileNames();
+               StringBuilder pictureList = new StringBuilder();
+               for (int i=0; i < nameArray.length;i++){
+                   String name = nameArray[i].substring(nameArray[i].indexOf(picURL)+picURL.length(),nameArray[i].length());
+                   pictureList.append(name);
+                   if (i < (nameArray.length-1)){
+                       pictureList.append(",");
+                   }
+               }
+               goods.setPictureList(pictureList.toString());
+           }
             Goods saveGoods = this.goodsRepository.save(goods);
             //生成订单
             Order order = new Order();
-            order.setBuyer(this.userService.get(0L));
+            order.setBuyer(this.userService.get(1L));
             order.setSellerId(user.getId());
             order.setQuantity(1);
             order.setAddress(this.addressService.getDefaultAddress(user.getId()));
@@ -188,45 +207,6 @@ public class GoodsServiceImpl implements GoodsService {
         }
     }
 
-    /*@Override
-    public void uploads(MultipartFile[] files, String destDir,
-                        HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-        String path = request.getContextPath();
-        String basePath = request.getScheme() + "://" + request.getServerName() + ":" +
-                request.getServerPort() + path;
-        // 获取文件上传的真实路径
-        String uploadPath = request.getSession().getServletContext().getRealPath("/");
-        List<String> picPaths = new ArrayList<String>();
-        try {
-            String[] fileNames = new String[files.length];
-            int index = 0;
-            //上传文件过程
-            for (MultipartFile file : files) {
-                String suffix=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
-                int length = getAllowSuffix().indexOf(suffix);
-                if (length == -1) {
-                    throw new Exception("请上传允许格式的文件");
-                }
-                destDir = "webapp/upload/" + user.getId();
-                File destFile = new File(uploadPath + destDir);
-                if (!destFile.exists()) {
-                    destFile.mkdirs();
-                }
-                String fileNameNew = getFileNameNew() + "." + suffix;//
-                File f = new File(destFile.getAbsoluteFile() + File.separator + fileNameNew);
-                //如果当前文件已经存在了，就跳过。
-                if(f.exists()){
-                    continue;
-                }
-                file.transferTo(f);
-                f.createNewFile();
-                fileNames[index++] = basePath + destDir + fileNameNew;
-            }
-        } catch (Exception e) {
-            throw e;
-        }
-    }*/
 
     /**
      * 为文件重新命名，命名规则为当前系统时间毫秒数

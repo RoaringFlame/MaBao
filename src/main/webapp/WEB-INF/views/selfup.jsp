@@ -102,9 +102,9 @@
         </p>
         <!--提示信息END-->
         <!--转让宝物信息表单-->
-        <form class="transfer-form" action="<%--sell/release--%>user/consignment_success" id="console-form" method="post" >
+        <form class="transfer-form" action="sell/release" enctype="multipart/form-data" id="console-form" method="post" >
             <label class="title">
-                <input type="text" name="title" value="宝物标题:">
+                <input type="text" name="title" value="宝物标题">
             </label>
             <!--宝物信息选框-->
             <ul class="transfer-info" id="transferInfo">
@@ -125,6 +125,8 @@
                     </select>
                 </li>
                 <li>
+                    <%--<label for="time">购物时间：</label>
+                    <input name="upTime" id="time" &lt;%&ndash;type="date"&ndash;%&gt;/>--%>
                     <div style="display: none">
                         <label for="demo">Demo</label>
                         <select name="demo" id="demo" class="changes">
@@ -193,33 +195,42 @@
             <div class="transfer-form-bottom">
                 <label for="">卖家寄语：<br>宝物详情&nbsp;/<br>使用心得&nbsp;/<br>瑕疵情况等</label>
                 <textarea name="message" id="" cols="30" rows="10"></textarea>
-            </div>
-            <div class="clear"></div>
-            <!--上传照片-->
-            <div id="uploader-demo">
-
-                <div id="uploader">
-                    <div class="queueList">
-                        <div id="dndArea" class="placeholder">
-                            <div id="filePicker"> </div>
-                            <p>或将照片拖到这里，单次最多可选2张</p>
-                        </div>
-                    </div>
-                    <div class="statusBar" style="display:none;">
-                        <div class="progress">
-                            <span class="text">0%</span>
-                            <span class="percentage"></span>
-                        </div><div class="info"></div>
-                        <div class="btns">
-                            <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
-                        </div>
-                    </div>
+                <input name="state" style="display: none" value="1">
+                <!--上传照片-->
+                <div>
+                    <input name="goodsPic" type="file" accept="image/png,image/gif" style="display: none;" id="fileUpload">
+                    <img id="imgUpload" src="img/1.png" alt="">
                 </div>
+                <script>
+                    //建立一個可存取到該file的url
+                    function getObjectURL(file) {
+                        var url = null ;
+                        if (window.createObjectURL!=undefined) { // basic
+                            url = window.createObjectURL(file) ;
+                        } else if (window.URL!=undefined) { // mozilla(firefox)
+                            url = window.URL.createObjectURL(file) ;
+                        } else if (window.webkitURL!=undefined) { // webkit or chrome
+                            url = window.webkitURL.createObjectURL(file) ;
+                        }
+                        return url ;
+                    }
+                    $(function(){
+                        $("#fileUpload").change(function(){
+                            var objUrl = getObjectURL(this.files[0]) ;
+                            console.log("objUrl = "+objUrl) ;
+                            if (objUrl) {
+                                $("#imgUpload").parent().append($("<img>").attr("src", objUrl));
+                            }
+                        }) ;
+                        $("#imgUpload").click(function(){
+                            $("#fileUpload").trigger("click");
+                        });
+                    });
+                </script>
+                <!--上传照片END-->
             </div>
-            <!--上传照片END-->
-
             <!--买家寄语END-->
-            <input name="state" style="display: none" value="1">
+
         </form>
         <!--转让宝物信息表单END-->
         <!--提交按钮-->

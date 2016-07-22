@@ -16,13 +16,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +35,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  */
 @Controller
 @RequestMapping("/sell")
-public class SellController extends BaseAction {
+public class SellController {
     @Autowired
     private GoodsService goodsService;
     @Autowired
@@ -96,31 +95,16 @@ public class SellController extends BaseAction {
      * @param newGoods          商品对象
      * @return                  寄售成功页
      */
-    @RequestMapping(value = "/release",method = POST)
-    public String releaseGoods(GoodsDetailVO newGoods){
-        Goods result= this.goodsService.releaseGoods(newGoods);
+    @RequestMapping(value = "/release",method = RequestMethod.POST)
+    public String releaseGoods(GoodsDetailVO newGoods,
+                               @RequestParam(required = false) MultipartFile[] goodsPic,
+                               HttpServletRequest request) throws Exception {
+        Goods result= this.goodsService.releaseGoods(newGoods,goodsPic,request);
         if (result != null){
             return "publish_success";
         }else {
             return "publish_failure";
         }
     }
-
-
-    @RequestMapping(value = "/uploadPic",method=POST)
-    public String uploadHeadPic(@RequestParam("file")MultipartFile[] files, HttpServletRequest request, HttpServletResponse response){
-        try {
-            //上传文件过程
-            super.uploads(files, "/upload/user/",request);
-            response.getWriter().print(super.getFileName());
-            System.out.println(super.getFileName());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-
 }
 

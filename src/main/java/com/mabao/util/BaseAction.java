@@ -98,12 +98,14 @@ public class BaseAction {
                 if(file.getSize() > getAllowSize()){
                     throw new Exception("您上传的文件大小已经超出范围");
                 }
-                String realPath = request.getSession().getServletContext().getRealPath("/");
+
+                String tempPath = request.getSession().getServletContext().getRealPath("/");
+                String realPath = tempPath.substring(0,tempPath.indexOf("out"))+"src\\main\\webapp\\";
                 File destFile = new File(realPath+destDir);
                 if(!destFile.exists()){
                     destFile.mkdirs();
                 }
-                String fileNameNew = getFileNameNew()+"."+suffix;//
+                String fileNameNew = getFileNameNew()+"."+suffix;
                 File f = new File(destFile.getAbsoluteFile()+"\\"+fileNameNew);
                 file.transferTo(f);
                 f.createNewFile();
