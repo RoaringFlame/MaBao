@@ -30,6 +30,10 @@ dependencies {
     compile "org.springframework.security:spring-security-config:$springSecurityVersion"
     compile "org.springframework.security:spring-security-web:$springSecurityVersion"
 
+    compile "org.springframework:spring-context-support:$springVersion"
+    compile "net.sf.ehcache:ehcache:$ehcacheVersion"
+    compile "net.sf.ehcache:ehcache-jcache:$ehcacheJCacheVersion"
+
     compile "javax.servlet:jstl:$jstlVersion"
     providedCompile "javax.servlet:javax.servlet-api:$servletApiVersion"
     providedCompile "javax.servlet.jsp:jsp-api:$jspApiVersion"

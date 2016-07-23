@@ -1,0 +1,6 @@
+<ehcache>
+  <cache name="MaBaoCache"
+          maxBytesLocalHeap="20m"
+          timeToLiveSeconds="1000">
+  </cache>
+</ehcache>
