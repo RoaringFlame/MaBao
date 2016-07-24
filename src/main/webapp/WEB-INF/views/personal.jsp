@@ -54,10 +54,10 @@
 		<div>
 			<p class="order-bottom">我是<span class="red">买家</span></p>
 			<ul>
-				<li><a class="link" href="order/loadUserOrder?userIdentity=1">全部</a></li>
-				<li><a href="order/loadUserOrder?userIdentity=1&orderStatus=ToBePaid">待付款</a></li>
-				<li><a href="order/loadUserOrder?userIdentity=1&orderStatus=ToBeSend">待发货</a></li>
-				<li><a href="order/loadUserOrder?userIdentity=1&orderStatus=ToBeReceipt">待确认</a></li>
+				<li><a class="link" href="developing">全部</a></li>
+				<li><a href="developing">待付款</a></li>
+				<li><a href="developing">待发货</a></li>
+				<li><a href="developing">待确认</a></li>
 			</ul>
 		</div>
 		<!--我是买家订单END-->
@@ -65,10 +65,10 @@
 		<div>
 			<p class="order-bottom">我是<span class="blue">卖家</span></p>
 			<ul>
-				<li><a class="link" href="order/loadUserOrder?userIdentity=2">全部</a></li>
-				<li><a href="order/loadUserOrder?userIdentity=2&orderStatus=Sold">已出售</a></li>
-				<li><a href="order/loadUserOrder?userIdentity=2&orderStatus=Released">已发布</a></li>
-				<li><a href="order/loadUserOrder?userIdentity=2&orderStatus=ToBeRelease">待发布</a></li>
+				<li><a class="link" href="developing">全部</a></li>
+				<li><a href="developing">已出售</a></li>
+				<li><a href="developing">已发布</a></li>
+				<li><a href="developing">待发布</a></li>
 			</ul>
 		</div>
 		<!--我是买家订单END-->
