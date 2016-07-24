@@ -1,9 +1,8 @@
 package com.mabao.pojo;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.mabao.enums.BabyType;
 import com.mabao.enums.Quality;
-import com.mabao.util.CustomDateSerializer;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,6 +22,7 @@ public class Goods {
     private GoodsType type;                         //一级类型编号
     private String brandName;                       //商品品牌名称
     private GoodsBrand brand;                       //商品品牌ID
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")//存日期时使用
     private Date upTime;                            //上架时间
     private Quality newDegree;                      //新旧程度，0表示全新，95，80分别表示95成8成新
     private GoodsSize size;                         //尺寸
@@ -43,7 +43,7 @@ public class Goods {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     public User getUser() {
         return user;
@@ -54,7 +54,7 @@ public class Goods {
     }
 
     @Basic
-    @javax.persistence.Column(name = "article_number")
+    @Column(name = "article_number")
     public String getArticleNumber() {
         return articleNumber;
     }
@@ -64,7 +64,7 @@ public class Goods {
     }
 
     @Basic
-    @javax.persistence.Column(name = "picture")
+    @Column(name = "picture")
     public String getPicture() {
         return picture;
     }
@@ -74,7 +74,7 @@ public class Goods {
     }
 
     @Basic
-    @javax.persistence.Column(name = "title")
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -101,7 +101,7 @@ public class Goods {
     }
 
     @Basic
-    @javax.persistence.Column(name = "type_name")
+    @Column(name = "type_name")
     public String getTypeName() {
         return typeName;
     }
@@ -109,7 +109,7 @@ public class Goods {
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "type_id")
     public GoodsType getType() {
         return type;
@@ -130,8 +130,7 @@ public class Goods {
     }
 
     @Basic
-    @javax.persistence.Column(name = "up_time")
-    @JsonSerialize(using = CustomDateSerializer.class)
+    @Column(name = "up_time")
     public Date getUpTime() {
         return upTime;
     }
@@ -161,7 +160,7 @@ public class Goods {
 
 
     @Basic
-    @javax.persistence.Column(name = "pack")
+    @Column(name = "pack")
     public Boolean getPack() {
         return pack;
     }
@@ -171,7 +170,7 @@ public class Goods {
     }
 
     @Basic
-    @javax.persistence.Column(name = "receipt")
+    @Column(name = "receipt")
     public Boolean getReceipt() {
         return receipt;
     }
@@ -181,7 +180,7 @@ public class Goods {
     }
 
     @Basic
-    @javax.persistence.Column(name = "message")
+    @Column(name = "message")
     public String getMessage() {
         return message;
     }
@@ -192,7 +191,7 @@ public class Goods {
 
 
     @Basic
-    @javax.persistence.Column(name = "picture_list")
+    @Column(name = "picture_list")
     public String getPictureList() {
         return pictureList;
     }
@@ -203,7 +202,7 @@ public class Goods {
 
 
     @Basic
-    @javax.persistence.Column(name = "stock_number")
+    @Column(name = "stock_number")
     public Integer getStockNumber() {
         return stockNumber;
     }
@@ -214,7 +213,7 @@ public class Goods {
 
 
     @Basic
-    @javax.persistence.Column(name = "state")
+    @Column(name = "state")
     public Boolean getState() {
         return state;
     }
@@ -223,7 +222,7 @@ public class Goods {
         this.state = state;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "brand_id")
     public GoodsBrand getBrand() {
         return brand;
@@ -232,6 +231,7 @@ public class Goods {
     public void setBrand(GoodsBrand brand) {
         this.brand = brand;
     }
+
     @Column(name = "baby_type")
     public BabyType getBabyType() {
         return babyType;

@@ -1,8 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>自助发布：转让宝物</title>
     <meta name="viewport"
@@ -16,6 +21,52 @@
     <link rel="stylesheet" href="css/bootstrap-switch.css">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
+    <script src="script/lib/jquery.1.10.2.js"></script>
+    <script src="script/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="script/lib/bootstrap/bootstrap-switch.js"></script>
+
+    <%--关于时间插件的js--%>
+    <script src="script/lib/date/dev/js/mobiscroll.core-2.6.2.js" type="text/javascript"></script>
+    <link href="script/lib/date/dev/css/mobiscroll.core-2.6.2.css" rel="stylesheet" type="text/css" />
+    <script src="script/lib/date/dev/js/mobiscroll.datetime-2.6.2.js" type="text/javascript"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.list-2.6.2.js" type="text/javascript"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.select-2.6.2.js" type="text/javascript"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.android-2.6.2.js" type="text/javascript"></script>
+    <link href="script/lib/date/dev/css/mobiscroll.android-2.6.2.css" rel="stylesheet" type="text/css" />
+    <script src="script/lib/date/dev/js/mobiscroll.android-ics-2.6.2.js" type="text/javascript"></script>
+    <link href="script/lib/date/dev/css/mobiscroll.android-ics-2.6.2.css" rel="stylesheet" type="text/css" />
+    <script src="script/lib/date/dev/js/mobiscroll.ios-2.6.2.js" type="text/javascript"></script>
+    <link href="script/lib/date/dev/css/mobiscroll.ios-2.6.2.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        $(function () {
+            var curr = new Date().getFullYear();
+            var opt = {
+
+            }
+
+            opt.date = {preset : 'date'};
+            opt.datetime = { preset : 'datetime', minDate: new Date(2012,3,10,9,22), maxDate: new Date(2014,7,30,15,44), stepMinute: 5  };
+            opt.time = {preset : 'time'};
+            opt.tree_list = {preset : 'list', labels: ['Region', 'Country', 'City']};
+            opt.image_text = {preset : 'list', labels: ['Cars']};
+            opt.select = {preset : 'select'};
+            <!--Script-->
+
+            $('select.changes').bind('change', function() {
+                var demo = $('#demo').val();
+                $(".demos").hide();
+                if (!($("#demo_"+demo).length))
+                    demo = 'default';
+
+                $("#demo_" + demo).show();
+                $('#test_'+demo).val('').scroller('destroy').scroller($.extend(opt[$('#demo').val()], { theme: $('#theme').val(), mode: $('#mode').val(), display: $('#display').val(), lang: $('#language').val() }));
+            });
+
+            $('#demo').trigger('change');
+        });
+    </script>
+
 </head>
 
 <body>
@@ -26,10 +77,10 @@
         <!--操作按钮-->
         <div class="header-box">
             <a href="consignment">
-                <button class="header-left">
+                <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </button>
+                </p>
             </a>
         </div>
         <!--操作按钮 END-->
@@ -41,11 +92,11 @@
         <!--提示信息-->
         <p>
             <span>请如实填写您的转让信息</span>
-            <a href="#">卖家须知</a>
+            <a >卖家须知</a>
         </p>
         <!--提示信息END-->
         <!--转让宝物信息表单-->
-        <form class="transfer-form" action="/sell/release" id="console-form">
+        <form class="transfer-form" action="sell/release" enctype="multipart/form-data" id="console-form" method="post" >
             <label class="title">
                 <input type="text" name="title" value="宝物标题">
             </label>
@@ -53,58 +104,69 @@
             <ul class="transfer-info" id="transferInfo">
                 <li>
                     <label for="kind">宝物类型：</label>
-                    <select name="kind" id="kind">
+                    <select name="typeId" id="kind">
                         <c:forEach items="${goodsType}" var="Type">
-                            <option value="${Type.value}" >${Type.value}</option>
+                            <option value="${Type.key}" >${Type.value}</option>
                         </c:forEach>
                     </select>
                 </li>
                 <li>
                     <label for="brand">宝物品牌：</label>
-                    <select name="brand" id="brand">
+                    <select name="brandId" id="brand">
                         <c:forEach items="${brand}" var="one_brand">
-                            <option value="${one_brand.value}" >${one_brand.value}</option>
+                            <option value="${one_brand.key}" >${one_brand.value}</option>
                         </c:forEach>
                     </select>
                 </li>
                 <li>
-                    <label for="time">购物时间：</label>
-                    <input name="time" id="time" type="date"/>
+                    <%--<label for="time">购物时间：</label>
+                    <input name="upTime" id="time" &lt;%&ndash;type="date"&ndash;%&gt;/>--%>
+                    <div style="display: none">
+                        <label for="demo">Demo</label>
+                        <select name="demo" id="demo" class="changes">
+                            <option value="date" selected>Date</option>
+                            &lt;!&ndash;Demos&ndash;&gt;
+                        </select>
+                    </div>
+                    <div id="demo_default" class="demos">
+                        <label for="test_default">购物时间：</label>
+                        <input type="text" name="upTime" id="test_default" />
+                    </div>
                 </li>
                 <li>
                     <label for="level">新旧程度：</label>
-                    <select name="level" id="level">
-                        <option value="全新">全新</option>
-                        <option value="9成新">9成新</option>
-                        <option value="8成新">8成新</option>
-                        <option value="6-7成新">6-7成新</option>
-                        <option value="5成新以下">5成新以下</option>
+                    <select name="newDegree" id="level">
+                        <c:forEach items="${newDegree}" var="degree">
+                            <option value="${degree.key}" >${degree.value}</option>
+                        </c:forEach>
                     </select>
+
                 </li>
                 <li>
                     <label for="size">宝物尺码：</label>
                     <select name="size" id="size">goodsSize
                         <c:forEach items="${goodsSize}" var="size">
-                            <option value="${size.value}" >${size.value}</option>
+                            <option value="${size.key}" >${size.value}</option>
                         </c:forEach>
                     </select>
                 </li>
+
                 <li>
                     <label for="sex">适合宝宝：</label>
-                    <select name="sex" id="sex">
+                    <select name="babyType" id="sex">
                         <c:forEach items="${gender}" var="babygender">
-                            <option value="${babygender.value}" >${babygender.value}</option>
+                            <option value="${babygender.key}" >${babygender.value}</option>
                         </c:forEach>
                     </select>
                 </li>
                 <li>
                     <label for="packet">原装包装：
-                        <input id="packet" type="checkbox" checked="" data-size="mini">
+                        <input name="pack" id="packet" type="checkbox" checked="" data-size="mini">
                     </label>
                 </li>
                 <li>
                     <label for="invoice">发票小票：
-                        <input id="invoice" type="checkbox" checked="" data-size="mini">
+                        <input name="receipt" id="invoice" type="checkbox" checked="" data-size="mini">
                     </label>
                 </li>
                 <li>
@@ -115,7 +177,7 @@
                 </li>
                 <li>
                     <label for="newPrice">转让现价：
-                        <input type="text" name="newPrice" id="newPrice">
+                        <input type="text" name="price" id="newPrice">
                     </label>
 
                 </li>
@@ -126,14 +188,39 @@
             <!--买家寄语-->
             <div class="transfer-form-bottom">
                 <label for="">卖家寄语：<br>宝物详情&nbsp;/<br>使用心得&nbsp;/<br>瑕疵情况等</label>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea name="message" id="" cols="30" rows="10"></textarea>
+                <input name="state" style="display: none" value="0">
                 <!--上传照片-->
                 <div>
-                    <input type="file" accept="image/png,image/gif" style="display: none;" id="uploadPhoto">
-                    <img src="img/1.png" alt="">
-                    <img src="img/2.png" alt="">
-                    <img src="img/3.png" alt="">
+                    <input name="goodsPic" type="file" accept="image/png,image/gif" style="display: none;" id="fileUpload">
+                    <img id="imgUpload" src="img/1.png" alt="">
                 </div>
+                <script>
+                    //建立一個可存取到該file的url
+                    function getObjectURL(file) {
+                        var url = null ;
+                        if (window.createObjectURL!=undefined) { // basic
+                            url = window.createObjectURL(file) ;
+                        } else if (window.URL!=undefined) { // mozilla(firefox)
+                            url = window.URL.createObjectURL(file) ;
+                        } else if (window.webkitURL!=undefined) { // webkit or chrome
+                            url = window.webkitURL.createObjectURL(file) ;
+                        }
+                        return url ;
+                    }
+                    $(function(){
+                        $("#fileUpload").change(function(){
+                            var objUrl = getObjectURL(this.files[0]) ;
+                            console.log("objUrl = "+objUrl) ;
+                            if (objUrl) {
+                                $("#imgUpload").parent().append($("<img>").attr("src", objUrl));
+                            }
+                        }) ;
+                        $("#imgUpload").click(function(){
+                            $("#fileUpload").trigger("click");
+                        });
+                    });
+                </script>
                 <!--上传照片END-->
             </div>
             <!--买家寄语END-->
@@ -141,7 +228,6 @@
         </form>
         <!--转让宝物信息表单END-->
         <!--提交按钮-->
-        <!--提交后跳转到朋友圈分享页面-->
         <a href="#" class="transfer-form-button">
             <button type="submit" form="console-form">一键卖出</button>
         </a>
@@ -154,6 +240,3 @@
 </html>
 
 <!-- //按钮 -->
-<script src="script/lib/jquery.1.10.2.js"></script>
-<script src="script/lib/bootstrap/bootstrap.min.js"></script>
-<script src="script/lib/bootstrap/bootstrap-switch.js"></script>

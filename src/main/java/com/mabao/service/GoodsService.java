@@ -1,10 +1,13 @@
 package com.mabao.service;
 
-import com.mabao.enums.Gender;
+import com.mabao.controller.vo.GoodsDetailVO;
 import com.mabao.pojo.Baby;
 import com.mabao.pojo.Goods;
 import org.springframework.data.domain.Page;
+import org.springframework.web.multipart.MultipartFile;
 ;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -60,4 +63,13 @@ public interface GoodsService {
      * @return                      商品集合，分页
      */
     Page<Goods> goodsPageByBabyId(Long babyId, int page, int pageSize);
+
+    /**
+     * 自助发布宝物
+     * 添加商品
+     * @param goodsVO             商品对象
+     * @param goodsPic
+     * @param request
+     * */
+    Goods releaseGoods(GoodsDetailVO goodsVO, MultipartFile[] goodsPic, HttpServletRequest request) throws Exception;
 }

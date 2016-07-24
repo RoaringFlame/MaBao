@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <%
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/" + "MaBao/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <html lang="en">
 <head>
@@ -19,6 +20,11 @@
 
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
+
+    <script src="script/lib/jquery.1.10.2.js" type="text/javascript"></script>
+    <script src="script/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="script/consale.js"></script>
+    <script src="script/common.js"></script>
 </head>
 
 <body>
@@ -28,7 +34,7 @@
         增加售货地址
         <!--操作按钮-->
         <div class="header-box">
-            <a href="pay">
+            <a href="consignment">
                 <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
@@ -39,7 +45,7 @@
     </header>
     <!--标题 END-->
     <!-- 编辑收货地址 -->
-    <form id="edit-add" action="sell/receiptPlaceAdd" METHOD="post">
+    <form id="edit-add" action="sell/receiptPlaceAdd" method="post">
         <div class="edit-add-box">
             <p class="p-tit">请填写您的地址及电话，我们会安排上门收货</p>
             <label>
@@ -72,7 +78,7 @@
     </form>
     <!--服务条款-->
     <label class="terms">
-            <textarea name="terms" cols="30" rows="10">服务条款
+            <textarea name="terms" cols="30" rows="10" disabled>服务条款
 
             </textarea>
     </label>
@@ -86,18 +92,13 @@
     <div class="edit-add-input ">
         <!-- 保存按钮 -->
         <label>
-            <input class="disabled" type="submit" value="提交" form="edit-add">
+            <input type="button" value="提交" form="edit-add">
         </label>
         <!-- 保存按钮END -->
     </div>
     <!-- 编辑收货地址END -->
+    <div class="tip" id="textShow" style="display: none" ></div>
 </div>
 </body>
 </html>
 
-<script src="script/lib/jquery.1.10.2.js" type="text/javascript"></script>
-<script src="script/lib/jquery.provincesCity.js" type="text/javascript"></script>
-<script src="script/lib/provinces-data.js" type="text/javascript"></script>
-<script src="script/lib/bootstrap/bootstrap.min.js"></script>
-<script src="script/consale.js"></script>
-<script src="script/common.js"></script>

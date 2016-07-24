@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -34,6 +33,8 @@ public class UserCenterController {
     private BabyService babyService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private AreaService areaService;
 
     /**
      * 个人中心，获取登录用户的基本信息
@@ -45,12 +46,16 @@ public class UserCenterController {
         User user = UserManager.getUser();
         if (user != null) {
             UserInfoVO vo = new UserInfoVO();
-            Baby baby = this.babyService.findBabyByUserId(user.getId()).get(0);
+            vo.setBabyId(null);
+            vo.setBabyName("未添加宝宝");
+            Baby baby = this.babyService.findBabyByUserId(user.getId());
+            if (baby !=null){
+                vo.setBabyId(baby.getId());
+                vo.setBabyName(baby.getName());
+            }
             vo.setUserId(user.getId());
             vo.setUserName(user.getName());
             vo.setUserPicture(user.getPicture());
-            vo.setBabyId(baby.getId());
-            vo.setBabyName(baby.getName());
             model.addAttribute("userInfo", vo);
             return "personal";
         }else {
@@ -85,7 +90,7 @@ public class UserCenterController {
     public String getAddress(Long addressId,Model model){
         Address address=this.addressService.get(addressId);
         model.addAttribute("addressList",address);
-        return "address";
+        return "chadd";
     }
 
     /**
@@ -110,9 +115,10 @@ public class UserCenterController {
      */
     @RequestMapping(value = "/address/updateAddress",method = POST)
     public String updateAddress(Address address, Model model){
+        address.setArea(this.areaService.get(address.getArea().getId()));
         Address result=this.addressService.updateAddress(address);
         if (result != null){
-            return "redirect:address/allAddress";
+            return "redirect:userAllAddress";
         }else {
             return "address-failure";
         }
@@ -125,7 +131,7 @@ public class UserCenterController {
     @RequestMapping(value = "/address/deleteAddress",method = GET)
     public String removeAddress(Long addressId){
         this.addressService.deleteAddress(addressId);
-        return "redirect:address/allAddress";
+        return "redirect:userAllAddress";
 
     }
 
@@ -155,9 +161,8 @@ public class UserCenterController {
     public String findAllBabyInfo(Model model){
         User user = UserManager.getUser();
         if (user != null) {
-            List<Baby> babyList = this.babyService.findBabyByUserId(user.getId());
-            if (babyList.size()>0){
-                Baby baby = babyList.get(0);
+            Baby baby = this.babyService.findBabyByUserId(user.getId());
+            if (baby !=null){
                 model.addAttribute("baby", baby);
                 return "changemsg";
             }else {
@@ -178,7 +183,7 @@ public class UserCenterController {
     public String addBabyInfo(BabyVO babyInfo, Model model){
         Baby baby =  this.babyService.addBaby(babyInfo);
         if (baby != null){
-            return "redirect:user";     //转向个人中心
+            return "redirect:/user";     //转向个人中心
         }else {
             return "baby_add_failure";
         }
@@ -191,9 +196,11 @@ public class UserCenterController {
      */
     @RequestMapping(value = "baby/updateBabyInfo",method = POST)
     public String updateBabyInfo(Baby babyInfo){
+        User user = UserManager.getUser();
+        babyInfo.setUser(user);
         Baby baby =  this.babyService.updateBabyInfo(babyInfo);
         if (baby != null){
-            return "redirect:user";     //转向个人中心
+            return "redirect:/user";     //转向个人中心
         }else {
             return "baby_update_failure";
         }

@@ -1,8 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/"+"MaBao/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>寄售订单</title>
     <meta name="viewport"
@@ -16,51 +20,55 @@
     <!--     <script type="text/javascript" src="js/jquery.1.10.2.js"></script> -->
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
+    <script src="script/lib/jquery.1.10.2.js"></script>
+    <script src="script/order.js"></script>
+    <script src="script/common.js"></script>
 </head>
 
 <body>
-    <div class="content-index">
-        <!--标题-->
-        <header>
-           寄售订单
-            <!--操作按钮-->
-           <div class="header-box">
-                <a href="personal">
-                  <p class="header-left">
-                  <i class="icon icon-return"></i>
-                   返回
+<div class="content-index">
+    <!--标题-->
+    <header>
+        寄售订单
+        <!--操作按钮-->
+        <div class="header-box">
+            <a href="user">
+                <p class="header-left">
+                    <i class="icon icon-return"></i>
+                    返回
                 </p>
-                </a>
-           </div>
-            <!--操作按钮 END-->
-        </header>
-         <!--标题 END-->
-        <!-- 我是卖家——寄售订单 -->
-        <div class="order"> 
-
-          <!-- 寄售订单 -->
-            <c:forEach var="goods" items="${}">
-                <div class="order-box" onclick=window.location.href="/goods/goodsDetail？goodsId=${}">
-                    <p class="unpaid-txt">交易完成</p>
-                    <img src="${goods.picture}" alt="宝物">
-                    <div class="order-box-right">
-                        <p>${goods.brand}</p>
-                        <p>尺寸：${goods.size}</p>
-                        <p class="order-box-left">出售价格：${goods.price}</p>
-                        <p class="order-box-left">扣除佣金可得：￥${goods.realprice}</p>
-                    </div>
-                </div>
-            </c:forEach>
-          <!-- 寄售订单END -->
-
-          <!-- 共计 -->
-            <div class="order-bottom">
-                <p>共计${}件商品 小计：<span>￥${}</span> (含运费￥${})</p>
-            </div>
-           <!-- 共计END -->
+            </a>
         </div>
-         <!-- 我是买家-寄售订单END -->
+        <!--操作按钮 END-->
+    </header>
+    <!--标题 END-->
+    <!-- 我是卖家——寄售订单 -->
+    <div class="order">
+
+        <!-- 寄售订单 -->
+        <c:forEach var="goods" items="${allOrder}">
+            <div class="order-box">
+                <div class="goodsId" style="display: none;">${goods.goodsId}</div>
+                <p class="unpaid-txt">${goods.state.getText()}</p>
+                <img src="upload/${goods.picture}" alt="宝物">
+                <div class="order-box-right">
+                    <p>${goods.brand}</p>
+                    <p>尺寸：${goods.size}</p>
+                    <p class="order-box-left">出售价格：${goods.unitCost}</p>
+                    <p class="order-box-left">扣除佣金可得：￥${goods.realprice}</p>
+                </div>
+            </div>
+        </c:forEach>
+        <!-- 寄售订单END -->
+
+        <!-- 共计 -->
+        <div class="order-bottom">
+            <p>共计${goodsNum}件商品 小计：<span>${totalSum}</span> (含运费￥${totalFreight})</p>
+        </div>
+        <!-- 共计END -->
     </div>
+    <!-- 我是买家-寄售订单END -->
+</div>
 
 </body>
 </html>

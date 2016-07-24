@@ -1,8 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <base href="<%=basePath%>">
+
     <title>修改密码</title>
     <meta name="viewport"
           content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
@@ -26,18 +32,18 @@
         修改密码
         <!--操作按钮-->
         <div class="header-box">
-            <a href="/jsp/personal">
-                <button class="header-left">
+            <a href="user">
+                <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </button>
+                </p>
             </a>
         </div>
         <!--操作按钮 END-->
     </header>
     <!--标题 END-->
     <!--修改密码表单-->
-    <div class="change-pwd" action="">
+    <div class="change-pwd">
 
         <!-- 修改密码成功跳转到个人中心页面 -->
         <label for="newPwd">新密码:
@@ -50,7 +56,9 @@
         <p class="warning"></p>
         <!-- 提交按钮 -->
         <!--提交后跳转到登陆页面-->
+        <div class="button-bottom">
         <button class="submit" type="button" value="提交" id="up-pwd">提交</button>
+        </div>
         <!--提交按钮END-->
     </div>
     <!--修改密码表单END-->

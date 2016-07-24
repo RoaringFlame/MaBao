@@ -1,12 +1,17 @@
 package com.mabao.controller.rest;
 
 import com.mabao.controller.vo.JsonResultVO;
+import com.mabao.pojo.Address;
+import com.mabao.service.AddressService;
 import com.mabao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * 用户模块
@@ -16,7 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserCenterRESTController {
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private AddressService addressService;
     /**
      * 用户注册
      * @param userName              用户名
@@ -38,5 +44,16 @@ public class UserCenterRESTController {
     @RequestMapping(value ="/passwordChange",method = RequestMethod.POST)
     public JsonResultVO passwordChange(@RequestParam String password){
         return this.userService.changePassword(password);
+    }
+
+    /**
+     * 修改收货地址默认状态
+     * @param addressId           地址对象
+     * @return                  用户地址页
+     */
+    @RequestMapping(value = "/address/updateAddressStatus",method = RequestMethod.GET)
+    public JsonResultVO updateAddressStatus(Long addressId, Model model){
+        Address result=this.addressService.updateAddressStatus(addressId);
+        return new JsonResultVO(JsonResultVO.SUCCESS);
     }
 }

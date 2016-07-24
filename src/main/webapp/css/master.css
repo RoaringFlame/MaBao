@@ -181,12 +181,16 @@ header {
 }
 
 .header-left {
-     float: left;
-     width: 6rem;
-     height: 4rem;
-     font-size: 1.3rem;
-     line-height: 4rem;
- }
+    float: left;
+    width: 6rem;
+    height: 4rem;
+    font-size: 1.3rem;
+    line-height: 4rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .header-right {
     float: right;
     width: 6rem;
@@ -194,6 +198,7 @@ header {
     font-size: 1.3rem;
     line-height: 4rem;
 }
+
 .header-box p {
     color: #fff;
 }

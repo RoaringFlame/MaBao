@@ -46,6 +46,8 @@
     <!--标题 END-->
 
     <div class="register-box">
+        <p class="warning"></p>
+
         <label for="userName">账户名：
             <input type="text" name="username" id="userName">
         </label>
@@ -59,7 +61,6 @@
             <input type="email" name="email" id="email">
         </label>
 
-        <p class="warning"></p>
         <!--注册成功跳转到登陆页面-->
         <!-- 注册按钮 -->
         <a class="button-bottom">

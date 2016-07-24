@@ -1,8 +1,12 @@
 package com.mabao.pojo;
 
 import com.mabao.enums.OrderStatus;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
@@ -121,7 +125,7 @@ public class Order {
         this.sellerId = sellerId;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "address_id")
     public Address getAddress() {
         return address;

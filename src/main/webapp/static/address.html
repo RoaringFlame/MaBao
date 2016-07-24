@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="../css/master.css">
     <link rel="stylesheet" href="../css/module.css">
+
 </head>
 <body>
 <div class="content-index">
@@ -34,33 +35,47 @@
     <!--标题 END-->
 
     <!-- 收货地址 -->
-    <div class="box add">
-        <div class="box-left">
-            <img src="../img/pay-1.png" alt="">
-        </div>
-        <div class="box-right">
-            <div class="box-right-top">
-                <dl>
-                    <dd>张淑敏</dd>
-                    <dt>电话:15994203504</dt>
-                </dl>
+    <div class="add">
+        <div class="box ">
+            <div class="box-left">
+                <img src="../img/pay-1.png" alt="">
             </div>
-            <div class="box-right-bottom">
-                <p>广东省&nbsp;&nbsp;深圳&nbsp;&nbsp;宝安区</p>
-                <p>桃源居商务大厦B座</p>
+            <div class="box-right">
+                <div class="box-right-top">
+                    <dl>
+                        <dd>张淑敏</dd>
+                        <dt>电话:15994203504</dt>
+                    </dl>
+                </div>
+                <div class="box-right-bottom">
+                    <p>广东省&nbsp;&nbsp;深圳&nbsp;&nbsp;宝安区</p>
+                    <p>桃源居商务大厦B座</p>
+                </div>
             </div>
+
+            <a href="chadd.html">
+                <button class="add-jump-arrow"></button>
+            </a>
+            <div class="clear"></div>
+            <p class="default-add">
+                <label>
+                    <input type="radio">
+                </label>
+                <span>设为默认地址</span>
+                <i class="icon-trash"></i>
+                <button>
+                    删除
+                </button>
+            </p>
         </div>
-        <a href="chadd.html">
-            <button class="add-jump-arrow"></button>
-        </a>
     </div>
+    <!-- 收货地址 END-->
     <!-- 新增收货地址按钮 -->
-    <a href="newaddress.html" class="input-add">
-        <button type="submit">新增收货地址</button>
+    <div class="warning"></div>
+    <a href="newaddress.html" class="button-bottom">
+        <input class="submit " type="submit" value="新增收货地址">
     </a>
     <!-- 新增收货地址按钮END -->
-    <!-- 收货地址 END-->
-
 
 </div>
 </body>

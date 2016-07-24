@@ -1,3 +1,5 @@
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +25,22 @@
     <script src="script/lib/iscroll/iscroll.js"></script>
     <script src="script/common.js"></script>
     <script src="script/index.js"></script>
+
+    <%--宝宝生日相关--%>
+    <link href="script/lib/date/dev/css/mobiscroll.core-2.6.2.css" rel="stylesheet"/>
+    <link href="script/lib/date/dev/css/mobiscroll.android-2.6.2.css" rel="stylesheet"/>
+    <link href="script/lib/date/dev/css/mobiscroll.android-ics-2.6.2.css" rel="stylesheet"/>
+    <link href="script/lib/date/dev/css/mobiscroll.ios-2.6.2.css" rel="stylesheet"/>
+
+    <script src="script/lib/date/dev/js/mobiscroll.core-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.datetime-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.list-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.select-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.android-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.android-ics-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.ios-2.6.2.js"></script>
+
+    <script src="script/index_babybirthday.js"></script>
 </head>
 
 <body>
@@ -33,12 +51,16 @@
         首页
         <!--操作按钮-->
         <div class="header-box">
-            <a href="login">
-                <p class="header-left">
-                    <i class="icon icon-return"></i>
-                    登陆
+            <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">
+                <p class="header-left" style="font-size: 1.1rem;">
+                        ${sessionScope["SPRING_SECURITY_CONTEXT"].authentication.principal.username}
                 </p>
-            </a>
+            </c:if>
+            <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId eq null}">
+                <a href="login">
+                    <p class="header-left">请登录</p>
+                </a>
+            </c:if>
         </div>
         <!--操作按钮 END-->
     </header>
@@ -55,7 +77,7 @@
             <p>
                 <i class="icon icon-search"></i>
             </p>
-            <input id="txtSearch" title="请输入关键字">
+            <input id="txtSearch">
         </div>
         <!-- 侧导航栏 -->
         <div class="sidebar hide" id="sidebar">
@@ -103,7 +125,7 @@
                 <!-- 功能切换-->
                 <div class="scroll-menu">
                     <ul>
-                        <li class="focus"> 新品</li>
+                        <li class="focus">新品</li>
                         <li>猜你喜欢</li>
                     </ul>
                 </div>
@@ -122,8 +144,20 @@
                             <p>请填写以下信息</p>
                             <label>宝宝姓名：
                                 <input name="babyName" type="text"></label>
-                            <label>宝宝生日：
-                                <input name="babyBirthday" type="date"></label>
+                            <!--宝宝生日相关-->
+                            <div style="display: none">
+                                <label for="demo">Demo</label>
+                                <select name="demo" id="demo" class="changes">
+                                    <option value="date" selected>Date</option>
+                                    &lt;!&ndash;Demos&ndash;&gt;
+                                </select>
+                            </div>
+                            <div id="demo_default" class="demos">
+                                <label for="test_default">宝宝生日：
+                                    <input type="date" name="babyBirthday" id="test_default"/>
+                                </label>
+                            </div>
+
                             <label>宝宝性别：
                                 <select name="sex" id="sex">
                                 </select>
@@ -138,6 +172,7 @@
             </div>
         </div>
     </div>
+    <div class="tip" id="textShow1"></div>
 </div>
 
 
@@ -146,7 +181,7 @@
     <a href="">
         <i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
     </a>
-    <a>
+    <a href="developing">
         <i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
     </a>
     <a href="consignment">
@@ -155,7 +190,7 @@
     <a href="user/shopping" id="shopping">
         <i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
     </a>
-    <a href="user/personal">
+    <a href="user">
         <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
     </a>
 </div>

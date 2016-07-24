@@ -42,9 +42,9 @@
             <label>
                 <input name="tel" type="text" placeholder="手机号：15994203504">
             </label>
-            <label>
-                <input name="location" type="text" placeholder="所在地：">
-            </label>
+            <p class="address">
+                所在地：
+            </p>
             <!-- 省市级联地址 -->
             <label>
                 <select name="province">
@@ -59,30 +59,17 @@
             </label>
             <!-- 省市级联地址END -->
             <input name="detail-add" type="text" class="write" placeholder="详细地址：广东省 深圳宝安区桃源居商务大厦B座">
-            <div class="default-add">
-                <p>默认地址</p>
-                <span>注：每次下单时会使用该地址</span>
-                <div class="switch">
-                    <label>
-                        <input class="form-control" name="switch" type="checkbox" checked>
-                    </label>
-                </div>
-            </div>
         </div>
         <!-- 清楚浮动 -->
         <div class="clear"></div>
 
         <div class="edit-add-input">
-            <!-- 删除按钮 -->
-            <label>
-                <input type="button" value="保存并使用" onclick=window.location.href="pay.html">
-            </label>
-            <!-- 删除按钮END -->
             <!-- 保存按钮 -->
             <label>
-                <input type="button" value="删除该地址" onclick=window.location.href="address.html">
+                <input class="default" type="button" value="保存" onclick=window.location.href="pay.html">
             </label>
             <!-- 保存按钮END -->
+
         </div>
 
     </form>

@@ -36,5 +36,14 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
         }
         return list;
     }
+    /**
+     * 获取商品类型
+     * @param typeId            id
+     * @return                  商品类型
+     */
+    @Override
+    public GoodsType get(Long typeId) {
+        return this.goodsTypeRepository.findOne(typeId);
+    }
 
 }

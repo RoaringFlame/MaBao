@@ -65,10 +65,10 @@ public class CartController {
                 cartList.add(cart);
             }
             Address address = this.addressService.getDefaultAddress(user.getId());
-            map.put("defaultAddress", AddressVO.generateBy(address));           //默认地址
-            map.put("checkedGoodsList", CartGoodsVO.generateBy(cartList));      //选中的商品列表
-            map.put("freight", 10);                                             //运费
-            map.put("totalSum",totalSum+10);                                    //总计价格
+            map.put("defaultAddress", address !=null ? AddressVO.generateBy(address) : null);           //默认地址
+            map.put("checkedGoodsList", CartGoodsVO.generateBy(cartList));                              //选中的商品列表
+            map.put("freight", 10);                                                                     //运费
+            map.put("totalSum",totalSum+10);                                                            //总计价格
             map.put("cartIds",cartIds);
             model.addAllAttributes(map);
             return "pay";
