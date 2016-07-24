@@ -403,14 +403,13 @@
 }
 
 /*付款页面*/
-.add {
-background:  #eee;
-}
+/*.add {*/
+/*border-bottom: 1rem solid #eee;*/
+/*}*/
 
 .box {
-    background:  #fff;
     max-width: 32rem;
-    margin: 1rem 0 2rem;
+    margin: 1rem auto;
     height: auto;
     min-height: 6rem;
     position: relative;
@@ -475,6 +474,12 @@ background:  #eee;
         text-overflow: ellipsis;
         overflow: hidden;
     }
+}
+
+.confirm-top-box {
+    position: relative;
+    width: 100%;
+    height: 4rem;
 }
 
 .jump-arrow {
@@ -624,15 +629,7 @@ background:  #eee;
         width: 14rem;
     }
 }
-.add-button-fixed{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    background: #fff;
-    width: 100%;
-    height: 5rem;
-    padding-top: 1rem;
-}
+
 /*收货地址页面*/
 
 /*编辑收货地址*/
@@ -739,7 +736,7 @@ background:  #eee;
     height: 3rem;
     line-height: 3rem;
     color: #767676;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     text-indent: 1rem;
 }
 
@@ -749,9 +746,7 @@ background:  #eee;
     width: 4rem;
     height: 2.5rem;
     border-radius: .4rem;
-    font-size: 1.2rem;
-    color: #767676;
-    font-family:inherit;
+    font-size: 1.4rem;
 }
 
 .icon-trash {
