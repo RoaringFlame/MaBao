@@ -30,10 +30,10 @@
         <!--操作按钮-->
         <div class="header-box">
             <a href="user/address/userAllAddress">
-                <button class="header-left">
+                <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </button>
+                </p>
             </a>
         </div>
         <!--操作按钮 END-->
@@ -64,16 +64,6 @@
             <input name="user.id" value="${addressList.user.id}" style="display: none">
             <input name="location" type="text" class="write" placeholder="详细地址：" value="${addressList.location}">
             <input name="state" type="hidden" value="${addressList.state}">
-            <%--<div class="default-add">--%>
-                <%--<p>默认地址</p>--%>
-                <%--<span>注：每次下单时会使用该地址</span>--%>
-                <%--<div class="switch">--%>
-                    <%--<label>--%>
-                        <%--<input class="form-control" type="checkbox" value="${addressList.state}">--%>
-                        <%--<input name="state" type="hidden">--%>
-                    <%--</label>--%>
-                <%--</div>--%>
-            <%--</div>--%>
         </div>
         <!-- 清楚浮动 -->
         <div class="clear"></div>
