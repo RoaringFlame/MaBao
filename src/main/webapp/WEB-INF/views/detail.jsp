@@ -29,20 +29,20 @@
 <body>
 <div class="content-index">
     <!--标题-->
-    <header>
-        宝物详情
-        <!--操作按钮-->
-        <div class="header-box">
-            <a href="">
-                <p class="header-left">
-                    <i class="icon icon-return"></i>
-                    返回
-                </p>
-            </a>
-        </div>
-        <div id="goodsId" style="display:none;">${goodsDetail.id}</div>
-        <!--操作按钮 END-->
-    </header>
+    <%--<header>--%>
+        <%--宝物详情--%>
+        <%--<!--操作按钮-->--%>
+        <%--<div class="header-box">--%>
+            <%--<a href="">--%>
+                <%--<p class="header-left">--%>
+                    <%--<i class="icon icon-return"></i>--%>
+                    <%--返回--%>
+                <%--</p>--%>
+            <%--</a>--%>
+        <%--</div>--%>
+        <%--<div id="goodsId" style="display:none;">${goodsDetail.id}</div>--%>
+        <%--<!--操作按钮 END-->--%>
+    <%--</header>--%>
     <!--标题 END-->
     <!--宝物详情-->
     <div class="goods-detail">

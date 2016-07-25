@@ -19,26 +19,26 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
 
-    <link rel="stylesheet" href="script/lib/iscroll/iscroll.css">
+    <%--<link rel="stylesheet" href="script/lib/iscroll/iscroll.css">--%>
     <script src="script/lib/jquery.1.10.2.js"></script>
     <script src="script/lib/bootstrap/bootstrap.min.js"></script>
-    <script src="script/lib/iscroll/iscroll.js"></script>
+    <%--<script src="script/lib/iscroll/iscroll.js"></script>--%>
     <script src="script/common.js"></script>
     <script src="script/index.js"></script>
 
     <%--宝宝生日相关--%>
-    <link href="script/lib/date/dev/css/mobiscroll.core-2.6.2.css" rel="stylesheet"/>
-    <link href="script/lib/date/dev/css/mobiscroll.android-2.6.2.css" rel="stylesheet"/>
-    <link href="script/lib/date/dev/css/mobiscroll.android-ics-2.6.2.css" rel="stylesheet"/>
-    <link href="script/lib/date/dev/css/mobiscroll.ios-2.6.2.css" rel="stylesheet"/>
+    <%--<link href="script/lib/date/dev/css/mobiscroll.core-2.6.2.css" rel="stylesheet"/>--%>
+    <%--<link href="script/lib/date/dev/css/mobiscroll.android-2.6.2.css" rel="stylesheet"/>--%>
+    <%--<link href="script/lib/date/dev/css/mobiscroll.android-ics-2.6.2.css" rel="stylesheet"/>--%>
+    <%--<link href="script/lib/date/dev/css/mobiscroll.ios-2.6.2.css" rel="stylesheet"/>--%>
 
-    <script src="script/lib/date/dev/js/mobiscroll.core-2.6.2.js"></script>
-    <script src="script/lib/date/dev/js/mobiscroll.datetime-2.6.2.js"></script>
-    <script src="script/lib/date/dev/js/mobiscroll.list-2.6.2.js"></script>
-    <script src="script/lib/date/dev/js/mobiscroll.select-2.6.2.js"></script>
-    <script src="script/lib/date/dev/js/mobiscroll.android-2.6.2.js"></script>
-    <script src="script/lib/date/dev/js/mobiscroll.android-ics-2.6.2.js"></script>
-    <script src="script/lib/date/dev/js/mobiscroll.ios-2.6.2.js"></script>
+    <%--<script src="script/lib/date/dev/js/mobiscroll.core-2.6.2.js"></script>--%>
+    <%--<script src="script/lib/date/dev/js/mobiscroll.datetime-2.6.2.js"></script>--%>
+    <%--<script src="script/lib/date/dev/js/mobiscroll.list-2.6.2.js"></script>--%>
+    <%--<script src="script/lib/date/dev/js/mobiscroll.select-2.6.2.js"></script>--%>
+    <%--<script src="script/lib/date/dev/js/mobiscroll.android-2.6.2.js"></script>--%>
+    <%--<script src="script/lib/date/dev/js/mobiscroll.android-ics-2.6.2.js"></script>--%>
+    <%--<script src="script/lib/date/dev/js/mobiscroll.ios-2.6.2.js"></script>--%>
 
     <script src="script/index_babybirthday.js"></script>
 </head>
@@ -47,23 +47,23 @@
 <div id="err"></div>
 <div class="content-index">
     <!--标题-->
-    <header>
-        首页
-        <!--操作按钮-->
-        <div class="header-box">
-            <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">
-                <p class="header-left" style="font-size: 1.1rem;">
-                        ${sessionScope["SPRING_SECURITY_CONTEXT"].authentication.principal.username}
-                </p>
-            </c:if>
-            <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId eq null}">
-                <a href="login">
-                    <p class="header-left">请登录</p>
-                </a>
-            </c:if>
-        </div>
-        <!--操作按钮 END-->
-    </header>
+    <%--<header>--%>
+        <%--首页--%>
+        <%--<!--操作按钮-->--%>
+        <%--<div class="header-box">--%>
+            <%--<c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">--%>
+                <%--<p class="header-left" style="font-size: 1.1rem;">--%>
+                        <%--${sessionScope["SPRING_SECURITY_CONTEXT"].authentication.principal.username}--%>
+                <%--</p>--%>
+            <%--</c:if>--%>
+            <%--<c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId eq null}">--%>
+                <%--<a href="login">--%>
+                    <%--<p class="header-left">请登录</p>--%>
+                <%--</a>--%>
+            <%--</c:if>--%>
+        <%--</div>--%>
+        <%--<!--操作按钮 END-->--%>
+    <%--</header>--%>
     <!--标题 END-->
 
     <!--搜索框-->
@@ -177,23 +177,23 @@
 
 
 <!--底部导航-->
-<div class="menu" id="menu">
-    <a href="">
-        <i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
-    </a>
-    <a href="developing">
-        <i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
-    </a>
-    <a href="consignment">
-        <i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
-    </a>
-    <a href="user/shopping" id="shopping">
-        <i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
-    </a>
-    <a href="user">
-        <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
-    </a>
-</div>
+<%--<div class="menu" id="menu">--%>
+    <%--<a href="">--%>
+        <%--<i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>--%>
+    <%--</a>--%>
+    <%--<a href="developing">--%>
+        <%--<i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>--%>
+    <%--</a>--%>
+    <%--<a href="consignment">--%>
+        <%--<i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>--%>
+    <%--</a>--%>
+    <%--<a href="user/shopping" id="shopping">--%>
+        <%--<i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>--%>
+    <%--</a>--%>
+    <%--<a href="user">--%>
+        <%--<i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>--%>
+    <%--</a>--%>
+<%--</div>--%>
 <!--底部导航 END-->
 </body>
 </html>

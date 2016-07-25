@@ -24,19 +24,19 @@
 <body>
 <div class="content-index">
 	<!--标题-->
-	<header>
-		个人中心
-		<!--操作按钮-->
-		<div class="header-box">
-			<a href="">
-				<p class="header-left">
-					<i class="icon icon-return"></i>
-					返回
-				</p>
-			</a>
-		</div>
-		<!--操作按钮 END-->
-	</header>
+	<%--<header>--%>
+		<%--个人中心--%>
+		<%--<!--操作按钮-->--%>
+		<%--<div class="header-box">--%>
+			<%--<a href="">--%>
+				<%--<p class="header-left">--%>
+					<%--<i class="icon icon-return"></i>--%>
+					<%--返回--%>
+				<%--</p>--%>
+			<%--</a>--%>
+		<%--</div>--%>
+		<%--<!--操作按钮 END-->--%>
+	<%--</header>--%>
 	<!--标题 END-->
 	<!--宝宝图片上传-->
 	<div class="baby-photo">
@@ -90,23 +90,23 @@
 	<div class="blank"></div>
 	<!--注销按钮END-->
 	<!--底部导航-->
-	<div class="menu" id="menu">
-		<a href="">
-			<i class="icon-menu icon-menu1"><img src="img/footer-1.png" alt=""></i>
-		</a>
-		<a href="developing">
-			<i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
-		</a>
-		<a href="consignment">
-			<i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
-		</a>
-		<a href="user/shopping" >
-			<i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
-		</a>
-		<a href="user">
-			<i class="icon-menu icon-menu5"><img src="img/footer-c5.png" alt=""></i>
-		</a>
-	</div>
+	<%--<div class="menu" id="menu">--%>
+		<%--<a href="">--%>
+			<%--<i class="icon-menu icon-menu1"><img src="img/footer-1.png" alt=""></i>--%>
+		<%--</a>--%>
+		<%--<a href="developing">--%>
+			<%--<i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>--%>
+		<%--</a>--%>
+		<%--<a href="consignment">--%>
+			<%--<i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>--%>
+		<%--</a>--%>
+		<%--<a href="user/shopping" >--%>
+			<%--<i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>--%>
+		<%--</a>--%>
+		<%--<a href="user">--%>
+			<%--<i class="icon-menu icon-menu5"><img src="img/footer-c5.png" alt=""></i>--%>
+		<%--</a>--%>
+	<%--</div>--%>
 	<!--底部导航 END-->
 </div>
 </body>

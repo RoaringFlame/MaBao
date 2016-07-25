@@ -23,19 +23,19 @@
 <body>
 <div class="content-index">
 	<!--标题-->
-	<header>
-		转让宝物
-		<!--操作按钮-->
-		<div class="header-box">
-			<a href="sell/releaseSelector">
-				<p class="header-left">
-					<i class="icon icon-return"></i>
-					返回
-				</p>
-			</a>
-		</div>
-		<!--操作按钮 END-->
-	</header>
+	<%--<header>--%>
+		<%--转让宝物--%>
+		<%--<!--操作按钮-->--%>
+		<%--<div class="header-box">--%>
+			<%--<a href="sell/releaseSelector">--%>
+				<%--<p class="header-left">--%>
+					<%--<i class="icon icon-return"></i>--%>
+					<%--返回--%>
+				<%--</p>--%>
+			<%--</a>--%>
+		<%--</div>--%>
+		<%--<!--操作按钮 END-->--%>
+	<%--</header>--%>
 	<!--标题 END-->
 	<!--发布成功提示-->
 	<div class="publish-success-box">

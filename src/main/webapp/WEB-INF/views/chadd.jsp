@@ -24,20 +24,20 @@
 </head>
 <body>
 <div class="content-index">
-    <!--标题-->
-    <header>
-        编辑收货地址
-        <!--操作按钮-->
-        <div class="header-box">
-            <a href="user/address/userAllAddress">
-                <p class="header-left">
-                    <i class="icon icon-return"></i>
-                    返回
-                </p>
-            </a>
-        </div>
-        <!--操作按钮 END-->
-    </header>
+    <%--<!--标题-->--%>
+    <%--<header>--%>
+        <%--编辑收货地址--%>
+        <%--<!--操作按钮-->--%>
+        <%--<div class="header-box">--%>
+            <%--<a href="user/address/userAllAddress">--%>
+                <%--<p class="header-left">--%>
+                    <%--<i class="icon icon-return"></i>--%>
+                    <%--返回--%>
+                <%--</p>--%>
+            <%--</a>--%>
+        <%--</div>--%>
+        <%--<!--操作按钮 END-->--%>
+    <%--</header>--%>
     <!--标题 END-->
     <!-- 编辑收货地址 -->
     <form id="frmAddress" >

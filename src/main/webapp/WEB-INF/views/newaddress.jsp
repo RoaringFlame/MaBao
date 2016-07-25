@@ -33,19 +33,19 @@
 <body>
 <div class="content-index">
 	<!--标题-->
-	<header>
-		新增地址
-		<!--操作按钮-->
-		<div class="header-box">
-			<a href="/user/address/userAllAddress">
-				<button class="header-left">
-					<i class="icon icon-return"></i>
-					返回
-				</button>
-			</a>
-		</div>
-		<!--操作按钮 END-->
-	</header>
+	<%--<header>--%>
+		<%--新增地址--%>
+		<%--<!--操作按钮-->--%>
+		<%--<div class="header-box">--%>
+			<%--<a href="/user/address/userAllAddress">--%>
+				<%--<button class="header-left">--%>
+					<%--<i class="icon icon-return"></i>--%>
+					<%--返回--%>
+				<%--</button>--%>
+			<%--</a>--%>
+		<%--</div>--%>
+		<%--<!--操作按钮 END-->--%>
+	<%--</header>--%>
 	<!--标题 END-->
 	<!-- 编辑收货地址 -->
 	<form action="/MaBao/user/address/addAddress">			<%--跳转到新增用户地址的action--%>

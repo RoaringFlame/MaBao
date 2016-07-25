@@ -27,19 +27,19 @@
 <body>
 <div class="content-index">
     <!--标题-->
-    <header>
-        待发货
-        <!--操作按钮-->
-        <div class="header-box">
-            <a href="user">
-                <p class="header-left">
-                    <i class="icon icon-return"></i>
-                    返回
-                </p>
-            </a>
-        </div>
-        <!--操作按钮 END-->
-    </header>
+    <%--<header>--%>
+        <%--待发货--%>
+        <%--<!--操作按钮-->--%>
+        <%--<div class="header-box">--%>
+            <%--<a href="user">--%>
+                <%--<p class="header-left">--%>
+                    <%--<i class="icon icon-return"></i>--%>
+                    <%--返回--%>
+                <%--</p>--%>
+            <%--</a>--%>
+        <%--</div>--%>
+        <%--<!--操作按钮 END-->--%>
+    <%--</header>--%>
     <!--标题 END-->
     <!-- 我是买家——购买订单 -->
     <div class="order">

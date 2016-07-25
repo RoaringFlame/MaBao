@@ -30,19 +30,19 @@
 <body>
 <div class="content-index">
     <!--标题-->
-    <header>
-        增加售货地址
-        <!--操作按钮-->
-        <div class="header-box">
-            <a href="consignment">
-                <p class="header-left">
-                    <i class="icon icon-return"></i>
-                    返回
-                </p>
-            </a>
-        </div>
-        <!--操作  按钮 END-->
-    </header>
+    <%--<header>--%>
+        <%--增加售货地址--%>
+        <%--<!--操作按钮-->--%>
+        <%--<div class="header-box">--%>
+            <%--<a href="consignment">--%>
+                <%--<p class="header-left">--%>
+                    <%--<i class="icon icon-return"></i>--%>
+                    <%--返回--%>
+                <%--</p>--%>
+            <%--</a>--%>
+        <%--</div>--%>
+        <%--<!--操作  按钮 END-->--%>
+    <%--</header>--%>
     <!--标题 END-->
     <!-- 编辑收货地址 -->
     <form id="edit-add" action="sell/receiptPlaceAdd" method="post">
