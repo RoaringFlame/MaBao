@@ -43,7 +43,7 @@ public class Goods {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     public User getUser() {
         return user;

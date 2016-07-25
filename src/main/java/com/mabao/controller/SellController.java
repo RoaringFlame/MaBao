@@ -7,6 +7,7 @@ import com.mabao.enums.Quality;
 import com.mabao.pojo.Address;
 import com.mabao.pojo.Goods;
 import com.mabao.service.*;
+import com.mabao.util.BaseAction;
 import com.mabao.util.Selector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -15,10 +16,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -92,17 +95,16 @@ public class SellController {
      * @param newGoods          商品对象
      * @return                  寄售成功页
      */
-    @RequestMapping(value = "/release",method = POST)
-    public String releaseGoods(GoodsDetailVO newGoods){
-        Goods result= this.goodsService.releaseGoods(newGoods);
+    @RequestMapping(value = "/release",method = RequestMethod.POST)
+    public String releaseGoods(GoodsDetailVO newGoods,
+                               @RequestParam(required = false) MultipartFile[] goodsPic,
+                               HttpServletRequest request) throws Exception {
+        Goods result= this.goodsService.releaseGoods(newGoods,goodsPic,request);
         if (result != null){
             return "publish_success";
         }else {
             return "publish_failure";
         }
     }
-
-
-
 }
 

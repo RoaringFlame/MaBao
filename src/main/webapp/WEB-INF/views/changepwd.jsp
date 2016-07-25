@@ -43,7 +43,7 @@
     </header>
     <!--标题 END-->
     <!--修改密码表单-->
-    <div class="change-pwd" action="">
+    <div class="change-pwd">
 
         <!-- 修改密码成功跳转到个人中心页面 -->
         <label for="newPwd">新密码:
@@ -56,7 +56,9 @@
         <p class="warning"></p>
         <!-- 提交按钮 -->
         <!--提交后跳转到登陆页面-->
+        <div class="button-bottom">
         <button class="submit" type="button" value="提交" id="up-pwd">提交</button>
+        </div>
         <!--提交按钮END-->
     </div>
     <!--修改密码表单END-->

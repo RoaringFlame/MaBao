@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <%
@@ -34,10 +35,10 @@
         <!--操作按钮-->
         <div class="header-box">
             <a href="user/shopping">
-                <button class="header-left">
+                <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </button>
+                </p>
             </a>
         </div>
         <!--操作按钮 END-->
@@ -45,9 +46,8 @@
     <!--标题 END-->
     <!-- 收货地址 -->
 
-    <a href="user/address/userAllAddress">
-        <button class="add-jump-arrow"></button>
-    </a>
+    
+    <button class="add-jump-arrow"></button>
     <form id="pay" action="order/payConfirm">
         <div class="box add">
             <div class="box-left">
@@ -77,13 +77,15 @@
                 <div class="order-box-right">
                     <p>${goods.brandName}</p>
                     <p>尺寸：${goods.size}</p>
-                    <p class="order-box-left"><span>×${goods.quantity}</span>￥${goods.price}</p>
+                    <p class="order-box-left"><span>×${goods.quantity}</span>￥<fmt:formatNumber type="number" value="${goods.price}" pattern="0.00"
+                                                                                                              maxFractionDigits="2"/></p>
                 </div>
             </div>
             <!-- 购买订单END -->
 
             <ul class="lists">
-                <li>共计${goods.quantity}件商品&nbsp;小计：<b>￥${goods.getSubtotal()}</b></li>
+                <li>共计${goods.quantity}件商品&nbsp;小计：<b>￥<fmt:formatNumber type="number" value="${goods.getSubtotal()}" pattern="0.00"
+                                                                                               maxFractionDigits="2"/></b></li>
             </ul>
         </c:forEach>
         <ul class="lists">
@@ -96,7 +98,8 @@
     <!--付款按钮-->
     <div class="up-to-pay pay-fixed">
         <ul>
-            <li>总计&nbsp;:&nbsp;<b>￥${totalSum}</b></li>
+            <li>总计&nbsp;:&nbsp;<b>￥<fmt:formatNumber type="number" value="${totalSum}" pattern="0.00"
+                                                                maxFractionDigits="2"/></b></li>
             <li>
                 <button class="pay" type="submit" form="pay">付款</button>
             </li>

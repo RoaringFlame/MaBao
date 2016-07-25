@@ -62,10 +62,10 @@ public class BabyServiceImpl implements BabyService {
      * @return                          宝宝list
      */
     @Override
-    public List<Baby> findBabyByUserId(Long userId) {
+    public Baby findBabyByUserId(Long userId) {
         List<Baby> babyList =  this.babyRepository.findByUserId(userId);
         if (babyList.size()>0){
-            return babyList;
+            return babyList.get(0);
         }else {
             return null;
         }
@@ -79,5 +79,36 @@ public class BabyServiceImpl implements BabyService {
     @Override
     public Baby saveOne(Baby baby) {
         return this.babyRepository.save(baby);
+    }
+
+    /**
+     * 猜你喜欢宝宝表单（保存宝宝信息）
+     * @param baby  baby对象
+     * @return      babyVO对象
+     */
+    @Override
+    public BabyVO guessForBabyInfo(Baby baby) {
+        User user=UserManager.getUser();
+        if(user!=null){
+            //已有宝宝，更新；没有宝宝，添加
+            List<Baby> babyList = this.babyRepository.findByUserId(user.getId());
+            Baby b ;
+            if (babyList.size()>0){
+                b=this.babyRepository.saveAndFlush(baby);
+            }else {
+                baby.setUser(user);
+                b=this.babyRepository.save(baby);
+            }
+            return BabyVO.generateBy(b);
+        }
+        else{
+            BabyVO vo=new BabyVO();
+            vo.setBirthday(baby.getBirthday());
+            vo.setGender(baby.getGender());
+            vo.setHobby(baby.getHobby());
+            vo.setName(baby.getName());
+            vo.setId(-1L);
+            return vo;
+        }
     }
 }

@@ -56,11 +56,15 @@
         </label>
 
         <div class="person-button">
-            <button type="submit">新增宝宝信息</button>
+            <button type="button">新增宝宝信息</button>
         </div>
 
     </form>
     <!-- 编辑宝宝信息END -->
+    <div class="tip" id="textShow" style="display: none"></div>     <%--弹窗--%>
 </div>
 </body>
+<script src="script/lib/jquery.1.10.2.js" type="text/javascript"></script>
+<script src="script/babyinfo.js"></script>
+<script src="script/common.js"></script>
 </html>

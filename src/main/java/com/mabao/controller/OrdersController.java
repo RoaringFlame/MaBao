@@ -4,6 +4,7 @@ import com.mabao.controller.vo.OrderVO;
 import com.mabao.enums.OrderStatus;
 import com.mabao.pojo.Order;
 import com.mabao.pojo.OrderDetail;
+import com.mabao.service.CartService;
 import com.mabao.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class OrdersController {
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private CartService cartService;
 
     /**
      * 订单确认页付款
@@ -36,6 +39,8 @@ public class OrdersController {
                                Model model){
         //生成订单
         Order order = this.orderService.addOrder(cartIds,addressId,message);
+        //删除购物车
+        this.cartService.deleteCartGoodsList(cartIds);
         //支付
         return "personal";
     }

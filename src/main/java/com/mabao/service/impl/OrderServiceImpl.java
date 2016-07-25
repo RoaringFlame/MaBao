@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
         String[] cartIdArray = cartIds.trim().split(",");
         Order order = new Order();
         order.setBuyer(UserManager.getUser());
-        order.setSellerId(0L);
+        order.setSellerId(1L);
         order.setQuantity(cartIdArray.length);
         order.setAddress(this.addressService.get(addressId));
         order.setMessage(message);
@@ -49,6 +49,7 @@ public class OrderServiceImpl implements OrderService {
         order.setState(OrderStatus.ToBePaid);
         order.setFreight(10.00);                    //运费
         order.setTotalSum(order.getFreight());      //初始化总价
+        this.orderRepository.save(order);
         for (String one : cartIdArray){
             Long cartId =Long.valueOf(one);
             Goods goods = this.cartService.get(cartId).getGoods();
@@ -66,8 +67,7 @@ public class OrderServiceImpl implements OrderService {
             order.setTotalSum(order.getTotalSum()+goods.getPrice());
             this.orderDetailRepository.save(od);
         }
-
-        return this.orderRepository.save(order);
+        return this.orderRepository.saveAndFlush(order);    //更新总价
     }
 
     /**

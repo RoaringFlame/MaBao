@@ -40,7 +40,7 @@
 	<!--标题 END-->
 	<!--宝宝图片上传-->
 	<div class="baby-photo">
-		<figure><img src="upload/${userInfo.userPicture}" alt="头像"></figure>
+		<figure><img src="photo/${userInfo.userPicture}" alt="头像"></figure>
 		<figcaption>
 			<p>${userInfo.userName}</p>
 			<p class="line">宝宝：${userInfo.babyName}</p>
@@ -54,10 +54,10 @@
 		<div>
 			<p class="order-bottom">我是<span class="red">买家</span></p>
 			<ul>
-				<li><a class="link" href="order/loadUserOrder?userIdentity=1">全部</a></li>
-				<li><a href="order/loadUserOrder?userIdentity=1&orderStatus=ToBePaid">待付款</a></li>
-				<li><a href="order/loadUserOrder?userIdentity=1&orderStatus=ToBeSend">待发货</a></li>
-				<li><a href="order/loadUserOrder?userIdentity=1&orderStatus=ToBeReceipt">待确认</a></li>
+				<li><a class="link" href="developing">全部</a></li>
+				<li><a href="developing">待付款</a></li>
+				<li><a href="developing">待发货</a></li>
+				<li><a href="developing">待确认</a></li>
 			</ul>
 		</div>
 		<!--我是买家订单END-->
@@ -65,10 +65,10 @@
 		<div>
 			<p class="order-bottom">我是<span class="blue">卖家</span></p>
 			<ul>
-				<li><a class="link" href="order/loadUserOrder?userIdentity=2">全部</a></li>
-				<li><a href="order/loadUserOrder?userIdentity=2&orderStatus=Sold">已出售</a></li>
-				<li><a href="order/loadUserOrder?userIdentity=2&orderStatus=Released">已发布</a></li>
-				<li><a href="order/loadUserOrder?userIdentity=2&orderStatus=ToBeRelease">待发布</a></li>
+				<li><a class="link" href="developing">全部</a></li>
+				<li><a href="developing">已出售</a></li>
+				<li><a href="developing">已发布</a></li>
+				<li><a href="developing">待发布</a></li>
 			</ul>
 		</div>
 		<!--我是买家订单END-->
@@ -84,17 +84,17 @@
 	</div>
 	<!--个人中心信息END-->
 	<!--注销按钮-->
-	<a class="personal-center-button" href="login">
-		<button type="reset">注销</button>
+	<a class="button-bottom" href="logout">
+		<button class="submit" type="reset">注销</button>
 	</a>
 	<div class="blank"></div>
 	<!--注销按钮END-->
 	<!--底部导航-->
 	<div class="menu" id="menu">
 		<a href="">
-			<i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
+			<i class="icon-menu icon-menu1"><img src="img/footer-1.png" alt=""></i>
 		</a>
-		<a>
+		<a href="developing">
 			<i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
 		</a>
 		<a href="consignment">
@@ -104,7 +104,7 @@
 			<i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
 		</a>
 		<a href="user">
-			<i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
+			<i class="icon-menu icon-menu5"><img src="img/footer-c5.png" alt=""></i>
 		</a>
 	</div>
 	<!--底部导航 END-->

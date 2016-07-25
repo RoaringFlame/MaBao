@@ -96,7 +96,7 @@
         </p>
         <!--提示信息END-->
         <!--转让宝物信息表单-->
-        <form class="transfer-form" action="sell/release" id="console-form" method="post" >
+        <form class="transfer-form" action="sell/release" enctype="multipart/form-data" id="console-form" method="post" >
             <label class="title">
                 <input type="text" name="title" value="宝物标题">
             </label>
@@ -121,17 +121,17 @@
                 <li>
                     <%--<label for="time">购物时间：</label>
                     <input name="upTime" id="time" &lt;%&ndash;type="date"&ndash;%&gt;/>--%>
-                        <div style="display: none">
-                            <label for="demo">Demo</label>
-                            <select name="demo" id="demo" class="changes">
-                                <option value="date" selected>Date</option>
-                                &lt;!&ndash;Demos&ndash;&gt;
-                            </select>
-                        </div>
-                        <div id="demo_default" class="demos">
-                            <label for="test_default">购物时间：</label>
-                            <input type="text" name="upTime" id="test_default" />
-                        </div>
+                    <div style="display: none">
+                        <label for="demo">Demo</label>
+                        <select name="demo" id="demo" class="changes">
+                            <option value="date" selected>Date</option>
+                            &lt;!&ndash;Demos&ndash;&gt;
+                        </select>
+                    </div>
+                    <div id="demo_default" class="demos">
+                        <label for="test_default">购物时间：</label>
+                        <input type="text" name="upTime" id="test_default" />
+                    </div>
                 </li>
                 <li>
                     <label for="level">新旧程度：</label>
@@ -189,9 +189,10 @@
             <div class="transfer-form-bottom">
                 <label for="">卖家寄语：<br>宝物详情&nbsp;/<br>使用心得&nbsp;/<br>瑕疵情况等</label>
                 <textarea name="message" id="" cols="30" rows="10"></textarea>
+                <input name="state" style="display: none" value="0">
                 <!--上传照片-->
                 <div>
-                    <input name="pictureList" type="file" accept="image/png,image/gif" style="display: none;" id="fileUpload">
+                    <input name="goodsPic" type="file" accept="image/png,image/gif" style="display: none;" id="fileUpload">
                     <img id="imgUpload" src="img/1.png" alt="">
                 </div>
                 <script>
@@ -223,7 +224,7 @@
                 <!--上传照片END-->
             </div>
             <!--买家寄语END-->
-            <input name="state" style="display: none" value="1">
+
         </form>
         <!--转让宝物信息表单END-->
         <!--提交按钮-->

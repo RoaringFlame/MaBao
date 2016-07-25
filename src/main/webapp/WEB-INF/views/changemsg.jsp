@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
+
 </head>
 <body>
 <div class="content-index">
@@ -55,11 +56,15 @@
             </select>
         </label>
         <div class="person-button">
-            <button type="submit">修改</button>
+            <button type="button">修改</button>
         </div>
 
     </form>
     <!-- 编辑宝宝信息END -->
+    <div class="tip" id="textShow" style="display: none"></div>     <%--弹窗--%>
 </div>
 </body>
+<script src="script/lib/jquery.1.10.2.js" type="text/javascript"></script>
+<script src="script/babyinfo.js"></script>
+<script src="script/common.js"></script>
 </html>

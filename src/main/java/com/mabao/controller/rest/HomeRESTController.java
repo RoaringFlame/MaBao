@@ -54,7 +54,7 @@ public class HomeRESTController {
         User user = UserManager.getUser();
         if (user != null){
             try{
-                Baby baby = this.babyService.findBabyByUserId(user.getId()).get(0);
+                Baby baby = this.babyService.findBabyByUserId(user.getId());
                 homeInitVO.setBaby(BabyVO.generateBy(baby));
             }catch (Exception e){
                 homeInitVO.setBaby(null);
@@ -98,26 +98,12 @@ public class HomeRESTController {
     }
 
     /**
-     * 猜你喜欢表单提交
+     * 猜你喜欢宝宝表单（保存宝宝信息）
      * @param baby  baby对象
      * @return      babyVO对象
      */
     @RequestMapping(value = "/babySubmit",method = RequestMethod.GET)
-    public BabyVO saveBaby(Baby baby) {
-        User user=UserManager.getUser();
-        if(user!=null){
-            baby.setUser(user);
-            Baby b=this.babyService.saveOne(baby);
-            return BabyVO.generateBy(b);
-        }
-        else{
-            BabyVO vo=new BabyVO();
-            vo.setBirthday(baby.getBirthday());
-            vo.setGender(baby.getGender());
-            vo.setHobby(baby.getHobby());
-            vo.setName(baby.getName());
-            vo.setId(-1L);
-            return vo;
-        }
+    public BabyVO guessForBabyInfo(Baby baby) {
+        return this.babyService.guessForBabyInfo(baby);
     }
 }

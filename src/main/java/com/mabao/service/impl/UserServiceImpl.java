@@ -57,6 +57,7 @@ public class UserServiceImpl implements UserService {
             user.setPassword(md5.encodePassword(password,""));
             user.setEmail(email);
             user.setCreateTime(new Date());
+            user.setPicture("u6.JPG");
             this.userRepository.save(user);
             return new JsonResultVO(JsonResultVO.SUCCESS, "注册成功");
         }

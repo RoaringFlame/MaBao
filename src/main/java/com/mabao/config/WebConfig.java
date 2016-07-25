@@ -3,6 +3,7 @@ package com.mabao.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -20,6 +21,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
+    @Bean
+    public CommonsMultipartResolver multipartResolver(){
+        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+        commonsMultipartResolver.setMaxUploadSize(5048576);
+        return commonsMultipartResolver;
+    }
+
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
@@ -34,6 +42,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/res").setViewName("res");
+        registry.addViewController("/developing").setViewName("developing");
         registry.addViewController("/consignment").setViewName("consignment");
         registry.addViewController("/user/changepwd").setViewName("changepwd");
         registry.addViewController("/user/shopping").setViewName("shopping");
@@ -50,5 +59,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/user/published_order").setViewName("published_order");
         registry.addViewController("/user/unpublished_order").setViewName("unpublished_order");
         registry.addViewController("/user/bind_phone").setViewName("bind_phone");
+        registry.addViewController("/user/consignment_success").setViewName("consignment_success");
     }
 }

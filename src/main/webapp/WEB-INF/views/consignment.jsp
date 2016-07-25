@@ -70,14 +70,13 @@
 			</ul>
 		</div>
 		<!-- 后续内容 -->
-		<div class="blank"></div>
 		<!--我要寄售按钮-->
 		<a class="consignment-button" href="user/consale">
 			<button>我要寄售</button>
 		</a>
 		<!--我要寄售按钮END-->
 		<p class="consignment-bottom" >
-			<a href="sell/releaseSelector">或者,您也可以自助发布宝物</a>
+			<a href="developing">或者,您也可以自助发布宝物</a>
 		</p>
 	</div>
 	<div class="blank"></div>
@@ -86,13 +85,13 @@
 	<!--底部导航-->
 	<div class="menu" id="menu">
 		<a href="">
-			<i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>
+			<i class="icon-menu icon-menu1"><img src="img/footer-1.png" alt=""></i>
 		</a>
-		<a>
+		<a href="developing">
 			<i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>
 		</a>
 		<a href="consignment">
-			<i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
+			<i class="icon-menu icon-menu3"><img src="img/footer-c3.png" alt=""></i>
 		</a>
 		<a href="user/shopping" >
 			<i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>

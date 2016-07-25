@@ -28,10 +28,10 @@
 		<!--操作按钮-->
 		<div class="header-box">
 			<a href="sell/releaseSelector">
-				<button class="header-left">
+				<p class="header-left">
 					<i class="icon icon-return"></i>
 					返回
-				</button>
+				</p>
 			</a>
 		</div>
 		<!--操作按钮 END-->
@@ -43,7 +43,7 @@
 		<p>请您收拾好想要寄售的物品</p>
 		<p>两个工作日内，我们会安排快递公司上门取件</p>
 		<p>请保持电话畅通哦～</p>
-		<a href="/" class="share-bottom">
+		<a href="" class="share-bottom">
 			<button>去逛逛</button>
 		</a>
 		<!--发布成功提示END-->

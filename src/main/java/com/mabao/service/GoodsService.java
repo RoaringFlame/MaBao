@@ -4,7 +4,10 @@ import com.mabao.controller.vo.GoodsDetailVO;
 import com.mabao.pojo.Baby;
 import com.mabao.pojo.Goods;
 import org.springframework.data.domain.Page;
+import org.springframework.web.multipart.MultipartFile;
 ;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -65,7 +68,8 @@ public interface GoodsService {
      * 自助发布宝物
      * 添加商品
      * @param goodsVO             商品对象
-     * @return                  寄售成功页
-     */
-    Goods releaseGoods(GoodsDetailVO goodsVO);
+     * @param goodsPic
+     * @param request
+     * */
+    Goods releaseGoods(GoodsDetailVO goodsVO, MultipartFile[] goodsPic, HttpServletRequest request) throws Exception;
 }

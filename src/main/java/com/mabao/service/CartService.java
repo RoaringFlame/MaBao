@@ -59,4 +59,10 @@ public interface CartService {
      * @return              JsonResultVO
      */
     JsonResultVO changeCartGoodsNum(Long cartId, Integer opt, Integer num);
+
+    /**
+     * 生成订单后，购物车商品删除
+     * @param cartIds       购物车ids
+     */
+    void deleteCartGoodsList(String cartIds);
 }
