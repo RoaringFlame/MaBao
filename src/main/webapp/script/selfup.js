@@ -14,9 +14,14 @@ $(function () {
         function checkInput() {
             var oldPrice = $("#oldPrice").val();
             var newPrice = $("#newPrice").val();
+            var upTime = $("#test_default").val();
             var z= /^[0-9]*$/;
             if(z.test(oldPrice)&&z.test(newPrice)){
-                $(".transfer-form").submit();
+                if(upTime!==null&&(upTime!=="")) {
+                    $(".transfer-form").submit();
+                }else{
+                    showMsg("时间栏不能为空");
+                }
             }else{
                 showMsg("价格栏必须是数字");
             };

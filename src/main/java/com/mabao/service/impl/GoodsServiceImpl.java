@@ -162,7 +162,7 @@ public class GoodsServiceImpl extends BaseAction implements GoodsService {
             goods.setStockNumber(1);
            //保存文件
            if (goodsPic !=null){
-               String picURL = "/upload/user/"+user.getId()+"/";
+               String picURL = "/upload/"+user.getId()+"/";
                //上传文件过程
                super.uploads(goodsPic, picURL, request);
                String [] nameArray = super.getFileNames();
@@ -174,6 +174,7 @@ public class GoodsServiceImpl extends BaseAction implements GoodsService {
                        pictureList.append(",");
                    }
                }
+               goods.setPicture(user.getId()+"/"+nameArray[0].substring(nameArray[0].indexOf(picURL)+picURL.length(),nameArray[0].length()));
                goods.setPictureList(pictureList.toString());
            }
             Goods saveGoods = this.goodsRepository.save(goods);
