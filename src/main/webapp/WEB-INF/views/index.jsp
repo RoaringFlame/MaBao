@@ -18,27 +18,29 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
 
-    <%--<link rel="stylesheet" href="script/lib/iscroll/iscroll.css">--%>
+    <link rel="stylesheet" href="script/lib/iscroll/iscroll.css">
     <script src="script/lib/jquery.1.10.2.js"></script>
+    <script src="script/lib/jquery.mobile-1.4.5.min.js"></script>
     <script src="script/lib/bootstrap/bootstrap.min.js"></script>
-    <%--<script src="script/lib/iscroll/iscroll.js"></script>--%>
+    <script src="script/lib/iscroll/iscroll.js"></script>
     <script src="script/common.js"></script>
     <script src="script/index.js"></script>
 
     <%--宝宝生日相关--%>
-    <%--<link href="script/lib/date/dev/css/mobiscroll.core-2.6.2.css" rel="stylesheet"/>--%>
-    <%--<link href="script/lib/date/dev/css/mobiscroll.android-2.6.2.css" rel="stylesheet"/>--%>
-    <%--<link href="script/lib/date/dev/css/mobiscroll.android-ics-2.6.2.css" rel="stylesheet"/>--%>
-    <%--<link href="script/lib/date/dev/css/mobiscroll.ios-2.6.2.css" rel="stylesheet"/>--%>
+    <link href="script/lib/date/dev/css/mobiscroll.core-2.6.2.css" rel="stylesheet"/>
+    <link href="script/lib/date/dev/css/mobiscroll.android-2.6.2.css" rel="stylesheet"/>
+    <link href="script/lib/date/dev/css/mobiscroll.android-ics-2.6.2.css" rel="stylesheet"/>
+    <link href="script/lib/date/dev/css/mobiscroll.ios-2.6.2.css" rel="stylesheet"/>
 
-    <%--<script src="script/lib/date/dev/js/mobiscroll.core-2.6.2.js"></script>--%>
-    <%--<script src="script/lib/date/dev/js/mobiscroll.datetime-2.6.2.js"></script>--%>
-    <%--<script src="script/lib/date/dev/js/mobiscroll.list-2.6.2.js"></script>--%>
-    <%--<script src="script/lib/date/dev/js/mobiscroll.select-2.6.2.js"></script>--%>
-    <%--<script src="script/lib/date/dev/js/mobiscroll.android-2.6.2.js"></script>--%>
-    <%--<script src="script/lib/date/dev/js/mobiscroll.android-ics-2.6.2.js"></script>--%>
-    <%--<script src="script/lib/date/dev/js/mobiscroll.ios-2.6.2.js"></script>--%>
+    <script src="script/lib/date/dev/js/mobiscroll.core-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.datetime-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.list-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.select-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.android-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.android-ics-2.6.2.js"></script>
+    <script src="script/lib/date/dev/js/mobiscroll.ios-2.6.2.js"></script>
 
     <script src="script/index_babybirthday.js"></script>
 </head>
@@ -77,7 +79,7 @@
             <p>
                 <i class="icon icon-search"></i>
             </p>
-            <input id="txtSearch">
+            <input id="txtSearch" data-role="none">
         </div>
         <!-- 侧导航栏 -->
         <div class="sidebar hide" id="sidebar">
@@ -143,28 +145,28 @@
                             <%--<p>系统正在为您查询您感兴趣的宝物......</p>--%>
                             <p>请填写以下信息</p>
                             <label>宝宝姓名：
-                                <input name="babyName" type="text"></label>
+                                <input name="babyName" type="text" data-role="none"></label>
                             <!--宝宝生日相关-->
                             <div style="display: none">
                                 <label for="demo">Demo</label>
-                                <select name="demo" id="demo" class="changes">
+                                <select name="demo" id="demo" class="changes" data-role="none">
                                     <option value="date" selected>Date</option>
                                     &lt;!&ndash;Demos&ndash;&gt;
                                 </select>
                             </div>
                             <div id="demo_default" class="demos">
                                 <label for="test_default">宝宝生日：
-                                    <input type="date" name="babyBirthday" id="test_default"/>
+                                    <input type="date" name="babyBirthday" id="test_default" data-role="none"/>
                                 </label>
                             </div>
 
                             <label>宝宝性别：
-                                <select name="sex" id="sex">
+                                <select name="sex" id="sex" data-role="none">
                                 </select>
                             </label>
                             <label>宝宝爱好：
-                                <input type="text" name="hobby"></label>
-                            <button id="btnLikeSubmit" class="like-up-button" type="submit">提交</button>
+                                <input type="text" name="hobby" data-role="none"></label>
+                            <button id="btnLikeSubmit" class="like-up-button" type="submit" data-role="none">提交</button>
                         </div>
                         <%--<!-- 猜你喜欢END -->--%>
                     </div>

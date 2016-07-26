@@ -128,7 +128,7 @@ $(function () {
                 $(goodsList).each(function (index, goods) {                                      //对新品进行遍历
                     var newGoods = backGoods.clone();                                             //克隆信息
                     newGoods.find("img").attr("src", MB.getRootPath() + "/upload/" + goods.picture)
-                        .click(function () {                                                     //点击图片跳转到商品详情
+                        .on("tap",function () {                                                     //点击图片跳转到商品详情
                             window.location = "goods/goodsDetail?goodsId=" + goods.id;
                         });
                     newGoods.find("div>p:eq(0)>span:eq(0)").text("￥" + goods.price);
@@ -164,7 +164,7 @@ $(function () {
 
     //6，猜你喜欢表单的提交
     function initFormAction() {
-        $("#btnLikeSubmit").click(function () {
+        $("#btnLikeSubmit").on("tap",function () {
             var likeForm = $("#likeForm");
             var babyName = likeForm.find("input[name='babyName']").val();              //宝宝姓名的获取
             var babyBirthday = likeForm.find("input[name='babyBirthday']").val();     //宝宝生日的获取
@@ -237,7 +237,7 @@ $(function () {
         //进去就加载新品
         $("#newGoodsList").show();                                                          //新品页初始化为显示
         $("#likeGoodsList").hide();                                                         //猜你喜欢页初始化为隐藏
-        newGoods.find("div.scroll-menu ul li:eq(0)").click(function () {              //找到div对应的scroll-menu下的ul得第一个li
+        newGoods.find("div.scroll-menu ul li:eq(0)").on("tap",function () {              //找到div对应的scroll-menu下的ul得第一个li
             if (!isNew) {
                 console.log("新品的点击正在执行！");
                 $(this).addClass("focus");                                                   //点击新品时给新品加红色下划线
@@ -249,7 +249,7 @@ $(function () {
                 //initNewGoodsBox();
             }
         });
-        newGoods.find("div.scroll-menu ul li:eq(1)").click(function () {
+        newGoods.find("div.scroll-menu ul li:eq(1)").on("tap",function () {
             if (isNew) {
                 $(this).addClass("focus");                                                  //点击猜你喜欢时给新品加红色下划线
                 $(this).prev("li").removeClass("focus");                                   //新品无下划线
