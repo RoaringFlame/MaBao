@@ -76,7 +76,7 @@
 		</a>
 		<!--我要寄售按钮END-->
 		<p class="consignment-bottom" >
-			<a href="developing">或者,您也可以自助发布宝物</a>
+			<a href="sell/releaseSelector">或者,您也可以自助发布宝物</a>
 		</p>
 	</div>
 	<div class="blank"></div>

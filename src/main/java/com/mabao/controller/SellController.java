@@ -9,6 +9,7 @@ import com.mabao.pojo.Goods;
 import com.mabao.service.*;
 import com.mabao.util.BaseAction;
 import com.mabao.util.Selector;
+import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
