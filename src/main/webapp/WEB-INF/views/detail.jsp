@@ -40,7 +40,7 @@
                 <%--</p>--%>
             <%--</a>--%>
         <%--</div>--%>
-        <%--<div id="goodsId" style="display:none;">${goodsDetail.id}</div>--%>
+        <div id="goodsId" style="display:none;">${goodsDetail.id}</div>
         <%--<!--操作按钮 END-->--%>
     <%--</header>--%>
     <!--标题 END-->
