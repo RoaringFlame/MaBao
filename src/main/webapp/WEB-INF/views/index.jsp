@@ -15,10 +15,16 @@
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
+    <%--宝宝生日相关--%>
+    <link href="script/lib/date/dev/css/mobiscroll.core-2.6.2.css" rel="stylesheet"/>
+    <link href="script/lib/date/dev/css/mobiscroll.android-2.6.2.css" rel="stylesheet"/>
+    <link href="script/lib/date/dev/css/mobiscroll.android-ics-2.6.2.css" rel="stylesheet"/>
+    <link href="script/lib/date/dev/css/mobiscroll.ios-2.6.2.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
-    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
 
     <link rel="stylesheet" href="script/lib/iscroll/iscroll.css">
     <script src="script/lib/jquery.1.10.2.js"></script>
@@ -27,13 +33,7 @@
     <script src="script/lib/iscroll/iscroll.js"></script>
     <script src="script/common.js"></script>
     <script src="script/index.js"></script>
-
     <%--宝宝生日相关--%>
-    <link href="script/lib/date/dev/css/mobiscroll.core-2.6.2.css" rel="stylesheet"/>
-    <link href="script/lib/date/dev/css/mobiscroll.android-2.6.2.css" rel="stylesheet"/>
-    <link href="script/lib/date/dev/css/mobiscroll.android-ics-2.6.2.css" rel="stylesheet"/>
-    <link href="script/lib/date/dev/css/mobiscroll.ios-2.6.2.css" rel="stylesheet"/>
-
     <script src="script/lib/date/dev/js/mobiscroll.core-2.6.2.js"></script>
     <script src="script/lib/date/dev/js/mobiscroll.datetime-2.6.2.js"></script>
     <script src="script/lib/date/dev/js/mobiscroll.list-2.6.2.js"></script>
@@ -41,8 +41,8 @@
     <script src="script/lib/date/dev/js/mobiscroll.android-2.6.2.js"></script>
     <script src="script/lib/date/dev/js/mobiscroll.android-ics-2.6.2.js"></script>
     <script src="script/lib/date/dev/js/mobiscroll.ios-2.6.2.js"></script>
-
     <script src="script/index_babybirthday.js"></script>
+
 </head>
 
 <body>
