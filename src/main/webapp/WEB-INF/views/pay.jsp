@@ -29,20 +29,20 @@
 
 <body>
 <div class="content-index">
-    <!--标题-->
-    <header>
-        确认订单
-        <!--操作按钮-->
-        <div class="header-box">
-            <a href="user/shopping">
-                <p class="header-left">
-                    <i class="icon icon-return"></i>
-                    返回
-                </p>
-            </a>
-        </div>
-        <!--操作按钮 END-->
-    </header>
+    <%--<!--标题-->--%>
+    <%--<header>--%>
+        <%--确认订单--%>
+        <%--<!--操作按钮-->--%>
+        <%--<div class="header-box">--%>
+            <%--<a href="user/shopping">--%>
+                <%--<p class="header-left">--%>
+                    <%--<i class="icon icon-return"></i>--%>
+                    <%--返回--%>
+                <%--</p>--%>
+            <%--</a>--%>
+        <%--</div>--%>
+        <%--<!--操作按钮 END-->--%>
+    <%--</header>--%>
     <!--标题 END-->
     <!-- 收货地址 -->
 
