@@ -554,7 +554,7 @@
 
 .notes textarea {
     resize: none;
-    width: 30rem;
+    width: 29rem;
 }
 
 @media (max-width: 320px) {
