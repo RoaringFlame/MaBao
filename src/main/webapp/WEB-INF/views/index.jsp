@@ -47,7 +47,7 @@
 
 <body>
 <div id="err"></div>
-<div class="content-index">
+<%--<div class="content-index">--%>
     <!--标题-->
     <%--<header>--%>
         <%--首页--%>
@@ -175,7 +175,7 @@
         </div>
     </div>
     <div class="tip" id="textShow1"></div>
-</div>
+<%--</div>--%>
 
 
 <!--底部导航-->
