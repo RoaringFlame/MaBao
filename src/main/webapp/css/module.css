@@ -5,7 +5,7 @@
 /*搜索框*/
 .search {
     position: fixed;
-    top: 4rem;
+    /*top: 4rem；马凯琴修改2016.07.26*/
     padding: .5rem 0;
     z-index: 9998;
     background: #fff;
@@ -85,7 +85,8 @@
 
 /*轮播图*/
 .carousel {
-    margin-top: 4rem;
+    /*margin-top: 4rem;马凯琴修改2016.07.26*/
+    margin-top: 1rem;
 }
 
 .carousel-inner .item img {
