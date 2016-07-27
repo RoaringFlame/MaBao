@@ -71,7 +71,7 @@
 		</div>
 		<!-- 后续内容 -->
 		<!--我要寄售按钮-->
-		<a class="consignment-button" href="user/consale">
+		<a class="consignment-button" href="consale">
 			<button>我要寄售</button>
 		</a>
 		<!--我要寄售按钮END-->

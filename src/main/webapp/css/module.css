@@ -34,20 +34,30 @@
 
 /*搜索框*/
 .search-input {
-    float: left;
-    width: 28rem;
+    position: absolute;
+    left: 4.5rem;
+    width: 88%;
 }
-
+@media (max-width: 370px) {
+    .search-input {
+        width: 25rem;/*适应小屏手机样式的修改*/
+    }
+}
 @media (max-width: 320px) {
     .search-input {
-        width: 27.5rem;/*适应小屏手机样式的修改*/
+        width: 22rem;/*适应小屏手机样式的修改*/
+    }
+}
+@media (min-width: 370px) {
+    .search-input input {
+        width: 26rem;/*适应小屏手机样式的修改*/
     }
 }
 
 .search-input p {
     position: absolute;
-    left: 5rem;
-    top: 0;
+    left: .5rem;
+    top: -.6rem;
 }
 
 .icon-search {
@@ -61,7 +71,7 @@
     border: .1rem solid #ddd;
     height: 2.8rem;
     padding-left: 3.5rem;
-    width: 100%;
+    width: 95%;
 }
 
 /*侧导航栏*/

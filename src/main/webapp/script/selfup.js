@@ -1,7 +1,3 @@
-/**
- * Created by lies on 2016/7/26.
- */
-"use strict";
 $(function () {
 
         //弹框事件

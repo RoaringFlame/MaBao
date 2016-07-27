@@ -45,10 +45,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/developing").setViewName("developing");
         registry.addViewController("/consignment").setViewName("consignment");
         registry.addViewController("/user/changepwd").setViewName("changepwd");
-        registry.addViewController("/user/shopping").setViewName("shopping");
+        registry.addViewController("/shopping").setViewName("shopping");
         registry.addViewController("/user/personal").setViewName("personal");
         registry.addViewController("/user/new_address").setViewName("new_address");
-        registry.addViewController("/user/consale").setViewName("consale");
+        registry.addViewController("/consale").setViewName("consale");
         registry.addViewController("/user/selfup").setViewName("selfup");
         registry.addViewController("/user/purchase_order").setViewName("purchase_order");
         registry.addViewController("/user/unpaid_order").setViewName("unpaid_order");
@@ -60,5 +60,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/user/unpublished_order").setViewName("unpublished_order");
         registry.addViewController("/user/bind_phone").setViewName("bind_phone");
         registry.addViewController("/user/consignment_success").setViewName("consignment_success");
+        registry.addViewController("/demo").setViewName("demo");
     }
 }

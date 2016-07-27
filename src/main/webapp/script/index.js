@@ -78,7 +78,6 @@ $(function () {
             }
         });
     }
-
     //3,轮播初始化
     function initCarousel(smallBanner) {                        //获取轮播图片集
         var myCarousel = $("#myCarousel");                     //找到jsp页面对应id为myCarousel的项

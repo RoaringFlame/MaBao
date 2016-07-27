@@ -39,7 +39,8 @@ public class CartRESTController {
             List<Cart> cartGoods = this.cartService.findAllGoodsByUser(user.getId());
             return CartGoodsVO.generateBy(cartGoods);
         }else {
-            throw new NullPointerException();
+            //throw new NullPointerException();
+            return null;
         }
     }
 

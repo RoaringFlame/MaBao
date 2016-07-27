@@ -141,7 +141,7 @@ $(function () {
         getGoods();
         //付款按钮点击事件
         payBtn.click(function () {
-            //pay(cartIds);
+            pay(cartIds);
         });
 
     }

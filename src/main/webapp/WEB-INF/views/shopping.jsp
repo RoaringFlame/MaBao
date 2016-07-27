@@ -29,23 +29,23 @@
 <body>
 <div class="content-index">
     <!--标题-->
-    <%--<header>--%>
-        <%--购物车--%>
-        <%--<!--操作按钮-->--%>
-        <%--<div class="header-box">--%>
+    <header>
+        购物车
+        <!--操作按钮-->
+        <div class="header-box">
             <%--<a href="">--%>
                 <%--<p class="header-left">--%>
                     <%--<i class="icon icon-return"></i>--%>
                     <%--返回--%>
                 <%--</p>--%>
             <%--</a>--%>
-            <%--<!--点击编辑出现删除商品按钮-->--%>
-            <%--<p class="header-right">--%>
-                <%--编辑--%>
-            <%--</p>--%>
-        <%--</div>--%>
-        <%--<!--操作按钮 END-->--%>
-    <%--</header>--%>
+            <!--点击编辑出现删除商品按钮-->
+            <p class="header-right">
+                编辑
+            </p>
+        </div>
+        <!--操作按钮 END-->
+    </header>
     <!--标题 END-->
     <div id="goodsContainer" style="display: none;">
         <!--商品信息-->

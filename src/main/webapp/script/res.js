@@ -38,8 +38,8 @@ $(function () {
                 function (data) {
                     //根据服务器返回的值判断
                     if (data.status == "success") {
-                        //跳转到登录页面
-                        window.location.href = MB.getRootPath()+"/login";
+                        //显示注册成功信息
+                        $('.warning').text(data.message);
                     }
                     else if (data.status == "failure") {
                         $('.warning').text(data.message);

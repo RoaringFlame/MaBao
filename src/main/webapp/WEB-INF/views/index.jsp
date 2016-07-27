@@ -69,6 +69,7 @@
     <!--标题 END-->
 
     <!--搜索框-->
+    <div class="hidden" id="userId">${sessionScope["SPRING_SECURITY_CONTEXT"].authentication.principal.userId}</div>
     <div id="searchBox" class="search">
         <!--商品类型查询-->
         <div class="column">
