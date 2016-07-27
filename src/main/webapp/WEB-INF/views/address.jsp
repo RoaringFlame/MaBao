@@ -27,62 +27,63 @@
 <div class="content-index">
     <!--标题-->
     <%--<header>--%>
-        <%--选择收货地址--%>
-        <%--<!--操作按钮-->--%>
-        <%--<div class="header-box">--%>
-            <%--<a href="user">--%>
-                <%--<p class="header-left">--%>
-                    <%--<i class="icon icon-return"></i>--%>
-                    <%--返回--%>
-                <%--</p>--%>
-            <%--</a>--%>
-        <%--</div>--%>
-        <%--<!--操作按钮 END-->--%>
+    <%--选择收货地址--%>
+    <%--<!--操作按钮-->--%>
+    <%--<div class="header-box">--%>
+    <%--<a href="user">--%>
+    <%--<p class="header-left">--%>
+    <%--<i class="icon icon-return"></i>--%>
+    <%--返回--%>
+    <%--</p>--%>
+    <%--</a>--%>
+    <%--</div>--%>
+    <%--<!--操作按钮 END-->--%>
     <%--</header>--%>
     <!--标题 END-->
 
     <!-- 收货地址 -->
 
     <c:forEach var="address" items="${addressList}">
-        <div class="box add">
-            <div class="box-left">
-                <img src="img/pay-1.png" alt="">
-            </div>
+    <div class="box add">
+        <div class="box-left">
+            <img src="img/pay-1.png" alt="">
+        </div>
 
-            <div class="box-right">
-                <div class="box-right-top">
-                    <dl>
-                        <dd>${address.recipients}</dd>
-                        <dt>电话:${address.tel}</dt>
-                    </dl>
-                </div>
-                <div class="box-right-bottom">
-                    <p>${address.area.mergerName}</p>
-                    <p>${address.location}</p>
-                </div>
+        <div class="box-right">
+            <div class="box-right-top">
+                <dl>
+                    <dd>${address.recipients}</dd>
+                    <dt>电话:${address.tel}</dt>
+                </dl>
             </div>
-            <a href="user/address/getAddress?addressId=${address.id}">
-                <button class="add-jump-arrow"></button>
-            </a>
-            <div class="clear"></div>
-            <div class="addressId" style="display: none">${address.id}</div>
-            <p class="default-add">
-                <input name="defaultAddress" type="radio" ${address.state ? "checked = 'checked '": '' }><span>设为默认地址</span>
-                <i class="icon-trash"></i>
-                <a href="user/address/deleteAddress?addressId=${address.id}">
+            <div class="box-right-bottom">
+                <p>${address.area.mergerName}</p>
+                <p>${address.location}</p>
+            </div>
+        </div>
+        <a href="user/address/getAddress?addressId=${address.id}">
+            <button class="add-jump-arrow"></button>
+        </a>
+        <div class="clear"></div>
+        <div class="addressId" style="display: none">${address.id}</div>
+        <p class="default-add">
+            <input name="defaultAddress" type="radio" ${address.state ? "checked = 'checked '": '' }><span>设为默认地址</span>
+            <i class="icon-trash"></i>
+            <a href="user/address/deleteAddress?addressId=${address.id}">
                 <button>删除</button>
-                </a>
-            </p>
-        </div>
-        </div>
-    </c:forEach>
-    <!-- 收货地址 END-->
-    <!-- 新增收货地址按钮 -->
+            </a>
+        </p>
+    </div>
+</div>
+</c:forEach>
+<!-- 收货地址 END-->
+<!-- 新增收货地址按钮 -->
+<div class="address-bottom">
     <a href="user/new_address" class="button-bottom pay-fixed">
         <input class="submit " type="submit" value="新增收货地址">
     </a>
-    <!-- 新增收货地址按钮END -->
-
+</div>
+<!-- 新增收货地址按钮END -->
 
 
 </div>
