@@ -78,7 +78,7 @@
     </c:forEach>
     <!-- 收货地址 END-->
     <!-- 新增收货地址按钮 -->
-    <a href="user/new_address" class="button-bottom">
+    <a href="user/new_address" class="button-bottom pay-fixed">
         <input class="submit " type="submit" value="新增收货地址">
     </a>
     <!-- 新增收货地址按钮END -->

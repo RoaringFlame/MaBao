@@ -73,8 +73,8 @@
 <body>
 <div class="content-index">
     <!--标题-->
-    <header>
-        转让宝物
+    <%--<header>--%>
+        <%--转让宝物--%>
         <!--操作按钮-->
         <%--<div class="header-box">--%>
             <%--<a href="consignment">--%>
@@ -85,7 +85,7 @@
             <%--</a>--%>
         <%--</div>--%>
         <!--操作按钮 END-->
-    </header>
+    <%--</header>--%>
     <!--标题 END-->
 
     <!--转让宝物信息填写-->
