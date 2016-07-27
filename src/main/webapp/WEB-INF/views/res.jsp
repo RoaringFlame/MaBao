@@ -62,6 +62,7 @@
         </label>
 
         <!--注册成功跳转到登陆页面-->
+        <div class="btn-top"></div>
         <!-- 注册按钮 -->
         <a class="button-bottom">
             <button type="button" class="submit" id="up-to-login">注册</button>

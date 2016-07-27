@@ -1171,9 +1171,14 @@
 @media (max-width: 320px) {
     .register-box label {
         width: 22rem;
+        font-size: 1.2rem;
+    }
+    .register-box {
+        padding: 2rem 1rem 1rem;
     }
 }
 
+.btn-top{height: 1.5rem;}
 .register-box input {
     height: 2.5rem;
     width: 70%;
