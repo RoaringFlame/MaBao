@@ -51,13 +51,13 @@
         <label for="userName">账户名：
             <input type="text" name="username" id="userName">
         </label>
-        <label for="userName">密码：
+        <label for="passWord">密码：
             <input type="password" name="password" id="passWord">
         </label>
-        <label for="userName">确认密码：
+        <label for="confirmPwd">确认密码：
             <input type="password" name="confirm-pwd" id="confirmPwd">
         </label>
-        <label for="userName">邮箱：
+        <label for="email">邮箱：
             <input type="email" name="email" id="email">
         </label>
 
