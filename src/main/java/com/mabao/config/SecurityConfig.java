@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.csrf().disable()
-        .formLogin().loginPage("/login").defaultSuccessUrl("/");
+        .formLogin().loginPage("/login").defaultSuccessUrl("/user");
     http.logout().logoutSuccessUrl("/");
     http.authorizeRequests().regexMatchers("/user/.*").authenticated()
             .regexMatchers("/cart/showCart").authenticated()

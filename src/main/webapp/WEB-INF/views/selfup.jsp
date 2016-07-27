@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
     <script src="script/lib/jquery.1.10.2.js"></script>
+    <script src="script/selfup.js"></script>
     <script src="script/lib/bootstrap/bootstrap.min.js"></script>
     <script src="script/lib/bootstrap/bootstrap-switch.js"></script>
 
@@ -72,9 +73,9 @@
 <body>
 <div class="content-index">
     <!--标题-->
-    <%--<header>--%>
-        <%--转让宝物--%>
-        <%--<!--操作按钮-->--%>
+    <header>
+        转让宝物
+        <!--操作按钮-->
         <%--<div class="header-box">--%>
             <%--<a href="consignment">--%>
                 <%--<p class="header-left">--%>
@@ -83,8 +84,8 @@
                 <%--</p>--%>
             <%--</a>--%>
         <%--</div>--%>
-        <%--<!--操作按钮 END-->--%>
-    <%--</header>--%>
+        <!--操作按钮 END-->
+    </header>
     <!--标题 END-->
 
     <!--转让宝物信息填写-->
@@ -226,10 +227,12 @@
             <!--买家寄语END-->
 
         </form>
+        <div class="tip" id="textShow" style="display: none"></div>     <%--弹窗--%>
         <!--转让宝物信息表单END-->
         <!--提交按钮-->
-        <a href="#" class="transfer-form-button">
-            <button type="submit" form="console-form">一键卖出</button>
+        <a  class="transfer-form-button">
+            <%--<button type="button" form="console-form">一键卖出</button>--%>
+                <button type="button" id="transferButton" <%--form="console-form"--%>>一键卖出</button>
         </a>
         <!--提交按钮END-->
 
@@ -237,6 +240,7 @@
 </div>
 <!--转让宝物信息填写END-->
 </body>
+
 </html>
 
 <!-- //按钮 -->

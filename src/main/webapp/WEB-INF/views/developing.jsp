@@ -36,9 +36,9 @@
     <div class="publish-success-box">
         <p>此页面正在开发中...</p>
         <p>敬请期待哟～</p>
-        <a href="" class="share-bottom">
-            <button>去逛逛</button>
-        </a>
+        <%--<a href="" class="share-bottom">--%>
+        <%--<button>去逛逛</button>--%>
+        <%--</a>--%>
         <!--发布成功提示END-->
     </div>
 </div>
