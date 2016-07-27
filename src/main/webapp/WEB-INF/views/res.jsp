@@ -22,9 +22,9 @@
 
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
-    <script src="script/lib/jquery.1.10.2.js"></script>
-    <script src="script/common.js"></script>
-    <script src="script/res.js"></script>
+    <script type="text/javascript" src="script/lib/jquery.1.10.2.js"></script>
+    <script type="text/javascript" src="script/common.js"></script>
+    <script type="text/javascript" src="script/res.js"></script>
 </head>
 
 <body>
@@ -51,13 +51,13 @@
         <label for="userName">账户名：
             <input type="text" name="username" id="userName">
         </label>
-        <label for="password">密码：
+        <label for="userName">密码：
             <input type="password" name="password" id="passWord">
         </label>
-        <label for="confirmPwd">确认密码：
+        <label for="userName">确认密码：
             <input type="password" name="confirm-pwd" id="confirmPwd">
         </label>
-        <label for="email">邮箱：
+        <label for="userName">邮箱：
             <input type="email" name="email" id="email">
         </label>
 

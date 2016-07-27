@@ -11,23 +11,24 @@ $(function () {
         }
 
         //数据校验
-        function checkInput() {
-            var oldPrice = $("#oldPrice").val();
-            var newPrice = $("#newPrice").val();
-            var upTime = $("#test_default").val();
-            var z= /^[0-9]*$/;
-            if(z.test(oldPrice)&&z.test(newPrice)){
-                if(upTime!==null&&(upTime!=="")) {
-                    $(".transfer-form").submit();
-                }else{
-                    showMsg("时间栏不能为空");
-                }
+    function checkInput() {
+        var oldPrice = $("#oldPrice").val();
+        var newPrice = $("#newPrice").val();
+        var upTime = $("#test_default").val();
+        var z= /^[0-9]*$/;
+        if(upTime==""&&oldPrice==""&&newPrice==""){
+            showMsg("请将所有转让信息填写完整！");
+        }else if(z.test(oldPrice)&&z.test(newPrice)&&oldPrice!==""&&newPrice!==""){
+            if(upTime!=="") {
+                $(".transfer-form").submit();
             }else{
-                showMsg("价格栏必须是数字");
-            };
+                showMsg("时间栏不能为空");
+            }
+        }else{
+            showMsg("价格栏必须是数字且不能为空");
         }
+    }
 
-        //
         function init() {
             $("#transferButton").click(function () {
                 checkInput();
