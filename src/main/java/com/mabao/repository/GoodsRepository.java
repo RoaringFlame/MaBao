@@ -2,6 +2,7 @@ package com.mabao.repository;
 
 import com.mabao.pojo.Goods;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +16,7 @@ public interface GoodsRepository extends BaseRepository<Goods> {
      * @param pageable          分页参数
      * @return                  分页goods
      */
-    Page<Goods> findByState(Boolean state, Pageable pageable);
+    Page<Goods> findByStateOrderByUpTimeDesc(Boolean state, Pageable pageable);
 
     /**
      * 依据标题模糊查询
@@ -24,6 +25,7 @@ public interface GoodsRepository extends BaseRepository<Goods> {
      * @return                  分页goods
      */
     Page<Goods> findByTitleLikeAndState(String title, Boolean state, Pageable pageable);
+
     /**
      * 商品类型查询
      */
@@ -44,4 +46,5 @@ public interface GoodsRepository extends BaseRepository<Goods> {
      * @return                      商品page
      */
     Page<Goods> findByTitleLikeAndTypeIdAndState( String title,Long goodsTypeId,Boolean state, Pageable pageable);
+
 }
