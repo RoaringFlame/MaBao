@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%
     String path = request.getContextPath();
@@ -28,6 +29,7 @@
 </head>
 
 <body>
+<c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">
 <div class="content-index">
     <!--标题-->
     <%--<header>--%>
@@ -99,6 +101,19 @@
     <!-- 编辑收货地址END -->
     <div class="tip" id="textShow" style="display: none" ></div>
 </div>
+</c:if>
+<c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId eq null}">
+<div class="content-index">
+    <div class="share-bottom">
+        <img src="img/AppIcon-120.png" alt="">
+        <p>您还未登录！</p>
+        <%--<a href="#" class="share-bottom" >--%>
+            <%--<button>去登录</button>--%>
+        <%--</a>--%>
+        <!--发布成功提示END-->
+    </div>
+</div>
+</c:if>
 </body>
 </html>
 

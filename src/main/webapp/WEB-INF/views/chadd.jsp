@@ -40,7 +40,45 @@
     <%--</header>--%>
     <!--标题 END-->
     <!-- 编辑收货地址 -->
-    <form id="frmAddress" >
+        <script>
+            window.onerror = function (err) {
+                log('window.onerror: ' + err)
+            }
+
+            function setupWebViewJavascriptBridge(callback) {
+                if (window.WebViewJavascriptBridge) {
+                    return callback(WebViewJavascriptBridge);
+                }
+                if (window.WVJBCallbacks) {
+                    return window.WVJBCallbacks.push(callback);
+                }
+                window.WVJBCallbacks = [callback];
+                var WVJBIframe = document.createElement('iframe');
+                WVJBIframe.style.display = 'none';
+                WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+                document.documentElement.appendChild(WVJBIframe);
+                setTimeout(function () {
+                    document.documentElement.removeChild(WVJBIframe)
+                }, 0)
+            }
+
+            setupWebViewJavascriptBridge(function (bridge) {
+
+                bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+                    var responseData = {'Javascript Says': 'Right back atcha!'}
+                    responseCallback(responseData)
+                })
+
+                var callbackButton = document.getElementById('buttons');
+                callbackButton.onclick = function (e) {
+                    e.preventDefault()
+                    bridge.callHandler('testObjcCallback', {'state': 'success'}, function (response) {
+                    })
+                }
+            })
+        </script>
+
+        <form id="frmAddress" >
         <div class="edit-add-box">
             <input name="recipients" type="text" placeholder="收件人：" value="${addressList.recipients}">
             <input name="tel" type="text" placeholder="手机号：" value="${addressList.tel}">
@@ -71,7 +109,7 @@
         <div class="edit-add-input">
             <!-- 保存按钮 -->
             <label>
-                <input class="default" type="button" value="保存并使用">
+                <input class="default" type="button" value="保存并使用" id="buttons">
             </label>
             <!-- 保存按钮END -->
         </div>

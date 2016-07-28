@@ -218,7 +218,7 @@ $(function () {
                             });
                         likeGoods.find("div>p:eq(0)>span:eq(0)").text("￥" + goods.price);
                         likeGoods.find("div>p:eq(0)>span:eq(1)").text(goods.newDegree);
-                        likeGoods.find("div>p:eq(1)").text(goods.brand);
+                        likeGoods.find("div>p:eq(1)").text(goods.brandName);
                         likeGoods.find("div>p:eq(2)").text(goods.title);
                         likeGoodsBox.append(likeGoods);
                     });

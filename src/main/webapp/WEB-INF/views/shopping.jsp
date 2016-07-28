@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -27,6 +28,44 @@
 </head>
 
 <body>
+<script>
+    window.onerror = function (err) {
+        log('window.onerror: ' + err)
+    }
+
+    function setupWebViewJavascriptBridge(callback) {
+        if (window.WebViewJavascriptBridge) {
+            return callback(WebViewJavascriptBridge);
+        }
+        if (window.WVJBCallbacks) {
+            return window.WVJBCallbacks.push(callback);
+        }
+        window.WVJBCallbacks = [callback];
+        var WVJBIframe = document.createElement('iframe');
+        WVJBIframe.style.display = 'none';
+        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+        document.documentElement.appendChild(WVJBIframe);
+        setTimeout(function () {
+            document.documentElement.removeChild(WVJBIframe)
+        }, 0)
+    }
+
+    setupWebViewJavascriptBridge(function (bridge) {
+
+        bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+            var responseData = {'Javascript Says': 'Right back atcha!'}
+            responseCallback(responseData)
+        })
+
+        var callbackButton = document.getElementById('buttons');
+        callbackButton.onclick = function (e) {
+            e.preventDefault()
+            bridge.callHandler('shopping', {'url': 'cart/orderConfirm','state':"success"}, function (response) {
+            })
+        }
+    })
+</script>
+<c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">
 <div class="content-index">
     <!--标题-->
     <header>
@@ -117,5 +156,18 @@
     <%--</div>--%>
     <!--底部导航 END-->
 </div>
+</c:if>
+<c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId eq null}">
+<div class="content-index">
+    <div class="share-bottom">
+        <img src="img/AppIcon-120.png" alt="">
+        <p>您还未登录！</p>
+        <%--<a href="#" class="share-bottom" >--%>
+            <%--<button>去登录</button>--%>
+        <%--</a>--%>
+        <!--发布成功提示END-->
+    </div>
+</div>
+</c:if>
 </body>
 </html>

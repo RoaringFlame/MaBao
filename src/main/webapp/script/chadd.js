@@ -4,8 +4,6 @@ $(function () {
     var cityId;                    //城市id
     var areaId;                    //地区id
     var defaultProvinceId;
-    var defaultCityId;
-    var defaultCountryId;
     var dropDownList = $(".edit-add-box").find("label");
     var provinces = dropDownList.find("select:eq(0)");                           //省份下拉框
     var cities = dropDownList.find("select:eq(1)");                              //市下拉框

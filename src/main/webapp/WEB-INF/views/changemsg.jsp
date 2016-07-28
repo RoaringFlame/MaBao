@@ -23,6 +23,43 @@
 
 </head>
 <body>
+<script>
+    window.onerror = function (err) {
+        log('window.onerror: ' + err)
+    }
+
+    function setupWebViewJavascriptBridge(callback) {
+        if (window.WebViewJavascriptBridge) {
+            return callback(WebViewJavascriptBridge);
+        }
+        if (window.WVJBCallbacks) {
+            return window.WVJBCallbacks.push(callback);
+        }
+        window.WVJBCallbacks = [callback];
+        var WVJBIframe = document.createElement('iframe');
+        WVJBIframe.style.display = 'none';
+        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+        document.documentElement.appendChild(WVJBIframe);
+        setTimeout(function () {
+            document.documentElement.removeChild(WVJBIframe)
+        }, 0)
+    }
+
+    setupWebViewJavascriptBridge(function (bridge) {
+
+        bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+            var responseData = {'Javascript Says': 'Right back atcha!'}
+            responseCallback(responseData)
+        })
+
+        var callbackButton = document.getElementById('buttons');
+        callbackButton.onclick = function (e) {
+            e.preventDefault()
+            bridge.callHandler('changebaby', {'state': 'success'}, function (response) {
+            })
+        }
+    })
+</script>
 <div class="content-index">
     <!--标题-->
     <%--<header>--%>
@@ -56,7 +93,7 @@
             </select>
         </label>
         <div class="person-button">
-            <button type="button">修改</button>
+            <button type="button" id="buttons">修改</button>
         </div>
 
     </form>

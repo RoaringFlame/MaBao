@@ -1,7 +1,6 @@
 package com.mabao.controller;
 
 import com.mabao.controller.vo.OrderVO;
-import com.mabao.enums.OrderStatus;
 import com.mabao.pojo.Order;
 import com.mabao.pojo.OrderDetail;
 import com.mabao.service.CartService;
@@ -41,8 +40,10 @@ public class OrdersController {
         Order order = this.orderService.addOrder(cartIds,addressId,message);
         //删除购物车
         this.cartService.deleteCartGoodsList(cartIds);
-        //支付
-        return "personal";
+        //返回生成的订单信息
+        model.addAttribute("order",order);
+        //支付页面
+        return "pay_order";
     }
 
     /**

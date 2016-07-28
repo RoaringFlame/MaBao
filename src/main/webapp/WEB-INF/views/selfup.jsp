@@ -71,6 +71,7 @@
 </head>
 
 <body>
+<c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">
 <div class="content-index">
     <!--标题-->
     <%--<header>--%>
@@ -239,6 +240,19 @@
     </div>
 </div>
 <!--转让宝物信息填写END-->
+</c:if>
+<c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId eq null}">
+<div class="content-index">
+    <div class="share-bottom">
+        <img src="img/AppIcon-120.png" alt="">
+        <p>您还未登录！</p>
+        <%--<a href="#" class="share-bottom" >--%>
+            <%--<button>去登录</button>--%>
+        <%--</a>--%>
+        <!--发布成功提示END-->
+    </div>
+</div>
+</c:if>
 </body>
 
 </html>

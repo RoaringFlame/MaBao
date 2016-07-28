@@ -53,11 +53,17 @@
 		<!--我是买家订单-->
 		<div>
 			<p class="order-bottom">我是<span class="red">买家</span></p>
+			<%--<ul>--%>
+				<%--<li><a class="link" href="developing">全部</a></li>--%>
+				<%--<li><a href="developing">待付款</a></li>--%>
+				<%--<li><a href="developing">待发货</a></li>--%>
+				<%--<li><a href="developing">待确认</a></li>--%>
+			<%--</ul>--%>
 			<ul>
-				<li><a class="link" href="developing">全部</a></li>
-				<li><a href="developing">待付款</a></li>
-				<li><a href="developing">待发货</a></li>
-				<li><a href="developing">待确认</a></li>
+				<li><a class="link">全部</a></li>
+				<li><a>待付款</a></li>
+				<li><a>待发货</a></li>
+				<li><a>待确认</a></li>
 			</ul>
 		</div>
 		<!--我是买家订单END-->
@@ -65,10 +71,10 @@
 		<div>
 			<p class="order-bottom">我是<span class="blue">卖家</span></p>
 			<ul>
-				<li><a class="link" href="developing">全部</a></li>
-				<li><a href="developing">已出售</a></li>
-				<li><a href="developing">已发布</a></li>
-				<li><a href="developing">待发布</a></li>
+				<li><a class="link">全部</a></li>
+				<li><a>已出售</a></li>
+				<li><a>已发布</a></li>
+				<li><a>待发布</a></li>
 			</ul>
 		</div>
 		<!--我是买家订单END-->
