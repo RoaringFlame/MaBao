@@ -1840,3 +1840,63 @@
     padding: 2rem 0;
     display: block
 }
+
+/*支付订单*/
+
+.pay-top {
+    position: relative;
+    margin: 0 1rem;
+    padding: 0 .5rem;
+    border-top: .1rem solid #eee;
+    max-width: 32rem;
+    height: 5rem;
+    text-align: left;
+
+}
+
+.pay-top img {
+    float: left;
+    margin: .5rem;
+    width: 4rem;
+    height: 4rem;
+}
+
+.pay-top span {
+    font-size: 1.4rem;
+    line-height: 5rem;
+}
+
+.pay-top-last {
+    border-bottom: .1rem solid #eee;
+}
+
+.pay-top input {
+    float: right;
+    margin: .5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: deepskyblue;
+    display: none;
+
+}
+
+.pay-top label {
+    float: right;
+    margin: 1.4rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5rem;
+    border: .1rem solid #eee;
+
+}
+
+.pay-top label:hover,.checked-active{
+    background: deepskyblue;
+}
+
+.pay-box {
+    margin: 0 auto;
+    padding: 4rem 0 1rem;
+    max-width: 32rem;
+    text-align: center;
+
