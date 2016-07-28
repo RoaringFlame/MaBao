@@ -1,35 +1,50 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<head>
+    <title>Title</title>
+</head>
+<body>
 <script>
-    window.onerror = function(err) {
+    window.onerror = function (err) {
         log('window.onerror: ' + err)
     }
 
     function setupWebViewJavascriptBridge(callback) {
-        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
-        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+        if (window.WebViewJavascriptBridge) {
+            return callback(WebViewJavascriptBridge);
+        }
+        if (window.WVJBCallbacks) {
+            return window.WVJBCallbacks.push(callback);
+        }
         window.WVJBCallbacks = [callback];
         var WVJBIframe = document.createElement('iframe');
         WVJBIframe.style.display = 'none';
         WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
         document.documentElement.appendChild(WVJBIframe);
-        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+        setTimeout(function () {
+            document.documentElement.removeChild(WVJBIframe)
+        }, 0)
     }
 
-    setupWebViewJavascriptBridge(function(bridge) {
+    setupWebViewJavascriptBridge(function (bridge) {
         var uniqueId = 1
+
         function log(message, data) {
             var log = document.getElementById('log')
             var el = document.createElement('div')
             el.className = 'logLine'
             el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
-            if (log.children.length) { log.insertBefore(el, log.children[0]) }
-            else { log.appendChild(el) }
+            if (log.children.length) {
+                log.insertBefore(el, log.children[0])
+            }
+            else {
+                log.appendChild(el)
+            }
         }
 
-        bridge.registerHandler('testJavascriptHandler', function(data, responseCallback) {
+        bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
             log('ObjC called testJavascriptHandler with', data)
-            var responseData = { 'Javascript Says':'Right back atcha!' }
+            var responseData = {'Javascript Says': 'Right back atcha!'}
             log('JS responding with', responseData)
             responseCallback(responseData)
         })
@@ -38,21 +53,123 @@
 
         var callbackButton = document.getElementById('buttons').appendChild(document.createElement('button'))
         callbackButton.innerHTML = 'Fire testObjcCallback'
-        callbackButton.onclick = function(e) {
+        callbackButton.onclick = function (e) {
             e.preventDefault()
             log('JS calling handler "testObjcCallback"')
-            bridge.callHandler('testObjcCallback', {'foo': 'bar'}, function(response) {
+            bridge.callHandler('testObjcCallback', {'foo': 'bar'}, function (response) {
                 log('JS got response', response)
             })
         }
     })
 </script>
-
-<head>
-    <title>Title</title>
-    <p>这是一个demo</p>
-</head>
-<body>
+<input id='buttons' value="testObjcCallback" type="button"/>
+<div id='log'></div>
 
 </body>
 </html>
+<%--<html>--%>
+<%--<head>--%>
+<%--<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">--%>
+<%--<style type='text/css'>--%>
+<%--html {--%>
+<%--font-family: Helvetica;--%>
+<%--color: #222;--%>
+<%--}--%>
+
+<%--h1 {--%>
+<%--color: steelblue;--%>
+<%--font-size: 24px;--%>
+<%--margin-top: 24px;--%>
+<%--}--%>
+
+<%--button {--%>
+<%--margin: 0 3px 10px;--%>
+<%--font-size: 12px;--%>
+<%--}--%>
+
+<%--.logLine {--%>
+<%--border-bottom: 1px solid #ccc;--%>
+<%--padding: 4px 2px;--%>
+<%--font-family: courier;--%>
+<%--font-size: 11px;--%>
+<%--}--%>
+<%--</style>--%>
+<%--</head>--%>
+
+<%--<body>--%>
+<%--<h1>WebViewJavascriptBridge Demo</h1>--%>
+
+<%--<script>--%>
+<%--window.onerror = function (err) {--%>
+<%--log('window.onerror: ' + err)--%>
+<%--}--%>
+
+<%--/*这段代码是固定的，必须要放到js中*/--%>
+<%--function setupWebViewJavascriptBridge(callback) {--%>
+<%--if (window.WebViewJavascriptBridge) {--%>
+<%--return callback(WebViewJavascriptBridge);--%>
+<%--}--%>
+<%--if (window.WVJBCallbacks) {--%>
+<%--return window.WVJBCallbacks.push(callback);--%>
+<%--}--%>
+<%--window.WVJBCallbacks = [callback];--%>
+<%--var WVJBIframe = document.createElement('iframe');--%>
+<%--WVJBIframe.style.display = 'none';--%>
+<%--WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';--%>
+<%--document.documentElement.appendChild(WVJBIframe);--%>
+<%--setTimeout(function () {--%>
+<%--document.documentElement.removeChild(WVJBIframe)--%>
+<%--}, 0)--%>
+<%--}--%>
+
+<%--/*与OC交互的所有JS方法都要放在此处注册，才能调用通过JS调用OC或者让OC调用这里的JS*/--%>
+<%--setupWebViewJavascriptBridge(function (bridge) {--%>
+<%--var uniqueId = 1--%>
+
+<%--function log(message, data) {--%>
+<%--var log = document.getElementById('log')--%>
+<%--var el = document.createElement('div')--%>
+<%--el.className = 'logLine'--%>
+<%--el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)--%>
+<%--if (log.children.length) {--%>
+<%--log.insertBefore(el, log.children[0])--%>
+<%--} else {--%>
+<%--log.appendChild(el)--%>
+<%--}--%>
+<%--}--%>
+
+<%--/* Initialize your app here */--%>
+
+<%--/*我们在这注册一个js调用OC的方法，不带参数，且不用ObjC端反馈结果给JS：打开本demo对应的博文*/--%>
+<%--bridge.registerHandler('openWebviewBridgeArticle', function () {--%>
+<%--log("openWebviewBridgeArticle was called with by ObjC")--%>
+<%--})--%>
+<%--/*JS给ObjC提供公开的API，在ObjC端可以手动调用JS的这个API。接收ObjC传过来的参数，且可以回调ObjC*/--%>
+<%--bridge.registerHandler('getUserInfos', function (data, responseCallback) {--%>
+<%--log("Get user information from ObjC: ", data)--%>
+<%--responseCallback({'userId': '456789', 'blog': '标哥的技术博客'})--%>
+<%--})--%>
+
+<%--/*JS给ObjC提供公开的API，ObjC端通过注册，就可以在JS端调用此API时，得到回调。ObjC端可以在处理完成后，反馈给JS，这样写就是在载入页面完成时就先调用*/--%>
+<%--bridge.callHandler('getUserIdFromObjC', function (responseData) {--%>
+<%--log("JS call ObjC's getUserIdFromObjC function, and js received response:", responseData)--%>
+<%--})--%>
+
+<%--document.getElementById('blogId').onclick = function (e) {--%>
+<%--log('js call objc: getBlogNameFromObjC')--%>
+<%--bridge.callHandler('getBlogNameFromObjC', {'blogURL': 'http://www.henishuo.com'}, function (response) {--%>
+<%--log('JS got response', response)--%>
+<%--})--%>
+<%--}--%>
+<%--})--%>
+
+<%--</script>--%>
+
+<%--<div id='buttons'></div>--%>
+<%--<div id='log'></div>--%>
+
+<%--<div>--%>
+<%--<input type="button" value="getBlogNameFromObjC" id="blogId"/>--%>
+<%--</div>--%>
+<%--</body>--%>
+<%--</html>--%>
