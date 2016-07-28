@@ -84,11 +84,6 @@ public class GoodsServiceImpl extends BaseAction implements GoodsService {
      */
     @Override
     public Page<Goods> goodsListGuess(Baby baby, int page, int pageSize) {
-        User user = UserManager.getUser();
-        if (user != null){
-            baby.setUser(this.userService.get(user.getId()));
-            this.babyService.saveOne(baby);
-        }
         return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
     }
     /**
