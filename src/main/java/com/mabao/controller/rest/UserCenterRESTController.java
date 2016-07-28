@@ -1,7 +1,10 @@
 package com.mabao.controller.rest;
 
+import com.mabao.controller.vo.GoodsDetailVO;
 import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.Address;
+import com.mabao.pojo.Goods;
+import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 用户模块
@@ -55,5 +59,16 @@ public class UserCenterRESTController {
     public JsonResultVO updateAddressStatus(Long addressId, Model model){
         Address result=this.addressService.updateAddressStatus(addressId);
         return new JsonResultVO(JsonResultVO.SUCCESS);
+    }
+
+    /**
+     * 个人中心，修改头像
+     */
+    @RequestMapping(value = "/headerPic",method = RequestMethod.POST)
+    public User updateUserPicture(@RequestParam MultipartFile headerPic,
+                                  HttpServletRequest request) throws Exception {
+        return this.userService.updateUserPicture(headerPic,request);
+
+
     }
 }

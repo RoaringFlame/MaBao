@@ -4,16 +4,19 @@ import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.User;
 import com.mabao.repository.UserRepository;
 import com.mabao.service.UserService;
+import com.mabao.util.BaseAction;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseAction implements UserService {
     @Autowired
     private UserRepository userRepository;
     /**
@@ -86,5 +89,31 @@ public class UserServiceImpl implements UserService {
             return new JsonResultVO(JsonResultVO.SUCCESS,"修改成功");
         }
         return new JsonResultVO(JsonResultVO.FAILURE,"请先登录");
+    }
+
+    /**
+     * 个人中心，修改头像
+     */
+    @Override
+    public User updateUserPicture(MultipartFile headerPic, HttpServletRequest request) {
+        try {
+            User user = UserManager.getUser();
+            assert user != null;
+            //保存文件
+            if (headerPic != null){
+                String picURL = "/upload/user/"+user.getId()+"/";
+                //上传文件过程
+                super.upload(headerPic, picURL, request);
+                String fileName = super.getFileName();
+                String picName = fileName.substring(fileName.indexOf(picURL)+picURL.length(),fileName.length());
+
+                user.setPicture(picName);
+                return this.userRepository.saveAndFlush(user);
+            }else {
+                return user;
+            }
+        }catch (Exception e){
+            return null;
+        }
     }
 }

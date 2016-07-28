@@ -3,6 +3,9 @@ package com.mabao.service;
 
 import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.User;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 public interface UserService {
     /**
@@ -35,10 +38,16 @@ public interface UserService {
      * @return                      修改的用户
      */
     User updateUser(User user);
+
     /**
      * 修改密码
      * @param password              新密码
      * @return                      登录页
      */
     JsonResultVO changePassword(String password);
+
+    /**
+     * 个人中心，修改头像
+     */
+    User updateUserPicture(MultipartFile headerPic, HttpServletRequest request);
 }
