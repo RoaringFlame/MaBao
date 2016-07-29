@@ -98,7 +98,7 @@ public class SellController {
         if (result != null){
             return "publish_success";
         }else {
-            return "publish_failure";
+            return "error";
         }
     }
 }

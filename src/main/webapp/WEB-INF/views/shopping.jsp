@@ -128,7 +128,7 @@
         <ul>
             <li>总计&nbsp;:&nbsp;<b>￥0.00</b></li>
             <li>
-                <button class="pay" type="submit">结算</button>
+                <button class="pay" type="submit" id="buttons">结算</button>
             </li>
         </ul>
     </div>
