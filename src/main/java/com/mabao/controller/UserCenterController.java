@@ -53,9 +53,10 @@ public class UserCenterController {
                 vo.setBabyId(baby.getId());
                 vo.setBabyName(baby.getName());
             }
-            vo.setUserId(user.getId());
-            vo.setUserName(user.getName());
-            vo.setUserPicture(user.getPicture());
+            User user1 = this.userService.get(user.getId());
+            vo.setUserId(user1.getId());
+            vo.setUserName(user1.getName());
+            vo.setUserPicture(user1.getPicture());
             model.addAttribute("userInfo", vo);
             return "personal";
         }else {

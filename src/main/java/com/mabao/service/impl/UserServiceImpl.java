@@ -94,6 +94,7 @@ public class UserServiceImpl extends BaseAction implements UserService {
     /**
      * 个人中心，修改头像
      */
+
     @Override
     public User updateUserPicture(MultipartFile headerPic, HttpServletRequest request) {
         try {

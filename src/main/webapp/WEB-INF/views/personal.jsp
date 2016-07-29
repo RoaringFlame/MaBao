@@ -72,7 +72,10 @@
 						processData: false,
 						contentType: false
 					}).done(function(res) {
-					}).fail(function(res) {});
+						window.location = "user";
+					}).fail(function(res) {
+						window.location = "user";
+					});
 				}
 			}) ;
 			$("#imgUpload").click(function(){
