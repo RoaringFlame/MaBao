@@ -1,7 +1,9 @@
 package com.mabao.controller.rest;
 
+import com.mabao.controller.vo.GoodsDetailVO;
 import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.Address;
+import com.mabao.pojo.Goods;
 import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.UserService;
