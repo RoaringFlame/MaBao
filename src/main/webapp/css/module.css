@@ -237,7 +237,7 @@
     display: block;
     height: 3rem;
     padding: 0 1.5rem;
-    text-align: right;
+    text-align: left;
     font-size: 1.1rem;
 }
 
@@ -1804,7 +1804,7 @@
     display: block;
     height: 4rem;
     padding: 0 2rem;
-    text-align: right;
+    text-align: left;
     font-size: 1.4rem;
 }
 
