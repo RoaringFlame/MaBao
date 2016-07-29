@@ -31,23 +31,22 @@
 <div class="content-index">
     <%--<!--标题-->--%>
     <%--<header>--%>
-        <%--确认订单--%>
-        <%--<!--操作按钮-->--%>
-        <%--<div class="header-box">--%>
-            <%--<a href="user/shopping">--%>
-                <%--<p class="header-left">--%>
-                    <%--<i class="icon icon-return"></i>--%>
-                    <%--返回--%>
-                <%--</p>--%>
-            <%--</a>--%>
-        <%--</div>--%>
-        <%--<!--操作按钮 END-->--%>
+    <%--确认订单--%>
+    <%--<!--操作按钮-->--%>
+    <%--<div class="header-box">--%>
+    <%--<a href="user/shopping">--%>
+    <%--<p class="header-left">--%>
+    <%--<i class="icon icon-return"></i>--%>
+    <%--返回--%>
+    <%--</p>--%>
+    <%--</a>--%>
+    <%--</div>--%>
+    <%--<!--操作按钮 END-->--%>
     <%--</header>--%>
     <!--标题 END-->
     <!-- 收货地址 -->
 
-    
-    <button class="add-jump-arrow"></button>
+
     <form id="pay" action="order/payConfirm">
         <div class="box add">
             <div class="box-left">
@@ -66,6 +65,7 @@
                     <p>${defaultAddress.location}</p>
                 </div>
             </div>
+            <button type="button" class="add-jump-arrow-pay"></button>
         </div>
         <!-- 收货地址 END-->
         <!-- 购买订单 -->
@@ -77,15 +77,19 @@
                 <div class="order-box-right">
                     <p>${goods.brandName}</p>
                     <p>尺寸：${goods.size}</p>
-                    <p class="order-box-left"><span>×${goods.quantity}</span>￥<fmt:formatNumber type="number" value="${goods.price}" pattern="0.00"
-                                                                                                              maxFractionDigits="2"/></p>
+                    <p class="order-box-left"><span>×${goods.quantity}</span>￥<fmt:formatNumber type="number"
+                                                                                                value="${goods.price}"
+                                                                                                pattern="0.00"
+                                                                                                maxFractionDigits="2"/>
+                    </p>
                 </div>
             </div>
             <!-- 购买订单END -->
 
             <ul class="lists">
-                <li>共计${goods.quantity}件商品&nbsp;小计：<b>￥<fmt:formatNumber type="number" value="${goods.getSubtotal()}" pattern="0.00"
-                                                                                               maxFractionDigits="2"/></b></li>
+                <li>共计${goods.quantity}件商品&nbsp;小计：<b>￥<fmt:formatNumber type="number" value="${goods.getSubtotal()}"
+                                                                         pattern="0.00"
+                                                                         maxFractionDigits="2"/></b></li>
             </ul>
         </c:forEach>
         <ul class="lists">
@@ -99,7 +103,7 @@
     <div class="up-to-pay pay-fixed">
         <ul>
             <li>总计&nbsp;:&nbsp;<b>￥<fmt:formatNumber type="number" value="${totalSum}" pattern="0.00"
-                                                                maxFractionDigits="2"/></b></li>
+                                                     maxFractionDigits="2"/></b></li>
             <li>
                 <button class="pay" type="submit" form="pay">付款</button>
             </li>

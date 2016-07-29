@@ -71,7 +71,7 @@
 
 
 
-    <div class="iscroll-wrapper" style="top:48px;bottom: -12px;">
+    <div class="iscroll-wrapper">
         <div class="iscroll-scroller">
             <!--搜索框-->
             <div class="hidden" id="userId">${sessionScope["SPRING_SECURITY_CONTEXT"].authentication.principal.userId}</div>

@@ -37,7 +37,7 @@ $(function () {
             window.location = "user/address/userAllAddress";
         });
         //点击编辑地址按钮进入编辑地址页面
-        $("button.add-jump-arrow").click(function () {
+        $("button.add-jump-arrow-pay").click(function () {
             var addressId = $("input[name='addressId']").val();
             if (addressId !== "") {
                 window.location = "user/address/getAddress?addressId=" + addressId;

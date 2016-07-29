@@ -154,6 +154,7 @@ button {
 }
 
 .content-index {
+    padding-top: 3rem;
     max-width: 32rem;
     margin:  -20px auto 20px;
 }
