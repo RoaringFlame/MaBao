@@ -812,6 +812,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
+    z-index: 10;
     margin: 0 auto;
     padding: 1.5rem 0 2rem;
     width: 100%;
