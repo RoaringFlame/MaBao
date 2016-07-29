@@ -272,7 +272,7 @@
 /*设置轮播图片大小*/
 .carousel-inner > .item > img {
     margin: 0 auto;
-    max-width: 32rem;
+    width: 100%;
     height: 11rem;
 }
 
