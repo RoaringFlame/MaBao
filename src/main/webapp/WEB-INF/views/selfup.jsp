@@ -233,7 +233,7 @@
         <!--提交按钮-->
         <a  class="transfer-form-button">
             <%--<button type="button" form="console-form">一键卖出</button>--%>
-            <button type="button" id="transferButton" <%--form="console-form"--%>>一键卖出</button>
+                <button type="button" id="transferButton" <%--form="console-form"--%>>一键卖出</button>
         </a>
         <!--提交按钮END-->
 
