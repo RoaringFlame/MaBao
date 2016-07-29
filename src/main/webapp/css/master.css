@@ -153,10 +153,13 @@ button {
     width: 100%;
 }
 
+.padding {
+    padding-top: 4rem;
+}
+
 .content-index {
-    padding-top: 3rem;
     max-width: 32rem;
-    margin:  -20px auto 20px;
+    margin: 0 auto;
 }
 
 /* CSS 标题栏*/
@@ -165,13 +168,13 @@ header {
     top: 0;
     left: 0;
     z-index: 9999;
-    background: #4C5359;
+    background: #f2f2f2;
     width: 100%;
     height: 4rem;
     font-size: 1.4rem;
     text-align: center;
     line-height: 4rem;
-    color: #fff;
+
 }
 
 .header-box {
@@ -200,9 +203,9 @@ header {
     line-height: 4rem;
 }
 
-.header-box p {
-    color: #fff;
-}
+/*.header-box p {*/
+    /*color: #fff;*/
+/*}*/
 
 .header-box .icon {
     display: block;

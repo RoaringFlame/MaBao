@@ -580,9 +580,6 @@
         /*width: 24rem;*/
     /*}*/
 /*}*/
-.pay-padding{
-    padding-top: 4rem;
-}
 .up-to-pay {
     position: fixed;
     bottom: 4rem;
@@ -1495,7 +1492,7 @@
 .personal-center {
     max-width: 32rem;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 3rem 0;
 }
 
 .order-top {

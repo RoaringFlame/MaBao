@@ -66,7 +66,7 @@
     })
 </script>
 <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">
-<div class="content-index pay-padding">
+<div class="content-index pay-padding ">
     <!--标题-->
     <header>
         购物车
@@ -124,7 +124,7 @@
         <div class="blank"></div>
     </div>
     <!--付款按钮-->
-    <div class="up-to-pay">
+    <div class="up-to-pay  pay-fixed">
         <ul>
             <li>总计&nbsp;:&nbsp;<b>￥0.00</b></li>
             <li>
