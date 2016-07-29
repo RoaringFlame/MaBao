@@ -154,9 +154,8 @@ button {
 }
 
 .content-index {
-    padding-top: 4.5rem;
     max-width: 32rem;
-    margin:  -20px auto 0;
+    margin:  -20px auto 20px;
 }
 
 /* CSS 标题栏*/

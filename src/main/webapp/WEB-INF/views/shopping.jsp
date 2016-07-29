@@ -66,7 +66,7 @@
     })
 </script>
 <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">
-<div class="content-index">
+<div class="content-index pay-padding">
     <!--标题-->
     <header>
         购物车

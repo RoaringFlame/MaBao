@@ -42,11 +42,11 @@
 /*width: 25rem;!*适应小屏手机样式的修改*!*/
 /*}*/
 /*}*/
-@media (max-width: 320px) {
-    .search-input {
-        width: 22rem; /*适应小屏手机样式的修改*/
-    }
-}
+/*@media (max-width: 320px) {*/
+    /*.search-input {*/
+        /*width: 22rem; !*适应小屏手机样式的修改*!*/
+    /*}*/
+/*}*/
 
 /*@media (min-width: 370px) {*/
 /*.search-input input {*/
@@ -575,12 +575,14 @@
     width: 30rem;
 }
 
-@media (max-width: 320px) {
-    .notes textarea {
-        width: 24rem;
-    }
+/*@media (max-width: 320px) {*/
+    /*.notes textarea {*/
+        /*width: 24rem;*/
+    /*}*/
+/*}*/
+.pay-padding{
+    padding-top: 4rem;
 }
-
 .up-to-pay {
     position: fixed;
     bottom: 4rem;
@@ -589,11 +591,11 @@
     margin: 0 auto;
 }
 
-@media (max-width: 320px) {
-    .up-to-pay {
-        width: 28rem;
-    }
-}
+/*@media (max-width: 320px) {*/
+    /*.up-to-pay {*/
+        /*width: 28rem;*/
+    /*}*/
+/*}*/
 
 .pay-fixed {
     position: fixed;
@@ -670,11 +672,11 @@
     border-bottom: 0.1rem solid #DCDCDC !important;
 }
 
-@media (max-width: 320px) {
-    .address {
-        width: 26rem;
-    }
-}
+/*@media (max-width: 320px) {*/
+    /*.address {*/
+        /*width: 26rem;*/
+    /*}*/
+/*}*/
 
 .edit-add-box textarea {
     border: 0;
@@ -697,11 +699,11 @@
     border-bottom: 0.1rem solid #DCDCDC !important;
 }
 
-@media (max-width: 320px) {
-    .edit-add-box input {
-        width: 26rem;
-    }
-}
+/*@media (max-width: 320px) {*/
+    /*.edit-add-box input {*/
+        /*width: 26rem;*/
+    /*}*/
+/*}*/
 
 /*删除/提交地址按钮*/
 .edit-add-input {
@@ -721,12 +723,12 @@
     font-size: 1.3rem;
 }
 
-@media (max-width: 320px) {
+/*@media (max-width: 320px) {*/
 
-    .edit-add-input input {
-        width: 22rem;
-    }
-}
+    /*.edit-add-input input {*/
+        /*width: 22rem;*/
+    /*}*/
+/*}*/
 
 .default {
     background: #0099FF;
@@ -1592,11 +1594,11 @@
     font-size: 1.25rem;
 }
 
-@media (max-width: 320px) {
-    .transfer-box p span {
-        width: 13.5rem;
-    }
-}
+/*@media (max-width: 320px) {*/
+    /*.transfer-box p span {*/
+        /*width: 15rem;*/
+    /*}*/
+/*}*/
 
 .transfer-box p a {
     width: 8rem;
