@@ -140,7 +140,8 @@ public class BaseAction {
                 throw new Exception("您上传的文件大小已经超出范围");
             }
 
-            String realPath = request.getSession().getServletContext().getRealPath("/");
+            String tempPath = request.getSession().getServletContext().getRealPath("/");
+            String realPath = tempPath.substring(0,tempPath.indexOf("build"))+"src\\main\\webapp\\";
             File destFile = new File(realPath+destDir);
             if(!destFile.exists()){
                 destFile.mkdirs();

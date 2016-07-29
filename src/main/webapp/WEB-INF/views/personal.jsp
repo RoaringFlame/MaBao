@@ -19,6 +19,10 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<link rel="stylesheet" href="css/master.css">
 	<link rel="stylesheet" href="css/module.css">
+
+	<script src="script/lib/jquery.1.10.2.js"></script>
+	<script src="script/personal.js"></script>
+	<script src="script/common.js"></script>
 </head>
 
 <body>
@@ -37,10 +41,52 @@
 		<%--</div>--%>
 		<%--<!--操作按钮 END-->--%>
 	<%--</header>--%>
+	<script>
+		//建立一個可存取到該file的url
+		function getObjectURL(file) {
+			var url = null ;
+			if (window.createObjectURL!=undefined) { // basic
+				url = window.createObjectURL(file) ;
+			} else if (window.URL!=undefined) { // mozilla(firefox)
+				url = window.URL.createObjectURL(file) ;
+			} else if (window.webkitURL!=undefined) { // webkit or chrome
+				url = window.webkitURL.createObjectURL(file) ;
+			}
+			return url ;
+		}
+		$(function(){
+			$("#fileUpload").change(function(){
+				var objUrl = getObjectURL(this.files[0]) ;
+				if (objUrl) {
+//						$("#imgUpload").attr("src", objUrl);
+					var path = MB.getRootPath();
+					path += "/" + "person/headerPic";
+					var filename = $( "#fileUpload").val();
+					var formData = new FormData();
+					formData.append('headerPic', $('#fileUpload')[0].files[0]);
+					$.ajax({
+						url: path,
+						type: 'POST',
+						cache: false,
+						data: formData,
+						processData: false,
+						contentType: false
+					}).done(function(res) {
+					}).fail(function(res) {});
+				}
+			}) ;
+			$("#imgUpload").click(function(){
+				$("#fileUpload").trigger("click");
+			});
+		});
+	</script>
 	<!--标题 END-->
 	<!--宝宝图片上传-->
 	<div class="baby-photo">
-		<figure><img src="photo/${userInfo.userPicture}" alt="头像"></figure>
+		<figure id="uploadForm">
+			<input name="headerPic" type="file" accept="image/png,image/gif" style="display: none;" id="fileUpload">
+			<img src="upload/header/user/${userInfo.userPicture}" alt="头像" id="imgUpload">
+		</figure>
 		<figcaption>
 			<p>${userInfo.userName}</p>
 			<p class="line">宝宝：${userInfo.babyName}</p>
@@ -53,13 +99,12 @@
 		<!--我是买家订单-->
 		<div>
 			<p class="order-bottom">我是<span class="red">买家</span></p>
-			<%--<ul>--%>
+			<ul>
 				<%--<li><a class="link" href="developing">全部</a></li>--%>
 				<%--<li><a href="developing">待付款</a></li>--%>
 				<%--<li><a href="developing">待发货</a></li>--%>
 				<%--<li><a href="developing">待确认</a></li>--%>
-			<%--</ul>--%>
-			<ul>
+
 				<li><a class="link">全部</a></li>
 				<li><a>待付款</a></li>
 				<li><a>待发货</a></li>
@@ -71,6 +116,11 @@
 		<div>
 			<p class="order-bottom">我是<span class="blue">卖家</span></p>
 			<ul>
+				<%--<li><a class="link" href="developing">全部</a></li>--%>
+				<%--<li><a href="developing">已出售</a></li>--%>
+				<%--<li><a href="developing">已发布</a></li>--%>
+				<%--<li><a href="developing">待发布</a></li>--%>
+
 				<li><a class="link">全部</a></li>
 				<li><a>已出售</a></li>
 				<li><a>已发布</a></li>
