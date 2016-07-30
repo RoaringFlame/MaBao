@@ -40,7 +40,6 @@ public class GoodsDetailVO {
         vo.setNewDegree(goods.getNewDegree().getText());
         vo.setSize(goods.getSize().getName());
         vo.setBabyType(goods.getBabyType().getText());
-//        vo.setUpTime(goods.getUpTime().toString());
         if (goods.getPictureList() != null) {
             List<String> pictures = new ArrayList<>();
             Collections.addAll(pictures, goods.getPictureList().split(","));

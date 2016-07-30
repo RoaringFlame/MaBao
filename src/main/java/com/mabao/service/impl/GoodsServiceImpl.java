@@ -158,22 +158,23 @@ public class GoodsServiceImpl extends BaseAction implements GoodsService {
             goods.setPack(goodsVO.getPack());
             goods.setReceipt(goodsVO.getReceipt());
             goods.setMessage(goodsVO.getMessage());
-            goods.setState(false);
+            goods.setState(true);
             goods.setStockNumber(1);
            //保存文件
            if (goodsPic !=null){
-               String picURL = "/upload/user/"+user.getId()+"/";
+               String picURL = "/upload/"+user.getId()+"/";
                //上传文件过程
                super.uploads(goodsPic, picURL, request);
                String [] nameArray = super.getFileNames();
                StringBuilder pictureList = new StringBuilder();
                for (int i=0; i < nameArray.length;i++){
                    String name = nameArray[i].substring(nameArray[i].indexOf(picURL)+picURL.length(),nameArray[i].length());
-                   pictureList.append(name);
+                   pictureList.append(user.getId()).append("/").append(name);
                    if (i < (nameArray.length-1)){
                        pictureList.append(",");
                    }
                }
+               goods.setPicture(user.getId()+"/"+nameArray[0].substring(nameArray[0].indexOf(picURL)+picURL.length(),nameArray[0].length()));
                goods.setPictureList(pictureList.toString());
            }
             Goods saveGoods = this.goodsRepository.save(goods);

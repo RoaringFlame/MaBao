@@ -24,10 +24,7 @@
 
     <script src="script/lib/jquery.1.10.2.js" type="text/javascript"></script>
     <script src="script/lib/bootstrap/bootstrap.min.js"></script>
-    <script src="script/lib/bootstrap/bootstrap-switch.js"></script>
-    <script src="script/lib/jquery.provincesCity.js" type="text/javascript"></script>
-    <script src="script/lib/provinces-data.js" type="text/javascript"></script>
-    <script src="script/consale.js"></script>
+    <script src="script/new_address.js"></script>
     <script src="script/common.js"></script>
 </head>
 
@@ -39,17 +36,17 @@
         <!--操作按钮-->
         <div class="header-box">
             <a href="user/address/userAllAddress">
-                <button class="header-left">
+                <p class="header-left">
                     <i class="icon icon-return"></i>
                     返回
-                </button>
+                </p>
             </a>
         </div>
         <!--操作按钮 END-->
     </header>
     <!--标题 END-->
     <!-- 编辑收货地址 -->
-    <form action="user/address/addAddress" method="post">            <%--跳转到新增用户地址的action--%>
+    <form id="edit-add" action="user/address/addAddress" method="post">            <%--跳转到新增用户地址的action--%>
         <div class="edit-add-box">
             <label>
                 <input name="recipients" type="text" placeholder="收件人：">
@@ -78,12 +75,13 @@
         <div class="edit-add-input">
             <!-- 保存按钮 -->
             <label>
-                <input type="submit" value="保存并使用"/>
+                <input type="button" value="保存"/>
             </label>
             <!-- 保存按钮END -->
         </div>
     </form>
     <!-- 编辑收货地址END -->
+    <div class="tip" id="textShow" style="display: none" ></div>
 </div>
 </body>
 </html>
