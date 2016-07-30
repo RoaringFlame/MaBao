@@ -3,8 +3,8 @@ $(function () {
     //设置全局参数
     var totalPageNew = 1;                               //新品总页数
     var totalPageLike = 1;                              //猜你喜欢总页数
-    var currentPageNew = 0;                             //新品展示页当前页面
-    var currentPageLike = 0;                            //猜你喜欢当前页面
+    var currentPageNew =0;                             //新品展示页当前页面
+    var currentPageLike =0;                            //猜你喜欢当前页面
     var pageSize = 4;                                   //每页展示的宝物数量
     var goodsTypeId = "";                               //商品类型id
     var myScroll = "";                                  //轮播
@@ -213,7 +213,7 @@ $(function () {
                         var likeGoods = backGoods.clone();
                         likeGoods.find("img")
                             .attr("src", MB.getRootPath() + "/upload/" + goods.picture)
-                            .click(function () {        //猜你喜欢页面详情点击事件的添加
+                            .on("tap",function () {        //猜你喜欢页面详情点击事件的添加
                                 window.location = "goods/goodsDetail?goodsId=" + goods.id;
                             });
                         likeGoods.find("div>p:eq(0)>span:eq(0)").text("￥" + goods.price);
@@ -245,7 +245,7 @@ $(function () {
                 $("#likeGoodsList").hide();                                                 //猜你喜欢列表的隐藏
                 isNew = true;                                                                //是否为新品 设为真
                 //加载新品
-                //initNewGoodsBox();
+                initNewGoodsBox();
             }
         });
         newGoods.find("div.scroll-menu ul li:eq(1)").on("tap",function () {
@@ -320,10 +320,9 @@ $(function () {
             initBaby(data.baby, data.gender);
             //新品初始化，只初始化一次
             initNewGoodsBox();
-            //猜你喜欢初始化
-            initLikeBox();
-            //表单信息初始化
-            initFormAction();
+            ////猜你喜欢初始化
+            //initLikeBox();
+
 
         });
     }
@@ -334,6 +333,8 @@ $(function () {
         initIndexPage();
         //控制新品和猜你喜欢的切换
         initGoods();
+        //表单信息初始化
+        initFormAction();
     }
 
     //12，调用初始化函数
