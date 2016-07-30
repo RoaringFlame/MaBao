@@ -1,0 +1,35 @@
+﻿@charset "utf-8";
+/*背景颜色*/
+body {
+    background-color: #eee;
+}
+
+.default-color {
+    background-color: #eee;
+    margin: 0 auto;
+}
+
+/*首页*/
+.goods {
+    background-color: transparent;
+}
+
+/*商品列表*/
+.goods-list li {
+    float: left;
+    list-style: none;
+    width: 50%;
+    border: none;
+    margin: 0 auto;
+}
+
+.goods-list li div {
+    border-bottom-left-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+/*猜你喜欢*/
+.you-like {
+    background: #fff;
+}

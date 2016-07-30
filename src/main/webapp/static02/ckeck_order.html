@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我是买家</title>
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
+    <!-- 禁止将数字变为电话号码 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- iphone设备中的safari私有meta标签,允许全屏模式浏览，隐藏浏览器导航栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/module.css">
+
+</head>
+<body>
+    <div class="content-index">
+        <!--标题-->
+        <header>
+           待收货
+            <!--操作按钮-->
+           <div class="header-box">
+                <a href="personal.html">
+                  <p class="header-left">
+                  <i class="icon icon-return"></i>
+                   返回
+                  </p>
+                </a>
+           </div>
+            <!--操作按钮 END-->
+        </header>
+         <!--标题 END-->
+
+        <div class="order add">
+           <!-- 待收货商品 -->
+            <div class="order-box" onclick=window.location.href="detail.html">
+                <p class="unpaid-txt">卖家已发货</p>
+                <img src="../img/u8.jpg" alt="宝物">
+                <div class="order-box-right">
+                    <p>H&M CARDIGAN</p>
+                    <p>尺寸：S</p>
+                    <p class="order-box-left">￥35.5</p>
+                </div>
+            </div>
+            <!-- 待收货商品END -->
+            <!-- 待收货商品 -->
+            <div class="order-box" onclick=window.location.href="detail.html">
+                <p class="unpaid-txt">卖家已发货</p>
+                <img src="../img/u8.jpg" alt="宝物">
+                <div class="order-box-right">
+                    <p>H&M CARDIGAN</p>
+                    <p>尺寸：S</p>
+                    <p class="order-box-left">￥35.5</p>
+                </div>
+            </div>
+            <!-- 待收货商品END -->
+            <!-- 共计 -->
+            <div class="order-bottom">
+	            <p>共计2件商品 小计：<span>￥101</span> (含运费￥10)</p>
+            </div>
+           <!-- 共计END -->
+           <!-- 确认收货按钮 -->
+            <div class="order-button">
+                <button type="submit" value="确认收货">付款</button>
+            </div>
+           <!-- 确认收货按钮END -->
+        </div>
+
+	</div>
+</body>
+</html>
