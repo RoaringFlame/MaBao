@@ -20,7 +20,7 @@ import java.util.Date;
  */
 public class BaseAction {
     private String allowSuffix = "jpg,png,gif,jpeg";//允许文件格式
-    private long allowSize = 2L;//允许文件大小
+    private long allowSize = 10L;//允许文件大小
     private String fileName;
     private String[] fileNames;
 
@@ -99,8 +99,8 @@ public class BaseAction {
                     throw new Exception("您上传的文件大小已经超出范围");
                 }
 
-                String tempPath = request.getSession().getServletContext().getRealPath("/");
-                String realPath = tempPath.substring(0,tempPath.indexOf("build"))+"src\\main\\webapp\\";
+                String realPath = request.getSession().getServletContext().getRealPath("/");
+//                String realPath = tempPath.substring(0,tempPath.indexOf("build"))+"src\\main\\webapp\\";
                 File destFile = new File(realPath+destDir);
                 if(!destFile.exists()){
                     destFile.mkdirs();
@@ -140,8 +140,8 @@ public class BaseAction {
                 throw new Exception("您上传的文件大小已经超出范围");
             }
 
-            String tempPath = request.getSession().getServletContext().getRealPath("/");
-            String realPath = tempPath.substring(0,tempPath.indexOf("build"))+"src\\main\\webapp\\";
+            String realPath = request.getSession().getServletContext().getRealPath("/");
+            //String realPath = tempPath.substring(0,tempPath.indexOf("build"))+"src\\main\\webapp\\";
             File destFile = new File(realPath+destDir);
             if(!destFile.exists()){
                 destFile.mkdirs();
