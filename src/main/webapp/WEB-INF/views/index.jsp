@@ -48,53 +48,33 @@
 <body>
 <div id="err"></div>
 <%--<div class="content-index">--%>
-<!--标题-->
-<%--<header>--%>
-<%--首页--%>
-<%--<!--操作按钮-->--%>
-<%--<div class="header-box">--%>
-<%--<c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">--%>
-<%--<p class="header-left" style="font-size: 1.1rem;">--%>
-<%--${sessionScope["SPRING_SECURITY_CONTEXT"].authentication.principal.username}--%>
-<%--</p>--%>
-<%--</c:if>--%>
-<%--<c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId eq null}">--%>
-<%--<a href="login">--%>
-<%--<p class="header-left">请登录</p>--%>
-<%--</a>--%>
-<%--</c:if>--%>
-<%--</div>--%>
-<%--<!--操作按钮 END-->--%>
-<%--</header>--%>
-<!--标题 END-->
 
+<!--搜索框-->
+<div class="hidden" id="userId">${sessionScope["SPRING_SECURITY_CONTEXT"].authentication.principal.userId}</div>
+<div id="searchBox" class="search">
+    <!--商品类型查询-->
+    <div class="column">
+        <i class="icon icon-dire"></i>
+    </div>
+    <!--关键字查询-->
+    <div class="search-input">
+        <p>
+            <i class="icon icon-search"></i>
+        </p>
+        <input id="txtSearch" data-role="none">
+    </div>
+    <!-- 侧导航栏 -->
+    <div class="sidebar hide" id="sidebar">
+        <ul>
+        </ul>
+    </div>
+</div>
+<!--搜索框 END-->
 
+<div class="content-index">
 
-
-    <div class="iscroll-wrapper">
+    <div class="iscroll-wrapper" style="top:48px;bottom: -12px;">
         <div class="iscroll-scroller">
-            <!--搜索框-->
-            <div class="hidden" id="userId">${sessionScope["SPRING_SECURITY_CONTEXT"].authentication.principal.userId}</div>
-            <div id="searchBox" class="search">
-                <!--商品类型查询-->
-                <div class="column">
-                    <i class="icon icon-dire"></i>
-                </div>
-                <!--关键字查询-->
-                <div class="search-input">
-                    <p>
-                        <i class="icon icon-search"></i>
-                    </p>
-                    <input id="txtSearch" data-role="none">
-                </div>
-                <!-- 侧导航栏 -->
-                <div class="sidebar hide" id="sidebar">
-                    <ul>
-                    </ul>
-                </div>
-            </div>
-            <!--搜索框 END-->
-
             <!--轮播图-->
             <div id="myCarousel" class="carousel slide">
                 <!-- 轮播（Carousel）指标 -->
@@ -181,26 +161,7 @@
     </div>
     <div class="tip" id="textShow1"></div>
     <%--</div>--%>
+</div>
 
-
-<!--底部导航-->
-<%--<div class="menu" id="menu">--%>
-<%--<a href="">--%>
-<%--<i class="icon-menu icon-menu1"><img src="img/footer-c1.png" alt=""></i>--%>
-<%--</a>--%>
-<%--<a href="developing">--%>
-<%--<i class="icon-menu icon-menu2"><img src="img/footer-2.png" alt=""></i>--%>
-<%--</a>--%>
-<%--<a href="consignment">--%>
-<%--<i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>--%>
-<%--</a>--%>
-<%--<a href="user/shopping" id="shopping">--%>
-<%--<i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>--%>
-<%--</a>--%>
-<%--<a href="user">--%>
-<%--<i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>--%>
-<%--</a>--%>
-<%--</div>--%>
-<!--底部导航 END-->
 </body>
 </html>
