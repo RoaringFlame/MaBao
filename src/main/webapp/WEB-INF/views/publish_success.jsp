@@ -43,7 +43,7 @@
         <p>感谢您支持低碳生活</p>
         <p>给了每一件宝物第二次生命</p>
         <p>您可以在个人账户中查询详情及交易进度</p>
-        <a href="index" class="share-bottom">
+        <a class="share-bottom">
             <button>分享到朋友圈</button>
         </a>
         <!--发布成功提示END-->
