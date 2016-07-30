@@ -29,8 +29,6 @@ public class GoodsServiceImpl extends BaseAction implements GoodsService {
     @Autowired
     private GoodsRepository goodsRepository;
     @Autowired
-    private BabyService babyService;
-    @Autowired
     private UserService userService;
     @Autowired
     private GoodsTypeService goodsTypeService;
@@ -57,7 +55,7 @@ public class GoodsServiceImpl extends BaseAction implements GoodsService {
     @Override
     public Page<Goods> goodsSearch(Long goodsTypeId,String title, int page, int pageSize) {
         if (goodsTypeId == null && (title == null || "".equals(title))){
-            return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
+            return this.goodsRepository.findByStateOrderByUpTimeDesc(Boolean.TRUE,new PageRequest(page, pageSize));
         }if (goodsTypeId != null && title != null && !"".equals(title)){
             title = "%"+title+"%";
             return this.goodsRepository.findByTitleLikeAndTypeIdAndState(title,goodsTypeId,Boolean.TRUE,new PageRequest(page, pageSize));
@@ -87,12 +85,7 @@ public class GoodsServiceImpl extends BaseAction implements GoodsService {
      */
     @Override
     public Page<Goods> goodsListGuess(Baby baby, int page, int pageSize) {
-        User user = UserManager.getUser();
-        if (user != null){
-            baby.setUser(this.userService.get(user.getId()));
-            this.babyService.saveOne(baby);
-        }
-        return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
+        return this.goodsRepository.findByStateOrderByUpTimeDesc(Boolean.TRUE,new PageRequest(page, pageSize));
     }
     /**
      * 保存商品
@@ -113,18 +106,6 @@ public class GoodsServiceImpl extends BaseAction implements GoodsService {
         return this.goodsRepository.findByIdIn(goodsIdList);
     }
 
-    /**
-     * 依据宝宝ID匹配商品
-     * （首页猜你喜欢）
-     * @param babyId                宝宝ID
-     * @param page                  页码
-     * @param pageSize              一页大小
-     * @return                      商品集合，分页
-     */
-    @Override
-    public Page<Goods> goodsPageByBabyId(Long babyId, int page, int pageSize) {
-        return this.goodsRepository.findByState(Boolean.TRUE,new PageRequest(page, pageSize));
-    }
 
     /**
      * 自助发布宝物
