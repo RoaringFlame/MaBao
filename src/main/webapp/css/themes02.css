@@ -1,12 +1,37 @@
 ﻿@charset "utf-8";
-/*背景颜色*/
+/*全局*/
 body {
-    background-color: #f5f6fa;
+    padding-top: 4rem;
+    background-color: #fafafa;
 }
 
-.default-color {
-    background-color: #eee;
-    margin: 0 auto;
+input, select {
+    background: transparent;
+}
+
+.content-index {
+    background: #fff;
+}
+
+label {
+    width: 100%;
+    background: #fff
+}
+
+header {
+    /*background-color: #fafafa;*/
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#fd504a), to(#ffb0ad));
+    color: #fff;
+}
+
+.header-left {
+    color: #fff;
+}
+
+.menu {
+    background-color: #fff;
+    /*background: -webkit-gradient(linear, 100% 0, 0 0, from(#fd504a), to(#ffb0ad));*/
+    /*background: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f6fa), to(#c7d4fc));*/
 }
 
 /*首页*/
@@ -23,6 +48,17 @@ body {
     margin: 0 auto;
 }
 
+.goods-list li img {
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f5f6fa));
+}
+
+.goods-list li img:hover {
+    -webkit-transition: border linear .2s;
+
+    border-color: rgba(54, 45, 248, .75);
+    -webkit-box-shadow: 0 0 .1rem rgba(108, 108, 248, .3);
+}
+
 .goods-list li div {
     border-bottom-left-radius: .3rem;
     border-bottom-right-radius: .3rem;
@@ -32,4 +68,112 @@ body {
 /*猜你喜欢*/
 .you-like {
     background: #fff;
+}
+
+/*寄售页面*/
+.consignment-button button {
+    border-radius: .4rem;
+    background: #fd504a;
+    /*background: -webkit-gradient(linear, 0 0, 0 100%, from(#fd504a), to(#ffb0ad));*/
+    color: #fff;
+}
+
+/*登录页面*/
+.login-box {
+    margin: 0 auto;
+    padding: 2rem 0 1rem 0;
+    text-align: center;
+}
+
+.login-box label {
+    padding: 0;
+    border-bottom: .1rem solid #eee;
+    text-align: left;
+    text-indent: 1rem;
+    line-height: 4rem;
+}
+
+.login-box input {
+    height: 3rem;
+    width: 75%;
+    border: none;
+    float: right;
+    margin-top: .5rem;
+    margin-right: 1rem;
+    line-height: 4rem;
+}
+
+.submit {
+    border-radius: .4rem;
+    background: #fd504a;
+    /*background: -webkit-gradient(linear, 0 0, 0 100%, from(#fd504a), to(#ffb0ad));*/
+    color: #fff;
+}
+
+.order-box {
+    background-color: #fff;
+}
+
+.login-bottom {
+    border: 1px solid #fd504a;
+    color: #fd504a;
+}
+
+/*选择收货地址*/
+.box {
+    background: #fff;
+
+}
+
+.box-right {
+    font-size: 1.2rem;
+}
+
+/*注册页面*/
+.register-box {
+    margin: 0 auto;
+    padding: 2rem 0 1rem 0;
+    text-align: center;
+}
+
+.register-box label {
+    padding: 0;
+    margin: 0 auto;
+    border-bottom: .1rem solid #eee;
+    width: 100%;
+    text-align: left;
+    text-indent: 1rem;
+    line-height: 4rem;
+}
+
+.register-box input {
+    height: 3rem;
+    width: 75%;
+    border: none;
+    float: right;
+    margin-top: .5rem;
+    margin-right: 1rem;
+    line-height: 4rem;
+}
+
+/*订单页面*/
+.order-button button:last-child {
+    background: #fd504a;
+
+}
+
+/*购物车页面按钮*/
+.up-to-pay .confirm {
+    background: #fd504a;
+}
+
+/*转让宝物*/
+.transfer-form-button button {
+    border-radius: .4rem;
+    background: #fd504a;
+}
+
+/*确认订单页面*/
+.notes {
+    background: transparent;
 }

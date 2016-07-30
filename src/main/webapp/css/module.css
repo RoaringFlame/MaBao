@@ -18,12 +18,12 @@
     height: 4rem;
 }
 
- .search .icon {
-     float: left;
-     display: block;
-     width: 4rem;
-     height: 4rem;
- }
+.search .icon {
+    float: left;
+    display: block;
+    width: 4rem;
+    height: 4rem;
+}
 
 .search .icon-dire {
     background: url(../img/menu.png) no-repeat .5rem .1rem;
@@ -35,7 +35,8 @@
     height: 2rem;
     /* left: -4rem; */
     width: 100%;
-    padding-left: 4rem;}
+    padding-left: 4rem;
+}
 
 .search-input p {
     position: absolute;
@@ -272,7 +273,7 @@
 
 /*宝物详情*/
 .goods-detail-top {
-    margin: 2rem 6rem 1rem;
+    padding: 2rem 6rem 1rem;
 }
 
 .goods-detail-top img {
@@ -398,6 +399,7 @@
     height: auto;
     min-height: 6rem;
     position: relative;
+    font-size: 1.2rem;
 }
 
 .home {
@@ -420,7 +422,6 @@
     width: 21rem;
     position: absolute;
     left: 4.5rem;
-    font-size: 1.3rem;
     margin: 0 1rem;
 }
 
@@ -549,9 +550,9 @@
 }
 
 /*@media (max-width: 320px) {*/
-    /*.notes textarea {*/
-        /*width: 24rem;*/
-    /*}*/
+/*.notes textarea {*/
+/*width: 24rem;*/
+/*}*/
 /*}*/
 .up-to-pay {
     position: fixed;
@@ -562,9 +563,9 @@
 }
 
 /*@media (max-width: 320px) {*/
-    /*.up-to-pay {*/
-        /*width: 28rem;*/
-    /*}*/
+/*.up-to-pay {*/
+/*width: 28rem;*/
+/*}*/
 /*}*/
 
 .pay-fixed {
@@ -643,9 +644,9 @@
 }
 
 /*@media (max-width: 320px) {*/
-    /*.address {*/
-        /*width: 26rem;*/
-    /*}*/
+/*.address {*/
+/*width: 26rem;*/
+/*}*/
 /*}*/
 
 .edit-add-box textarea {
@@ -670,9 +671,9 @@
 }
 
 /*@media (max-width: 320px) {*/
-    /*.edit-add-box input {*/
-        /*width: 26rem;*/
-    /*}*/
+/*.edit-add-box input {*/
+/*width: 26rem;*/
+/*}*/
 /*}*/
 
 /*删除/提交地址按钮*/
@@ -695,9 +696,9 @@
 
 /*@media (max-width: 320px) {*/
 
-    /*.edit-add-input input {*/
-        /*width: 22rem;*/
-    /*}*/
+/*.edit-add-input input {*/
+/*width: 22rem;*/
+/*}*/
 /*}*/
 
 .default {
@@ -720,7 +721,6 @@
     height: 3rem;
     line-height: 3rem;
     color: #767676;
-    font-size: 1.4rem;
     text-indent: 1rem;
 }
 
@@ -730,7 +730,7 @@
     width: 4rem;
     height: 2.5rem;
     border-radius: .4rem;
-    font-size: 1.4rem;
+
 }
 
 .icon-trash {
@@ -1565,9 +1565,9 @@
 }
 
 /*@media (max-width: 320px) {*/
-    /*.transfer-box p span {*/
-        /*width: 15rem;*/
-    /*}*/
+/*.transfer-box p span {*/
+/*width: 15rem;*/
+/*}*/
 /*}*/
 
 .transfer-box p a {
@@ -1622,7 +1622,6 @@
     display: block;
     height: 3.2rem;
     line-height: 3.2rem;
-    padding: 0 1rem;
     border-bottom: 0.1rem solid #BEBEBE;
 }
 
