@@ -2,7 +2,6 @@ package com.mabao.service.impl;
 
 import com.mabao.controller.vo.GoodsDetailVO;
 import com.mabao.enums.BabyType;
-import com.mabao.enums.OrderStatus;
 import com.mabao.enums.Quality;
 import com.mabao.pojo.*;
 import com.mabao.repository.GoodsRepository;
@@ -16,10 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -140,6 +136,7 @@ public class GoodsServiceImpl extends BaseAction implements GoodsService {
             goods.setReceipt(goodsVO.getReceipt());
             goods.setMessage(goodsVO.getMessage());
             goods.setState(true);
+            goods.setSellEnd(false);
             goods.setStockNumber(1);
            //保存文件
            if (goodsPic !=null){
@@ -160,32 +157,61 @@ public class GoodsServiceImpl extends BaseAction implements GoodsService {
            }
             Goods saveGoods = this.goodsRepository.save(goods);
             //生成订单
-            Order order = new Order();
-            order.setBuyer(this.userService.get(1L));
-            order.setSellerId(user.getId());
-            order.setQuantity(1);
-            order.setAddress(this.addressService.getDefaultAddress(user.getId()));
-            order.setMessage("自助寄卖");
-            order.setCreateTime(new Date());
-            order.setState(OrderStatus.ToBeRelease);
-            order.setFreight(10.00);                    //运费
-            order.setTotalSum(order.getFreight()+saveGoods.getPrice());
-            this.orderService.saveOrder(order);
-            //订单明细
-            OrderDetail od = new OrderDetail();
-            od.setGoods(saveGoods);
-            od.setOrder(order);
-            od.setUnitCost(saveGoods.getPrice());
-            od.setSize(saveGoods.getSize().getName());
-            od.setNewDegree(saveGoods.getNewDegree().getText());
-            od.setTitle(saveGoods.getTitle());
-            od.setTypeName(saveGoods.getType().getTypeName());
-            od.setUpTime(saveGoods.getUpTime());
-            od.setBrand(saveGoods.getBrand().getBrandName());
-            this.orderService.saveOrderDetail(od);
+//            Order order = new Order();
+//            order.setBuyer(this.userService.get(1L));
+//            order.setSellerId(user.getId());
+//            order.setQuantity(1);
+//            order.setAddress(this.addressService.getDefaultAddress(user.getId()));
+//            order.setMessage("自助寄卖");
+//            order.setCreateTime(new Date());
+//            order.setState(OrderStatus.ToBeRelease);
+//            order.setFreight(10.00);                    //运费
+//            order.setTotalSum(order.getFreight()+saveGoods.getPrice());
+//            this.orderService.saveOrder(order);
+//            //订单明细
+//            OrderDetail od = new OrderDetail();
+//            od.setGoods(saveGoods);
+//            od.setOrder(order);
+//            od.setUnitCost(saveGoods.getPrice());
+//            od.setSize(saveGoods.getSize().getName());
+//            od.setNewDegree(saveGoods.getNewDegree().getText());
+//            od.setTitle(saveGoods.getTitle());
+//            od.setTypeName(saveGoods.getType().getTypeName());
+//            od.setUpTime(saveGoods.getUpTime());
+//            od.setBrand(saveGoods.getBrand().getBrandName());
+//            this.orderService.saveOrderDetail(od);
             return saveGoods;
         }catch (Exception e){
             return null;
+        }
+    }
+
+    /**
+     * 查询卖家商品
+     * @param goodsState               商品状态：1已发布，2待发布，3已出售，4所有
+     * @param page                     页码
+     * @param pageSize                 大小
+     * @return                         页面内容
+     */
+    @Override
+    public Page<Goods> findSellerGoods(Integer goodsState,int page, int pageSize) {
+        User user = UserManager.getUser();
+        if(user != null){
+            if(1 == goodsState){
+                return this.goodsRepository.findByUserIdAndStateAndSellEndOrderByUpTimeDesc
+                        (user.getId(),Boolean.TRUE,Boolean.FALSE,new PageRequest(page, pageSize));
+            }else if(2 == goodsState){
+                return this.goodsRepository.findByUserIdAndStateAndSellEndOrderByUpTimeDesc
+                        (user.getId(),Boolean.FALSE,Boolean.FALSE,new PageRequest(page, pageSize));
+            }else if(3 == goodsState){
+                return this.goodsRepository.findByUserIdAndStateAndSellEndOrderByUpTimeDesc
+                        (user.getId(),Boolean.FALSE,Boolean.TRUE,new PageRequest(page, pageSize));
+            }else{
+                return this.goodsRepository.findByUserIdOrderByUpTimeDesc
+                        (user.getId(),new PageRequest(page, pageSize));
+            }
+        }else {
+            throw new NullPointerException();
         }
     }
 

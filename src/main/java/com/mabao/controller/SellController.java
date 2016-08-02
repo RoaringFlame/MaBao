@@ -2,27 +2,26 @@ package com.mabao.controller;
 
 import com.mabao.controller.vo.AddressVO;
 import com.mabao.controller.vo.GoodsDetailVO;
+import com.mabao.controller.vo.GoodsVO;
 import com.mabao.enums.Gender;
+import com.mabao.enums.OrderStatus;
 import com.mabao.enums.Quality;
 import com.mabao.pojo.Address;
 import com.mabao.pojo.Goods;
+import com.mabao.pojo.OrderDetail;
 import com.mabao.service.*;
-import com.mabao.util.BaseAction;
+import com.mabao.util.PageVO;
 import com.mabao.util.Selector;
-import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +46,8 @@ public class SellController {
     private GoodsBrandService goodsBrandService;
     @Autowired
     private GoodsSizeService goodsSizeService;
+    @Autowired
+    private OrderService orderService;
 
     /**
      * 寄售
@@ -105,6 +106,49 @@ public class SellController {
             return "publish_success";
         }else {
             return "publish_failure";
+        }
+    }
+
+    /**
+     * 卖家查询商品寄售状态
+     * @param goodsState           商品状态：1已发布，2待发布，3已出售，4所有
+     * @param page                 页码
+     * @param pageSize             页面大小
+     * @return                     查询内容
+     */
+    @RequestMapping(value = "/search",method = RequestMethod.GET)
+    public String searchSell(Integer goodsState,int page, int pageSize, Model model){
+        Page<Goods> goodsPage = this.goodsService.findSellerGoods(goodsState,page,pageSize);
+        PageVO<GoodsVO> voPage = new PageVO<>();
+        voPage.toPage(goodsPage);
+        List<GoodsVO> list = GoodsVO.generateBy(goodsPage.getContent());
+        if(goodsState >= 3){
+            for(GoodsVO goodsVo:list){
+                if("已售罄".equals(goodsVo.getState())) {
+                    List<OrderDetail> orderDetailList = this.orderService.findOrderDetail(goodsVo.getId());
+                    if(orderDetailList!=null){
+                        OrderStatus orderStatus = orderDetailList.get(0).getOrder().getState();
+                        if(orderStatus!=OrderStatus.Completed){
+                            goodsVo.setState("等待交易完成");
+                        }else{
+                            goodsVo.setState("交易完成");
+                        }
+                    }
+                }
+            }
+        }
+        voPage.setItems(list);
+        Map<String, Object> map = new HashMap<>();
+        map.put("goodsList",voPage.getItems());
+        model.addAllAttributes(map);
+        if(1 == goodsState){
+            return "published_order";
+        }else if(2 == goodsState){
+            return "unpublished_order";
+        }else if(3 == goodsState){
+            return "finish_order";
+        }else{
+            return "consignment_order";
         }
     }
 }

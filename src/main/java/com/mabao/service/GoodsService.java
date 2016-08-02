@@ -5,10 +5,11 @@ import com.mabao.pojo.Baby;
 import com.mabao.pojo.Goods;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
-;
+
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+
+;
 
 /**
  * Created by liuming on 2016/6/28.
@@ -63,4 +64,11 @@ public interface GoodsService {
      * @param request
      * */
     Goods releaseGoods(GoodsDetailVO goodsVO, MultipartFile[] goodsPic, HttpServletRequest request) throws Exception;
+
+    /**
+     * 查询卖家所有商品
+     * @param goodsState               商品状态：1已发布，2待发布，3已出售，4所有
+     * @return                         商品集合，分页
+     */
+    Page<Goods> findSellerGoods(Integer goodsState,int page, int pageSize);
 }

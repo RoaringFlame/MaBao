@@ -6,6 +6,7 @@ import com.mabao.pojo.Goods;
 import com.mabao.pojo.Order;
 import com.mabao.pojo.OrderDetail;
 import com.mabao.pojo.User;
+import com.mabao.repository.GoodsRepository;
 import com.mabao.repository.OrderDetailRepository;
 import com.mabao.repository.OrderRepository;
 import com.mabao.service.AddressService;
@@ -27,6 +28,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
     @Autowired
+    private GoodsRepository goodsRepository;
+    @Autowired
     private CartService cartService;
 
     /**
@@ -41,12 +44,13 @@ public class OrderServiceImpl implements OrderService {
         String[] cartIdArray = cartIds.trim().split(",");
         Order order = new Order();
         order.setBuyer(UserManager.getUser());
-        order.setSellerId(1L);
-        order.setQuantity(cartIdArray.length);
+        order.setOperatorId(1L);                   //设置操作员id
+        order.setQuantity(cartIdArray.length);     //初始化数量
         order.setAddress(this.addressService.get(addressId));
         order.setMessage(message);
         order.setCreateTime(new Date());
         order.setState(OrderStatus.ToBePaid);
+        //运费计算后期调取接口，后期接入
         order.setFreight(10.00);                    //运费
         order.setTotalSum(order.getFreight());      //初始化总价
         this.orderRepository.save(order);
@@ -57,48 +61,64 @@ public class OrderServiceImpl implements OrderService {
             od.setGoods(goods);
             od.setOrder(order);
             od.setUnitCost(goods.getPrice());
+            Integer quantity = this.cartService.get(cartId).getQuantity();
+            //此处要对比库存数量，此处做简单处理(售罄后商品首页不可见消失)，后期整改
+            if(goods.getStockNumber()<=quantity){
+                quantity = goods.getStockNumber(); //剩余量赋值给买家
+                //设置商品状态
+                goods.setStockNumber(0);
+                goods.setState(false);
+                goods.setSellEnd(true);
+            }else{
+                //库存减少
+                goods.setStockNumber(goods.getStockNumber()-quantity);
+            }
+            this.goodsRepository.saveAndFlush(goods);
+
+            od.setQuantity(quantity);
             od.setSize(goods.getSize().getName());
             od.setNewDegree(goods.getNewDegree().getText());
             od.setTitle(goods.getTitle());
             od.setTypeName(goods.getType().getTypeName());
             od.setUpTime(goods.getUpTime());
             od.setBrand(goods.getBrand().getBrandName());
-            //计算总价
+            //计算总价与数量
+            order.setQuantity(order.getQuantity()+quantity-1);
             order.setTotalSum(order.getTotalSum()+goods.getPrice());
             this.orderDetailRepository.save(od);
         }
-        return this.orderRepository.saveAndFlush(order);    //更新总价
+        return this.orderRepository.saveAndFlush(order);    //更新总价与总数量
     }
 
-    /**
-     * 用户的所有订单查询
-     * @param userIdentity              用户身份；1查买家；2查卖家
-     * @param orderStatus               订单状态
-     * @return                          订单明细
-     */
-    @Override
-    public List<OrderDetail> findUserAllOrder(Integer userIdentity, String orderStatus) {
-        User user = UserManager.getUser();
-        if (user != null){
-            if (userIdentity ==1){
-                if (orderStatus != null && !orderStatus.equals("")){
-                    return this.orderDetailRepository.findByOrderBuyerIdAndOrderState(user.getId(),OrderStatus.valueOf(orderStatus));
-                }else {
-                    return this.orderDetailRepository.findByOrderBuyerId(user.getId());
-                }
-            }else if (userIdentity == 2){
-                if (orderStatus != null && !orderStatus.equals("")){
-                    return this.orderDetailRepository.findByOrderSellerIdAndOrderState(user.getId(),OrderStatus.valueOf(orderStatus));
-                }else {
-                    return this.orderDetailRepository.findByOrderSellerId(user.getId());
-                }
-            }else {
-                return null;
-            }
-        }else {
-            throw new NullPointerException();
-        }
-    }
+//    /**
+//     * 用户的所有订单查询
+//     * @param userIdentity              用户身份；1查买家；2查卖家
+//     * @param orderStatus               订单状态
+//     * @return                          订单明细
+//     */
+//    @Override
+//    public List<OrderDetail> findUserAllOrder(Integer userIdentity, String orderStatus) {
+//        User user = UserManager.getUser();
+//        if (user != null){
+//            if (userIdentity ==1){
+//                if (orderStatus != null && !orderStatus.equals("")){
+//                    return this.orderDetailRepository.findByOrderBuyerIdAndOrderState(user.getId(),OrderStatus.valueOf(orderStatus));
+//                }else {
+//                    return this.orderDetailRepository.findByOrderBuyerId(user.getId());
+//                }
+//            }else if (userIdentity == 2){
+//                if (orderStatus != null && !orderStatus.equals("")){
+//                    return this.orderDetailRepository.findByOrderSellerIdAndOrderState(user.getId(),OrderStatus.valueOf(orderStatus));
+//                }else {
+//                    return this.orderDetailRepository.findByOrderSellerId(user.getId());
+//                }
+//            }else {
+//                return null;
+//            }
+//        }else {
+//            throw new NullPointerException();
+//        }
+//    }
 
     /**
      * 保存订单明细
@@ -151,5 +171,15 @@ public class OrderServiceImpl implements OrderService {
             e.getStackTrace();
             return  new JsonResultVO(JsonResultVO.FAILURE,"系统错误！");
         }
+    }
+
+    /**
+     * 返回某物品的快照详情
+     * @param goodsId                   物品id
+     * @return                          物品所有详情
+     */
+    @Override
+    public List<OrderDetail> findOrderDetail(Long goodsId) {
+        return this.orderDetailRepository.findByGoodsId(goodsId);
     }
 }

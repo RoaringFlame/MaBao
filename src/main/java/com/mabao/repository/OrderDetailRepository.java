@@ -14,21 +14,26 @@ public interface OrderDetailRepository extends BaseRepository<OrderDetail> {
     List<OrderDetail> findByOrderBuyerId(Long id);
 
     /**
+     * 查询某物品所有状态
+     */
+    List<OrderDetail> findByGoodsId(Long GoodsId);
+
+    /**
      * 查买家某状态订单
      * @param id                        买家ID
      * @param orderStatus               订单状态
      */
     List<OrderDetail> findByOrderBuyerIdAndOrderState(Long id, OrderStatus orderStatus);
 
-    /**
-     * 查购卖者所有订单
-     */
-    List<OrderDetail> findByOrderSellerId(Long id);
-
-    /**
-     * 查卖家某状态订单
-     * @param id                        卖家ID
-     * @param orderStatus               订单状态
-     */
-    List<OrderDetail> findByOrderSellerIdAndOrderState(Long id, OrderStatus orderStatus);
+//    /**
+//     * 查购卖者所有订单
+//     */
+//    List<OrderDetail> findByOrderSellerId(Long id);
+//
+//    /**
+//     * 查卖家某状态订单
+//     * @param id                        卖家ID
+//     * @param orderStatus               订单状态
+//     */
+//    List<OrderDetail> findByOrderSellerIdAndOrderState(Long id, OrderStatus orderStatus);
 }

@@ -21,7 +21,6 @@
 	<link rel="stylesheet" href="css/module.css">
 
 	<script src="script/lib/jquery.1.10.2.js"></script>
-	<script src="script/personal.js"></script>
 	<script src="script/common.js"></script>
 </head>
 
@@ -70,7 +69,10 @@
 							processData: false,
 							contentType: false
 						}).done(function(res) {
-						}).fail(function(res) {});
+							window.location = "user";
+						}).fail(function(res) {
+							window.location = "user";
+						});
 				}
 			}) ;
 			$("#imgUpload").click(function(){
@@ -95,7 +97,6 @@
 	<!--宝宝图片上传-END-->
 	<!--个人中心信息-->
 	<div class="personal-center">
-		<p class="order-top">我的订单：</p>
 		<!--我是买家订单-->
 		<div>
 			<p class="order-bottom">我是<span class="red">买家</span></p>
@@ -111,10 +112,10 @@
 		<div>
 			<p class="order-bottom">我是<span class="blue">卖家</span></p>
 			<ul>
-				<li><a class="link" href="developing">全部</a></li>
-				<li><a href="developing">已出售</a></li>
-				<li><a href="developing">已发布</a></li>
-				<li><a href="developing">待发布</a></li>
+				<li><a class="link" href="sell/search?goodsState=4&page=0&pageSize=100">全部</a></li>
+				<li><a href="sell/search?goodsState=3&page=0&pageSize=100">已出售</a></li>
+				<li><a href="sell/search?goodsState=1&page=0&pageSize=100">已发布</a></li>
+				<li><a href="sell/search?goodsState=2&page=0&pageSize=100">待发布</a></li>
 			</ul>
 		</div>
 		<!--我是买家订单END-->

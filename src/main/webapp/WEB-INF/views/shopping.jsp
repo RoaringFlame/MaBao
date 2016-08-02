@@ -115,6 +115,7 @@
             <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
         </a>
     </div>
+    <div class="tip" id="textShow"></div>
     <!--底部导航 END-->
 </div>
 </body>

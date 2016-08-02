@@ -1,15 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/" + "MaBao/";
 %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <base href="<%=basePath%>">
     <meta charset="UTF-8">
-    <title>寄售订单</title>
+    <title>待上架商品</title>
     <meta name="viewport"
           content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
     <!-- 禁止将数字变为电话号码 -->
@@ -18,56 +17,47 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- iphone的私有标签,它指定的iphone中safari顶端的状态条的样式 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="css/master.css">
+     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
-    <script src="script/lib/jquery.1.10.2.js"></script>
-    <script src="script/order.js"></script>
-    <script src="script/common.js"></script>
 </head>
 
 <body>
-<div class="content-index">
-    <!--标题-->
-    <header>
-        待发布
-        <!--操作按钮-->
-        <div class="header-box">
-            <a href="user">
-                <p class="header-left">
-                    <i class="icon icon-return"></i>
-                    返回
+    <div class="content-index">
+        <!--标题-->
+        <header>
+           待发布
+            <!--操作按钮-->
+           <div class="header-box">
+                <a href="user">
+                  <p class="header-left">
+                  <i class="icon icon-return"></i>
+                   返回
                 </p>
-            </a>
-        </div>
-        <!--操作按钮 END-->
-    </header>
-    <!--标题 END-->
-
-    <div class="order">
-        <!-- 未发布商品 -->
-        <c:forEach var="goods" items="${allOrder}">
-            <div class="order-box" >
-                <div class="goodsId" style="display: none;">${OrderDetail.goodsId}</div>
-                <p class="unpaid-txt">${OrderDetail.state.getText()}</p>
-                <img src="upload/${goods.picture}" alt="宝物">
-                <div class="order-box-right">
-                    <p>${goods.brand}</p>
-                    <p>尺寸：${goods.size}</p>
-                    <p class="order-box-left">出售价格：${goods.unitCost}</p>
-                    <p class="order-box-left">扣除佣金可得：￥${goods.realprice}</p>
+                </a>
+           </div>
+            <!--操作按钮 END-->
+        </header>
+         <!--标题 END-->
+         
+        <div class="order">
+            <c:forEach var="goods" items="${goodsList}">
+         <!-- 未发布商品 -->
+                <div class="order-box">
+                    <p class="unpaid-txt">${goods.state}</p>
+                    <img src="upload/${goods.picture}" alt="宝物">
+                    <div class="order-box-right">
+                        <p>${goods.brandName}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                ${goods.title}</p>
+                        <p>尺寸：${goods.size}</p>
+                        <p class="order-box-left">￥${goods.price}</p>
+                        <p class="order-box-left">扣除佣金可得：￥${goods.price - 3.00}</p>
+                    </div>
                 </div>
-            </div>
-        </c:forEach>
-        <!-- 未发布商品END -->
-
-        <!-- 共计 -->
-        <div class="order-bottom">
-            <p>共计${goodsNum}件商品 小计：<span>${totalSum}</span> (含运费￥${totalFreight})</p>
+            <!-- 未发布商品END -->
+            </c:forEach>
         </div>
-        <!-- 共计END -->
-    </div>
 
-</div>
+    </div>
 
 </body>
 </html>

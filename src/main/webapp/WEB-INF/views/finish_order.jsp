@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/"+"MaBao/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/" + "MaBao/";
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +19,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
-    <script src="script/lib/jquery.1.10.2.js"></script>
-    <script src="script/order.js"></script>
-    <script src="script/common.js"></script>
 </head>
 
 <body>
@@ -43,28 +40,21 @@
     <!--标题 END-->
     <!-- 绑定手机表单 -->
     <div class="order">
-
-        <!-- 已出售商品 -->
-        <c:forEach var="goods" items="${allOrder}">
-            <div class="order-box" >
-                <div class="goodsId" style="display: none;">${OrderDetail.goodsId}</div>
-                <p class="unpaid-txt">${OrderDetail.state.getText()}</p>
+        <c:forEach var="goods" items="${goodsList}">
+            <!-- 已出售商品 -->
+            <div class="order-box">
+                <p class="unpaid-txt">${goods.state}</p>
                 <img src="upload/${goods.picture}" alt="宝物">
                 <div class="order-box-right">
-                    <p>${goods.brand}</p>
+                    <p>${goods.brandName}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            ${goods.title}</p>
                     <p>尺寸：${goods.size}</p>
-                    <p class="order-box-left">出售价格：${goods.unitCost}</p>
-                    <p class="order-box-left">扣除佣金可得：￥${goods.realprice}</p>
+                    <p class="order-box-left">￥${goods.price}</p>
+                    <p class="order-box-left">扣除佣金可得：￥${goods.price - 3.00}</p>
                 </div>
             </div>
+            <!-- 已出售商品END -->
         </c:forEach>
-        <!-- 已出售商品END -->
-        <!-- 共计 -->
-        <div class="order-bottom">
-            <p>共计${goodsNum}件商品 小计：<span>${totalSum}</span> (含运费￥${totalFreight})</p>
-
-        </div>
-        <!-- 共计END -->
     </div>
 
 </div>

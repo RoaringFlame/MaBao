@@ -2,15 +2,16 @@ package com.mabao.service.impl;
 
 import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.pojo.Cart;
+import com.mabao.pojo.Goods;
 import com.mabao.pojo.User;
 import com.mabao.repository.CartRepository;
+import com.mabao.repository.GoodsRepository;
 import com.mabao.service.CartService;
 import com.mabao.service.GoodsService;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.SystemException;
 import java.util.Date;
 import java.util.List;
 
@@ -122,9 +123,14 @@ public class CartServiceImpl implements CartService {
     public JsonResultVO changeCartGoodsNum(Long cartId, Integer opt, Integer num) {
         Cart cart = this.cartRepository.findOne(cartId);
         if (opt == 1){
-            cart.setQuantity(cart.getQuantity() + num);
-            this.cartRepository.saveAndFlush(cart);
-            return new JsonResultVO(JsonResultVO.SUCCESS,"成功");
+            Goods goods = cart.getGoods();
+            if(goods.getStockNumber() <= cart.getQuantity()){
+                return new JsonResultVO(JsonResultVO.FAILURE,"商品库存不足！");
+            }else {
+                cart.setQuantity(cart.getQuantity() + num);
+                this.cartRepository.saveAndFlush(cart);
+                return new JsonResultVO(JsonResultVO.SUCCESS, "成功");
+            }
         }else if (opt == 2){
             if (cart.getQuantity() <= num){
                 return new JsonResultVO(JsonResultVO.FAILURE,"只剩一个啦！");

@@ -19,13 +19,14 @@ public interface OrderService {
     Order addOrder(String cartIds, Long addressId, String message);
 
 
-    /**
-     * 用户的所有订单查询
-     * @param userIdentity              用户身份；1查买家；2查卖家
-     * @param orderStatus               订单状态
-     * @return                          订单明细
-     */
-    List<OrderDetail> findUserAllOrder(Integer userIdentity, String orderStatus);
+//    /**
+//     * 用户的所有订单查询
+//     * @param userIdentity              用户身份；1查买家；2查卖家
+//     * @param orderStatus               订单状态
+//     * @return                          订单明细
+//     */
+//    List<OrderDetail> findUserAllOrder(Integer userIdentity, String orderStatus);
+
 
     /**
      * 保存订单明细
@@ -53,4 +54,11 @@ public interface OrderService {
      * @return                          JsonResultVO
      */
     JsonResultVO confirmReceipt(String orderDetailIds);
+
+    /**
+     * 返回某物品的快照详情（寄售卖家理论一件物品只有一件详情）
+     * @param goodsId                   物品id
+     * @return                          所有详情
+     */
+    List<OrderDetail> findOrderDetail(Long goodsId);
 }

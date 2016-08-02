@@ -13,6 +13,7 @@ public class OrderDetail {
     private String title;                           //标题
     private String typeName;                        //一级类型名称
     private Double unitCost;                        //单价
+    private Integer quantity;                       //数量
     private String brand;                           //商品品牌
     private Date upTime;                            //上架时间
     private String newDegree;                       //新旧程度
@@ -33,16 +34,15 @@ public class OrderDetail {
     public Order getOrder() {
         return order;
     }
-
     public void setOrder(Order order) {
         this.order = order;
     }
+
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "goods_id")
     public Goods getGoods() {
         return goods;
     }
-
     public void setGoods(Goods goods) {
         this.goods = goods;
     }
@@ -55,6 +55,10 @@ public class OrderDetail {
     public void setUnitCost(Double unitCost) {
         this.unitCost = unitCost;
     }
+
+    public Integer getQuantity() {return quantity; }
+
+    public void setQuantity(Integer quantity) {this.quantity = quantity; }
 
     public String getSize() {
         return size;

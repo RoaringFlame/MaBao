@@ -31,7 +31,8 @@ public class Goods {
     private String message;                         //卖家分享
     private String pictureList;                     //附加图片，list元素用分号隔开存入数据库
     private Integer stockNumber;                    //库存数量
-    private Boolean state;                          //商品状态，1为存在，0为下架或不存在。
+    private Boolean state;                          //商品状态，1为存在，0为下架或不存在
+    private Boolean sellEnd;                        //是否售罄，1为售罄，0为有库存
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -220,6 +221,16 @@ public class Goods {
 
     public void setState(Boolean state) {
         this.state = state;
+    }
+
+    @Basic
+    @Column(name = "sell_end")
+    public Boolean getSellEnd() {
+        return sellEnd;
+    }
+
+    public void setSellEnd(Boolean sellEnd) {
+        this.sellEnd = sellEnd;
     }
 
     @ManyToOne

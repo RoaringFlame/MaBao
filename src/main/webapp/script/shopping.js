@@ -1,5 +1,10 @@
 "use strict";
 $(function () {
+    function showMsg(msg) {
+        //提示框弹出信息停留3秒消失
+        $('#textShow').text(msg).fadeIn(500).delay(1000).fadeOut(500);
+    }
+
     var main = $("#container");                                //商品列表容器
     var payForm = $("#frmPay");                                //存储要购买的商品cartId
     var editBtn = $("div.header-box").find(".header-right");   //编辑按钮
@@ -7,6 +12,7 @@ $(function () {
     var cartIds;                                          //存储cartId
     //获取商品信息
     function getGoods() {
+        $("#textShow").hide();                          //提示框的隐藏
         MB.sendAjax("get", "cart/showCart", {}, function (data) {
             $(data).each(function (index, goods) {
                 var newGoods = $("#goodsContainer").find("div.main-item").clone();                       //克隆goodsContainer中商品信息
@@ -30,19 +36,37 @@ $(function () {
             main.find(".shopping-cart-add").click(function () {
                 var cartId = $(this).parent().prevAll("div.cartId").text();           //获取当前商品的cartId
                 var num = parseInt($(this).prev("p").text());                         //获取当前商品数量
-                MB.sendAjax("get", "cart/changeNum/" + cartId, {opt: 1}, function () {
-                    setTotal();                          //点击增加按钮后重新计算总价
+                var flag = false;
+                MB.sendAjax("get", "cart/changeNum/" + cartId, {opt: 1}, function (data) {
+                    if(data.status == "success"){
+                        flag = true;
+                    }else{
+                        showMsg(data.message);
+                    }
                 });
-                $(this).prev("p").text(num + 1);
+                if(flag){
+                    $(this).prev("p").text(num + 1);     //显示数量+1
+                    setTotal();                          //点击增加按钮后重新计算总价
+                    flag = false;
+            }
             });
             //减少按钮
             main.find(".shopping-cart-reduce").click(function () {
                 var cartId = $(this).parent().prevAll("div.cartId").text();          //获取当前商品的cartId
                 var num = parseInt($(this).next("p").text());                        //获取当前购物车商品数量
-                MB.sendAjax("get", "cart/changeNum/" + cartId, {opt: 2}, function () {
-                    setTotal();                                               //点击减少按钮后重新计算总价
+                var flag = false;
+                MB.sendAjax("get", "cart/changeNum/" + cartId, {opt: 2}, function (data) {
+                    if(data.status == "success"){
+                        flag = true;
+                    }else if(data.status == "failure"){
+                        showMsg(data.message);
+                    }
                 });
-                $(this).next("p").text(num <= 1 ? 1 : num - 1);                       //如果商品数量为1则商品数量不变，否则商品数量减1
+                if(flag){
+                    $(this).next("p").text(num <= 1 ? 1 : num - 1);               //如果商品数量为1则商品数量不变，否则商品数量减1
+                    setTotal();                                                   //点击增加按钮后重新计算总价
+                    flag = false;
+                }
             });
             //删除按钮
             main.find(".goods-del").click(function () {

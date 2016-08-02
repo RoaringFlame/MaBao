@@ -1,12 +1,8 @@
 package com.mabao.pojo;
 
 import com.mabao.enums.OrderStatus;
-import org.hibernate.annotations.*;
 
 import javax.persistence.*;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
@@ -14,7 +10,7 @@ import java.util.Date;
 public class Order {
     private Long id;                    //id
     private User buyer;                 //买家ID
-    private Long sellerId;              //买家ID
+    private Long operatorId;            //操作人员ID
     private Integer quantity;           //数量
     private Double totalSum;            //总价
     private Date createTime;            //订单创建时间
@@ -116,15 +112,14 @@ public class Order {
         this.buyer = buyer;
     }
 
-    @Column(name = "seller_id")
-    public Long getSellerId() {
-        return sellerId;
+    @Column(name = "operator_id")
+    public Long getOperatorId() {
+        return operatorId;
     }
-
-    public void setSellerId(Long sellerId) {
-        this.sellerId = sellerId;
+    public void setOperatorId(Long operatorId) {
+        this.operatorId = operatorId;
     }
-
+    
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "address_id")
     public Address getAddress() {
