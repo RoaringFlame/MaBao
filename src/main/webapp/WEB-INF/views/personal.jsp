@@ -101,10 +101,10 @@
 		<div>
 			<p class="order-bottom">我是<span class="red">买家</span></p>
 			<ul>
-				<li><a class="link" href="developing">全部</a></li>
-				<li><a href="developing">待付款</a></li>
-				<li><a href="developing">待发货</a></li>
-				<li><a href="developing">待确认</a></li>
+				<li><a class="link" href="order/search?state=3&page=0&pageSize=100">全部</a></li>
+				<li><a href="order/search?state=0&page=0&pageSize=100">待付款</a></li>
+				<li><a href="order/search?state=1&page=0&pageSize=100">待发货</a></li>
+				<li><a href="order/search?state=2&page=0&pageSize=100">待确认</a></li>
 			</ul>
 		</div>
 		<!--我是买家订单END-->

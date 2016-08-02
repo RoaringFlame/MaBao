@@ -121,7 +121,8 @@ public class SellController {
         Page<Goods> goodsPage = this.goodsService.findSellerGoods(goodsState,page,pageSize);
         PageVO<GoodsVO> voPage = new PageVO<>();
         voPage.toPage(goodsPage);
-        List<GoodsVO> list = GoodsVO.generateBy(goodsPage.getContent());
+        voPage.setItems(GoodsVO.generateBy(goodsPage.getContent()));//将goods转换成goodsvo
+        List<GoodsVO> list = voPage.getItems();
         if(goodsState >= 3){
             for(GoodsVO goodsVo:list){
                 if("已售罄".equals(goodsVo.getState())) {
@@ -129,7 +130,7 @@ public class SellController {
                     if(orderDetailList!=null){
                         OrderStatus orderStatus = orderDetailList.get(0).getOrder().getState();
                         if(orderStatus!=OrderStatus.Completed){
-                            goodsVo.setState("等待交易完成");
+                            goodsVo.setState("交易中");
                         }else{
                             goodsVo.setState("交易完成");
                         }
@@ -137,6 +138,7 @@ public class SellController {
                 }
             }
         }
+        //分页接口准备
         voPage.setItems(list);
         Map<String, Object> map = new HashMap<>();
         map.put("goodsList",voPage.getItems());

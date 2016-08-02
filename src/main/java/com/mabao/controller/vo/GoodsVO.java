@@ -1,15 +1,12 @@
 package com.mabao.controller.vo;
 
 import com.mabao.pojo.Goods;
+import com.mabao.pojo.OrderDetail;
 import com.mabao.util.VoUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 商品简要信息VO
- * Created by lies on 2016/6/30.
- */
 public class GoodsVO {
 
     private Long id;                        //宝物的id
@@ -19,14 +16,16 @@ public class GoodsVO {
     private String newDegree;               //宝物新旧程度
     private String brandName;               //宝物品牌
     private String size;                    //宝物尺寸
+    private Integer quantity;               //数量
     private String state;                   //宝物状态
 
     public static GoodsVO generateBy(Goods goods){
         GoodsVO vo = VoUtil.copyBasic(GoodsVO.class, goods);
         assert vo != null;
+        vo.setQuantity(1);
         vo.setNewDegree(goods.getNewDegree().getText());
         vo.setSize(goods.getSize().getName());
-        vo.setState(goods.getState()?"商品已上架":(goods.getSellEnd()?"已售罄":"商品上架中"));
+        vo.setState(goods.getState()?"已发布":(goods.getSellEnd()?"已售罄":"发布审核中"));
         return vo;
     }
     public static List<GoodsVO> generateBy(List<Goods> goodsList){
@@ -36,7 +35,23 @@ public class GoodsVO {
         }
         return list;
     }
-
+    public static GoodsVO generateByOrderDetail(OrderDetail goods){
+        GoodsVO vo = VoUtil.copyBasic(GoodsVO.class, goods);
+        assert vo != null;
+        vo.setId(goods.getGoods().getId());
+        vo.setPicture(goods.getGoods().getPicture());
+        vo.setPrice(goods.getUnitCost());
+        vo.setBrandName(goods.getBrand());
+        vo.setState("交易中");
+        return vo;
+    }
+    public static List<GoodsVO> generateByOrderDetail(List<OrderDetail> goodsList){
+        List<GoodsVO> list=new ArrayList<>();
+        for (OrderDetail g : goodsList){
+            list.add(generateByOrderDetail(g));
+        }
+        return list;
+    }
     public Long getId() {
         return id;
     }
@@ -91,6 +106,14 @@ public class GoodsVO {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public String getState() {return state;}

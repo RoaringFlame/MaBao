@@ -1,6 +1,7 @@
 package com.mabao.pojo;
 
 import com.mabao.enums.OrderStatus;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,9 +14,13 @@ public class Order {
     private Long operatorId;            //操作人员ID
     private Integer quantity;           //数量
     private Double totalSum;            //总价
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;            //订单创建时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date portTime;              //订单发货时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date payTime;               //订单支付时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date dealTime;              //订单完成时间
     private String portNumber;          //运单号
     private Double freight;             //运费

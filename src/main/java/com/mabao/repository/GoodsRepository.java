@@ -56,5 +56,8 @@ public interface GoodsRepository extends BaseRepository<Goods> {
      */
     Page<Goods> findByUserIdAndStateAndSellEndOrderByUpTimeDesc(Long userId, Boolean state,Boolean sellEnd,Pageable pageable);
 
+    /**
+     * 查询该用户所有商品
+     */
     Page<Goods> findByUserIdOrderByUpTimeDesc(Long userId,Pageable pageable);
 }

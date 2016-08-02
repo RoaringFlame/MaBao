@@ -14,6 +14,8 @@ import com.mabao.service.CartService;
 import com.mabao.service.OrderService;
 import com.mabao.util.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -90,36 +92,6 @@ public class OrderServiceImpl implements OrderService {
         return this.orderRepository.saveAndFlush(order);    //更新总价与总数量
     }
 
-//    /**
-//     * 用户的所有订单查询
-//     * @param userIdentity              用户身份；1查买家；2查卖家
-//     * @param orderStatus               订单状态
-//     * @return                          订单明细
-//     */
-//    @Override
-//    public List<OrderDetail> findUserAllOrder(Integer userIdentity, String orderStatus) {
-//        User user = UserManager.getUser();
-//        if (user != null){
-//            if (userIdentity ==1){
-//                if (orderStatus != null && !orderStatus.equals("")){
-//                    return this.orderDetailRepository.findByOrderBuyerIdAndOrderState(user.getId(),OrderStatus.valueOf(orderStatus));
-//                }else {
-//                    return this.orderDetailRepository.findByOrderBuyerId(user.getId());
-//                }
-//            }else if (userIdentity == 2){
-//                if (orderStatus != null && !orderStatus.equals("")){
-//                    return this.orderDetailRepository.findByOrderSellerIdAndOrderState(user.getId(),OrderStatus.valueOf(orderStatus));
-//                }else {
-//                    return this.orderDetailRepository.findByOrderSellerId(user.getId());
-//                }
-//            }else {
-//                return null;
-//            }
-//        }else {
-//            throw new NullPointerException();
-//        }
-//    }
-
     /**
      * 保存订单明细
      * @param orderDetail               明细对象
@@ -181,5 +153,39 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<OrderDetail> findOrderDetail(Long goodsId) {
         return this.orderDetailRepository.findByGoodsId(goodsId);
+    }
+
+    /**
+     * 返回买家某状态的所有订单
+     * @param state                     订单状态：0待支付，1待发货，2待确认收货，3全部
+     * @param page                      页面
+     * @param size                      分页大小
+     * @return
+     */
+    @Override
+    public Page<Order> findBuyerOrders(Integer state, int page, int size) {
+        User user = UserManager.getUser();
+        if (user != null) {
+            if(0 == state){
+                return this.orderRepository.findByBuyerIdAndStateOrderByCreateTimeDesc(user.getId(),OrderStatus.ToBePaid,new PageRequest(page,size));
+            }else if(1 == state){
+                return this.orderRepository.findByBuyerIdAndStateOrderByCreateTimeDesc(user.getId(),OrderStatus.ToBeSend,new PageRequest(page,size));
+            }else if(2 == state){
+                return this.orderRepository.findByBuyerIdAndStateOrderByCreateTimeDesc(user.getId(),OrderStatus.ToBeReceipt,new PageRequest(page,size));
+            }else{
+                return this.orderRepository.findByBuyerIdOrderByCreateTimeDesc(user.getId(),new PageRequest(page,size));
+            }
+        }else{
+            throw new NullPointerException();
+        }
+    }
+
+    /**
+     * 返回某订单下所有商品
+     * @param orderId                   订单ID
+     */
+    @Override
+    public List<OrderDetail> findOrderDetailListByOrderId(Long orderId) {
+        return this.orderDetailRepository.findByOrderId(orderId);
     }
 }

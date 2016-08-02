@@ -1,104 +1,35 @@
 package com.mabao.controller.vo;
 
-import com.mabao.enums.OrderStatus;
-import com.mabao.pojo.Goods;
-import com.mabao.pojo.OrderDetail;
+import com.mabao.pojo.Order;
 import com.mabao.util.VoUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 订单简要信息VO
- * Created by lies on 2016/6/30.
- */
-public class OrderVO {
-    private Long orderDetailId;                     //订单明细的id
-    private Long goodsId;                           //商品ID
-    private String size;                            //尺寸
-    private String title;                           //标题
-    private String picture;                         //图片
-    private Double unitCost;                        //单价
-    private String brand;                           //商品品牌
-    private Integer quantity;                       //数量
-    private Double totalSum;                        //总价
-    private Double freight;                         //运费
-    private OrderStatus state;                      //订单状态
 
-    public static OrderVO generateBy(OrderDetail o){
+public class OrderVO {
+    private Long id;                                //订单的id
+    private List<GoodsVO> goodsVOList;              //订单中的商品
+    private Integer quantity;                       //总数量
+    private Double totalSum;                        //总价
+    private Double freight;                         //总运费
+    private Integer flag;                           //状态标记
+    private String state;                      //订单状态
+
+//    public static List<OrderVO> generateBy(List<OrderDetail> orderList) {
+//        List<OrderVO> list = new ArrayList<>();
+//        for (OrderDetail g : orderList) {
+//            list.add(generateBy(g));
+//        }
+//        return list;
+//    }
+
+    public static OrderVO generateBy(Order o,List<GoodsVO> goodsVOList){
         OrderVO vo = VoUtil.copyBasic(OrderVO.class, o);
         assert vo != null;
-        vo.setGoodsId(o.getGoods().getId());
-        vo.setPicture(o.getGoods().getPicture());
-        vo.setOrderDetailId(o.getId());
-        vo.setQuantity(o.getOrder().getQuantity());
-        vo.setTotalSum(o.getOrder().getTotalSum());
-        vo.setFreight(o.getOrder().getFreight());
-        vo.setState(o.getOrder().getState());
+        vo.setFlag(o.getState().ordinal());
+        vo.setGoodsVOList(goodsVOList);
+        vo.setState(o.getState().getText());
         return vo;
-    }
-    public static List<OrderVO> generateBy(List<OrderDetail> orderList){
-        List<OrderVO> list=new ArrayList<>();
-        for (OrderDetail g : orderList){
-            list.add(generateBy(g));
-        }
-        return list;
-    }
-
-    public Long getOrderDetailId() {
-        return orderDetailId;
-    }
-
-    public void setOrderDetailId(Long orderDetailId) {
-        this.orderDetailId = orderDetailId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    public Double getUnitCost() {
-        return unitCost;
-    }
-
-    public void setUnitCost(Double unitCost) {
-        this.unitCost = unitCost;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     public Double getTotalSum() {
@@ -109,6 +40,30 @@ public class OrderVO {
         this.totalSum = totalSum;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<GoodsVO> getGoodsVOList() {
+        return goodsVOList;
+    }
+
+    public void setGoodsVOList(List<GoodsVO> goodsVOList) {
+        this.goodsVOList = goodsVOList;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
     public Double getFreight() {
         return freight;
     }
@@ -117,19 +72,17 @@ public class OrderVO {
         this.freight = freight;
     }
 
-    public OrderStatus getState() {
-        return state;
+    public Integer getFlag() {
+        return flag;
     }
 
-    public void setState(OrderStatus state) {
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
+
+    public String getState() {return state;}
+
+    public void setState(String state) {
         this.state = state;
-    }
-
-    public Long getGoodsId() {
-        return goodsId;
-    }
-
-    public void setGoodsId(Long goodsId) {
-        this.goodsId = goodsId;
     }
 }
