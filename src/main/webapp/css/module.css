@@ -1418,6 +1418,47 @@
     color: #fff;
 }
 
+/*物流信息*/
+.transport-box {
+
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.transport-box .transport-top {
+    padding: 1rem 0;
+    background-color: #a6e1ec;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.transport-box p {
+    text-indent: 10px;
+    line-height: 1.8rem;
+}
+
+.transport-box div {
+    border: .2rem dashed #a6e1ec;
+    padding: 1rem;
+}
+
+.transport-box div p {
+    vertical-align: middle;
+    height: 4.5rem;
+}
+
+.transport-box div p:first-child {
+    color: #a6e1ec;
+
+}
+
+.transport-box div p span:last-child {
+    position: absolute;
+    display: inline-block;
+    width: 15rem;
+}
+
 /*个人中心*/
 .baby-photo {
     margin: 0 auto;
@@ -1854,7 +1895,7 @@
 
 }
 
-.pay-top label:hover,.checked-active{
+.pay-top label:hover, .checked-active {
     background: deepskyblue;
 }
 
