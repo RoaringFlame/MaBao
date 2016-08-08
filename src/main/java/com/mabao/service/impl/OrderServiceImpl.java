@@ -1,11 +1,9 @@
 package com.mabao.service.impl;
 
+import com.mabao.controller.vo.ExpressVO;
 import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.enums.OrderStatus;
-import com.mabao.pojo.Goods;
-import com.mabao.pojo.Order;
-import com.mabao.pojo.OrderDetail;
-import com.mabao.pojo.User;
+import com.mabao.pojo.*;
 import com.mabao.repository.GoodsRepository;
 import com.mabao.repository.OrderDetailRepository;
 import com.mabao.repository.OrderRepository;
@@ -13,11 +11,16 @@ import com.mabao.service.AddressService;
 import com.mabao.service.CartService;
 import com.mabao.service.OrderService;
 import com.mabao.util.UserManager;
+import com.mabao.util.express.PackInfo;
+import com.mabao.util.express.PackQuery;
+import com.sun.xml.internal.bind.v2.runtime.reflect.Lister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -36,10 +39,11 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 购买,生成订单
-     * @param cartIds                   <商品ID,商品ID...>
-     * @param addressId                 地址ID
-     * @param message                   买家留言
-     * @return                          订单对象
+     *
+     * @param cartIds   <商品ID,商品ID...>
+     * @param addressId 地址ID
+     * @param message   买家留言
+     * @return 订单对象
      */
     @Override
     public Order addOrder(String cartIds, Long addressId, String message) {
@@ -56,8 +60,8 @@ public class OrderServiceImpl implements OrderService {
         order.setFreight(10.00);                    //运费
         order.setTotalSum(order.getFreight());      //初始化总价
         this.orderRepository.save(order);
-        for (String one : cartIdArray){
-            Long cartId =Long.valueOf(one);
+        for (String one : cartIdArray) {
+            Long cartId = Long.valueOf(one);
             Goods goods = this.cartService.get(cartId).getGoods();
             OrderDetail od = new OrderDetail();
             od.setGoods(goods);
@@ -65,15 +69,15 @@ public class OrderServiceImpl implements OrderService {
             od.setUnitCost(goods.getPrice());
             Integer quantity = this.cartService.get(cartId).getQuantity();
             //此处要对比库存数量，此处做简单处理(售罄后商品首页不可见消失)，后期整改
-            if(goods.getStockNumber()<=quantity){
+            if (goods.getStockNumber() <= quantity) {
                 quantity = goods.getStockNumber(); //剩余量赋值给买家
                 //设置商品状态
                 goods.setStockNumber(0);
                 goods.setState(false);
                 goods.setSellEnd(true);
-            }else{
+            } else {
                 //库存减少
-                goods.setStockNumber(goods.getStockNumber()-quantity);
+                goods.setStockNumber(goods.getStockNumber() - quantity);
             }
             this.goodsRepository.saveAndFlush(goods);
 
@@ -85,8 +89,8 @@ public class OrderServiceImpl implements OrderService {
             od.setUpTime(goods.getUpTime());
             od.setBrand(goods.getBrand().getBrandName());
             //计算总价与数量
-            order.setQuantity(order.getQuantity()+quantity-1);
-            order.setTotalSum(order.getTotalSum()+goods.getPrice());
+            order.setQuantity(order.getQuantity() + quantity - 1);
+            order.setTotalSum(order.getTotalSum() + goods.getPrice());
             this.orderDetailRepository.save(od);
         }
         return this.orderRepository.saveAndFlush(order);    //更新总价与总数量
@@ -94,8 +98,9 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 保存订单明细
-     * @param orderDetail               明细对象
-     * @return                          插入的订单明细
+     *
+     * @param orderDetail 明细对象
+     * @return 插入的订单明细
      */
     @Override
     public OrderDetail saveOrderDetail(OrderDetail orderDetail) {
@@ -104,17 +109,20 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 保存订单
-     * @param order                     订单对象
-     * @return                          插入的订单
+     *
+     * @param order 订单对象
+     * @return 插入的订单
      */
     @Override
     public Order saveOrder(Order order) {
         return this.orderRepository.save(order);
     }
+
     /**
      * 修改订单状态
-     * @param orderDetailIds            订单明细ID，使用逗号分割
-     * @param orderStatus               新订单状态
+     *
+     * @param orderDetailIds 订单明细ID，使用逗号分割
+     * @param orderStatus    新订单状态
      */
     @Override
     public JsonResultVO changeOrderStatus(String orderDetailIds, OrderStatus orderStatus) {
@@ -123,32 +131,34 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 确认收货
-     * @param orderDetailIds            订单明细ID，使用逗号分割
-     * @return                          JsonResultVO
+     *
+     * @param orderDetailIds 订单明细ID，使用逗号分割
+     * @return JsonResultVO
      */
     @Override
     public JsonResultVO confirmReceipt(String orderDetailIds) {
         try {
-            for(String s : orderDetailIds.trim().split(",")){
+            for (String s : orderDetailIds.trim().split(",")) {
                 Order o = this.orderDetailRepository.findOne(Long.valueOf(s)).getOrder();
-                if (o.getState().equals(OrderStatus.ToBeReceipt)){
+                if (o.getState().equals(OrderStatus.ToBeReceipt)) {
                     o.setState(OrderStatus.Completed);
                     this.orderRepository.saveAndFlush(o);
-                }else {
-                    return new JsonResultVO(JsonResultVO.FAILURE,"订单不是待收货状态！");
+                } else {
+                    return new JsonResultVO(JsonResultVO.FAILURE, "订单不是待收货状态！");
                 }
             }
-            return new JsonResultVO(JsonResultVO.SUCCESS,"确认收货！");
-        }catch (Exception e){
+            return new JsonResultVO(JsonResultVO.SUCCESS, "确认收货！");
+        } catch (Exception e) {
             e.getStackTrace();
-            return  new JsonResultVO(JsonResultVO.FAILURE,"系统错误！");
+            return new JsonResultVO(JsonResultVO.FAILURE, "系统错误！");
         }
     }
 
     /**
      * 返回某物品的快照详情
-     * @param goodsId                   物品id
-     * @return                          物品所有详情
+     *
+     * @param goodsId 物品id
+     * @return 物品所有详情
      */
     @Override
     public List<OrderDetail> findOrderDetail(Long goodsId) {
@@ -157,35 +167,56 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 返回买家某状态的所有订单
-     * @param state                     订单状态：0待支付，1待发货，2待确认收货，3全部
-     * @param page                      页面
-     * @param size                      分页大小
+     *
+     * @param state 订单状态：0待支付，1待发货，2待确认收货，3全部
+     * @param page  页面
+     * @param size  分页大小
      * @return
      */
     @Override
     public Page<Order> findBuyerOrders(Integer state, int page, int size) {
         User user = UserManager.getUser();
         if (user != null) {
-            if(0 == state){
-                return this.orderRepository.findByBuyerIdAndStateOrderByCreateTimeDesc(user.getId(),OrderStatus.ToBePaid,new PageRequest(page,size));
-            }else if(1 == state){
-                return this.orderRepository.findByBuyerIdAndStateOrderByCreateTimeDesc(user.getId(),OrderStatus.ToBeSend,new PageRequest(page,size));
-            }else if(2 == state){
-                return this.orderRepository.findByBuyerIdAndStateOrderByCreateTimeDesc(user.getId(),OrderStatus.ToBeReceipt,new PageRequest(page,size));
-            }else{
-                return this.orderRepository.findByBuyerIdOrderByCreateTimeDesc(user.getId(),new PageRequest(page,size));
+            if (0 == state) {
+                return this.orderRepository.findByBuyerIdAndStateOrderByCreateTimeDesc(user.getId(), OrderStatus.ToBePaid, new PageRequest(page, size));
+            } else if (1 == state) {
+                return this.orderRepository.findByBuyerIdAndStateOrderByCreateTimeDesc(user.getId(), OrderStatus.ToBeSend, new PageRequest(page, size));
+            } else if (2 == state) {
+                return this.orderRepository.findByBuyerIdAndStateOrderByCreateTimeDesc(user.getId(), OrderStatus.ToBeReceipt, new PageRequest(page, size));
+            } else {
+                return this.orderRepository.findByBuyerIdOrderByCreateTimeDesc(user.getId(), new PageRequest(page, size));
             }
-        }else{
+        } else {
             throw new NullPointerException();
         }
     }
 
     /**
      * 返回某订单下所有商品
-     * @param orderId                   订单ID
+     *
+     * @param orderId 订单ID
      */
     @Override
     public List<OrderDetail> findOrderDetailListByOrderId(Long orderId) {
         return this.orderDetailRepository.findByOrderId(orderId);
+    }
+
+    /**
+     * 查询物流信息
+     * @param orderId 订单id
+     */
+    @Override
+    public ExpressVO findPackInfoByOrder(Long orderId) throws IOException {
+        Order order = this.orderRepository.findOne(orderId);
+        if (order != null) {
+            Express express = order.getExpress();
+            PackInfo packInfo = PackQuery.get(express.getTypeName(), order.getPortNumber());
+            if (packInfo != null) {
+                ExpressVO expressVO = ExpressVO.generateBy(packInfo);
+                expressVO.setCompany(express.getComName());
+                return expressVO;
+            }
+        }
+        return null;
     }
 }

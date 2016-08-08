@@ -5,6 +5,8 @@ import com.mabao.pojo.Address;
 import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.UserService;
+import com.mabao.util.express.PackInfo;
+import com.mabao.util.express.PackQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,5 +80,11 @@ public class UserCenterRESTController {
     public JsonResultVO sendMessage(@RequestParam Integer state,
                                      @RequestParam(required = false, defaultValue = "") String phoneNum) throws IOException {
         return userService.sendMessage(state, phoneNum);
+    }
+
+    @RequestMapping(value = "/searchExpressInfo",method = RequestMethod.GET)
+    public PackInfo searchExpressInfo(@RequestParam String com,
+                                  @RequestParam String id) throws IOException {
+        return PackQuery.get(com,id);
     }
 }

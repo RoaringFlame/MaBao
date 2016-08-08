@@ -83,7 +83,8 @@
             <!-- 按钮 -->
             <c:if test="${order.flag eq 2}">
                 <div class="order-button">
-                    <button type="submit" value="查看物流">查看物流</button>
+                    <a href="order/searchExpress/${order.id}">
+                    <button type="submit" value="查看物流">查看物流</button></a>
                     <button type="submit" value="确认收货">确认收货</button>
                 </div>
             </c:if>

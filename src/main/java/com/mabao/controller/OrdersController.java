@@ -1,5 +1,6 @@
 package com.mabao.controller;
 
+import com.mabao.controller.vo.ExpressVO;
 import com.mabao.controller.vo.GoodsVO;
 import com.mabao.controller.vo.OrderVO;
 import com.mabao.pojo.Order;
@@ -11,10 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -81,5 +84,17 @@ public class OrdersController {
         }else{
             return "purchase_order";
         }
+    }
+
+    /**
+     * 查询订单物流信息
+     * @param orderId 订单号
+     */
+    @RequestMapping(value = "/searchExpress/{orderId}",method = RequestMethod.GET)
+    public String searchExpress(@PathVariable("orderId") Long orderId,
+                                Model model) throws IOException {
+        ExpressVO expressVO = orderService.findPackInfoByOrder(orderId);
+        model.addAttribute("expressVO",expressVO);
+        return "transport";
     }
 }

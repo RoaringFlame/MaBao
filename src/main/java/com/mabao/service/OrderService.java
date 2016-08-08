@@ -1,12 +1,14 @@
 package com.mabao.service;
 
 
+import com.mabao.controller.vo.ExpressVO;
 import com.mabao.controller.vo.JsonResultVO;
 import com.mabao.enums.OrderStatus;
 import com.mabao.pojo.Order;
 import com.mabao.pojo.OrderDetail;
 import org.springframework.data.domain.Page;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface OrderService {
@@ -70,4 +72,11 @@ public interface OrderService {
      * @return                          所有订单商品
      */
     List<OrderDetail> findOrderDetailListByOrderId(Long orderId);
+
+    /**
+     * 查询订单物流信息
+     * @param orderId                   订单id
+     * @return                          物流信息
+     */
+    ExpressVO findPackInfoByOrder(Long orderId) throws IOException;
 }

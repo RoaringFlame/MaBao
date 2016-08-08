@@ -67,7 +67,9 @@
             <!-- 共计END -->
             <!-- 按钮 -->
             <div class="order-button">
-                <button type="submit" value="查看物流">查看物流</button>
+                <a href="order/searchExpress/${order.id}">
+                    <button type="submit" value="查看物流">查看物流</button>
+                </a>
                 <button type="submit" value="确认收货">确认收货</button>
             </div>
             <!-- 按钮END -->

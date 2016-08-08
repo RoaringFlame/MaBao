@@ -13,15 +13,7 @@ public class OrderVO {
     private Double totalSum;                        //总价
     private Double freight;                         //总运费
     private Integer flag;                           //状态标记
-    private String state;                      //订单状态
-
-//    public static List<OrderVO> generateBy(List<OrderDetail> orderList) {
-//        List<OrderVO> list = new ArrayList<>();
-//        for (OrderDetail g : orderList) {
-//            list.add(generateBy(g));
-//        }
-//        return list;
-//    }
+    private String state;                           //订单状态
 
     public static OrderVO generateBy(Order o,List<GoodsVO> goodsVOList){
         OrderVO vo = VoUtil.copyBasic(OrderVO.class, o);
