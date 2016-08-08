@@ -125,7 +125,7 @@
 			<a href="user"><p>绑定微信（调用微信接口）</p></a>
 			<a href="user/address/userAllAddress"><p>收货地址</p></a>
 			<a href="user/baby/allBabyInfo?babyId=${userInfo.babyId}"><p>宝宝信息</p></a>
-			<a href="user/bind_phone"><p>绑定手机</p></a>
+			<a href="user/bindphone"><p>绑定手机</p></a>
 		</div>
 		<!--个人中心操作END-->
 	</div>

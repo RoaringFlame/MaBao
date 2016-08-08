@@ -28,7 +28,6 @@ MB.sendAjax = function (type, url, data, successFn, errorFn) {
         path += "/" + url;
     }
     $.ajax({
-        async:false,
         type: type,
         data: data,
         url: path,

@@ -6,6 +6,7 @@ import com.mabao.pojo.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 public interface UserService {
     /**
@@ -50,4 +51,12 @@ public interface UserService {
      * 个人中心，修改头像
      */
     User updateUserPicture(MultipartFile headerPic, HttpServletRequest request);
+
+    /**
+     * 发送短信验证
+     * @param state                 短信类型 1为绑定手机 2为修改密码
+     * @param phoneNum              绑定手机号
+     * @return                      短信发送结果
+     */
+    JsonResultVO sendMessage(Integer state,String phoneNum) throws IOException;
 }

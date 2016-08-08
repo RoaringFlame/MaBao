@@ -1328,7 +1328,7 @@
 }
 
 .order-box {
-
+    margin: .5rem auto;
     position: relative;
     border-top: .1rem solid #eee;
     background-color: #fefacd;

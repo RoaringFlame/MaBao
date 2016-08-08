@@ -32,16 +32,26 @@ $(function () {
                     setTotal();               //复选框点击后重新计算总价
                     isPay();                  //判断付款按钮是否可用
                 });
+
+
             //增加按钮
             main.find(".shopping-cart-add").click(function () {
                 var cartId = $(this).parent().prevAll("div.cartId").text();           //获取当前商品的cartId
                 var num = parseInt($(this).prev("p").text());                         //获取当前商品数量
                 var flag = false;
-                MB.sendAjax("get", "cart/changeNum/" + cartId, {opt: 1}, function (data) {
-                    if(data.status == "success"){
-                        flag = true;
-                    }else{
-                        showMsg(data.message);
+                $.ajax({
+                    url : 'cart/changeNum/' + cartId,
+                    type : 'get',
+                    async: false,//使用同步的方式,true为异步方式
+                    data : {opt: 1},//这里使用json对象
+                    success : function(data){
+                        if(data.status == "success"){
+                            flag = true;
+                        }else{
+                            showMsg(data.message);
+                        }
+                    },
+                    fail:function(){
                     }
                 });
                 if(flag){
@@ -55,11 +65,20 @@ $(function () {
                 var cartId = $(this).parent().prevAll("div.cartId").text();          //获取当前商品的cartId
                 var num = parseInt($(this).next("p").text());                        //获取当前购物车商品数量
                 var flag = false;
-                MB.sendAjax("get", "cart/changeNum/" + cartId, {opt: 2}, function (data) {
-                    if(data.status == "success"){
-                        flag = true;
-                    }else if(data.status == "failure"){
-                        showMsg(data.message);
+
+                $.ajax({
+                    url : 'cart/changeNum/' + cartId,
+                    type : 'get',
+                    async: false,//使用同步的方式,true为异步方式
+                    data : {opt: 2},//这里使用json对象
+                    success : function(data){
+                        if(data.status == "success"){
+                            flag = true;
+                        }else{
+                            showMsg(data.message);
+                        }
+                    },
+                    fail:function(){
                     }
                 });
                 if(flag){
@@ -68,6 +87,8 @@ $(function () {
                     flag = false;
                 }
             });
+
+
             //删除按钮
             main.find(".goods-del").click(function () {
                 var cartId = $(this).prevAll("div.cartId").text();
