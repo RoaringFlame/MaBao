@@ -1242,7 +1242,7 @@
     padding: 4rem 2rem;
 }
 
-.get-back-pwd p {
+.get-back-pwd p:first-child {
     font-size: 1.4rem;
     color: #333;
     line-height: 3rem;
@@ -1281,12 +1281,12 @@
     text-align: center;
 }
 
-.bind-top p {
+/*.bind-top p {*/
 
-    font-size: 1.4rem;
-    color: #333;
-    line-height: 3rem;
-}
+    /*font-size: 1.4rem;*/
+    /*color: #333;*/
+    /*line-height: 3rem;*/
+/*}*/
 
 .bind-top input {
     float: left;
