@@ -1129,7 +1129,7 @@
 
 .warning {
     color: red;
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-indent: 0.5rem;
     height: 1.8rem;
     line-height: 1.8rem;
@@ -1291,19 +1291,19 @@
 .bind-top input {
     float: left;
     width: 74%;
-    height: 2.5rem;
-    margin: 1rem 0 0.3rem 0;
-    font-size: 1.4rem;
+    height: 3rem;
+    margin: 1rem 0 0 0;
+    font-size: 1.3rem;
     text-indent: .5rem;
 }
 
 .bind-top .bind-right-button {
     margin-top: 1rem;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #fff;
     background-color: #0099ff;
     width: 23%;
-    height: 2.65rem;
+    height: 3rem;
     text-align: center;
 }
 
