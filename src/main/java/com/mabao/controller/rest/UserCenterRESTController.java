@@ -9,10 +9,7 @@ import com.mabao.util.express.PackInfo;
 import com.mabao.util.express.PackQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -76,15 +73,32 @@ public class UserCenterRESTController {
         return this.userService.updateUserPicture(headerPic, request);
     }
 
-    @RequestMapping(value = "/sendMes9", method = RequestMethod.POST)
+    /**
+     * 发送短信验证码
+     */
+    @RequestMapping(value = "/sendMes", method = RequestMethod.POST)
     public JsonResultVO sendMessage(@RequestParam Integer state,
-                                     @RequestParam(required = false, defaultValue = "") String phoneNum) throws IOException {
+                                    @RequestParam( required = false) String phoneNum)
+            throws IOException {
         return userService.sendMessage(state, phoneNum);
     }
 
-    @RequestMapping(value = "/searchExpressInfo",method = RequestMethod.GET)
+    /**
+     * 验证码校验
+     */
+    @RequestMapping(value = "/submitCode", method = RequestMethod.POST)
+    public JsonResultVO submitCode(@RequestParam Integer state,
+                                   @RequestParam String code,
+                                   @CookieValue(value = "phoneNum", required = false) String phoneNum) {
+        return userService.submitCode(state, code, phoneNum);
+    }
+
+    /**
+     * 查询物流信息
+     */
+    @RequestMapping(value = "/searchExpressInfo", method = RequestMethod.GET)
     public PackInfo searchExpressInfo(@RequestParam String com,
-                                  @RequestParam String id) throws IOException {
-        return PackQuery.get(com,id);
+                                      @RequestParam String id) throws IOException {
+        return PackQuery.get(com, id);
     }
 }

@@ -59,4 +59,13 @@ public interface UserService {
      * @return                      短信发送结果
      */
     JsonResultVO sendMessage(Integer state,String phoneNum) throws IOException;
+
+    /**
+     * 验证校验码
+     * @param state                 验证类型 1为绑定手机 2为修改密码 3修改密码回显
+     * @param code                  校验码
+     * @param phoneNum              手机号（绑定手机用）
+     * @return                      校验结果
+     */
+    JsonResultVO submitCode(Integer state, String code, String phoneNum);
 }

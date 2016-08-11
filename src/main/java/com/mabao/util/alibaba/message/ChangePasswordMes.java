@@ -8,14 +8,14 @@ public class ChangePasswordMes extends TextMessage{
         super.setTemplate("changePassword");
     }
 
-    private Integer code;
+    private String code;
     private String name;
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -29,6 +29,6 @@ public class ChangePasswordMes extends TextMessage{
 
     @Override
     public String getContent() {
-        return "{code:\'"+ this.getCode()+"+\',name:\'"+ this.getName()+"\'}";
+        return "{code:\'"+ this.getCode()+"\',name:\'"+ this.getName()+"\'}";
     }
 }

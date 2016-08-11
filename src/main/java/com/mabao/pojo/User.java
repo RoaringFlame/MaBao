@@ -12,6 +12,7 @@ public class User {
     private String email;                           //邮箱
     private Date createTime;                        //创建时间
     private String picture;                         //头像
+    private String code;                            //短信验证码
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,5 +71,13 @@ public class User {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

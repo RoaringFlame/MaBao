@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
@@ -21,9 +22,9 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/module.css">
 
-    <script src="script/lib/jquery.1.10.2.js"></script>
-    <script src="script/common.js"></script>
-    <script src="script/bindphone.js"></script>
+    <script type="text/javascript" src="script/lib/jquery.1.10.2.js"></script>
+    <script type="text/javascript" src="script/common.js"></script>
+    <script type="text/javascript" src="script/bindphone.js"></script>
 </head>
 
 <body>
@@ -44,23 +45,26 @@
     </header>
     <!--标题 END-->
     <!-- 绑定手机表单 -->
-    <div class="bind-top">
-        <form action="">
+    <c:if test="${phone eq ''}">
+        <div class="bind-top">
             <!-- 绑定手机号成功后跳转到个人中心页面 -->
+            <!-- 校验提示 -->
+            <p class="warning" id="warning"></p>
+            <!-- 提交按钮 -->
             <label>
                 <input type="text" placeholder="输入完整手机号" id="telNum">
             </label>
-            <p class="warning"></p>
-            <button class="bind-right-button" type="submit" id="sendSms">发送验证</button>
+            <button class="bind-right-button" type="submit" id="sendSms">获取验证码</button>
             <label>
-                <input type="text" placeholder="验证码">
+                <input type="text" placeholder="验证码" id="code">
             </label>
-            <!-- 校验提示 -->
-            <p class="warning"></p>
-            <!-- 提交按钮 -->
-            <button type="submit" value="提交" class="submit">提交</button>
-        </form>
-    </div>
+            <div class="blank"></div>
+            <button type="submit" value="提交" class="submit" id="submit">提交</button>
+        </div>
+    </c:if>
+    <c:if test="${phone ne ''}">
+        您已经绑定手机号${phone}!
+    </c:if>
     <!-- 绑定手机表单END -->
 </div>
 </body>

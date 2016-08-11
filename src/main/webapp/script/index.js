@@ -321,11 +321,6 @@ $(function () {
             initBaby(data.baby, data.gender);
             //新品初始化，只初始化一次
             initNewGoodsBox();
-            //猜你喜欢初始化
-            initLikeBox();
-            //表单信息初始化
-            initFormAction();
-
         });
     }
 
@@ -335,6 +330,8 @@ $(function () {
         initIndexPage();
         //控制新品和猜你喜欢的切换
         initGoods();
+        //表单信息初始化
+        initFormAction();
     }
 
     //12，调用初始化函数

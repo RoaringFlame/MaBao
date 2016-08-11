@@ -22,13 +22,13 @@ $(function () {
             $('.warning').text("请输入密码！");
         }
         if (ok1 && ok2) {//当以上判断全部成立，即执行后面的代码
-            $.post(MB.getRootPath()+"/person/passwordChange",{password: $('#newPwd').val()},
+            $.post("person/passwordChange",{password: $('#newPwd').val()},
                 function (data) {
                     //根据服务器返回的值判断
                     if (data.status == "success") {
                         //跳转到登录页面
                         $('.warning').text("");
-                        window.location.href = MB.getRootPath() + "/login";
+                        window.location.href = "login";
                     }
                     else if (data.status == "failure") {
                         $('.warning').text(data.message);
@@ -88,7 +88,6 @@ $(function () {
         ok2 = false;
         var confirmPwd = $('#confirm-pwd').val();
         if (confirmPwd == $('#newPwd').val()) {//判断密码是否正确
-            $('.warning').text('');
             ok2 = true;
         } else {
             $('.warning').text('输入的密码不一致');

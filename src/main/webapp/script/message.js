@@ -8,14 +8,13 @@ $(function () {
         sendCode($("#sendSms"));
     });
     //判断倒计时是否存在
-    countdown = getCookieValue("secondsremained") ?
-        getCookieValue("secondsremained") : 0;//获取cookie值
+    countdown = getCookieValue("remained") ?
+        getCookieValue("remained") : 0;//获取cookie值
     if (countdown > 0) {
         countdown++;
-        editCookie("secondsremained", countdown, countdown + 1);
+        editCookie("remained", countdown, countdown + 1);
         settime($("#sendSms"));//开始倒计时
     }
-
     //绑定提交验证码按钮事件
     $("#submit").click(function () {
         submitCode();
@@ -24,7 +23,7 @@ $(function () {
 
 //发送验证码时添加cookie
 function addCookie(name, value, expiresHours) {
-    var cookieString = name + "=" + value + ";path=/";
+    var cookieString = name + "=" + value;
     //判断是否设置过期时间,0代表关闭浏览器时失效
     if (expiresHours > 0) {
         var date = new Date();
@@ -36,7 +35,7 @@ function addCookie(name, value, expiresHours) {
 
 //修改cookie的值
 function editCookie(name, value, expiresHours) {
-    var cookieString = name + "=" + value + ";path=/";
+    var cookieString = name + "=" + value;
     if (expiresHours > 0) {
         var date = new Date();
         date.setTime(date.getTime() + expiresHours * 1000); //单位是毫秒
@@ -59,7 +58,7 @@ function getCookieValue(name) {
 }
 
 function settime(obj) {
-    countdown = getCookieValue("secondsremained");
+    countdown = getCookieValue("remained");
     if (countdown == undefined) {
         obj.removeAttr("disabled");
         obj.text("获取验证码");
@@ -68,7 +67,7 @@ function settime(obj) {
         obj.attr("disabled", true);
         obj.text("重新发送(" + countdown + ")");
         countdown--;
-        editCookie("secondsremained", countdown, countdown + 1);
+        editCookie("remained", countdown, countdown + 1);
     }
     setTimeout(function () {
         settime(obj)
@@ -77,28 +76,10 @@ function settime(obj) {
 
 //发送验证码
 function sendCode(obj) {
-    var result = isPhoneNum();
-    if (result) {
-        var phoneNum = $("#telNum").val();
-        //将手机利用ajax提交到后台的发短信接口
-        doPostBack('person/sendMes', sendBack, {"state": 1, "phoneNum": phoneNum});
-        addCookie("secondsremained", count, count); //添加cookie记录,测试为5秒
-        addCookie("phoneNum", phoneNum, count);
-        settime(obj);//开始倒计时
-        $('#warning').text('');
-    }
-}
-
-//校验手机号是否合法
-function isPhoneNum() {
-    var phonenum = $("#telNum").val();
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
-    if (!myreg.test(phonenum)) {
-        $('#warning').text('请输入有效的手机号码！');
-        return false;
-    } else {
-        return true;
-    }
+    doPostBack('person/sendMes', sendBack, {"state": 2});
+    addCookie("remained", count, count); //添加cookie记录,测试为5秒
+    settime(obj);//开始倒计时
+    $('#warning').text('');
 }
 
 //发送请求并进行回调
@@ -119,47 +100,49 @@ function submitCode() {
     if (countdown > 0) {
         if ($("#code").val() != "") {
             var code = $("#code").val();
-            doPostBack('person/submitCode', submitBack, {"state": 1, "code": code});
+            doPostBack('person/submitCode', submitBack, {"state": 2, "code": code});
         }
         else {
             $('#warning').text('请输入验证码！');
         }
     } else {
         $('#warning').text('验证码已失效，请重新获取获取！');
-        if ($("#telNum").val() == "") {
-            $('#warning').text('请输入手机号点击获取验证码！');
+        if ($("#code").val() == "") {
+            $('#warning').text('请点击获取验证码！');
         }
     }
 }
 
-//用于发送验证码回调
+//短信发送回调
 function sendBack(data) {
     $('#warning').text(data.message);
 }
 
-//发送验证绑定手机回调
+//测试回调
 function submitBack(data) {
-    $('#warning').text(data.message);
-    if (data.status == "success") {
-        window.location = "user/bindphone"
+    if (data.status != "success") {
+        $('#warning').text(data.message);
+    } else {//返回验证码
+        window.location = "user/changePwd?code=" + data.message;
     }
 }
 
-//测试回调1(用于发送验证码)
+//测试回调1短信发送
 function backFunc1(data) {
     if (data.status != "success") {
-        $('#warning').text(data.message);
+        alert(data.message);
     } else {//返回验证码
         alert("模拟验证码:" + data.message);
         $("#code").val(data.message);
     }
 }
 
-//测试回调2(用于绑定手机号)
+//测试回调2验证码校验
 function backFunc2(data) {
     if (data.status != "success") {
-        $('#warning').text(data.message);
+        alert(data.message);
     } else {//返回验证码
         alert("回调验证码:" + data.message);
+        window.location = "user/changePwd?code=" + data.message;
     }
 }

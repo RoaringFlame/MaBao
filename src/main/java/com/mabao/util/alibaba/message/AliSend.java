@@ -1,5 +1,6 @@
 package com.mabao.util.alibaba.message;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mabao.util.alibaba.message.smsBean.ResponseBody;
 import com.mabao.util.alibaba.message.smsBean.TextMessage;
@@ -48,6 +49,7 @@ public class AliSend implements SmsInterface{
 
 		assert rsp != null;
 		ObjectMapper mapper = new ObjectMapper();
+		mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 		ResponseBody responseBody = mapper.readValue(rsp.getBody(), ResponseBody.class);
 		return responseBody.getAlibabaAliqinFcSmsNumSendResponse().getResult().getErrCode();
 	}

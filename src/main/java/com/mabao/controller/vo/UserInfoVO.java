@@ -1,14 +1,5 @@
 package com.mabao.controller.vo;
 
-import com.mabao.enums.Gender;
-import com.mabao.pojo.Baby;
-import com.mabao.pojo.User;
-import com.mabao.util.VoUtil;
-
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 用户基本信息VO
  * Created by jackie on 2016/07/15.
