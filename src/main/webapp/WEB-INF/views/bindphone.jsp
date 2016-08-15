@@ -63,7 +63,9 @@
         </div>
     </c:if>
     <c:if test="${phone ne ''}">
-        您已经绑定手机号${phone}!
+        <div class="publish-success-box">
+            <p>您已经绑定手机号${phone}!</p>
+        </div>
     </c:if>
     <!-- 绑定手机表单END -->
 </div>

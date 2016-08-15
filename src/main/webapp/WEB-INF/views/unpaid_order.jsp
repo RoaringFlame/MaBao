@@ -66,7 +66,7 @@
             <!-- 共计END -->
             <!-- 按钮 -->
             <div class="order-button">
-                <button type="submit" value="确认收货">取消订单</button>
+                    <%--<button type="submit" value="确认收货">取消订单</button>--%>
                 <button type="submit" value="确认收货">付款</button>
             </div>
             <!-- 按钮END -->

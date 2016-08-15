@@ -97,7 +97,7 @@ $(function () {
                     .attr("src", MB.getRootPath() + "/upload/" + banner.picture)           //添加图片
                     .attr("alt", banner.alt)                                                //添加提示信息
                     .click(function () {                                                    //点击图片跳转到商品详情
-                        window.location = "goods/goodsDetail?goodsId=" + banner.id;
+                        window.location = "goods/goodsDetail?goodsId=" + banner.goodsId;
                     })
                 );
             if (index == 0) {

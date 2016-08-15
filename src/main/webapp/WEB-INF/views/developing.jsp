@@ -25,22 +25,48 @@
 <body>
 <div class="content-index">
     <!--标题-->
+    <!--标题-->
     <header>
+        开发中
         <!--操作按钮-->
         <div class="header-box">
+            <a href="">
+                <p class="header-left">
+                    <i class="icon icon-return"></i>
+                    返回
+                </p>
+            </a>
         </div>
         <!--操作按钮 END-->
     </header>
     <!--标题 END-->
-    <!--发布成功提示-->
+    <!--标题 END-->
     <div class="publish-success-box">
         <p>此页面正在开发中...</p>
         <p>敬请期待哟～</p>
-        <a href="" class="share-bottom">
-            <button>去逛逛</button>
-        </a>
-        <!--发布成功提示END-->
+        <%--<a href="" class="share-bottom">--%>
+            <%--<button>去逛逛</button>--%>
+        <%--</a>--%>
     </div>
+    <!--底部导航-->
+    <div class="menu" id="menu">
+        <a href="">
+            <i class="icon-menu icon-menu1"><img src="img/footer-1.png" alt=""></i>
+        </a>
+        <a href="developing">
+            <i class="icon-menu icon-menu2"><img src="img/footer-c2.png" alt=""></i>
+        </a>
+        <a href="consignment">
+            <i class="icon-menu icon-menu3"><img src="img/footer-3.png" alt=""></i>
+        </a>
+        <a href="user/shopping" >
+            <i class="icon-menu icon-menu4"><img src="img/footer-4.png" alt=""></i>
+        </a>
+        <a href="user">
+            <i class="icon-menu icon-menu5"><img src="img/footer-5.png" alt=""></i>
+        </a>
+    </div>
+    <!--底部导航 END-->
 </div>
 </body>
 </html>

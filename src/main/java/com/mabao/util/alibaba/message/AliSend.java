@@ -9,6 +9,7 @@ import com.taobao.api.DefaultTaobaoClient;
 import com.taobao.api.TaobaoClient;
 import com.taobao.api.request.AlibabaAliqinFcSmsNumSendRequest;
 import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.PropertyResourceBundle;
@@ -18,6 +19,7 @@ import java.util.ResourceBundle;
  * 阿里大鱼短信通道
  * 0成功 1失败 2未找到模版
  */
+@Component
 public class AliSend implements SmsInterface{
 
 	public int sendMessage(TextMessage message) throws IOException {

@@ -45,46 +45,48 @@
 
     <c:forEach var="address" items="${addressList}">
         <div class="box add">
-            <div class="box-left">
-                <img src="img/pay-1.png" alt="">
-            </div>
+            <div class="box ">
+                <div class="box-left">
+                    <img src="img/pay-1.png" alt="">
+                </div>
 
-            <div class="box-right">
-                <div class="box-right-top">
-                    <dl>
-                        <dd>${address.recipients}</dd>
-                        <dt>电话:${address.tel}</dt>
-                    </dl>
+                <div class="box-right">
+                    <div class="box-right-top">
+                        <dl>
+                            <dd>${address.recipients}</dd>
+                            <dt>电话:${address.tel}</dt>
+                        </dl>
+                    </div>
+                    <div class="box-right-bottom">
+                        <p>${address.area.mergerName}</p>
+                        <p>${address.location}</p>
+                    </div>
                 </div>
-                <div class="box-right-bottom">
-                    <p>${address.area.mergerName}</p>
-                    <p>${address.location}</p>
-                </div>
-            </div>
-            <a href="user/address/getAddress?addressId=${address.id}">
-                <button class="add-jump-arrow"></button>
-            </a>
-            <div class="clear"></div>
-            <div class="addressId" style="display: none">${address.id}</div>
-            <p class="default-add">
-                <input name="defaultAddress" type="radio" ${address.state ? "checked = 'checked '": '' }><span>设为默认地址</span>
-                <i class="icon-trash"></i>
-                <a href="user/address/deleteAddress?addressId=${address.id}">
-                <button>删除</button>
+
+                <a href="user/address/getAddress?addressId=${address.id}">
+                    <button class="add-jump-arrow"></button>
                 </a>
-            </p>
-        </div>
+                <div class="clear"></div>
+                <div class="addressId" style="display: none">${address.id}</div>
+                <p class="default-add">
+                    <input name="defaultAddress" type="radio" ${address.state ? "checked = 'checked '": '' }><span>设为默认地址</span>
+                    <i class="icon-trash"></i>
+                    <a href="user/address/deleteAddress?addressId=${address.id}">
+                        <button>删除</button>
+                    </a>
+                </p>
+            </div>
         </div>
     </c:forEach>
     <!-- 收货地址 END-->
     <!-- 新增收货地址按钮 -->
-    <a href="user/new_address" class="button-bottom">
-        <input class="submit " type="submit" value="新增收货地址">
-    </a>
+    <div class="warning"></div>
+    <div style="height: 4.5rem; margin: 0 auto;padding-top:.5rem;width:32rem;background: #fff" class="pay-fixed">
+        <a href="user/new_address" class="button-bottom">
+            <input class="submit " type="submit" value="新增收货地址">
+        </a>
+    </div>
     <!-- 新增收货地址按钮END -->
-
-
-
 </div>
 </body>
 </html>

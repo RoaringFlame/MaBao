@@ -218,6 +218,9 @@ public class UserCenterController {
         }
     }
 
+    /**
+     * 修改密码首先进行短信验证
+     */
     @RequestMapping(value = "/changePwd/sendMes", method = GET)
     public String sendMes(Model model) {
         User tempUser = UserManager.getUser();
@@ -234,6 +237,10 @@ public class UserCenterController {
         return "message";
     }
 
+    /**
+     * 进入修改密码页面要进行验证码回调判断
+     * @param code          验证码
+     */
     @RequestMapping(value = "/changePwd", method = GET)
     public String changePwd(String code, Model model) {
         JsonResultVO resultVO = userService.submitCode(3, code, "");
@@ -244,6 +251,9 @@ public class UserCenterController {
         }
     }
 
+    /**
+     * 进入绑定手机页面
+     */
     @RequestMapping(value = "/bindphone",method = GET)
     public String bindphone(Model model){
         User tempUser = UserManager.getUser();

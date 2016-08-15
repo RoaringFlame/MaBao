@@ -22,7 +22,7 @@ $(function () {
                 if(data.status == "success"){
                     showMsg(data.message);
                 }else if(data.status == "failure"){
-                    showMsg(data.message);
+                    window.location = "user";
                 }
             });
         });
@@ -38,7 +38,7 @@ $(function () {
                 if (data.status == "success") {
                     window.location = MB.getContextPath()+"/cart/index";
                 } else {
-                    showMsg(data.message);
+                    window.location = "user";
                 }
             });
         });

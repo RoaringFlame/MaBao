@@ -52,9 +52,9 @@
         <!--操作按钮-->
         <div class="header-box">
             <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId ne null}">
-                <p class="header-left" style="font-size: 1.1rem;">
+                <a href="user"><p class="header-left" style="font-size: 1.1rem;">
                         ${sessionScope["SPRING_SECURITY_CONTEXT"].authentication.principal.username}
-                </p>
+                </p></a>
             </c:if>
             <c:if test="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.userId eq null}">
                 <a href="login">

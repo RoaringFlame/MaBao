@@ -9,6 +9,7 @@ import com.mabao.util.UserManager;
 import com.mabao.util.alibaba.message.AliSend;
 import com.mabao.util.alibaba.message.ChangePasswordMes;
 import com.mabao.util.alibaba.message.PhoneBindMes;
+import com.mabao.util.alibaba.message.SmsInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,8 @@ public class UserServiceImpl extends BaseAction implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private SmsInterface smsInterface;
 
     /**
      * 用户登录验证
@@ -148,7 +151,6 @@ public class UserServiceImpl extends BaseAction implements UserService {
             code = code + (int) (Math.random() * 9);
         }
         if (user != null) {
-            AliSend smsInterface = new AliSend();
             User tempUser = this.userRepository.findOne(user.getId());
             tempUser.setCode(code);
             this.userRepository.saveAndFlush(tempUser);

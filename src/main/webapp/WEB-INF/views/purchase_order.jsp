@@ -69,15 +69,15 @@
             <!-- 按钮 -->
             <c:if test="${order.flag eq 0}">
                 <div class="order-button">
-                    <button type="submit" value="确认收货">取消订单</button>
+                    <%--<button type="submit" value="确认收货">取消订单</button>--%>
                     <button type="submit" value="确认收货">付款</button>
                 </div>
             </c:if>
             <!-- 按钮 -->
             <c:if test="${order.flag eq 1}">
                 <div class="order-button">
-                    <button type="submit" value="取消订单">取消订单</button>
-                    <button type="submit" value="提醒发货">提醒发货</button>
+                    <%--<button type="submit" value="取消订单">取消订单</button>--%>
+                    <%--<button type="submit" value="提醒发货">提醒发货</button>--%>
                 </div>
             </c:if>
             <!-- 按钮 -->

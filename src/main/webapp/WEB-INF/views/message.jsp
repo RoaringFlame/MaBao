@@ -44,7 +44,7 @@
     </header>
     <!--标题 END-->
     <!-- 找回密码表单 -->
-    <c:if test="${phone ne null}">
+    <c:if test="${phone ne ''}">
         <div class="get-back-pwd">
             <!--当前绑定手机号为用户号码-->
             <p>当前绑定手机号为${phone}</p>
@@ -61,9 +61,11 @@
             <!--提交按钮END-->
         </div>
     </c:if>
-    <c:if test="${phone eq null}">
-        您暂未绑定手机号！<br>
-        <a href="user/bindphone">===前去绑定===</a>
+    <c:if test="${phone eq ''}">
+        <div class="publish-success-box">
+            <p>您暂未绑定手机号！</p>
+            <p><a href="user/bindphone">===前去绑定===</a></p>
+        </div>
     </c:if>
     <!--找回密码表单END-->
 </div>
