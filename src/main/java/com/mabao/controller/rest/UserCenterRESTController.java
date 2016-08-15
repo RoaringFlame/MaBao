@@ -5,8 +5,8 @@ import com.mabao.pojo.Address;
 import com.mabao.pojo.User;
 import com.mabao.service.AddressService;
 import com.mabao.service.UserService;
+import com.mabao.util.express.ExpressQuery;
 import com.mabao.util.express.PackInfo;
-import com.mabao.util.express.PackQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +25,8 @@ public class UserCenterRESTController {
     private UserService userService;
     @Autowired
     private AddressService addressService;
+    @Autowired
+    private ExpressQuery expressQuery;
 
     /**
      * 用户注册
@@ -99,6 +101,6 @@ public class UserCenterRESTController {
     @RequestMapping(value = "/searchExpressInfo", method = RequestMethod.GET)
     public PackInfo searchExpressInfo(@RequestParam String com,
                                       @RequestParam String id) throws IOException {
-        return PackQuery.get(com, id);
+        return expressQuery.get(com, id);
     }
 }

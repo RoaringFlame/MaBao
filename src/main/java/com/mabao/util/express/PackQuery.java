@@ -2,6 +2,7 @@ package com.mabao.util.express;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -11,9 +12,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.zip.GZIPInputStream;
 
-public class PackQuery {
+@Component
+public class PackQuery implements ExpressQuery{
     //http://www.kuaidi100.com/query?type=quanfengkuaidi&postid=123456
-    private static String order(String company, String orderNo) {
+    private String order(String company, String orderNo) {
         //String url = "http://www.kuaidi100.com/query?type=yunda&postid=1&id=1&valicode=&temp=0.3015635129995644";
         String url = "http://www.kuaidi100.com/query?type=" + company + "&postid=" + orderNo+ "&id=1&valicode=&temp=0.3015635129995644";
         try {
@@ -54,7 +56,7 @@ public class PackQuery {
         return null;
     }
 
-    public static PackInfo get(String company, String orderNo) throws IOException {
+    public PackInfo get(String company, String orderNo) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         String json = order(company, orderNo);
         if (json != null) {

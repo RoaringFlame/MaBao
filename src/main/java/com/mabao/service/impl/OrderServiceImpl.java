@@ -11,14 +11,12 @@ import com.mabao.service.AddressService;
 import com.mabao.service.CartService;
 import com.mabao.service.OrderService;
 import com.mabao.util.UserManager;
+import com.mabao.util.express.ExpressQuery;
 import com.mabao.util.express.PackInfo;
-import com.mabao.util.express.PackQuery;
-import com.sun.xml.internal.bind.v2.runtime.reflect.Lister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
 import java.io.IOException;
 import java.util.Date;
@@ -36,6 +34,8 @@ public class OrderServiceImpl implements OrderService {
     private GoodsRepository goodsRepository;
     @Autowired
     private CartService cartService;
+    @Autowired
+    private ExpressQuery expressQuery;
 
     /**
      * 购买,生成订单
@@ -210,7 +210,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = this.orderRepository.findOne(orderId);
         if (order != null) {
             Express express = order.getExpress();
-            PackInfo packInfo = PackQuery.get(express.getTypeName(), order.getPortNumber());
+            PackInfo packInfo = this.expressQuery.get(express.getTypeName(), order.getPortNumber());
             if (packInfo != null) {
                 ExpressVO expressVO = ExpressVO.generateBy(packInfo);
                 expressVO.setCompany(express.getComName());
