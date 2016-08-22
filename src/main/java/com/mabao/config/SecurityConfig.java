@@ -1,6 +1,7 @@
 package com.mabao.config;
 
 import com.mabao.repository.UserRepository;
+import com.mabao.util.filter.MyCharacterEncodingFilter;
 import com.mabao.util.security.MaBaoUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 
 @Configuration
 @EnableWebMvcSecurity
@@ -22,6 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   
   @Override
   protected void configure(HttpSecurity http) throws Exception {
+    http.addFilterBefore(new MyCharacterEncodingFilter(),ChannelProcessingFilter.class);
     http.csrf().disable()
         .formLogin().loginPage("/login").defaultSuccessUrl("/");
     http.logout().logoutSuccessUrl("/");

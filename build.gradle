@@ -34,6 +34,11 @@ dependencies {
     compile "net.sf.ehcache:ehcache:$ehcacheVersion"
     compile "net.sf.ehcache:ehcache-jcache:$ehcacheJCacheVersion"
 
+    compile "org.springframework:spring-aop:$springVersion"
+    compile "org.springframework:spring-aspects:$springVersion"
+    compile "org.aspectj:aspectjweaver:1.8.9"
+    compile "cglib:cglib:3.2.4"
+
     compile "javax.servlet:jstl:$jstlVersion"
     providedCompile "javax.servlet:javax.servlet-api:$servletApiVersion"
     providedCompile "javax.servlet.jsp:jsp-api:$jspApiVersion"
